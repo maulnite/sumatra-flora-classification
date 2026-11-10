@@ -1,0 +1,25 @@
+experiment_id: EXP-001
+owner: TBD
+seed: 42
+dataset_root: data/raw
+validation:
+  method: stratified_holdout
+  fraction: 0.20
+  save_indices: true
+model:
+  name: custom_cnn
+  pretrained: false
+  num_classes: 30
+  input_size: 224
+training:
+  epochs: 30
+  batch_size: 32
+  optimizer: adamw
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  loss: cross_entropy
+augmentation:
+  random_resized_crop: true
+  horizontal_flip: true
+  color_jitter: true
+# Not a benchmark or optimized configuration.
