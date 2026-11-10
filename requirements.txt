@@ -1,0 +1,10 @@
+# Generic packages; install the correct PyTorch GPU build for your environment.
+numpy>=1.26,<3
+pandas>=2.0,<3
+scikit-learn>=1.4,<2
+Pillow>=10,<13
+matplotlib>=3.8,<4
+PyYAML>=6,<7
+tqdm>=4,<5
+torch>=2.3,<3
+torchvision>=0.18,<1
