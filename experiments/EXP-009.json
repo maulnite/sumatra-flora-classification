@@ -1,0 +1,55 @@
+{
+  "id": "EXP-009",
+  "title": "R with CBAM attention and GeM pooling",
+  "status": "completed",
+  "date": "2026-11-10",
+  "protocol": "scene5_v4rot",
+  "tags": [
+    "architecture",
+    "attention",
+    "pooling",
+    "negative-result"
+  ],
+  "summary": "R + CBAM + GeM: below plain R",
+  "hypothesis": "Attention (CBAM) and learnable pooling (GeM) may help plant-part localisation.",
+  "config": {
+    "arch": "resnet18",
+    "attn": "cbam",
+    "pool": "gem",
+    "img": 224,
+    "epochs": 300,
+    "folds": "scene5",
+    "tta": "not recorded"
+  },
+  "results": [
+    {
+      "name": "OOF 5-fold (v4+rot)",
+      "scope": "oof",
+      "resolution": 224,
+      "macro_f1": 0.6377
+    }
+  ],
+  "leaderboard": {
+    "public": null,
+    "private": null,
+    "note": "used only inside EXP-010"
+  },
+  "findings": [
+    "CBAM+GeM is worse than plain R alone (0.638 vs 0.672) but adds diversity for an ensemble (EXP-010)."
+  ],
+  "limitations": [
+    "TTA setting for this run is not recorded in its log."
+  ],
+  "evidence": {
+    "report": "experiments/EXP-009.md",
+    "run_dir": "runs/R_cbam_gem_f0..f4",
+    "code": "Training code is in code/ (copied from the team server export, 2026-11-12). Referenced by md5: train.py 56d4db01cdd6c2c46e7b9b3b789324fe (before the 2026-11-12 patch that added --img and corrupt_v5; default behaviour unchanged), dq.py e3e270bdcdf254ad369b1cb3c345e5e9.",
+    "submission": null,
+    "logs": [
+      "R_cbam_gem.log"
+    ]
+  },
+  "branch": "kaka",
+  "owner": "kaka",
+  "schema": 1
+}

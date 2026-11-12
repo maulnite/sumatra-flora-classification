@@ -1,0 +1,55 @@
+{
+  "id": "EXP-015",
+  "title": "Ensemble: R_r18d + R_e600 (greedy search over 62 combinations)",
+  "status": "completed",
+  "date": "2026-11-11",
+  "protocol": "scene5_v4rot",
+  "tags": [
+    "ensemble",
+    "selection-bias"
+  ],
+  "summary": "ResNet18d + ResNet18 600ep; first 0.80 LB",
+  "hypothesis": "Averaging the two best ResNet18 variants should beat each alone.",
+  "config": {
+    "members": [
+      "EXP-013",
+      "EXP-014"
+    ],
+    "combine": "mean of probabilities",
+    "search": "all combinations of 1-4 models, OOF macro F1"
+  },
+  "results": [
+    {
+      "name": "OOF ensemble (v4+rot)",
+      "scope": "oof",
+      "resolution": 224,
+      "macro_f1": 0.7727,
+      "note": "best of 62 combinations on the same OOF: optimistic"
+    }
+  ],
+  "leaderboard": {
+    "public": 0.80694,
+    "private": null,
+    "note": "ens_best_submission.csv"
+  },
+  "findings": [
+    "Public 0.80694: OOF gain (+0.02) carried over, and this was the first submission above 0.80.",
+    "The combination was chosen on OOF, so the OOF value is optimistic."
+  ],
+  "limitations": [
+    "Selection on the same OOF that is reported."
+  ],
+  "evidence": {
+    "report": "experiments/EXP-015.md",
+    "run_dir": "ens_eval.py output (ens_out.txt)",
+    "code": "Training code is in code/ (copied from the team server export, 2026-11-12). Referenced by md5: train.py 56d4db01cdd6c2c46e7b9b3b789324fe (before the 2026-11-12 patch that added --img and corrupt_v5; default behaviour unchanged), dq.py e3e270bdcdf254ad369b1cb3c345e5e9.",
+    "submission": {
+      "file": "ens_best_submission.csv",
+      "sha16": "ac30067a72cf887f"
+    },
+    "logs": []
+  },
+  "branch": "kaka",
+  "owner": "kaka",
+  "schema": 1
+}

@@ -1,0 +1,77 @@
+>>> bn5: est_acc_before 0.4430 | est_acc_after 0.4558 | conf_before 0.3716 | conf_after 0.3819 | agree_before_after 0.6025 | secs 37.0774
+>>> E_f0: f1_v4 0.6511 | est_acc 0.5052 | conf_test 0.4157 | lb 0.5187
+[mix f0] ep  25 | loss 2.601 | F1 val bersih 0.1531 | F1 val corrupt 0.1001 | 218s
+[mix f0] ep  50 | loss 2.166 | F1 val bersih 0.4708 | F1 val corrupt 0.2320 | 431s
+[mix f0] ep  75 | loss 2.026 | F1 val bersih 0.6373 | F1 val corrupt 0.3744 | 649s
+[mix f0] ep 100 | loss 1.756 | F1 val bersih 0.7143 | F1 val corrupt 0.5006 | 857s
+[mix f0] ep 125 | loss 1.739 | F1 val bersih 0.7386 | F1 val corrupt 0.5515 | 1071s
+[mix f0] ep 150 | loss 1.589 | F1 val bersih 0.7510 | F1 val corrupt 0.6108 | 1280s
+[mix f0] ep 175 | loss 1.266 | F1 val bersih 0.7751 | F1 val corrupt 0.6753 | 1492s
+[mix f0] ep 200 | loss 1.346 | F1 val bersih 0.7910 | F1 val corrupt 0.6986 | 1699s
+[mix f0] ep 225 | loss 1.305 | F1 val bersih 0.7877 | F1 val corrupt 0.7064 | 1910s
+[mix f0] ep 250 | loss 1.074 | F1 val bersih 0.8111 | F1 val corrupt 0.7272 | 2121s
+[mix f0] ep 275 | loss 1.211 | F1 val bersih 0.8136 | F1 val corrupt 0.7341 | 2332s
+[mix f0] ep 300 | loss 1.160 | F1 val bersih 0.8132 | F1 val corrupt 0.7375 | 2544s
+>>> F_f0: f1_v4 0.7504 | est_acc 0.5548 | conf_test 0.4439 | mins 42.4862
+[mix f0] ep  25 | loss 2.576 | F1 val bersih 0.5120 | F1 val corrupt 0.2218 | 260s
+[mix f0] ep  50 | loss 2.142 | F1 val bersih 0.6394 | F1 val corrupt 0.3541 | 512s
+[mix f0] ep  75 | loss 1.869 | F1 val bersih 0.6766 | F1 val corrupt 0.4354 | 766s
+[mix f0] ep 100 | loss 1.557 | F1 val bersih 0.7566 | F1 val corrupt 0.5694 | 1015s
+[mix f0] ep 125 | loss 1.425 | F1 val bersih 0.7712 | F1 val corrupt 0.6173 | 1266s
+[mix f0] ep 150 | loss 1.403 | F1 val bersih 0.7658 | F1 val corrupt 0.6220 | 1512s
+>>> H_f0: f1_v4 0.6259 | est_acc 0.4769 | conf_test 0.4106 | mins 25.2776
+>>> proxy scores: {'E': 0.5052, 'F': 0.5548, 'H': 0.4769} -> best F
+[mix f1] ep  25 | loss 2.636 | F1 val bersih 0.1338 | F1 val corrupt 0.0596 | 215s
+[mix f1] ep  50 | loss 2.228 | F1 val bersih 0.4601 | F1 val corrupt 0.2128 | 426s
+[mix f1] ep  75 | loss 1.956 | F1 val bersih 0.6281 | F1 val corrupt 0.3643 | 636s
+[mix f1] ep 100 | loss 1.764 | F1 val bersih 0.6863 | F1 val corrupt 0.4782 | 846s
+[mix f1] ep 125 | loss 1.442 | F1 val bersih 0.7314 | F1 val corrupt 0.5433 | 1058s
+[mix f1] ep 150 | loss 1.370 | F1 val bersih 0.7556 | F1 val corrupt 0.5907 | 1269s
+[mix f1] ep 175 | loss 1.245 | F1 val bersih 0.7807 | F1 val corrupt 0.6366 | 1485s
+[mix f1] ep 200 | loss 1.299 | F1 val bersih 0.7891 | F1 val corrupt 0.6655 | 1695s
+[mix f1] ep 225 | loss 1.193 | F1 val bersih 0.7977 | F1 val corrupt 0.6778 | 1906s
+[mix f1] ep 250 | loss 1.238 | F1 val bersih 0.8042 | F1 val corrupt 0.6975 | 2119s
+[mix f1] ep 275 | loss 1.106 | F1 val bersih 0.8095 | F1 val corrupt 0.7006 | 2331s
+[mix f1] ep 300 | loss 1.260 | F1 val bersih 0.8083 | F1 val corrupt 0.7053 | 2540s
+>>> F_f1: f1_v4 0.7025 | est_acc 0.5249 | conf_test 0.4476 | mins 42.4143
+[mix f2] ep  25 | loss 2.566 | F1 val bersih 0.1395 | F1 val corrupt 0.0638 | 211s
+[mix f2] ep  50 | loss 2.202 | F1 val bersih 0.4442 | F1 val corrupt 0.2456 | 424s
+[mix f2] ep  75 | loss 2.018 | F1 val bersih 0.6361 | F1 val corrupt 0.3877 | 635s
+[mix f2] ep 100 | loss 1.685 | F1 val bersih 0.7040 | F1 val corrupt 0.5011 | 845s
+[mix f2] ep 125 | loss 1.558 | F1 val bersih 0.7586 | F1 val corrupt 0.5736 | 1059s
+[mix f2] ep 150 | loss 1.413 | F1 val bersih 0.7877 | F1 val corrupt 0.6239 | 1266s
+[mix f2] ep 175 | loss 1.310 | F1 val bersih 0.8006 | F1 val corrupt 0.6596 | 1477s
+[mix f2] ep 200 | loss 1.332 | F1 val bersih 0.8073 | F1 val corrupt 0.6862 | 1687s
+[mix f2] ep 225 | loss 1.175 | F1 val bersih 0.8130 | F1 val corrupt 0.7104 | 1902s
+[mix f2] ep 250 | loss 1.122 | F1 val bersih 0.8251 | F1 val corrupt 0.7270 | 2111s
+[mix f2] ep 275 | loss 1.227 | F1 val bersih 0.8263 | F1 val corrupt 0.7287 | 2323s
+[mix f2] ep 300 | loss 1.165 | F1 val bersih 0.8240 | F1 val corrupt 0.7258 | 2534s
+>>> F_f2: f1_v4 0.7320 | est_acc 0.5325 | conf_test 0.4356 | mins 42.3087
+[mix f3] ep  25 | loss 2.633 | F1 val bersih 0.1553 | F1 val corrupt 0.0786 | 208s
+[mix f3] ep  50 | loss 2.234 | F1 val bersih 0.4009 | F1 val corrupt 0.1981 | 417s
+[mix f3] ep  75 | loss 2.025 | F1 val bersih 0.5843 | F1 val corrupt 0.3415 | 628s
+[mix f3] ep 100 | loss 1.616 | F1 val bersih 0.6842 | F1 val corrupt 0.4492 | 839s
+[mix f3] ep 125 | loss 1.504 | F1 val bersih 0.7438 | F1 val corrupt 0.5375 | 1051s
+[mix f3] ep 150 | loss 1.256 | F1 val bersih 0.7749 | F1 val corrupt 0.6247 | 1259s
+[mix f3] ep 175 | loss 1.435 | F1 val bersih 0.7969 | F1 val corrupt 0.6624 | 1470s
+[mix f3] ep 200 | loss 1.454 | F1 val bersih 0.8072 | F1 val corrupt 0.6976 | 1681s
+[mix f3] ep 225 | loss 1.275 | F1 val bersih 0.8168 | F1 val corrupt 0.7072 | 1888s
+[mix f3] ep 250 | loss 1.214 | F1 val bersih 0.8218 | F1 val corrupt 0.7146 | 2101s
+[mix f3] ep 275 | loss 1.074 | F1 val bersih 0.8280 | F1 val corrupt 0.7246 | 2308s
+[mix f3] ep 300 | loss 1.183 | F1 val bersih 0.8380 | F1 val corrupt 0.7222 | 2517s
+>>> F_f3: f1_v4 0.7246 | est_acc 0.5342 | conf_test 0.4507 | mins 42.0372
+[mix f4] ep  25 | loss 2.618 | F1 val bersih 0.1174 | F1 val corrupt 0.0481 | 208s
+[mix f4] ep  50 | loss 2.175 | F1 val bersih 0.4333 | F1 val corrupt 0.1736 | 417s
+[mix f4] ep  75 | loss 2.014 | F1 val bersih 0.5782 | F1 val corrupt 0.3420 | 625s
+[mix f4] ep 100 | loss 1.734 | F1 val bersih 0.7041 | F1 val corrupt 0.4479 | 834s
+[mix f4] ep 125 | loss 1.599 | F1 val bersih 0.7447 | F1 val corrupt 0.5265 | 1042s
+[mix f4] ep 150 | loss 1.344 | F1 val bersih 0.7726 | F1 val corrupt 0.5795 | 1253s
+[mix f4] ep 175 | loss 1.468 | F1 val bersih 0.7898 | F1 val corrupt 0.6371 | 1460s
+[mix f4] ep 200 | loss 1.236 | F1 val bersih 0.8082 | F1 val corrupt 0.6689 | 1665s
+[mix f4] ep 225 | loss 1.302 | F1 val bersih 0.8118 | F1 val corrupt 0.6987 | 1871s
+[mix f4] ep 250 | loss 1.235 | F1 val bersih 0.8179 | F1 val corrupt 0.7016 | 2081s
+[mix f4] ep 275 | loss 1.311 | F1 val bersih 0.8199 | F1 val corrupt 0.7166 | 2286s
+[mix f4] ep 300 | loss 1.158 | F1 val bersih 0.8201 | F1 val corrupt 0.7273 | 2497s
+>>> F_f4: f1_v4 0.7252 | est_acc 0.5891 | conf_test 0.4433 | mins 41.6947
+>>> wrote sub_F_5fold.csv
+>>> OVERNIGHT DONE

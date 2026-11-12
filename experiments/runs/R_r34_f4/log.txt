@@ -1,0 +1,51 @@
+wandb: [wandb.login()] Loaded credentials for https://api.forge.coreweave.com from ~/.netrc.
+wandb: Currently logged in as: <wandb-user> (<wandb-entity>) to https://api.forge.coreweave.com. Use `wandb login --relogin` to force relogin
+wandb: setting up run qaa4gir0
+wandb: Tracking run with wandb version 0.31.0
+wandb: Run data is saved locally in ~/inahuy/runs/R_r34_f4/wandb/run-20261110_175232-qaa4gir0
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run R_r34_f4
+wandb: ⭐️ View project at https://forge.coreweave.com/wandb/<wandb-entity>/dateraquest
+wandb: 🚀 View run at https://forge.coreweave.com/wandb/<wandb-entity>/dateraquest/runs/qaa4gir0
+17:59:29 [R_r34_f4] ep  25 | loss 2.725 | F1 bersih 0.1242 | v4 0.0621 | v4+rot 0.0603 (flip) | 393s
+18:03:32 [R_r34_f4] ep  50 | loss 2.402 | F1 bersih 0.4194 | v4 0.1861 | v4+rot 0.1846 (flip) | 635s
+18:07:31 [R_r34_f4] ep  75 | loss 2.168 | F1 bersih 0.6099 | v4 0.3277 | v4+rot 0.3108 (flip) | 874s
+18:11:35 [R_r34_f4] ep 100 | loss 1.986 | F1 bersih 0.6718 | v4 0.4241 | v4+rot 0.3988 (flip) | 1118s
+18:15:36 [R_r34_f4] ep 125 | loss 1.774 | F1 bersih 0.7217 | v4 0.4827 | v4+rot 0.4772 (flip) | 1359s
+18:19:34 [R_r34_f4] ep 150 | loss 1.523 | F1 bersih 0.7810 | v4 0.5769 | v4+rot 0.5477 (flip) | 1597s
+18:23:19 [R_r34_f4] ep 175 | loss 1.367 | F1 bersih 0.7986 | v4 0.6186 | v4+rot 0.5880 (flip) | 1822s
+18:26:33 [R_r34_f4] ep 200 | loss 1.448 | F1 bersih 0.8169 | v4 0.6597 | v4+rot 0.6207 (flip) | 2016s
+18:29:50 [R_r34_f4] ep 225 | loss 1.391 | F1 bersih 0.8134 | v4 0.6615 | v4+rot 0.6371 (flip) | 2213s
+18:33:06 [R_r34_f4] ep 250 | loss 1.441 | F1 bersih 0.8143 | v4 0.6772 | v4+rot 0.6581 (flip) | 2409s
+18:36:26 [R_r34_f4] ep 275 | loss 1.201 | F1 bersih 0.8265 | v4 0.6826 | v4+rot 0.6612 (flip) | 2609s
+18:39:40 [R_r34_f4] ep 300 | loss 1.197 | F1 bersih 0.8311 | v4 0.6839 | v4+rot 0.6696 (flip) | 2803s
+wandb: updating run metadata
+wandb: uploading output.log; uploading wandb-summary.json; uploading config.yaml
+wandb: uploading history steps 11-11, summary
+wandb: 
+wandb: Run history:
+wandb:    epoch ▁▂▂▃▄▄▅▅▆▇▇█
+wandb: f1_clean ▁▄▆▆▇███████
+wandb:    f1_v4 ▁▂▄▅▆▇▇█████
+wandb: f1_v4rot ▁▂▄▅▆▇▇▇████
+wandb:     loss █▇▅▅▄▂▂▂▂▂▁▁
+wandb:      sec ▁▂▂▃▄▄▅▆▆▇▇█
+wandb: 
+wandb: Run summary:
+wandb:         epoch 300
+wandb:      f1_clean 0.8311
+wandb:         f1_v4 0.68388
+wandb:    f1_v4_flip 0.68388
+wandb:    f1_v4_rot8 0.69181
+wandb:      f1_v4rot 0.66963
+wandb: f1_v4rot_flip 0.66963
+wandb: f1_v4rot_rot8 0.66456
+wandb:          loss 1.19679
+wandb:       minutes 47.13919
+wandb:            +2 ...
+wandb: 
+wandb: 🚀 View run R_r34_f4 at: https://forge.coreweave.com/wandb/<wandb-entity>/dateraquest/runs/qaa4gir0
+wandb: ⭐️ View project at: https://forge.coreweave.com/wandb/<wandb-entity>/dateraquest
+wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./runs/R_r34_f4/wandb/run-20261110_175232-qaa4gir0/logs
+18:40:08 >>> R_r34_f4: F1 v4+rot 0.6696 (flip) | flip 0.6696 vs rot8 0.6646 | 47.1 menit

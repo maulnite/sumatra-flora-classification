@@ -1,0 +1,13 @@
+~/venvs/dq/lib/python3.10/site-packages/albumentations/check_version.py:147: UserWarning: Error fetching version info <urlopen error _ssl.c:980: The handshake operation timed out>
+  data = fetch_version_info()
+wandb: [wandb.login()] Loaded credentials for https://api.forge.coreweave.com from ~/.netrc.
+wandb: Currently logged in as: <wandb-user> (<wandb-entity>) to https://api.forge.coreweave.com. Use `wandb login --relogin` to force relogin
+wandb: setting up run vwoszlrh
+wandb: Tracking run with wandb version 0.31.0
+wandb: Run data is saved locally in ~/inahuy/dateruy/runs/R_r18d_i288_f0/wandb/run-20261112_060313-vwoszlrh
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run R_r18d_i288_f0
+wandb: ⭐️ View project at https://forge.coreweave.com/wandb/<wandb-entity>/dateraquest
+wandb: 🚀 View run at https://forge.coreweave.com/wandb/<wandb-entity>/dateraquest/runs/vwoszlrh
+06:28:30 [R_r18d_i288_f0] ep  25 | loss 2.589 | F1 bersih 0.0121 | v4 0.0110 | v4+rot 0.0095 (flip) | 1491s
+06:46:06 [R_r18d_i288_f0] ep  50 | loss 2.100 | F1 bersih 0.2600 | v4 0.1351 | v4+rot 0.1300 (flip) | 2547s

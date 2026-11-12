@@ -1,0 +1,51 @@
+{
+  "id": "EXP-011",
+  "title": "Architecture: ResNet34, recipe R, 300 epochs",
+  "status": "completed",
+  "date": "2026-11-10",
+  "protocol": "scene5_v4rot",
+  "tags": [
+    "architecture"
+  ],
+  "summary": "ResNet34 300 ep: below ResNet18d",
+  "hypothesis": "A deeper ResNet should learn more invariant features.",
+  "config": {
+    "arch": "resnet34",
+    "img": 224,
+    "epochs": 300,
+    "folds": "scene5",
+    "tta": "flip",
+    "augmentation": "recipe R"
+  },
+  "results": [
+    {
+      "name": "OOF 5-fold (v4+rot)",
+      "scope": "oof",
+      "resolution": 224,
+      "macro_f1": 0.6872
+    }
+  ],
+  "leaderboard": {
+    "public": null,
+    "private": null,
+    "note": "not submitted alone"
+  },
+  "findings": [
+    "Deeper is not better at this data size; ResNet34 loses to ResNet18d (EXP-013)."
+  ],
+  "limitations": [
+    "Single seed."
+  ],
+  "evidence": {
+    "report": "experiments/EXP-011.md",
+    "run_dir": "runs/R_r34_f0..f4",
+    "code": "Training code is in code/ (copied from the team server export, 2026-11-12). Referenced by md5: train.py 56d4db01cdd6c2c46e7b9b3b789324fe (before the 2026-11-12 patch that added --img and corrupt_v5; default behaviour unchanged), dq.py e3e270bdcdf254ad369b1cb3c345e5e9.",
+    "submission": null,
+    "logs": [
+      "R_r34.log"
+    ]
+  },
+  "branch": "kaka",
+  "owner": "kaka",
+  "schema": 1
+}

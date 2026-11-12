@@ -1,0 +1,26 @@
+{
+  "phash5_v4": {
+    "description": "5-fold OOF; folds = near-duplicate groups (pHash) + StratifiedGroupKFold; validation = v4 corruption, no rotation; evaluated at 224 px. Scores are NOT comparable with scene5_v4rot.",
+    "folds": "phash5",
+    "validation_corruption": "corrupt_v4 (no rotation)",
+    "eval_resolution": 224
+  },
+  "scene5_v4rot": {
+    "description": "5-fold OOF; folds = 237 scene groups (scene_folds, fixed file); validation = corrupt_v4 + uniform random rotation in [-180, 180]; evaluated at the resolution listed per result. Use this protocol for all new comparisons.",
+    "folds": "scene5",
+    "validation_corruption": "corrupt_v4 + rotation 360",
+    "eval_resolution": "per result"
+  },
+  "scene_fold0_v4rot": {
+    "description": "Single held-out fold 0 of scene5 only. Quick screening; never compare against 5-fold OOF numbers directly.",
+    "folds": "scene fold 0 only",
+    "validation_corruption": "corrupt_v4 + rotation 360",
+    "eval_resolution": 224
+  },
+  "leaderboard_only": {
+    "description": "Score known only from the Kaggle public leaderboard (30% of test). No local validation number exists for this submission.",
+    "folds": null,
+    "validation_corruption": null,
+    "eval_resolution": null
+  }
+}

@@ -1,0 +1,13 @@
+05:25:28 [F_f0] ep  25 | loss 2.645 | F1 val bersih 0.1580 | F1 val v4 0.0639 (+TTA) | 334s
+05:28:29 [F_f0] ep  50 | loss 2.249 | F1 val bersih 0.4662 | F1 val v4 0.2167 (+TTA) | 515s
+05:31:40 [F_f0] ep  75 | loss 1.973 | F1 val bersih 0.6443 | F1 val v4 0.3585 (+TTA) | 706s
+05:35:07 [F_f0] ep 100 | loss 1.694 | F1 val bersih 0.6977 | F1 val v4 0.5060 (+TTA) | 913s
+05:37:53 [F_f0] ep 125 | loss 1.575 | F1 val bersih 0.7395 | F1 val v4 0.5828 (+TTA) | 1079s
+05:40:59 [F_f0] ep 150 | loss 1.321 | F1 val bersih 0.7666 | F1 val v4 0.6232 (+TTA) | 1265s
+05:44:04 [F_f0] ep 175 | loss 1.330 | F1 val bersih 0.7752 | F1 val v4 0.6659 (+TTA) | 1451s
+05:47:39 [F_f0] ep 200 | loss 1.336 | F1 val bersih 0.8013 | F1 val v4 0.6983 (+TTA) | 1665s
+05:50:54 [F_f0] ep 225 | loss 1.295 | F1 val bersih 0.7998 | F1 val v4 0.7187 (+TTA) | 1860s
+05:54:19 [F_f0] ep 250 | loss 1.101 | F1 val bersih 0.8164 | F1 val v4 0.7171 (+TTA) | 2066s
+05:57:31 [F_f0] ep 275 | loss 1.291 | F1 val bersih 0.8149 | F1 val v4 0.7253 (+TTA) | 2257s
+06:00:38 [F_f0] ep 300 | loss 1.104 | F1 val bersih 0.8125 | F1 val v4 0.7282 (+TTA) | 2444s
+06:00:44 >>> F_f0: F1 val v4 0.7282 | 40.8 menit

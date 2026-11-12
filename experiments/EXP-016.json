@@ -1,0 +1,84 @@
+{
+  "id": "EXP-016",
+  "title": "RegNetY-008 5-fold (recipe R, 224 train)",
+  "status": "completed",
+  "date": "2026-11-11",
+  "protocol": "scene5_v4rot",
+  "tags": [
+    "architecture",
+    "regnet"
+  ],
+  "summary": "RegNetY-008 5-fold: weaker than ResNet18d",
+  "hypothesis": "A small efficient RegNet might be a diverse ensemble member.",
+  "config": {
+    "arch": "regnety_008",
+    "img": 224,
+    "epochs": 300,
+    "folds": "scene5",
+    "tta": "flip",
+    "augmentation": "recipe R"
+  },
+  "results": [
+    {
+      "name": "fold 0",
+      "scope": "fold0",
+      "resolution": 224,
+      "macro_f1": 0.703
+    },
+    {
+      "name": "fold 1",
+      "scope": "fold1",
+      "resolution": 224,
+      "macro_f1": 0.6807
+    },
+    {
+      "name": "fold 2",
+      "scope": "fold2",
+      "resolution": 224,
+      "macro_f1": 0.6655
+    },
+    {
+      "name": "fold 3",
+      "scope": "fold3",
+      "resolution": 224,
+      "macro_f1": 0.6804
+    },
+    {
+      "name": "fold 4",
+      "scope": "fold4",
+      "resolution": 224,
+      "macro_f1": 0.6616
+    },
+    {
+      "name": "OOF (v4+rot)",
+      "scope": "oof",
+      "resolution": 320,
+      "macro_f1": 0.7218,
+      "note": "evaluated at inference res 320 (see EXP-021 style sweep)"
+    }
+  ],
+  "leaderboard": {
+    "public": null,
+    "private": null,
+    "note": "not submitted"
+  },
+  "findings": [
+    "RegNetY-008 reaches OOF 0.7218 at inference 320, below ResNet18d (EXP-013) at 224 (0.7524).",
+    "Adding it to R_r18d+R_e600 at 320 did not help on full OOF (0.8095 vs 0.8089, with balance 0.8152 vs 0.8155)."
+  ],
+  "limitations": [
+    "Overall OOF at 224 was not recorded separately; the 0.7218 value is at 320."
+  ],
+  "evidence": {
+    "report": "experiments/EXP-016.md",
+    "run_dir": "runs/R_regnety_008_f0..f4",
+    "code": "Training code is in code/ (copied from the team server export, 2026-11-12). Referenced by md5: train.py 56d4db01cdd6c2c46e7b9b3b789324fe (before the 2026-11-12 patch that added --img and corrupt_v5; default behaviour unchanged), dq.py e3e270bdcdf254ad369b1cb3c345e5e9.",
+    "submission": null,
+    "logs": [
+      "R_regnety_008_5fold.log"
+    ]
+  },
+  "branch": "kaka",
+  "owner": "kaka",
+  "schema": 1
+}

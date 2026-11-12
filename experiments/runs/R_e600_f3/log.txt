@@ -1,0 +1,62 @@
+wandb: [wandb.login()] Loaded credentials for https://api.forge.coreweave.com from ~/.netrc.
+wandb: Currently logged in as: <wandb-user> (<wandb-entity>) to https://api.forge.coreweave.com. Use `wandb login --relogin` to force relogin
+wandb: setting up run xb4shsgq
+wandb: Tracking run with wandb version 0.31.0
+wandb: Run data is saved locally in ~/inahuy/runs/R_e600_f3/wandb/run-20261110_173136-xb4shsgq
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run R_e600_f3
+wandb: ⭐️ View project at https://forge.coreweave.com/wandb/<wandb-entity>/dateraquest
+wandb: 🚀 View run at https://forge.coreweave.com/wandb/<wandb-entity>/dateraquest/runs/xb4shsgq
+17:38:01 [R_e600_f3] ep  25 | loss 2.692 | F1 bersih 0.2057 | v4 0.0802 | v4+rot 0.0696 (flip) | 368s
+17:41:19 [R_e600_f3] ep  50 | loss 2.312 | F1 bersih 0.4187 | v4 0.2065 | v4+rot 0.1935 (flip) | 566s
+17:44:30 [R_e600_f3] ep  75 | loss 2.183 | F1 bersih 0.5865 | v4 0.3317 | v4+rot 0.3356 (flip) | 757s
+17:47:51 [R_e600_f3] ep 100 | loss 1.948 | F1 bersih 0.6454 | v4 0.4224 | v4+rot 0.4130 (flip) | 958s
+17:51:15 [R_e600_f3] ep 125 | loss 1.794 | F1 bersih 0.7215 | v4 0.5208 | v4+rot 0.5004 (flip) | 1163s
+17:54:07 [R_e600_f3] ep 150 | loss 1.785 | F1 bersih 0.7679 | v4 0.5797 | v4+rot 0.5531 (flip) | 1334s
+17:57:07 [R_e600_f3] ep 175 | loss 1.621 | F1 bersih 0.7956 | v4 0.6155 | v4+rot 0.5870 (flip) | 1515s
+18:00:15 [R_e600_f3] ep 200 | loss 1.410 | F1 bersih 0.8105 | v4 0.6436 | v4+rot 0.6220 (flip) | 1703s
+18:03:17 [R_e600_f3] ep 225 | loss 1.437 | F1 bersih 0.8252 | v4 0.6799 | v4+rot 0.6380 (flip) | 1884s
+18:06:23 [R_e600_f3] ep 250 | loss 1.453 | F1 bersih 0.8280 | v4 0.7000 | v4+rot 0.6669 (flip) | 2071s
+18:09:45 [R_e600_f3] ep 275 | loss 1.447 | F1 bersih 0.8442 | v4 0.7136 | v4+rot 0.6846 (flip) | 2272s
+18:12:46 [R_e600_f3] ep 300 | loss 1.421 | F1 bersih 0.8482 | v4 0.7178 | v4+rot 0.6993 (flip) | 2454s
+18:15:48 [R_e600_f3] ep 325 | loss 1.325 | F1 bersih 0.8486 | v4 0.7250 | v4+rot 0.6958 (flip) | 2636s
+18:18:59 [R_e600_f3] ep 350 | loss 1.333 | F1 bersih 0.8538 | v4 0.7375 | v4+rot 0.7079 (flip) | 2826s
+18:21:59 [R_e600_f3] ep 375 | loss 1.258 | F1 bersih 0.8438 | v4 0.7485 | v4+rot 0.7231 (flip) | 3006s
+18:24:32 [R_e600_f3] ep 400 | loss 1.170 | F1 bersih 0.8485 | v4 0.7619 | v4+rot 0.7321 (flip) | 3159s
+18:26:57 [R_e600_f3] ep 425 | loss 1.173 | F1 bersih 0.8444 | v4 0.7646 | v4+rot 0.7347 (flip) | 3304s
+18:29:25 [R_e600_f3] ep 450 | loss 1.254 | F1 bersih 0.8416 | v4 0.7691 | v4+rot 0.7363 (flip) | 3452s
+18:31:53 [R_e600_f3] ep 475 | loss 1.181 | F1 bersih 0.8507 | v4 0.7803 | v4+rot 0.7493 (flip) | 3601s
+18:34:24 [R_e600_f3] ep 500 | loss 0.956 | F1 bersih 0.8502 | v4 0.7839 | v4+rot 0.7618 (flip) | 3751s
+18:36:51 [R_e600_f3] ep 525 | loss 1.092 | F1 bersih 0.8487 | v4 0.7812 | v4+rot 0.7527 (flip) | 3899s
+18:39:19 [R_e600_f3] ep 550 | loss 1.121 | F1 bersih 0.8522 | v4 0.7836 | v4+rot 0.7623 (flip) | 4046s
+18:41:16 [R_e600_f3] ep 575 | loss 1.073 | F1 bersih 0.8544 | v4 0.7852 | v4+rot 0.7586 (flip) | 4164s
+18:43:03 [R_e600_f3] ep 600 | loss 0.996 | F1 bersih 0.8545 | v4 0.7829 | v4+rot 0.7558 (flip) | 4270s
+wandb: updating run metadata
+wandb: uploading history steps 23-23, summary
+wandb: 
+wandb: Run history:
+wandb:    epoch ▁▁▂▂▂▃▃▃▃▄▄▄▅▅▅▆▆▆▆▇▇▇██
+wandb: f1_clean ▁▃▅▆▇▇▇█████████████████
+wandb:    f1_v4 ▁▂▃▄▅▆▆▇▇▇▇▇▇███████████
+wandb: f1_v4rot ▁▂▄▄▅▆▆▇▇▇▇▇▇▇██████████
+wandb:     loss █▆▆▅▄▄▄▃▃▃▃▃▂▃▂▂▂▂▂▁▂▂▁▁
+wandb:      sec ▁▁▂▂▂▃▃▃▄▄▄▅▅▅▆▆▆▇▇▇▇███
+wandb: 
+wandb: Run summary:
+wandb:         epoch 600
+wandb:      f1_clean 0.85449
+wandb:         f1_v4 0.78289
+wandb:    f1_v4_flip 0.78289
+wandb:    f1_v4_rot8 0.77148
+wandb:      f1_v4rot 0.75585
+wandb: f1_v4rot_flip 0.75585
+wandb: f1_v4rot_rot8 0.74875
+wandb:          loss 0.99597
+wandb:       minutes 71.43641
+wandb:            +2 ...
+wandb: 
+wandb: 🚀 View run R_e600_f3 at: https://forge.coreweave.com/wandb/<wandb-entity>/dateraquest/runs/xb4shsgq
+wandb: ⭐️ View project at: https://forge.coreweave.com/wandb/<wandb-entity>/dateraquest
+wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./runs/R_e600_f3/wandb/run-20261110_173136-xb4shsgq/logs
+18:43:21 >>> R_e600_f3: F1 v4+rot 0.7558 (flip) | flip 0.7558 vs rot8 0.7487 | 71.4 menit

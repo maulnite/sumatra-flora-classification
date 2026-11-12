@@ -1,0 +1,66 @@
+{
+  "id": "EXP-022",
+  "title": "Prior balance (class-prior matching) on ensemble R_r18d + R_e600 at inference 320",
+  "status": "completed",
+  "date": "2026-11-11",
+  "protocol": "scene5_v4rot",
+  "tags": [
+    "post-processing",
+    "class-balance"
+  ],
+  "summary": "Prior balance + res 320 -> LB 0.82164",
+  "hypothesis": "Macro F1 rewards balanced predictions; shifting class weights so the mean prediction matches the train prior should help without labels.",
+  "config": {
+    "members": [
+      "R_r18d",
+      "R_e600"
+    ],
+    "img_inference": 320,
+    "postprocess": "prior balance (EM-style class weights, label-free)"
+  },
+  "results": [
+    {
+      "name": "ensemble @320, no balance",
+      "scope": "oof",
+      "resolution": 320,
+      "macro_f1": 0.8089
+    },
+    {
+      "name": "ensemble @320 + balance",
+      "scope": "oof",
+      "resolution": 320,
+      "macro_f1": 0.8155
+    },
+    {
+      "name": "ensemble @224 + balance",
+      "scope": "oof",
+      "resolution": 224,
+      "macro_f1": 0.7764
+    }
+  ],
+  "leaderboard": {
+    "public": 0.82164,
+    "private": null,
+    "note": "ens320_balance_submission.csv = manip_best"
+  },
+  "findings": [
+    "Balance adds only +0.004 OOF at 224 and +0.007 at 320. At 224 it changed 162 test predictions.",
+    "Public 0.82164, +0.015 over the 224 ensemble (0.80694)."
+  ],
+  "limitations": [
+    "Gain on OOF is small; the public gain mixes balance with inference resolution, not isolated."
+  ],
+  "evidence": {
+    "report": "experiments/EXP-022.md",
+    "run_dir": "runs/ens320_balance_submission.csv",
+    "code": "Notebook dateraquest.ipynb (not hashed). Same augmentation module dq.py.",
+    "submission": {
+      "file": "ens320_balance_submission.csv",
+      "sha16": "69be8bb4b9dd7b74"
+    },
+    "logs": []
+  },
+  "branch": "kaka",
+  "owner": "kaka",
+  "schema": 1
+}

@@ -1,0 +1,37 @@
+15:57:45 fold phash: [603, 604, 602, 603, 602]
+15:57:45 fold scene: [614, 607, 603, 600, 590]
+15:57:45 5 fold, 2 paralel, 24 worker/fold | log: runs/R_e600_f*/log.txt
+19:30:41 R_e600_f0: F1 val v4+rot 0.7585
+19:30:41 R_e600_f1: F1 val v4+rot 0.7767
+19:30:41 R_e600_f2: F1 val v4+rot 0.7223
+19:30:41 R_e600_f3: F1 val v4+rot 0.7558
+19:30:41 R_e600_f4: F1 val v4+rot 0.7311
+19:30:41 OOF macro F1 val v4+rot (R_e600, split scene): 0.7509 | acc 0.7449
+19:30:41 ~/inahuy/runs/R_e600_submission.csv ditulis | sha=0d6885307a3c5cfc
+wandb: [wandb.login()] Loaded credentials for https://api.forge.coreweave.com from ~/.netrc.
+wandb: Currently logged in as: <wandb-user> (<wandb-entity>) to https://api.forge.coreweave.com. Use `wandb login --relogin` to force relogin
+wandb: setting up run etremqez
+wandb: Tracking run with wandb version 0.31.0
+wandb: Run data is saved locally in ~/inahuy/runs/wandb/run-20261110_193043-etremqez
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run R_e600_ensemble
+wandb: ⭐️ View project at https://forge.coreweave.com/wandb/<wandb-entity>/dateraquest
+wandb: 🚀 View run at https://forge.coreweave.com/wandb/<wandb-entity>/dateraquest/runs/etremqez
+wandb: updating run metadata; uploading summary
+wandb: uploading wandb-metadata.json; uploading requirements.txt; uploading wandb-summary.json; uploading config.yaml
+wandb: uploading summary
+wandb: 
+wandb: Run summary:
+wandb:       f1_fold0 0.75855
+wandb:       f1_fold1 0.77665
+wandb:       f1_fold2 0.72227
+wandb:       f1_fold3 0.75585
+wandb:       f1_fold4 0.73109
+wandb:        oof_acc 0.74486
+wandb:   oof_f1_v4rot 0.75088
+wandb: submission_sha 0d6885307a3c5cfc
+wandb: 
+wandb: 🚀 View run R_e600_ensemble at: https://forge.coreweave.com/wandb/<wandb-entity>/dateraquest/runs/etremqez
+wandb: ⭐️ View project at: https://forge.coreweave.com/wandb/<wandb-entity>/dateraquest
+wandb: Synced 4 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./runs/wandb/run-20261110_193043-etremqez/logs

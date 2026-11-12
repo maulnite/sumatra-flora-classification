@@ -1,0 +1,15 @@
+~/venvs/dq/lib/python3.10/site-packages/albumentations/check_version.py:147: UserWarning: Error fetching version info <urlopen error _ssl.c:980: The handshake operation timed out>
+  data = fetch_version_info()
+05:25:41 [F_f2] ep  25 | loss 2.617 | F1 val bersih 0.1220 | F1 val v4 0.0504 (+TTA) | 341s
+05:28:47 [F_f2] ep  50 | loss 2.246 | F1 val bersih 0.4551 | F1 val v4 0.2461 (+TTA) | 527s
+05:31:56 [F_f2] ep  75 | loss 2.051 | F1 val bersih 0.6373 | F1 val v4 0.4076 (+TTA) | 716s
+05:35:15 [F_f2] ep 100 | loss 1.726 | F1 val bersih 0.7213 | F1 val v4 0.5182 (+TTA) | 915s
+05:38:11 [F_f2] ep 125 | loss 1.520 | F1 val bersih 0.7612 | F1 val v4 0.5811 (+TTA) | 1090s
+05:41:14 [F_f2] ep 150 | loss 1.396 | F1 val bersih 0.7832 | F1 val v4 0.6423 (+TTA) | 1273s
+05:44:14 [F_f2] ep 175 | loss 1.416 | F1 val bersih 0.8120 | F1 val v4 0.6781 (+TTA) | 1454s
+05:47:46 [F_f2] ep 200 | loss 1.207 | F1 val bersih 0.8176 | F1 val v4 0.7049 (+TTA) | 1666s
+05:51:02 [F_f2] ep 225 | loss 1.258 | F1 val bersih 0.8235 | F1 val v4 0.7145 (+TTA) | 1862s
+05:54:24 [F_f2] ep 250 | loss 1.136 | F1 val bersih 0.8284 | F1 val v4 0.7176 (+TTA) | 2063s
+05:57:31 [F_f2] ep 275 | loss 1.189 | F1 val bersih 0.8323 | F1 val v4 0.7314 (+TTA) | 2250s
+06:00:33 [F_f2] ep 300 | loss 1.261 | F1 val bersih 0.8377 | F1 val v4 0.7279 (+TTA) | 2433s
+06:00:40 >>> F_f2: F1 val v4 0.7279 | 40.7 menit

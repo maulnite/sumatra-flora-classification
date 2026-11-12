@@ -1,0 +1,60 @@
+{
+  "id": "EXP-025",
+  "title": "Paused: ResNet18d 300 ep at 288 px (R_r18d_i288) and corrupt_v5 variant (R_r18d_v5)",
+  "status": "paused",
+  "date": "2026-11-12",
+  "protocol": "scene5_v4rot",
+  "tags": [
+    "paused",
+    "augmentation",
+    "training-resolution"
+  ],
+  "summary": "Paused for shared-GPU etiquette; checkpoints saved",
+  "hypothesis": "(a) 288 px training at 300 epochs, and (b) adding blur, downscale and grayscale (corrupt_v5) should match the test blur better.",
+  "config": {
+    "variants": {
+      "i288": {
+        "arch": "resnet18d",
+        "img": 288,
+        "epochs": 300
+      },
+      "v5": {
+        "arch": "resnet18d",
+        "img": 224,
+        "epochs": 300,
+        "cmode": "corrupt_v5"
+      }
+    },
+    "folds": "scene5",
+    "tta": "flip"
+  },
+  "results": [
+    {
+      "name": "not finished (0/5 folds)",
+      "scope": "none",
+      "resolution": null,
+      "macro_f1": null
+    }
+  ],
+  "leaderboard": {
+    "public": null,
+    "private": null,
+    "note": "none"
+  },
+  "findings": [
+    "Smoke test of the patched train.py passed (2 epochs, F1 computed, done.json written)."
+  ],
+  "limitations": [
+    "Resume from ckpt.pt requires restarting the same command."
+  ],
+  "evidence": {
+    "report": "experiments/EXP-025.md",
+    "run_dir": "runs/R_r18d_i288_f*/ckpt.pt, runs/R_r18d_v5_f*/ckpt.pt",
+    "code": "Training code is in code/ (copied from the team server export, 2026-11-12). Referenced by md5: train.py 56d4db01cdd6c2c46e7b9b3b789324fe (before the 2026-11-12 patch that added --img and corrupt_v5; default behaviour unchanged), dq.py e3e270bdcdf254ad369b1cb3c345e5e9.",
+    "submission": null,
+    "logs": []
+  },
+  "branch": "kaka",
+  "owner": "kaka",
+  "schema": 1
+}

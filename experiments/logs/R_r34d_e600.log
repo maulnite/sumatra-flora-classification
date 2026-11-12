@@ -1,0 +1,36 @@
+06:03:02 fold phash: [603, 604, 602, 603, 602]
+06:03:02 fold scene: [614, 607, 603, 600, 590]
+06:03:02 5 fold, 5 paralel, 10 worker/fold | log: runs/R_r34d_e600_f*/log.txt
+09:42:39 R_r34d_e600_f0: F1 val v4+rot 0.8099
+09:42:39 R_r34d_e600_f1: F1 val v4+rot 0.8155
+09:42:39 R_r34d_e600_f2: F1 val v4+rot 0.8016
+09:42:39 R_r34d_e600_f3: F1 val v4+rot 0.8100
+09:42:39 R_r34d_e600_f4: F1 val v4+rot 0.7857
+09:42:39 OOF macro F1 val v4+rot (R_r34d_e600, split scene): 0.8051 | acc 0.7986
+09:42:39 ~/inahuy/dateruy/runs/R_r34d_e600_submission.csv ditulis | sha=bf58df9c510b302e
+wandb: [wandb.login()] Loaded credentials for https://api.forge.coreweave.com from ~/.netrc.
+wandb: Currently logged in as: <wandb-user> (<wandb-entity>) to https://api.forge.coreweave.com. Use `wandb login --relogin` to force relogin
+wandb: setting up run wgsr7h5p
+wandb: Tracking run with wandb version 0.31.0
+wandb: Run data is saved locally in ~/inahuy/dateruy/runs/wandb/run-20261112_094240-wgsr7h5p
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run R_r34d_e600_ensemble
+wandb: ⭐️ View project at https://forge.coreweave.com/wandb/<wandb-entity>/dateraquest
+wandb: 🚀 View run at https://forge.coreweave.com/wandb/<wandb-entity>/dateraquest/runs/wgsr7h5p
+wandb: updating run metadata; uploading summary
+wandb: uploading requirements.txt; uploading wandb-summary.json; uploading config.yaml
+wandb: 
+wandb: Run summary:
+wandb:       f1_fold0 0.80993
+wandb:       f1_fold1 0.81552
+wandb:       f1_fold2 0.80156
+wandb:       f1_fold3 0.81
+wandb:       f1_fold4 0.78565
+wandb:        oof_acc 0.79861
+wandb:   oof_f1_v4rot 0.80513
+wandb: submission_sha bf58df9c510b302e
+wandb: 
+wandb: 🚀 View run R_r34d_e600_ensemble at: https://forge.coreweave.com/wandb/<wandb-entity>/dateraquest/runs/wgsr7h5p
+wandb: ⭐️ View project at: https://forge.coreweave.com/wandb/<wandb-entity>/dateraquest
+wandb: Synced 4 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./runs/wandb/run-20261112_094240-wgsr7h5p/logs

@@ -1,0 +1,19 @@
+{
+ "arch": "regnety_016",
+ "lr": 0.002,
+ "wd": 0.05,
+ "bs": 64,
+ "smooth": 0.1,
+ "eval_every": 25,
+ "rot": 180.0,
+ "rot_p": 0.9,
+ "tta": "flip",
+ "split": "scene",
+ "attn": "none",
+ "pool": "avg",
+ "epochs": 300,
+ "cmode": "corrupt_v4",
+ "mixp": 0.5,
+ "ema": 1,
+ "name": "R_regnety_016"
+}

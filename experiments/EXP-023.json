@@ -1,0 +1,61 @@
+{
+  "id": "EXP-023",
+  "title": "SIFT label borrowing: test images matched to train (inlier >= 5)",
+  "status": "completed",
+  "date": "2026-11-11",
+  "protocol": "scene5_v4rot",
+  "tags": [
+    "matching",
+    "sift",
+    "label-transfer"
+  ],
+  "summary": "SIFT inlier>=5 replaces 44 labels -> LB 0.83262",
+  "hypothesis": "Some test images are other photos of the same scene as a train image; their label can be borrowed.",
+  "config": {
+    "method": "SIFT (300 kp, side 400) + Lowe ratio 0.75 + RANSAC partial affine, threshold 8 px",
+    "min_inlier": 5,
+    "base": "EXP-022 predictions"
+  },
+  "results": [
+    {
+      "name": "SIFT replacement on EXP-022 (44 labels)",
+      "scope": "leaderboard",
+      "resolution": null,
+      "macro_f1": null
+    },
+    {
+      "name": "OOF proxy: train queries (corrupt+rotate) matched to other train images, inlier>=5, on EXP-024 ensemble",
+      "scope": "oof_proxy",
+      "resolution": 352,
+      "macro_f1": 0.8656,
+      "note": "base 0.8526 -> 0.8656, 37 replacements"
+    }
+  ],
+  "leaderboard": {
+    "public": 0.83262,
+    "private": null,
+    "note": "manip_best_sift_submission.csv"
+  },
+  "findings": [
+    "Public +0.011 over EXP-022 (0.82164 -> 0.83262) from changing only 44 labels.",
+    "Precision of the borrowed labels is 100% on corrupted train queries for every threshold 3-30.",
+    "Coverage on test at inlier>=5 is 19.6% (393 images); on corrupted train queries 25%."
+  ],
+  "limitations": [
+    "Proxy and public numbers are for different base ensembles.",
+    "Train-to-train matches include same-scene pairs; test matches may be looser."
+  ],
+  "evidence": {
+    "report": "experiments/EXP-023.md",
+    "run_dir": "sift_match.py output (sift_test.csv, sift_trainq.csv)",
+    "code": "code/sift_match.py",
+    "submission": {
+      "file": "manip_best_sift_submission.csv",
+      "sha16": "8a04e7a7ca571ee4"
+    },
+    "logs": []
+  },
+  "branch": "kaka",
+  "owner": "kaka",
+  "schema": 1
+}

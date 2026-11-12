@@ -1,0 +1,68 @@
+{
+  "id": "EXP-005",
+  "title": "Recipe F: E + MixUp/CutMix (p=0.5) + EMA 0.999, 300 epochs",
+  "status": "completed",
+  "date": "2026-11-10",
+  "protocol": "phash5_v4",
+  "tags": [
+    "augmentation",
+    "regularization",
+    "ema"
+  ],
+  "summary": "E + MixUp/CutMix 0.5 + EMA, 300 ep, 5-fold",
+  "hypothesis": "MixUp/CutMix and EMA should regularise the from-scratch model and close the validation-to-test gap.",
+  "config": {
+    "arch": "resnet18",
+    "img": 224,
+    "epochs": 300,
+    "augmentation": "corrupt_v4 50/50",
+    "mixup_cutmix": 0.5,
+    "ema": 0.999,
+    "folds": "phash5 (notebook)",
+    "seed": 42,
+    "optimizer": "AdamW",
+    "lr": 0.002,
+    "weight_decay": 0.05,
+    "batch_size": 64,
+    "label_smoothing": 0.1,
+    "init": "random (pretrained=False)",
+    "tta": "flip"
+  },
+  "results": [
+    {
+      "name": "mean of 5 fold scores",
+      "scope": "fold_mean",
+      "resolution": 224,
+      "macro_f1": 0.727,
+      "note": "reported as mean of folds, not pooled OOF"
+    }
+  ],
+  "leaderboard": {
+    "public": 0.677,
+    "private": null,
+    "note": "sub_F_5fold.csv, 5-fold mean of test probabilities"
+  },
+  "findings": [
+    "On validation, F beats E by about +0.10 (0.727 vs 0.627 mean).",
+    "Public score rose from 0.519 (E, one fold) to 0.677 (F, five folds)."
+  ],
+  "limitations": [
+    "Validation still lacks rotation; this was the main gap found later.",
+    "Mean-of-folds number, not pooled OOF, so it is not strictly comparable with scene5 OOF."
+  ],
+  "evidence": {
+    "report": "experiments/EXP-005.md",
+    "run_dir": "overnight/F_f0..f4 (F_f*.pt, F_f*.npz)",
+    "code": "Notebook dateraquest.ipynb (not hashed). Same augmentation module dq.py.",
+    "submission": {
+      "file": "sub_F_5fold.csv",
+      "sha16": "bb754fa098a4b4a4"
+    },
+    "logs": [
+      "logs/overnight_F_H.log"
+    ]
+  },
+  "branch": "kaka",
+  "owner": "kaka",
+  "schema": 1
+}

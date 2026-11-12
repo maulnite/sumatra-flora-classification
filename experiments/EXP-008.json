@@ -1,0 +1,66 @@
+{
+  "id": "EXP-008",
+  "title": "Recipe R: F + rotation +-180 on scene folds (ResNet18, 300 ep)",
+  "status": "completed",
+  "date": "2026-11-10",
+  "protocol": "scene5_v4rot",
+  "tags": [
+    "rotation",
+    "validation-protocol"
+  ],
+  "summary": "Rotation aug + scene folds + v4+rot validation",
+  "hypothesis": "Test images are rotated uniformly over 360 degrees; training and validation should include rotation.",
+  "config": {
+    "arch": "resnet18",
+    "img": 224,
+    "epochs": 300,
+    "augmentation": "corrupt_v4 50/50",
+    "mixup_cutmix": 0.5,
+    "ema": 0.999,
+    "rotation": 180,
+    "folds": "scene5",
+    "tta": "rot8 (recipe default)",
+    "seed": 42,
+    "optimizer": "AdamW",
+    "lr": 0.002,
+    "weight_decay": 0.05,
+    "batch_size": 64,
+    "label_smoothing": 0.1,
+    "init": "random (pretrained=False)"
+  },
+  "results": [
+    {
+      "name": "OOF 5-fold (v4+rot)",
+      "scope": "oof",
+      "resolution": 224,
+      "macro_f1": 0.6723
+    }
+  ],
+  "leaderboard": {
+    "public": null,
+    "private": null,
+    "note": "not recorded as a separate submission"
+  },
+  "findings": [
+    "Rotation-aware validation (v4+rot) became the reference protocol from here on.",
+    "rot8 test-time augmentation did not help once the model is trained with rotation (see EXP-011 onward: flip used)."
+  ],
+  "limitations": [
+    "Public score for this single model was not recorded."
+  ],
+  "evidence": {
+    "report": "experiments/EXP-008.md",
+    "run_dir": "runs/R_f0..f4",
+    "code": "Training code is in code/ (copied from the team server export, 2026-11-12). Referenced by md5: train.py 56d4db01cdd6c2c46e7b9b3b789324fe (before the 2026-11-12 patch that added --img and corrupt_v5; default behaviour unchanged), dq.py e3e270bdcdf254ad369b1cb3c345e5e9.",
+    "submission": {
+      "file": "R_submission.csv",
+      "sha16": "610aef89c6e7eca9"
+    },
+    "logs": [
+      "R.log"
+    ]
+  },
+  "branch": "kaka",
+  "owner": "kaka",
+  "schema": 1
+}

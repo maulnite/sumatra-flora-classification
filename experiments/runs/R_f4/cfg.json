@@ -1,0 +1,17 @@
+{
+ "arch": "resnet18",
+ "lr": 0.002,
+ "wd": 0.05,
+ "bs": 64,
+ "smooth": 0.1,
+ "eval_every": 25,
+ "rot": 180.0,
+ "rot_p": 0.9,
+ "tta": "rot8",
+ "split": "scene",
+ "epochs": 300,
+ "cmode": "corrupt_v4",
+ "mixp": 0.5,
+ "ema": 1,
+ "name": "R"
+}

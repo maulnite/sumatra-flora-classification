@@ -1,0 +1,61 @@
+{
+  "id": "EXP-024",
+  "title": "Final ensemble: ResNet18d@288-train + ResNet34d, inference 352/320, balance, SIFT inlier>=5",
+  "status": "completed",
+  "date": "2026-11-12",
+  "protocol": "scene5_v4rot",
+  "tags": [
+    "ensemble",
+    "best",
+    "final"
+  ],
+  "summary": "Best public LB so far: 0.87012",
+  "hypothesis": "A model trained at 288 (strongest single OOF) and a second architecture at different inference sizes should ensemble well.",
+  "config": {
+    "members": [
+      "EXP-020 @352",
+      "EXP-018 @320"
+    ],
+    "combine": "mean",
+    "postprocess": [
+      "prior balance",
+      "SIFT inlier>=5 label transfer"
+    ],
+    "greedy": true
+  },
+  "results": [
+    {
+      "name": "ensemble OOF with balance (no SIFT)",
+      "scope": "oof",
+      "resolution": 352,
+      "macro_f1": 0.8526,
+      "note": "selected greedily on the same OOF: optimistic"
+    }
+  ],
+  "leaderboard": {
+    "public": 0.87012,
+    "private": null,
+    "note": "best_sift_submission.csv (29 SIFT replacements)"
+  },
+  "findings": [
+    "Public 0.87012: +0.038 over EXP-023 (0.83262). The change bundles new members (EXP-018/020) with inference 352/320; no intermediate submission separated them.",
+    "The no-SIFT version of this ensemble (best_eval_submission.csv, sha fed2db49f1ef13ff) was never submitted, so the SIFT step's marginal value on top of it is unmeasured."
+  ],
+  "limitations": [
+    "OOF is optimistic (members and resolution picked on it).",
+    "Public score covers only part of test; private may differ."
+  ],
+  "evidence": {
+    "report": "experiments/EXP-024.md",
+    "run_dir": "runs/best_sift_submission.csv",
+    "code": "code/evalres.py",
+    "submission": {
+      "file": "best_sift_submission.csv",
+      "sha16": "6ca4cb673741edc3"
+    },
+    "logs": []
+  },
+  "branch": "kaka",
+  "owner": "kaka",
+  "schema": 1
+}

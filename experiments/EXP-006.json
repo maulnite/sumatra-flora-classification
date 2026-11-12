@@ -1,0 +1,61 @@
+{
+  "id": "EXP-006",
+  "title": "Recipe H: corrupt_hard (blur, noise, downscale, harder weather)",
+  "status": "partial",
+  "date": "2026-11-10",
+  "protocol": "phash5_v4",
+  "tags": [
+    "augmentation",
+    "negative-result"
+  ],
+  "summary": "Harder corruption, fold 0 only: worse",
+  "hypothesis": "Test looked harder than validation, so a harder corruption (blur/noise/downscale) may match it better.",
+  "config": {
+    "arch": "resnet18",
+    "img": 224,
+    "epochs": 150,
+    "augmentation": "corrupt_hard",
+    "mixup_cutmix": 0.0,
+    "ema": 0.0,
+    "seed": 42,
+    "optimizer": "AdamW",
+    "lr": 0.002,
+    "weight_decay": 0.05,
+    "batch_size": 64,
+    "label_smoothing": 0.1,
+    "init": "random (pretrained=False)",
+    "tta": "flip"
+  },
+  "results": [
+    {
+      "name": "fold 0",
+      "scope": "fold0",
+      "resolution": 224,
+      "macro_f1": 0.626
+    }
+  ],
+  "leaderboard": {
+    "public": null,
+    "private": null,
+    "note": "not submitted"
+  },
+  "findings": [
+    "Harder corruption lowered fold-0 validation (0.626 vs 0.651 for E on the same fold).",
+    "Not continued to 5 folds."
+  ],
+  "limitations": [
+    "Only fold 0 was run."
+  ],
+  "evidence": {
+    "report": "experiments/EXP-006.md",
+    "run_dir": "overnight (H_f0)",
+    "code": "Notebook dateraquest.ipynb (not hashed). Same augmentation module dq.py.",
+    "submission": null,
+    "logs": [
+      "logs/overnight_F_H.log"
+    ]
+  },
+  "branch": "kaka",
+  "owner": "kaka",
+  "schema": 1
+}

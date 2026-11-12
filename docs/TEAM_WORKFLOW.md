@@ -15,3 +15,15 @@ Members on the *same registered team* may share and review code. A **public repo
 5. Update registry and README after verification.
 
 Before Kaggle submission, validate ID/label/order and stay within 3 submissions/day. Before final ZIP, rerun notebook end-to-end and ensure matching CSV.
+
+## Syncing the shared experiment memory
+
+Every experiment lives in `experiments/EXP-###.json` (+ `.md`) on its own branch. The combined view is built from all branches:
+
+```bash
+git fetch origin --prune                              # see teammates' branches and new experiments
+python scripts/registry.py check                      # validate your own experiment files
+python scripts/registry.py render --all-branches      # rebuild the table from every origin/* branch
+```
+
+`render --all-branches` stops with an error if two branches use the same EXP ID, so renumber your experiment before you open a pull request. After rendering, commit `docs/EXPERIMENT_LOG.md` with your change; it is the only generated file.

@@ -1,0 +1,36 @@
+06:03:03 fold phash: [603, 604, 602, 603, 602]
+06:03:03 fold scene: [614, 607, 603, 600, 590]
+06:03:03 5 fold, 5 paralel, 10 worker/fold | log: runs/R_r18d_i288_e600_f*/log.txt
+09:44:26 R_r18d_i288_e600_f0: F1 val v4+rot 0.8424
+09:44:26 R_r18d_i288_e600_f1: F1 val v4+rot 0.8385
+09:44:26 R_r18d_i288_e600_f2: F1 val v4+rot 0.7963
+09:44:26 R_r18d_i288_e600_f3: F1 val v4+rot 0.8300
+09:44:26 R_r18d_i288_e600_f4: F1 val v4+rot 0.8135
+09:44:26 OOF macro F1 val v4+rot (R_r18d_i288_e600, split scene): 0.8253 | acc 0.8205
+09:44:26 ~/inahuy/dateruy/runs/R_r18d_i288_e600_submission.csv ditulis | sha=15ce2aa455156592
+wandb: [wandb.login()] Loaded credentials for https://api.forge.coreweave.com from ~/.netrc.
+wandb: Currently logged in as: <wandb-user> (<wandb-entity>) to https://api.forge.coreweave.com. Use `wandb login --relogin` to force relogin
+wandb: setting up run mesi3zsf
+wandb: Tracking run with wandb version 0.31.0
+wandb: Run data is saved locally in ~/inahuy/dateruy/runs/wandb/run-20261112_094427-mesi3zsf
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run R_r18d_i288_e600_ensemble
+wandb: ⭐️ View project at https://forge.coreweave.com/wandb/<wandb-entity>/dateraquest
+wandb: 🚀 View run at https://forge.coreweave.com/wandb/<wandb-entity>/dateraquest/runs/mesi3zsf
+wandb: updating run metadata; uploading summary
+wandb: uploading wandb-summary.json; uploading config.yaml; uploading wandb-metadata.json; uploading requirements.txt
+wandb: 
+wandb: Run summary:
+wandb:       f1_fold0 0.8424
+wandb:       f1_fold1 0.83846
+wandb:       f1_fold2 0.79632
+wandb:       f1_fold3 0.83
+wandb:       f1_fold4 0.81353
+wandb:        oof_acc 0.8205
+wandb:   oof_f1_v4rot 0.82526
+wandb: submission_sha 15ce2aa455156592
+wandb: 
+wandb: 🚀 View run R_r18d_i288_e600_ensemble at: https://forge.coreweave.com/wandb/<wandb-entity>/dateraquest/runs/mesi3zsf
+wandb: ⭐️ View project at: https://forge.coreweave.com/wandb/<wandb-entity>/dateraquest
+wandb: Synced 4 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./runs/wandb/run-20261112_094427-mesi3zsf/logs

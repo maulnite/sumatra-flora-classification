@@ -1,0 +1,72 @@
+{
+  "id": "EXP-004",
+  "title": "Baseline recipe E: ResNet18, corrupt_v4 augmentation",
+  "status": "completed",
+  "date": "2026-11-09",
+  "protocol": "phash5_v4",
+  "tags": [
+    "baseline",
+    "augmentation"
+  ],
+  "summary": "ResNet18 224, corrupt_v4, 150 ep, phash folds",
+  "hypothesis": "A from-scratch ResNet18 trained with a synthetic corruption (corrupt_v4) that matches test colour statistics should transfer to test.",
+  "config": {
+    "arch": "resnet18",
+    "img": 224,
+    "epochs": 150,
+    "augmentation": "corrupt_v4 50% clean / 50% corrupt",
+    "mixup_cutmix": 0.0,
+    "ema": 0.0,
+    "folds": "phash5 (notebook)",
+    "seed": 42,
+    "optimizer": "AdamW",
+    "lr": 0.002,
+    "weight_decay": 0.05,
+    "batch_size": 64,
+    "label_smoothing": 0.1,
+    "init": "random (pretrained=False)",
+    "tta": "flip"
+  },
+  "results": [
+    {
+      "name": "OOF 5-fold",
+      "scope": "oof",
+      "resolution": 224,
+      "macro_f1": 0.63,
+      "note": "folds 0.651/0.614/0.616/0.629/0.626"
+    },
+    {
+      "name": "fold 0",
+      "scope": "fold0",
+      "resolution": 224,
+      "macro_f1": 0.651
+    }
+  ],
+  "leaderboard": {
+    "public": 0.519,
+    "private": null,
+    "note": "single fold-0 model (submission_modelE.csv); not a 5-fold submission"
+  },
+  "findings": [
+    "Test is harder than validation: fold-0 validation 0.651 vs public 0.519.",
+    "Hardest classes: Gymnocalycium, Anacampseros, Lagerstroemia, Ixora.",
+    "Dendrobium leonis and Cuphea were predicted about 1.5x more often than in train."
+  ],
+  "limitations": [
+    "Validation corruption has no rotation; test images are rotated uniformly over 360 degrees (found later).",
+    "Public score comes from one fold model only."
+  ],
+  "evidence": {
+    "report": "experiments/EXP-004.md",
+    "run_dir": "notebook cells 83-87 (5-fold run)",
+    "code": "Notebook dateraquest.ipynb (not hashed). Same augmentation module dq.py.",
+    "submission": {
+      "file": "submission_modelE.csv",
+      "sha16": "8a5f4c7bf022ecab"
+    },
+    "logs": []
+  },
+  "branch": "kaka",
+  "owner": "kaka",
+  "schema": 1
+}

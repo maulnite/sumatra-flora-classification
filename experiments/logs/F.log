@@ -1,0 +1,9 @@
+05:19:38 ukuran fold: [603, 604, 602, 603, 602]
+05:19:38 5 fold, 3 paralel, 53 worker/fold | log: runs/F_f*/log.txt
+06:28:10 F_f0: F1 val v4 0.7282
+06:28:10 F_f1: F1 val v4 0.7163
+06:28:10 F_f2: F1 val v4 0.7279
+06:28:10 F_f3: F1 val v4 0.7344
+06:28:10 F_f4: F1 val v4 0.7311
+06:28:10 OOF macro F1 val v4 (F): 0.7296 | acc 0.7256
+06:28:10 ~/inahuy/runs/F_submission.csv ditulis | sha=adfd52d2e5e5a7de

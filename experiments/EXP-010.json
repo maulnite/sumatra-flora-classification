@@ -1,0 +1,52 @@
+{
+  "id": "EXP-010",
+  "title": "Ensemble: R + R_cbam_gem (probability mean)",
+  "status": "completed",
+  "date": "2026-11-10",
+  "protocol": "scene5_v4rot",
+  "tags": [
+    "ensemble"
+  ],
+  "summary": "Mean of R and R_cbam_gem",
+  "hypothesis": "Two different models averaged should beat either one alone.",
+  "config": {
+    "members": [
+      "R (EXP-008)",
+      "R_cbam_gem (EXP-009)"
+    ],
+    "combine": "mean of probabilities",
+    "tta": "flip"
+  },
+  "results": [
+    {
+      "name": "OOF ensemble (v4+rot)",
+      "scope": "oof",
+      "resolution": 224,
+      "macro_f1": 0.69
+    }
+  ],
+  "leaderboard": {
+    "public": 0.739,
+    "private": null,
+    "note": "R_Rcg_ens_submission.csv"
+  },
+  "findings": [
+    "Ensemble gives +0.018 OOF over R alone and LB 0.739, the first solid jump after rotation."
+  ],
+  "limitations": [
+    "Member weights are equal and were not tuned."
+  ],
+  "evidence": {
+    "report": "experiments/EXP-010.md",
+    "run_dir": "runs/R_Rcg_ens_submission.csv",
+    "code": "Training code is in code/ (copied from the team server export, 2026-11-12). Referenced by md5: train.py 56d4db01cdd6c2c46e7b9b3b789324fe (before the 2026-11-12 patch that added --img and corrupt_v5; default behaviour unchanged), dq.py e3e270bdcdf254ad369b1cb3c345e5e9.",
+    "submission": {
+      "file": "R_Rcg_ens_submission.csv",
+      "sha16": "2ee9e959"
+    },
+    "logs": []
+  },
+  "branch": "kaka",
+  "owner": "kaka",
+  "schema": 1
+}

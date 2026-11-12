@@ -1,0 +1,63 @@
+{
+  "id": "EXP-007",
+  "title": "Recipe L: light augmentation, rotation +-180",
+  "status": "completed",
+  "date": "2026-11-10",
+  "protocol": "scene5_v4rot",
+  "tags": [
+    "augmentation",
+    "negative-result",
+    "rotation"
+  ],
+  "summary": "Light augmentation (no corrupt_v4): much worse",
+  "hypothesis": "Lighter camera-style augmentation may generalise better than synthetic corruption.",
+  "config": {
+    "arch": "resnet18",
+    "img": 224,
+    "epochs": 300,
+    "augmentation": "corrupt_light (exposure, WB, blur, JPEG)",
+    "mixup_cutmix": 0.5,
+    "ema": 0.999,
+    "rotation": 180,
+    "folds": "scene5",
+    "seed": 42,
+    "optimizer": "AdamW",
+    "lr": 0.002,
+    "weight_decay": 0.05,
+    "batch_size": 64,
+    "label_smoothing": 0.1,
+    "init": "random (pretrained=False)",
+    "tta": "flip"
+  },
+  "results": [
+    {
+      "name": "OOF 5-fold (v4+rot)",
+      "scope": "oof",
+      "resolution": 224,
+      "macro_f1": 0.399
+    }
+  ],
+  "leaderboard": {
+    "public": null,
+    "private": null,
+    "note": "not submitted"
+  },
+  "findings": [
+    "Light augmentation is far worse (0.399 OOF): heavy corruption is needed for this data."
+  ],
+  "limitations": [
+    "Single configuration; other light settings were not tried."
+  ],
+  "evidence": {
+    "report": "experiments/EXP-007.md",
+    "run_dir": "runs/L_f0..f4",
+    "code": "Training code is in code/ (copied from the team server export, 2026-11-12). Referenced by md5: train.py 56d4db01cdd6c2c46e7b9b3b789324fe (before the 2026-11-12 patch that added --img and corrupt_v5; default behaviour unchanged), dq.py e3e270bdcdf254ad369b1cb3c345e5e9.",
+    "submission": null,
+    "logs": [
+      "L.log"
+    ]
+  },
+  "branch": "kaka",
+  "owner": "kaka",
+  "schema": 1
+}

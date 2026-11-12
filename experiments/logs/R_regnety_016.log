@@ -1,0 +1,3 @@
+03:11:13 fold phash: [603, 604, 602, 603, 602]
+03:11:13 fold scene: [614, 607, 603, 600, 590]
+03:11:13 1 fold, 1 paralel, 32 worker/fold | log: runs/R_regnety_016_f*/log.txt

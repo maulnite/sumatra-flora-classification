@@ -1,0 +1,71 @@
+{
+  "id": "EXP-020",
+  "title": "ResNet18d, 600 epochs, trained at 288 px (--img 288)",
+  "status": "completed",
+  "date": "2026-11-12",
+  "protocol": "scene5_v4rot",
+  "tags": [
+    "training-resolution",
+    "inference-resolution"
+  ],
+  "summary": "Train 288 px, 600 ep: best single model (OOF 0.8449 at inference 352)",
+  "hypothesis": "Training at higher resolution keeps detail that the RandomResizedCrop at 224 discards.",
+  "config": {
+    "arch": "resnet18d",
+    "img": 288,
+    "epochs": 600,
+    "folds": "scene5",
+    "tta": "flip",
+    "augmentation": "recipe R"
+  },
+  "results": [
+    {
+      "name": "OOF @288 (training resolution, training log)",
+      "scope": "oof",
+      "resolution": 288,
+      "macro_f1": 0.8253
+    },
+    {
+      "name": "OOF @224",
+      "scope": "oof",
+      "resolution": 224,
+      "macro_f1": 0.7698
+    },
+    {
+      "name": "OOF @320",
+      "scope": "oof",
+      "resolution": 320,
+      "macro_f1": 0.8364
+    },
+    {
+      "name": "OOF @352",
+      "scope": "oof",
+      "resolution": 352,
+      "macro_f1": 0.8449
+    }
+  ],
+  "leaderboard": {
+    "public": null,
+    "private": null,
+    "note": "member of EXP-024"
+  },
+  "findings": [
+    "Highest single-model OOF in the project (0.8449 at inference 352).",
+    "Evaluated at 224 it is the worst (0.7698): the model must be run at a larger size than it was trained on."
+  ],
+  "limitations": [
+    "Inference resolution chosen on OOF."
+  ],
+  "evidence": {
+    "report": "experiments/EXP-020.md",
+    "run_dir": "runs/R_r18d_i288_e600_f0..f4",
+    "code": "Training code is in code/ (copied from the team server export, 2026-11-12). Referenced by md5: train.py 56d4db01cdd6c2c46e7b9b3b789324fe (before the 2026-11-12 patch that added --img and corrupt_v5; default behaviour unchanged), dq.py e3e270bdcdf254ad369b1cb3c345e5e9.",
+    "submission": null,
+    "logs": [
+      "R_r18d_i288_e600.log"
+    ]
+  },
+  "branch": "kaka",
+  "owner": "kaka",
+  "schema": 1
+}

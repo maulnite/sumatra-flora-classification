@@ -1,0 +1,55 @@
+{
+  "id": "EXP-013",
+  "title": "Architecture: ResNet18d (deep stem), recipe R, 300 epochs",
+  "status": "completed",
+  "date": "2026-11-10",
+  "protocol": "scene5_v4rot",
+  "tags": [
+    "architecture",
+    "stem"
+  ],
+  "summary": "ResNet18d 300 ep: best 300-epoch model",
+  "hypothesis": "The deep-stem variant of ResNet18 should help small-detail plant classification.",
+  "config": {
+    "arch": "resnet18d",
+    "img": 224,
+    "epochs": 300,
+    "folds": "scene5",
+    "tta": "flip",
+    "augmentation": "recipe R"
+  },
+  "results": [
+    {
+      "name": "OOF 5-fold (v4+rot)",
+      "scope": "oof",
+      "resolution": 224,
+      "macro_f1": 0.7524
+    }
+  ],
+  "leaderboard": {
+    "public": null,
+    "private": null,
+    "note": "member of EXP-015"
+  },
+  "findings": [
+    "ResNet18d beats ResNet18 (EXP-008, 0.672) by +0.08 and the bigger ResNets by +0.06."
+  ],
+  "limitations": [
+    "Architecture and TTA both differ from EXP-008; the gain is not isolated to the stem."
+  ],
+  "evidence": {
+    "report": "experiments/EXP-013.md",
+    "run_dir": "runs/R_r18d_f0..f4",
+    "code": "Training code is in code/ (copied from the team server export, 2026-11-12). Referenced by md5: train.py 56d4db01cdd6c2c46e7b9b3b789324fe (before the 2026-11-12 patch that added --img and corrupt_v5; default behaviour unchanged), dq.py e3e270bdcdf254ad369b1cb3c345e5e9.",
+    "submission": {
+      "file": "R_r18d_submission.csv",
+      "sha16": "f93571c0c6919a65"
+    },
+    "logs": [
+      "R_r18d.log"
+    ]
+  },
+  "branch": "kaka",
+  "owner": "kaka",
+  "schema": 1
+}

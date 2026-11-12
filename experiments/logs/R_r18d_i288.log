@@ -1,0 +1,3 @@
+06:03:03 fold phash: [603, 604, 602, 603, 602]
+06:03:03 fold scene: [614, 607, 603, 600, 590]
+06:03:03 5 fold, 5 paralel, 10 worker/fold | log: runs/R_r18d_i288_f*/log.txt

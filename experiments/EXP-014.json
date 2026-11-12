@@ -1,0 +1,54 @@
+{
+  "id": "EXP-014",
+  "title": "Epochs: ResNet18, recipe R, 600 epochs (R_e600)",
+  "status": "completed",
+  "date": "2026-11-10",
+  "protocol": "scene5_v4rot",
+  "tags": [
+    "epochs"
+  ],
+  "summary": "ResNet18 600 ep (vs 300)",
+  "hypothesis": "Longer training may help a from-scratch model.",
+  "config": {
+    "arch": "resnet18",
+    "img": 224,
+    "epochs": 600,
+    "folds": "scene5",
+    "tta": "flip",
+    "augmentation": "recipe R"
+  },
+  "results": [
+    {
+      "name": "OOF 5-fold (v4+rot)",
+      "scope": "oof",
+      "resolution": 224,
+      "macro_f1": 0.7509
+    }
+  ],
+  "leaderboard": {
+    "public": null,
+    "private": null,
+    "note": "member of EXP-015"
+  },
+  "findings": [
+    "600 epochs lifts ResNet18 from 0.672 (300 ep) to 0.751."
+  ],
+  "limitations": [
+    "Compare with EXP-008 is confounded with TTA setting."
+  ],
+  "evidence": {
+    "report": "experiments/EXP-014.md",
+    "run_dir": "runs/R_e600_f0..f4",
+    "code": "Training code is in code/ (copied from the team server export, 2026-11-12). Referenced by md5: train.py 56d4db01cdd6c2c46e7b9b3b789324fe (before the 2026-11-12 patch that added --img and corrupt_v5; default behaviour unchanged), dq.py e3e270bdcdf254ad369b1cb3c345e5e9.",
+    "submission": {
+      "file": "R_e600_submission.csv",
+      "sha16": "0d6885307a3c5cfc"
+    },
+    "logs": [
+      "R_e600.log"
+    ]
+  },
+  "branch": "kaka",
+  "owner": "kaka",
+  "schema": 1
+}

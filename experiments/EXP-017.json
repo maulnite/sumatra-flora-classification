@@ -1,0 +1,91 @@
+{
+  "id": "EXP-017",
+  "title": "Architecture screen on fold 0: RegNetY-016, EfficientNet-B0, EfficientNet-B2",
+  "status": "completed",
+  "date": "2026-11-11",
+  "protocol": "scene_fold0_v4rot",
+  "tags": [
+    "architecture",
+    "screening"
+  ],
+  "summary": "Fold-0 screen: RegNet/EffNet below ResNet18d",
+  "hypothesis": "Quick fold-0 screen to choose which new architectures are worth 5 folds.",
+  "config": {
+    "archs": [
+      "regnety_008",
+      "regnety_016",
+      "efficientnet_b0",
+      "efficientnet_b2"
+    ],
+    "img": 224,
+    "epochs": 300,
+    "folds": "scene fold 0",
+    "tta": "flip",
+    "augmentation": "recipe R"
+  },
+  "results": [
+    {
+      "name": "regnety_008 fold 0",
+      "scope": "fold0",
+      "resolution": 224,
+      "macro_f1": 0.703
+    },
+    {
+      "name": "regnety_016 fold 0",
+      "scope": "fold0",
+      "resolution": 224,
+      "macro_f1": 0.7023
+    },
+    {
+      "name": "efficientnet_b0 fold 0",
+      "scope": "fold0",
+      "resolution": 224,
+      "macro_f1": 0.678
+    },
+    {
+      "name": "efficientnet_b2 fold 0",
+      "scope": "fold0",
+      "resolution": 224,
+      "macro_f1": 0.6476
+    },
+    {
+      "name": "regnety_016 fold 0 @320",
+      "scope": "fold0",
+      "resolution": 320,
+      "macro_f1": 0.7595
+    },
+    {
+      "name": "efficientnet_b0 fold 0 @320",
+      "scope": "fold0",
+      "resolution": 320,
+      "macro_f1": 0.7534
+    }
+  ],
+  "leaderboard": {
+    "public": null,
+    "private": null,
+    "note": "none passed the R_r18d fold-0 reference of 0.7693"
+  },
+  "findings": [
+    "None of the four reached the ResNet18d reference (0.7693 on fold 0).",
+    "Higher inference resolution helps these models most (+0.06 to +0.08 on fold 0, 224 -> 320)."
+  ],
+  "limitations": [
+    "Fold 0 only; fold scores vary by about 0.03-0.04 across folds, so small gaps can be noise."
+  ],
+  "evidence": {
+    "report": "experiments/EXP-017.md",
+    "run_dir": "runs/*_f0 for each arch",
+    "code": "Training code is in code/ (copied from the team server export, 2026-11-12). Referenced by md5: train.py 56d4db01cdd6c2c46e7b9b3b789324fe (before the 2026-11-12 patch that added --img and corrupt_v5; default behaviour unchanged), dq.py e3e270bdcdf254ad369b1cb3c345e5e9.",
+    "submission": null,
+    "logs": [
+      "R_regnety_008.log",
+      "R_regnety_016.log",
+      "R_efficientnet_b0.log",
+      "R_efficientnet_b2.log"
+    ]
+  },
+  "branch": "kaka",
+  "owner": "kaka",
+  "schema": 1
+}

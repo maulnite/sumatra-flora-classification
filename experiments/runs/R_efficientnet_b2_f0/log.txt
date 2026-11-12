@@ -1,0 +1,51 @@
+wandb: [wandb.login()] Loaded credentials for https://api.forge.coreweave.com from ~/.netrc.
+wandb: Currently logged in as: <wandb-user> (<wandb-entity>) to https://api.forge.coreweave.com. Use `wandb login --relogin` to force relogin
+wandb: setting up run 3qqrr2sj
+wandb: Tracking run with wandb version 0.31.0
+wandb: Run data is saved locally in ~/inahuy/runs/R_efficientnet_b2_f0/wandb/run-20261111_031120-3qqrr2sj
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run R_efficientnet_b2_f0
+wandb: ⭐️ View project at https://forge.coreweave.com/wandb/<wandb-entity>/dateraquest
+wandb: 🚀 View run at https://forge.coreweave.com/wandb/<wandb-entity>/dateraquest/runs/3qqrr2sj
+03:17:55 [R_efficientnet_b2_f0] ep  25 | loss 3.046 | F1 bersih 0.0032 | v4 0.0032 | v4+rot 0.0032 (flip) | 389s
+03:21:17 [R_efficientnet_b2_f0] ep  50 | loss 2.819 | F1 bersih 0.0031 | v4 0.0077 | v4+rot 0.0068 (flip) | 591s
+03:24:37 [R_efficientnet_b2_f0] ep  75 | loss 2.409 | F1 bersih 0.0035 | v4 0.0035 | v4+rot 0.0035 (flip) | 791s
+03:27:53 [R_efficientnet_b2_f0] ep 100 | loss 2.231 | F1 bersih 0.1019 | v4 0.0768 | v4+rot 0.0830 (flip) | 986s
+03:31:11 [R_efficientnet_b2_f0] ep 125 | loss 2.016 | F1 bersih 0.3249 | v4 0.1786 | v4+rot 0.1646 (flip) | 1185s
+03:34:33 [R_efficientnet_b2_f0] ep 150 | loss 1.714 | F1 bersih 0.5085 | v4 0.3077 | v4+rot 0.3124 (flip) | 1387s
+03:37:52 [R_efficientnet_b2_f0] ep 175 | loss 1.661 | F1 bersih 0.6865 | v4 0.4801 | v4+rot 0.4542 (flip) | 1585s
+03:40:54 [R_efficientnet_b2_f0] ep 200 | loss 1.427 | F1 bersih 0.7628 | v4 0.5839 | v4+rot 0.5678 (flip) | 1768s
+03:43:36 [R_efficientnet_b2_f0] ep 225 | loss 1.356 | F1 bersih 0.7832 | v4 0.6366 | v4+rot 0.6123 (flip) | 1930s
+03:46:00 [R_efficientnet_b2_f0] ep 250 | loss 1.529 | F1 bersih 0.7932 | v4 0.6679 | v4+rot 0.6470 (flip) | 2074s
+03:48:10 [R_efficientnet_b2_f0] ep 275 | loss 1.473 | F1 bersih 0.7994 | v4 0.6732 | v4+rot 0.6462 (flip) | 2204s
+03:50:18 [R_efficientnet_b2_f0] ep 300 | loss 1.348 | F1 bersih 0.8039 | v4 0.6750 | v4+rot 0.6476 (flip) | 2332s
+wandb: updating run metadata
+wandb: uploading output.log; uploading wandb-summary.json; uploading config.yaml
+wandb: uploading history steps 11-11, summary
+wandb: 
+wandb: Run history:
+wandb:    epoch ▁▂▂▃▄▄▅▅▆▇▇█
+wandb: f1_clean ▁▁▁▂▄▅▇█████
+wandb:    f1_v4 ▁▁▁▂▃▄▆▇████
+wandb: f1_v4rot ▁▁▁▂▃▄▆▇████
+wandb:     loss █▇▅▅▄▃▂▁▁▂▂▁
+wandb:      sec ▁▂▂▃▄▅▅▆▇▇██
+wandb: 
+wandb: Run summary:
+wandb:         epoch 300
+wandb:      f1_clean 0.80394
+wandb:         f1_v4 0.67499
+wandb:    f1_v4_flip 0.67499
+wandb:    f1_v4_rot8 0.67888
+wandb:      f1_v4rot 0.64761
+wandb: f1_v4rot_flip 0.64761
+wandb: f1_v4rot_rot8 0.64477
+wandb:          loss 1.34818
+wandb:       minutes 39.2754
+wandb:            +2 ...
+wandb: 
+wandb: 🚀 View run R_efficientnet_b2_f0 at: https://forge.coreweave.com/wandb/<wandb-entity>/dateraquest/runs/3qqrr2sj
+wandb: ⭐️ View project at: https://forge.coreweave.com/wandb/<wandb-entity>/dateraquest
+wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./runs/R_efficientnet_b2_f0/wandb/run-20261111_031120-3qqrr2sj/logs
+03:50:46 >>> R_efficientnet_b2_f0: F1 v4+rot 0.6476 (flip) | flip 0.6476 vs rot8 0.6448 | 39.3 menit

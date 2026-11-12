@@ -1,0 +1,50 @@
+wandb: [wandb.login()] Loaded credentials for https://api.forge.coreweave.com from ~/.netrc.
+wandb: Currently logged in as: <wandb-user> (<wandb-entity>) to https://api.forge.coreweave.com. Use `wandb login --relogin` to force relogin
+wandb: setting up run ulob1l93
+wandb: Tracking run with wandb version 0.31.0
+wandb: Run data is saved locally in ~/inahuy/runs/R_cbam_gem_f3/wandb/run-20261110_091009-ulob1l93
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run R_cbam_gem_f3
+wandb: ⭐️ View project at https://forge.coreweave.com/wandb/<wandb-entity>/dateraquest
+wandb: 🚀 View run at https://forge.coreweave.com/wandb/<wandb-entity>/dateraquest/runs/ulob1l93
+09:15:52 [R_cbam_gem_f3] ep  25 | loss 2.732 | F1 bersih 0.1936 | v4 0.0649 | v4+rot 0.0821 (flip) | 330s
+09:19:00 [R_cbam_gem_f3] ep  50 | loss 2.416 | F1 bersih 0.4758 | v4 0.2033 | v4+rot 0.1817 (flip) | 518s
+09:22:08 [R_cbam_gem_f3] ep  75 | loss 1.996 | F1 bersih 0.6382 | v4 0.3607 | v4+rot 0.3028 (flip) | 706s
+09:25:16 [R_cbam_gem_f3] ep 100 | loss 2.026 | F1 bersih 0.7047 | v4 0.4330 | v4+rot 0.4051 (flip) | 894s
+09:28:11 [R_cbam_gem_f3] ep 125 | loss 1.795 | F1 bersih 0.7466 | v4 0.4985 | v4+rot 0.4508 (flip) | 1069s
+09:31:00 [R_cbam_gem_f3] ep 150 | loss 1.678 | F1 bersih 0.7756 | v4 0.5609 | v4+rot 0.5271 (flip) | 1238s
+09:33:50 [R_cbam_gem_f3] ep 175 | loss 1.594 | F1 bersih 0.7910 | v4 0.6041 | v4+rot 0.5490 (flip) | 1408s
+09:36:41 [R_cbam_gem_f3] ep 200 | loss 1.456 | F1 bersih 0.7797 | v4 0.6112 | v4+rot 0.5919 (flip) | 1579s
+09:39:31 [R_cbam_gem_f3] ep 225 | loss 1.531 | F1 bersih 0.7961 | v4 0.6445 | v4+rot 0.6132 (flip) | 1749s
+09:42:23 [R_cbam_gem_f3] ep 250 | loss 1.458 | F1 bersih 0.8040 | v4 0.6515 | v4+rot 0.6313 (flip) | 1921s
+09:45:14 [R_cbam_gem_f3] ep 275 | loss 1.459 | F1 bersih 0.8086 | v4 0.6585 | v4+rot 0.6403 (flip) | 2093s
+09:48:06 [R_cbam_gem_f3] ep 300 | loss 1.356 | F1 bersih 0.8064 | v4 0.6602 | v4+rot 0.6493 (flip) | 2264s
+wandb: updating run metadata
+wandb: uploading output.log; uploading wandb-summary.json; uploading config.yaml
+wandb: 
+wandb: Run history:
+wandb:    epoch ▁▂▂▃▄▄▅▅▆▇▇█
+wandb: f1_clean ▁▄▆▇▇███████
+wandb:    f1_v4 ▁▃▄▅▆▇▇▇████
+wandb: f1_v4rot ▁▂▄▅▆▆▇▇████
+wandb:     loss █▆▄▄▃▃▂▂▂▂▂▁
+wandb:      sec ▁▂▂▃▄▄▅▆▆▇▇█
+wandb: 
+wandb: Run summary:
+wandb:         epoch 300
+wandb:      f1_clean 0.80639
+wandb:         f1_v4 0.6602
+wandb:    f1_v4_flip 0.6602
+wandb:    f1_v4_rot8 0.65653
+wandb:      f1_v4rot 0.64926
+wandb: f1_v4rot_flip 0.64926
+wandb: f1_v4rot_rot8 0.63939
+wandb:          loss 1.35557
+wandb:       minutes 38.09475
+wandb:            +2 ...
+wandb: 
+wandb: 🚀 View run R_cbam_gem_f3 at: https://forge.coreweave.com/wandb/<wandb-entity>/dateraquest/runs/ulob1l93
+wandb: ⭐️ View project at: https://forge.coreweave.com/wandb/<wandb-entity>/dateraquest
+wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./runs/R_cbam_gem_f3/wandb/run-20261110_091009-ulob1l93/logs
+09:48:29 >>> R_cbam_gem_f3: F1 v4+rot 0.6493 (flip) | flip 0.6493 vs rot8 0.6394 | 38.1 menit

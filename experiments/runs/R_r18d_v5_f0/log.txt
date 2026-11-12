@@ -1,0 +1,10 @@
+wandb: [wandb.login()] Loaded credentials for https://api.forge.coreweave.com from ~/.netrc.
+wandb: Currently logged in as: <wandb-user> (<wandb-entity>) to https://api.forge.coreweave.com. Use `wandb login --relogin` to force relogin
+wandb: Tracking run with wandb version 0.31.0
+wandb: Run data is saved locally in ~/inahuy/dateruy/runs/R_r18d_v5_f0/wandb/run-20261112_060311-a6znq406
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run R_r18d_v5_f0
+wandb: ⭐️ View project at https://forge.coreweave.com/wandb/<wandb-entity>/dateraquest
+wandb: 🚀 View run at https://forge.coreweave.com/wandb/<wandb-entity>/dateraquest/runs/a6znq406
+06:28:47 [R_r18d_v5_f0] ep  25 | loss 2.537 | F1 bersih 0.0213 | v4 0.0164 | v4+rot 0.0161 (flip) | 1511s
+06:46:25 [R_r18d_v5_f0] ep  50 | loss 2.123 | F1 bersih 0.2680 | v4 0.1443 | v4+rot 0.1377 (flip) | 2569s

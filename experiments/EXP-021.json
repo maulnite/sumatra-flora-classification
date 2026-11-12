@@ -1,0 +1,107 @@
+{
+  "id": "EXP-021",
+  "title": "Inference-time image manipulation study (ensemble R_r18d + R_e600)",
+  "status": "completed",
+  "date": "2026-11-11",
+  "protocol": "scene5_v4rot",
+  "tags": [
+    "inference",
+    "image-manipulation",
+    "analysis"
+  ],
+  "summary": "Colour fixes hurt; inference resolution 256-352 helps",
+  "hypothesis": "Colour normalisation or crop or resolution changes at inference may help the same models.",
+  "config": {
+    "members": [
+      "R_r18d",
+      "R_e600"
+    ],
+    "combine": "mean",
+    "manipulations": [
+      "gray-world",
+      "CLAHE",
+      "stretch 1-99",
+      "autocrop",
+      "resize 256..352"
+    ]
+  },
+  "results": [
+    {
+      "name": "no manipulation @224",
+      "scope": "oof",
+      "resolution": 224,
+      "macro_f1": 0.7727
+    },
+    {
+      "name": "gray-world @224",
+      "scope": "oof",
+      "resolution": 224,
+      "macro_f1": 0.6492
+    },
+    {
+      "name": "CLAHE @224",
+      "scope": "oof",
+      "resolution": 224,
+      "macro_f1": 0.6457
+    },
+    {
+      "name": "stretch 1-99 @224",
+      "scope": "oof",
+      "resolution": 224,
+      "macro_f1": 0.7244
+    },
+    {
+      "name": "autocrop @224",
+      "scope": "oof",
+      "resolution": 224,
+      "macro_f1": 0.7592
+    },
+    {
+      "name": "resize @256",
+      "scope": "oof",
+      "resolution": 256,
+      "macro_f1": 0.8016
+    },
+    {
+      "name": "resize @288",
+      "scope": "oof",
+      "resolution": 288,
+      "macro_f1": 0.81
+    },
+    {
+      "name": "resize @320",
+      "scope": "oof",
+      "resolution": 320,
+      "macro_f1": 0.8089
+    },
+    {
+      "name": "resize @352",
+      "scope": "oof",
+      "resolution": 352,
+      "macro_f1": 0.8057
+    }
+  ],
+  "leaderboard": {
+    "public": null,
+    "private": null,
+    "note": "informs EXP-022"
+  },
+  "findings": [
+    "Colour and contrast normalisation hurts (-0.05 to -0.13): the model needs colour cues.",
+    "Autocrop of black borders slightly hurts (-0.013).",
+    "Inference resolution 288-320 gives +0.03 to +0.04 for these 224-trained models (FixRes-style effect)."
+  ],
+  "limitations": [
+    "Member models were trained at 224; the later EXP-018/020 results show a larger effect when training resolution matches."
+  ],
+  "evidence": {
+    "report": "experiments/EXP-021.md",
+    "run_dir": "manipulasi_gambar.ipynb (Bagian 3)",
+    "code": "Notebook dateraquest.ipynb (not hashed). Same augmentation module dq.py.",
+    "submission": null,
+    "logs": []
+  },
+  "branch": "kaka",
+  "owner": "kaka",
+  "schema": 1
+}
