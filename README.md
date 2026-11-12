@@ -1,179 +1,118 @@
 # Sumatra Flora Classification
 
-**DATERAQUEST 2.0 — Machine Learning Competition**  
-*Sumatra Flora Vision Challenge | HMSD Adyatama | Institut Teknologi Sumatera (ITERA)*
+**DATERAQUEST 2.0, Machine Learning Competition** (HMSD Adyatama, ITERA)
 
-A collaborative computer vision project to classify **30 plant species** from Kebun Raya ITERA. This three-person team's focus is **training from scratch**, reliable augmentation, and robust evaluation.
+Classify 30 plant species from images, with CNNs trained **from scratch** (no pretrained weights). Metric: **macro F1**. This repo holds our team's code, experiment records, and results.
 
-> **Status: starter repository.** All experiment results, leaderboard numbers, and member handles are placeholders until verified.  
-> **Public visibility:** All code published here can be viewed by anyone, including other competing teams. Sharing code **within our registered team** is allowed; cross-team code/prediction sharing is prohibited. Official rules take precedence.
+> **Public repository.** Anyone can read what is pushed here, including other teams. The competition rules forbid sharing code or predictions across teams. Read [docs/COMPETITION_RULES.md](docs/COMPETITION_RULES.md) before adding anything.
 
-## Competition overview
+## Results at a glance
 
-| Item | Details |
-| --- | --- |
-| Organizer | HMSD Adyatama, ITERA |
-| Task | Single-label image classification; 30 species (labels 0–29) |
-| Dataset | Official organizer/Kaggle dataset only |
-| Test set | 2,010 unlabeled JPG images |
-| Evaluation | **Macro F1-Score** |
-| Public/private leaderboard | 30% / 70% of test data |
-| Models | Architectures of choice, **all weights randomly initialized** |
-| Kaggle limit | **3 submissions per day** |
-| Preliminary deadline | **17 November 2026, 23:59 WIB** |
-| Finalist PPTX deadline | **26 November 2026, 23:59 WIB** |
+Public leaderboard (30% of test) for each submission we made. Each step is one change on top of the previous one.
 
-### Main rules
+| Step | Public LB | What changed | Experiments |
+| --- | ---: | --- | --- |
+| 1 | 0.519 | Single ResNet18 fold, corrupt-v4 augmentation | [EXP-004](experiments/EXP-004.md) |
+| 2 | 0.677 | 5 folds, MixUp/CutMix, EMA | [EXP-005](experiments/EXP-005.md) |
+| 3 | 0.739 | Rotation augmentation (test is rotated 0–360°), CBAM ensemble | [EXP-008](experiments/EXP-008.md), [EXP-010](experiments/EXP-010.md) |
+| 4 | 0.80694 | Ensemble of ResNet18d and ResNet18 (600 epochs) | [EXP-015](experiments/EXP-015.md) |
+| 5 | 0.82164 | Inference at 320 px, class-prior balancing | [EXP-022](experiments/EXP-022.md) |
+| 6 | 0.83262 | SIFT label transfer from train (44 labels) | [EXP-023](experiments/EXP-023.md) |
+| **7** | **0.87012** | ResNet18d trained at 288 px, ResNet34d, inference 352/320, balance, SIFT (29 labels) | [EXP-024](experiments/EXP-024.md) |
 
-- Do **not** use externally pretrained weights, transfer learning, external training datasets, manual test labeling, VLM (CLIP, SigLIP, BLIP, etc.), instant AutoML, or inference APIs.
-- ResNet, EfficientNet, ConvNeXt, ViT and custom CNN designs are allowed, trained **from scratch** (`weights=None` or `pretrained=False`).
-- Original data augmentation and hyperparameter tuning tools such as Optuna are allowed.
-- Fix and document seeds, split, model config, hardware, training logs, and reproducible CSV outputs.
-- Work only with your officially registered teammates, not other competing teams.
+Best single model on 5-fold out-of-fold (OOF) validation: **0.8449** (ResNet18d, 600 epochs, trained at 288 px, evaluated at 352 px; [EXP-020](experiments/EXP-020.md)).
 
-See [competition rule summary](docs/COMPETITION_RULES.md).
+The full, always-current table is in [docs/EXPERIMENT_LOG.md](docs/EXPERIMENT_LOG.md).
 
-## Team members
+### How to read the numbers
 
-| Member | GitHub account | Experiment responsibility |
-| --- | --- | --- |
-| Member 1 | @TBD | TBD |
-| Member 2 | @TBD | TBD |
-| Member 3 | @TBD | TBD |
+- **OOF** is validation on held-out folds, grouped by scene so near-duplicate photos never cross folds. It is the number we tune on.
+- **Public LB** is the only independent check. Private LB is not known until the end.
+- OOF runs higher than public LB, and recent gains did not all carry over (for example +0.043 OOF from resolution and balance gave +0.015 public). Treat OOF gains as directional.
+- Ensemble members and inference sizes were chosen on the same OOF they are reported with, so those OOF values are slightly optimistic.
+- Scores from different validation protocols must not be compared. See [docs/protocols.json](docs/protocols.json).
 
-Repository owner should invite both teammates via **Settings → Collaborators** (public means anyone can *read*, not *write*).
+## What the code does
 
-## Project structure
+The main pipeline, in [code/train.py](code/train.py):
 
-~~~text
-.github/              GitHub Actions and PR/issue templates
-configs/              Training config templates
-data/                 Local official competition data (ignored)
-docs/                 Rules, experiment registry, data and team notes
-experiments/          One report per experiment / member
-notebooks/            EDA, training and inference notebooks
-outputs/              Local predictions and checkpoints (ignored)
-reports/              Finalist presentation/report materials
-scripts/              Dataset inspection and CSV validation
-src/sumatra_flora/
-  data/               Data loader, stratified split, transforms
-  models/             Original from-scratch architectures
-  training/           Training loops, losses, schedulers
-  evaluation/         Macro F1 and per-class analysis
-  inference/          Test predictions, ensemble methods
-tests/                Synthetic utility tests
-README.md             Project description and results
-CONTRIBUTING.md       Three-member collaboration guide
-~~~
+1. **Prepare data.** Build validation and test caches once (`prep`). Validation images get the same corruption as the test set (synthetic colour shifts, shadows, JPEG damage, and now rotation).
+2. **Train per fold.** Each fold trains one model from random weights, with MixUp/CutMix, EMA, and a cosine schedule. Recipes `E`, `F`, `H`, `R`, `L` set the augmentation; `--arch`, `--img`, `--cmode`, `--attn`, `--pool` change the model and input.
+3. **Ensemble.** Average the five fold models' test probabilities into one submission.
 
-## Getting started
+On top of that:
+- [code/evalres.py](code/evalres.py) evaluates each model at several inference sizes, picks the best ensemble on OOF, applies class-prior balancing, and optionally replaces test labels with SIFT matches from train.
+- [code/sift_match.py](code/sift_match.py) matches test and corrupted-train images to train with SIFT and RANSAC, and reports how precise each inlier threshold is.
+- [notebooks/manipulasi_gambar.ipynb](notebooks/manipulasi_gambar.ipynb) tests colour, contrast, border, and resolution changes at inference time.
 
-~~~bash
-git clone https://github.com/maulnite/sumatra-flora-classification.git
-cd sumatra-flora-classification
-python -m venv .venv
-# Windows PowerShell: .venv\Scripts\Activate.ps1
-# Linux/macOS: source .venv/bin/activate
-python -m pip install --upgrade pip
-python -m pip install -r requirements.txt
-python -m unittest discover -s tests -v
-~~~
+Full description of every script (inputs, outputs, commands, and which experiments used it) is in [docs/CODE_MAP.md](docs/CODE_MAP.md).
 
-Install GPU-specific PyTorch using the [official selector](https://pytorch.org/get-started/locally/) to match your CUDA and driver versions.
+## What we learned
 
-Download the **official Kaggle competition dataset through permitted access** into the local `data/raw/` folder (not provided or committed to GitHub):
+**Helped:**
+- **Rotation augmentation** (±180°) and rotation in validation. Test images are rotated uniformly over the full circle, and models without it scored much lower.
+- **Heavy synthetic corruption** (corrupt-v4). Light augmentation dropped OOF to 0.40 ([EXP-007](experiments/EXP-007.md)).
+- **Longer training** (600 vs 300 epochs): ResNet18 0.672 → 0.751 OOF ([EXP-014](experiments/EXP-014.md)).
+- **ResNet18d** (deep stem) beat ResNet18, ResNet34, and ResNet50 at 300 epochs ([EXP-013](experiments/EXP-013.md)).
+- **Training at 288 px** plus inference at 320–352 px: the best single model ([EXP-020](experiments/EXP-020.md)).
+- **Ensembling** two different models: about +0.02 OOF each time ([EXP-010](experiments/EXP-010.md), [EXP-015](experiments/EXP-015.md)).
+- **SIFT label transfer** from train to test: +0.011 public for 44 labels ([EXP-023](experiments/EXP-023.md)).
+
+**Did not help:**
+- Colour and contrast normalisation at inference (gray-world, CLAHE, stretch) cost 0.05–0.13 OOF ([EXP-021](experiments/EXP-021.md)).
+- CBAM attention and GeM pooling: below plain ResNet18 ([EXP-009](experiments/EXP-009.md)).
+- RegNet and EfficientNet from scratch: below ResNet18d on the same folds ([EXP-016](experiments/EXP-016.md), [EXP-017](experiments/EXP-017.md)).
+- Harder corruption on validation (blur, noise, downscale): worse on fold 0 ([EXP-006](experiments/EXP-006.md)).
+
+**Still open:** two 300-epoch runs (training at 288 px, and a blur/grayscale augmentation) are paused with saved checkpoints ([EXP-025](experiments/EXP-025.md)).
+
+## Repository layout
 
 ~~~text
-data/raw/
-├── train/
-│   ├── 0_Albizia_saponaria/
-│   └── ... (30 class folders)
-├── test/ (test_0001.jpg ... test_2010.jpg)
-├── train.csv
-├── class_mapping.csv
-└── sample_submission.csv
+code/                 Training, evaluation, and matching scripts (see docs/CODE_MAP.md)
+notebooks/            Exploration and inference-manipulation notebooks
+experiments/          One Markdown report + JSON record per experiment (EXP-004 onward)
+experiments/runs/     Per-fold configs, metrics, and training history
+experiments/logs/     Training logs
+experiments/sift/     SIFT precision table for train queries
+docs/                 Experiment registry, protocols, code map, rules, submission guide
+scripts/registry.py   Validate and render the experiment registry
+tests/                Unit tests (synthetic data only)
 ~~~
 
-Inspect the local download:
+Not in the repository, by design: competition data, model weights, cached image arrays, prediction CSVs, and probability arrays.
+
+## Experiment registry
+
+Each experiment has `experiments/EXP-###.json` (structured record) and `EXP-###.md` (report). The table in [docs/EXPERIMENT_LOG.md](docs/EXPERIMENT_LOG.md) is generated from the JSON files:
 
 ~~~bash
-python scripts/inspect_dataset.py --root data/raw
+python scripts/registry.py check    # validate all experiment records
+python scripts/registry.py render   # rebuild the table
 ~~~
 
-Create a new experiment report:
+## Running the code
+
+The scripts were run on a single A100 GPU. They look for the official data in `code/dateraquest-2-0-machine-learning-competition/`, and write `cache/` and `runs/` next to the scripts, so run everything from `code/` after placing the data there.
 
 ~~~bash
-python scripts/new_experiment.py --id EXP-004 --owner your-handle --title "ResNet scratch baseline"
+python -m venv .venv && source .venv/bin/activate
+pip install -r requirements.txt          # install a PyTorch build that matches your CUDA
+cd code                                  # data must be at code/dateraquest-2-0-machine-learning-competition/
+python train.py prep                     # once: folds and image caches
+python train.py run --recipe R --arch resnet18d --img 288 --epochs 600 --tta flip --jobs 3 --tag NAME
+python evalres.py probs NAME --sizes 288 320 352
+python evalres.py search NAME --tag FINAL
 ~~~
 
-Validate a model-generated CSV before submitting:
+`python -m unittest discover -s tests` runs the registry and submission tests without any data.
 
-~~~bash
-python scripts/validate_submission.py --file outputs/submissions/submission.csv --template data/raw/sample_submission.csv
-~~~
+## Submission format
 
-## Experiment methodology
+A valid `submission.csv` has a header plus **2,010 rows**, exactly two columns `id,label`, integer labels `0`–`29`, and the same ID order as `sample_submission.csv`. Check it with `scripts/validate_submission.py` before uploading. Organizer rules are in [docs/SUBMISSION_GUIDE.md](docs/SUBMISSION_GUIDE.md).
 
-1. Inspect class distributions, resolution, duplicates and label mapping on the official training images.
-2. Build a reproducible stratified train/validation split; guard against similar-image leakage, and record the seed and exact indices.
-3. Try custom CNN/ResNet-style/EfficientNet-style/ConvNeXt-style/ViT models **without pretrained weights**.
-4. Compare augmentation, input resolution, losses, schedulers and regularization on the **same validation split**.
-5. Use **Macro F1** and per-class F1/confusion matrix; avoid choosing models solely on the public leaderboard.
-6. Log code commit, config, hardware, libraries, seed, runtime, errors, artifacts and metric values.
+## Collaboration
 
-Macro F1 averages the F1 of each of the 30 classes with equal weight:
-
-~~~python
-from sklearn.metrics import f1_score
-score = f1_score(y_true, y_pred, labels=list(range(30)), average="macro", zero_division=0)
-~~~
-
-## Team experiment results
-
-**No experiments are completed yet.** Each member updates their own [experiment report](experiments/) and the verified summary below through pull requests.
-
-| Experiment | Owner | Architecture / change | Seed / split | Validation Macro F1 | Public LB | Private LB | Status |
-| --- | --- | --- | --- | ---: | ---: | ---: | --- |
-| [EXP-001](experiments/EXP-001.md) | @TBD | TBD | TBD | — | — | — | Planned |
-| [EXP-002](experiments/EXP-002.md) | @TBD | TBD | TBD | — | — | — | Planned |
-| [EXP-003](experiments/EXP-003.md) | @TBD | TBD | TBD | — | — | — | Planned |
-
-### Best validated result (placeholder)
-
-| Metadata | Value |
-| --- | --- |
-| Experiment ID / member | TBD |
-| Architecture and parameters | TBD |
-| Data split, seed, random initialization | TBD |
-| Model config / Git commit SHA | TBD |
-| Validation Macro F1 | TBD |
-| Public leaderboard Macro F1 | TBD |
-| Private leaderboard Macro F1 | Not yet released |
-| Training time / hardware | TBD |
-| Reproducible notebook / inference command | TBD |
-| Local checkpoint path | TBD |
-
-For a fuller cross-experiment log, see [Experiment Registry](docs/EXPERIMENT_LOG.md).
-
-## Submission
-
-A valid `submission.csv` needs **2,011 total lines**: a header plus **2,010 test rows**, exactly 2 columns `id,label`, integer labels from `0` to `29`, and **the exact ID order in the official sample_submission.csv**. No blanks, duplicate IDs, or extra rows.
-
-~~~csv
-id,label
-test_0001.jpg,0
-test_0002.jpg,0
-~~~
-
-*The example illustrates CSV format only; it is not a real prediction.*
-
-Before 17 November 2026 23:59 WIB, the team must submit a ZIP (`IDTim_NamaTim.zip`) containing executed `.ipynb` notebook(s) with training/validation results and the matching prediction `.csv` to the organizer portal. A reproducible execution must generate the submitted predictions. See [Submission Guide](docs/SUBMISSION_GUIDE.md).
-
-## Collaboration and safety
-
-- Work in `exp/<handle>/<topic>`, `feat/<handle>/<topic>`, `fix/<handle>/<topic>` or `docs/<handle>/<topic>` branches and request teammate review before merging to `main`.
-- Give each experiment a unique ID and notebook filename to avoid merge conflicts.
-- **Never commit** organizer images/CSVs, model checkpoints, submission CSVs, Kaggle API keys, secrets, or private artifacts; these are ignored under `.gitignore` where practical.
-- This repo is public: publishing active solution code is visible beyond your team. Follow organizer integrity rules and coordinate what to make public.
-
-See [CONTRIBUTING.md](CONTRIBUTING.md) and [Team Workflow](docs/TEAM_WORKFLOW.md).
+- Work on your own branch, record each experiment with a unique ID, and open a pull request for review.
+- Do not commit competition data, model weights, prediction CSVs, or API keys.
+- Team workflow and sync instructions: [docs/TEAM_WORKFLOW.md](docs/TEAM_WORKFLOW.md) and [CONTRIBUTING.md](CONTRIBUTING.md).
