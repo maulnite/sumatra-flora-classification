@@ -12,6 +12,8 @@ Nine historical Kaggle submissions were verified on 12 Nov 2026 (best public Mac
 
 Update 13 Nov 2026: branch `kaka` contains published experiment IDs EXP-004 through EXP-025. The earlier local EXP-004 draft is now [LOCAL-PROP-001 revision 2](../experiments/LOCAL-PROP-001.md), with no team experiment ID assigned. It tests recipe R / ResNet18d control vs mild post-resize blur on a shared local holdout (2,378 train / 634 validation; 2 scene neighbors purged). Both arms completed 300 epochs: primary Macro F1 **0.728991 → 0.723461**, clean **0.844319 → 0.845658**, mean additional-blur Macro F1 **0.392141 → 0.656741**. Automatic gate failed; the user subsequently explicitly requested submission B: **ref 58306830, COMPLETE, public 0.79702**, private unavailable. Its protocol is distinct from team scene237 OOF. See [the reviewed team update](TEAM_UPDATE_2026-11-13.md) for upstream results. The placeholder table above is the original `main` scaffold, not the current registry on `kaka`.
 
+Update lanjutan 13 Nov: [LOCAL-PROP-002](../experiments/LOCAL-PROP-002.md) memakai **EXP-024 best public 0.87012** sebagai baseline. Artefak ditemukan di folder server yang didokumentasikan tim; final CSV berhasil direproduksi byte-for-byte dan full balanced neural OOF **0.852564** direproduksi. Pada 603 query yang tidak terlihat oleh B dan memakai frozen views tim, kontrol **0.852673**, blend tetap 90% best +10% B **0.850512** (delta −0.002160). **Baseline asli dipertahankan, tidak ada submission baru.** Ini screening subset, bukan full OOF kandidat. Tidak ada training ulang; 19 tests lulus.
+
 ## Ablation / comparison placeholder
 
 | Factor | Run A | Run B | Matched validation split? | Conclusion |

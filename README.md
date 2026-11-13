@@ -16,6 +16,8 @@ Update 13 Nov 2026: the team's working pipeline and EXP-004–EXP-025 records ar
 
 ## Competition overview
 
+[LOCAL-PROP-002](experiments/LOCAL-PROP-002.md) uses the team's strongest EXP-024 pipeline as its frozen baseline; its original 0.87012 submission was reproduced byte-for-byte. A fixed 10% addition of the blur model changed shared-holdout F1 **0.8527 → 0.8505**, so the original baseline was retained without another submission. Team artifacts are available at the server path documented in the report.
+
 | Item | Details |
 | --- | --- |
 | Organizer | HMSD Adyatama, ITERA |

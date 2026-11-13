@@ -102,7 +102,17 @@ Sebelum memilih eksperimen berikutnya, fondasi yang relevan adalah recipe R/ResN
 
 **Update setelah review:** user mengizinkan rencana tetap dilanjutkan sambil menunggu artefak tim. [Proposal revision 2](../experiments/LOCAL-PROP-001.md) memakai baseline recipe R dan dua run baru pada holdout lokal yang sama, dengan satu tambahan Gaussian blur setelah resize. Protokol lokal diberi nama berbeda dan tidak diklaim sebanding dengan scene237 OOF. Draft awal diarsipkan; config aktif kini berstatus `revised_ready_for_implementation`.
 
-## Pemeriksaan yang dilakukan
+## Update akses artefak server — 13 November, tahap LOCAL-PROP-002
+
+Path `~/inahuy/dateruy/` pada `docs/CODE_MAP.md` ternyata tersedia sebagai `/home/nafisnaufal1426/inahuy/dateruy/`. Read-only inspection menemukan sepuluh checkpoint best, scene fold CSV/NPY, frozen validation/test caches, OOF/test probabilities, dan SIFT tables. Hambatan akses pada snapshot awal telah teratasi tanpa mengubah file/proses tim. Lokasi ini menjadi sumber baseline untuk eksperimen berikutnya.
+
+Final `best_sift_submission.csv` direproduksi **byte-for-byte**, SHA-256 `6ca4cb673741edc3ca1e9903ed31dfb3b35924b52797742715a40e667f4d25e9`, dengan 29 SIFT replacements. Full balanced neural OOF direproduksi **0.852564**.
+
+**Koreksi grouping:** fold file aktual memiliki **2.708 unique group IDs**, 259 non-singleton groups, dan ukuran fold `[614,607,603,600,590]`; angka 237 pada laporan historis tidak cocok dengan jumlah group IDs file tersebut. Gunakan file dan hash aktual sebagai acuan, bukan merekonstruksi jumlah group dari nama protokol. Cache 224 eksperimen lokal pertama juga tidak pixel-identical dengan cache tim; LOCAL-PROP-002 menghitung ulang B pada cache tim dan mengecualikan group yang terlihat selama training B, menyisakan 603 query/30 kelas.
+
+[LOCAL-PROP-002](../experiments/LOCAL-PROP-002.md) sudah menguji best +10% B: primary shared-holdout Macro F1 **0.852673 → 0.850512**. Baseline best asli dipertahankan; tidak ada submission baru. Secondary fold-filtered SIFT tetap proxy: source generator yang dipublikasikan memakai corruption/rotation seed berbeda dari primary cache, dan CSV tidak menyertakan query-image hashes untuk memverifikasi provenance view.
+
+## Pemeriksaan yang dilakukan pada review awal
 
 - Clone branch terpisah dan pin commit; source tim tidak diedit.
 - Delapan file Python pipeline berhasil diparse AST tanpa mengeksekusi training.

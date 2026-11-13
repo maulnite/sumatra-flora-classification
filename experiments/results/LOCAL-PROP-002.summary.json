@@ -1,0 +1,178 @@
+{
+  "at": "2026-11-13T11:36:44.402721+00:00",
+  "proposal_id": "LOCAL-PROP-002",
+  "baseline": "EXP-024",
+  "baseline_public_macro_f1": 0.87012,
+  "protocol": "team_frozen_v4rot_views_shared_scene_disjoint_holdout_v1",
+  "validation_rows": 603,
+  "blend_weight": 0.1,
+  "scores": {
+    "control": {
+      "primary": 0.852672521321985,
+      "fold_filtered_sift": 0.8541483000246175
+    },
+    "candidate": {
+      "primary": 0.8505120885572985,
+      "fold_filtered_sift": 0.8520066814296887
+    }
+  },
+  "delta": {
+    "primary": -0.0021604327646864707,
+    "fold_filtered_sift": -0.0021416185949287847
+  },
+  "primary_bootstrap_delta_95_percent": [
+    -0.007367797542911036,
+    0.0028742305979920207
+  ],
+  "extra_model_alone_macro_f1": 0.7106981735560466,
+  "checks": {
+    "primary_gain": false,
+    "fold_filtered_sift_non_decreasing": false,
+    "bootstrap_lower_bound": true
+  },
+  "eligible_for_candidate_csv": false,
+  "submission_attempted": false,
+  "per_class_f1": {
+    "control": [
+      1.0,
+      1.0,
+      0.7199999999999999,
+      0.8727272727272728,
+      0.8813559322033898,
+      0.8780487804878049,
+      0.6976744186046512,
+      0.8108108108108109,
+      0.9714285714285714,
+      1.0,
+      0.8928571428571428,
+      0.9090909090909091,
+      0.9032258064516129,
+      0.8936170212765957,
+      1.0,
+      0.6666666666666665,
+      0.7692307692307692,
+      0.7142857142857143,
+      0.85,
+      0.6666666666666666,
+      0.742857142857143,
+      0.9387755102040816,
+      1.0,
+      0.7924528301886793,
+      0.8846153846153846,
+      0.7692307692307693,
+      0.6923076923076924,
+      0.9130434782608696,
+      0.7777777777777777,
+      0.9714285714285714
+    ],
+    "candidate": [
+      1.0,
+      1.0,
+      0.6923076923076924,
+      0.8727272727272728,
+      0.8813559322033898,
+      0.8780487804878049,
+      0.6976744186046512,
+      0.7894736842105262,
+      0.9714285714285714,
+      1.0,
+      0.8928571428571428,
+      0.9090909090909091,
+      0.9032258064516129,
+      0.8936170212765957,
+      1.0,
+      0.6666666666666665,
+      0.7692307692307692,
+      0.7142857142857143,
+      0.85,
+      0.6666666666666666,
+      0.742857142857143,
+      0.9387755102040816,
+      1.0,
+      0.7692307692307692,
+      0.9019607843137256,
+      0.7499999999999999,
+      0.6666666666666666,
+      0.9333333333333333,
+      0.7924528301886793,
+      0.9714285714285714
+    ]
+  },
+  "limitations": [
+    "Existing screening holdout; not a new independent evaluation set.",
+    "Subset metric is not the team's full OOF score.",
+    "Stored top-one SIFT matches do not recover an alternative when the top match is excluded.",
+    "Published SIFT query source uses corrupt_v5 and rotation seed offset 7000003; primary uses v4rot with offset 1000003. The CSV lacks query-image provenance, so the secondary is only a proxy."
+  ],
+  "test_prediction_labels_changed_from_baseline": 63,
+  "test_neural_labels_changed_from_baseline": 65,
+  "decision": "keep_original_EXP_024_baseline_no_new_submission",
+  "validation_change_counts": {
+    "validation_labels_changed": 6,
+    "errors_fixed": 1,
+    "correct_predictions_broken": 2,
+    "baseline_correct": 519,
+    "candidate_correct": 518
+  },
+  "baseline_reproduction": {
+    "baseline": "EXP-024",
+    "public_macro_f1": 0.87012,
+    "baseline_csv_reproduced_byte_identically": true,
+    "baseline_sha256": "6ca4cb673741edc3ca1e9903ed31dfb3b35924b52797742715a40e667f4d25e9",
+    "full_raw_neural_oof_macro_f1": 0.849455062621862,
+    "full_balanced_neural_oof_macro_f1": 0.8525643117483757,
+    "sift_test_labels_changed": 29,
+    "actual_group_ids": 2708,
+    "actual_non_singleton_groups": 259,
+    "fold_sizes": [
+      614,
+      607,
+      603,
+      600,
+      590
+    ],
+    "evaluated_rows": 603,
+    "evaluated_classes": 30,
+    "excluded_old_validation_rows": 31,
+    "input_sha256": {
+      "cache/scene_folds.csv": "20127154504d89f666783542cb4eab657fc1660be13c5d304fe0aacd6940d127",
+      "cache/scene_folds.npy": "df522c903ea159574f58aa71a7f42d5386f75468ad136a7a224f1e78d8307612",
+      "runs/sift_test.csv": "c0076894776a96835123bb0924be66bacc07199737ade1113248f44316b1de26",
+      "runs/sift_trainq.csv": "335151f6c99f92f037393bcbcc7465822668b4b4465d842def3fb84a458f3e93",
+      "runs/best_sift_submission.csv": "6ca4cb673741edc3ca1e9903ed31dfb3b35924b52797742715a40e667f4d25e9",
+      "dateraquest-2-0-machine-learning-competition/train.csv": "bda1e6815862cf31ef4a659982316261d7debd5b9f0830638d32619cc9bc0a3c",
+      "dateraquest-2-0-machine-learning-competition/sample_submission.csv": "1c859eb27bbf33129378e5d087a2966989708d39bb32da0ba5b8af979b8d52b1",
+      "runs/probs/R_r18d_i288_e600_352_oof.npy": "f71869abef067da193dfa9fa3d84739490871847189b30a5de0cbcfdc1e4acb2",
+      "runs/probs/R_r18d_i288_e600_352_test.npy": "852ef9b4ad6f543f98ac18ed02e997986a032cc1c3872d39fa1760c0fcfbab1d",
+      "runs/probs/R_r34d_e600_320_oof.npy": "da2d21ac46ec662cf4f72cfe186cb0921e3e9f66606e7efdb7fdd11f3b55be9b",
+      "runs/probs/R_r34d_e600_320_test.npy": "947857b2f1ad41dd4d3ce60da882f9b8fd915366bc2047ff614ef9650b09c62b"
+    },
+    "manifest_sha256": "8e1f0e03a461aef5cd0ca2e76e66d38c451f294033c830ee41901b0229a9314e"
+  },
+  "tests_passed": 19,
+  "secondary_metric_scope": "Diagnostic proxy: the published SIFT generator uses different corruption/rotation seeds, and stored CSV rows lack query image hashes. Exact alignment with primary views is unverified.",
+  "cache_coherence_check": {
+    "coarse_image_mean_absolute_difference": {
+      "224_vs_320": {
+        "median": 0.015625,
+        "max": 0.3046875
+      },
+      "224_vs_352": {
+        "median": 0.015625,
+        "max": 0.23828125
+      }
+    },
+    "coarse_image_correlation": {
+      "224_vs_320": {
+        "median": 0.999996825766617,
+        "min": 0.9999284828011737
+      },
+      "224_vs_352": {
+        "median": 0.9999969849924475,
+        "min": 0.9999480028515085
+      }
+    },
+    "rows": 603,
+    "method": "16x16 INTER_AREA summaries of fixed caches, no label-based selection"
+  }
+}

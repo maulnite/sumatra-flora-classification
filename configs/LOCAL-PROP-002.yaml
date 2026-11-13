@@ -1,0 +1,62 @@
+proposal_id: LOCAL-PROP-002
+status: execution_authorized
+title: Strongest team ensemble plus a fixed ten-percent blur branch
+seed: 43
+output_root: outputs/LOCAL-PROP-002
+team_root: /home/nafisnaufal1426/inahuy/dateruy
+baseline:
+  experiment: EXP-024
+  verified_public_macro_f1: 0.87012
+  submission_sha256: 6ca4cb673741edc3ca1e9903ed31dfb3b35924b52797742715a40e667f4d25e9
+  members: [R_r18d_i288_e600_352, R_r34d_e600_320]
+  combine: arithmetic_mean
+  prior_balance_iterations: 100
+  target_prior: official_full_train_class_frequencies_frozen_for_both_arms
+  sift_test_minimum_inliers: 5
+candidate:
+  model: outputs/LOCAL-PROP-001/LOCAL-PROP-001-B/model.pt
+  model_sha256: e0359ef82591783ac02c63087d25f724d2cdf929b3fd2170ec15ac7ed6112e30
+  training_manifest: outputs/LOCAL-PROP-001/plan/split_manifest.csv
+  training_manifest_sha256: 6ef3ac1e78c9cce9bb45a47d3a74d960ddddb3ab2cb95970d4093bb7e7d18d37
+  architecture: resnet18d
+  checkpoint: final_epoch_300_ema
+  input_size: 224
+  tta: flip
+  blend_weight: 0.10
+  blend_stage: raw_neural_probabilities_before_shared_prior_balance_and_sift
+  new_training: false
+  weight_search: false
+validation:
+  protocol: team_frozen_v4rot_views_shared_scene_disjoint_holdout_v1
+  source: local_B_validation_excluding_team_groups_seen_during_B_training
+  expected_rows: 603
+  expected_classes: 30
+  expected_fold_counts: [116, 119, 127, 115, 126]
+  main_metric: macro_f1_after_prior_balance_before_sift
+  prior_balance_population: same_603_rows_for_control_and_candidate
+  secondary_metric: macro_f1_with_fold_filtered_sift_matches
+  sift_query_reference_rule: reference_fold_must_differ_from_query_fold
+  use_saved_old_B_validation_probabilities: false
+  bootstrap:
+    method: paired_team_groups_within_class
+    replicates: 2000
+    seed: 43
+  limitations:
+    - Existing screening holdout; not a new independent evaluation set.
+    - Subset metric is not the team's full OOF score.
+    - Stored top-one SIFT matches do not recover an alternative when the top match is excluded.
+screen_success_criteria:
+  minimum_primary_macro_f1_gain: 0.002
+  minimum_secondary_macro_f1_gain: 0.0
+  minimum_primary_bootstrap_lower_bound: -0.01
+  no_posthoc_weight_changes: true
+execution:
+  scope: reproduce_baseline_and_evaluate_fixed_blend
+  runner: scripts/evaluate_strong_baseline.py
+  python: .venv/bin/python
+  gpu_sharing_authorized: true
+  gpu_memory_fraction_cap: 0.20
+  workers: 4
+submission:
+  automatically_submit_from_this_command: false
+  prepare_candidate_csv_only_if_screen_passes: true
