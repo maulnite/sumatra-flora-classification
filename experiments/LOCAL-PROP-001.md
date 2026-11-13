@@ -1,12 +1,12 @@
 # LOCAL-PROP-001 — Recipe R ResNet18d dengan blur ringan setelah resize
 
-> Revision **2** | Status: **Executing A/B**
+> Revision **2** | Status: **Completed — submission gate failed**
 >
 > Owner: `@maulnite` bersama Codex | 13 November 2026
 >
 > ID eksperimen tim belum dialokasikan. Eksekusi diotorisasi 13 November 2026.
 
-Satu eksperimen dengan satu perubahan: **apakah Gaussian blur ringan setelah resize 224×224 meningkatkan ketahanan recipe R + ResNet18d terhadap kehilangan detail?** [Config](../configs/LOCAL-PROP-001.yaml), split lokal, [runner](../scripts/run_local_experiment.py), serta empat cache validation sudah tersedia. Smoke check CPU dan GPU bf16 berhasil; kontrol A dijalankan sebelum kandidat B.
+Satu eksperimen dengan satu perubahan: **apakah Gaussian blur ringan setelah resize 224×224 meningkatkan ketahanan recipe R + ResNet18d terhadap kehilangan detail?** Kedua arm selesai 300 epoch. Kandidat meningkatkan mean blur Macro F1 sebesar **0,2646**, tetapi Macro F1 utama turun **0,00553**, sehingga tidak ada submission. [Config](../configs/LOCAL-PROP-001.yaml) dan [runner](../scripts/run_local_experiment.py) merekam rancangan yang dieksekusi; [ringkasan hasil JSON](results/LOCAL-PROP-001.summary.json) merekam outcome final.
 
 ## Dasar revisi
 
@@ -108,9 +108,16 @@ Perbaikan evaluasi SIFT menjadi tindak lanjut terpisah: galeri referensi untuk s
 
 | Hasil | A | B | Delta B−A |
 | --- | ---: | ---: | ---: |
-| v4rot Macro F1 | — | — | — |
-| Clean Macro F1 | — | — | — |
-| Mean blur Macro F1 | — | — | — |
-| Runtime / peak memory | — | — | — |
+| v4rot Macro F1 — utama | 0,728991 | 0,723461 | **−0,005530** |
+| Clean Macro F1 | 0,844319 | 0,845658 | +0,001340 |
+| v4rot + blur sigma 0,6 | 0,515562 | 0,685649 | +0,170087 |
+| v4rot + blur sigma 1,0 | 0,268719 | 0,627834 | +0,359115 |
+| Mean blur Macro F1 | 0,392141 | 0,656741 | **+0,264601** |
 
-Config revision 2, runner, dan cache tersedia; eksekusi A/B dimulai. Angka hasil belum diisi sampai run benar-benar selesai. Progres aktual tersedia di `outputs/LOCAL-PROP-001/status.json`.
+Semua angka memakai **EMA epoch 300**, flip TTA, dan 634 validation IDs yang sama. A selesai **08:53:09 UTC**, B **09:56:10 UTC**, dan evaluasi selesai **09:56:26 UTC pada 13 November 2026**. Waktu total pengendali sekitar 128 menit. Inisialisasi A/B identik, semua probabilitas final memiliki shape 634×30, finite, dan jumlah probabilitas mendekati satu; hash checkpoint final diverifikasi. Peak memory keseluruhan run tidak dicatat sehingga tidak diestimasi dari observasi sesaat.
+
+Gate ketahanan blur lolos (+0,2646 ≥0,02), begitu pula guard clean. **Gate utama gagal**: B tidak meningkat dan penurunan 0,005530 melampaui batas 0,005. Pengendali selesai dengan status `complete_no_submission_gate_failed`; **tidak membuat prediksi test atau mencoba upload Kaggle**. Konfigurasi eksekusi tetap dibekukan; status akhir dicatat terpisah dalam artefak hasil.
+
+Paired bootstrap 2.000 replikasi memberi interval delta 95%: utama **[−0,03365; +0,01773]**, clean [−0,01822; +0,01910], blur sigma 0,6 [+0,12959; +0,20707], dan blur sigma 1,0 [+0,31369; +0,40526]. Interval utama mencakup nol, jadi satu holdout ini belum menetapkan arah perubahan generalisasi. Hasil mendukung ketahanan terhadap synthetic blur tambahan, dengan transfer ke validation utama yang belum terbukti. Tidak ada skor leaderboard baru dari eksperimen ini.
+
+Probabilitas, confusion matrices, per-class F1, history, dan checkpoint tersedia di `outputs/LOCAL-PROP-001/`; `comparison.json` adalah sumber hasil lengkap. Tidak ada training lanjutan yang diluncurkan otomatis.

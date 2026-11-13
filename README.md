@@ -12,7 +12,7 @@ Local onboarding audit (12 Nov 2026): official data and nine existing Kaggle sub
 
 The [deep dataset audit](docs/DEEP_DATASET_AUDIT_2026-11-12.md) records detected scene overlap, provisional group folds, image quality shifts beyond JPEG, and train-label review candidates.
 
-Update 13 Nov 2026: the team's working pipeline and EXP-004–EXP-025 records are on branch `kaka`, with verified best public Macro F1 **0.87012**. See [the team update review](docs/TEAM_UPDATE_2026-11-13.md). [LOCAL-PROP-001 revision 2](experiments/LOCAL-PROP-001.md) tests recipe R / ResNet18d with one added post-resize blur operator on a local holdout. The runner passed 14 tests plus CPU/GPU smoke and has begun A/B execution; one conditional submission is authorized if primary validation F1 increases and robustness gates pass. Live artifacts are under `outputs/LOCAL-PROP-001/`.
+Update 13 Nov 2026: the team's working pipeline and EXP-004–EXP-025 records are on branch `kaka`, with verified best public Macro F1 **0.87012**. See [the team update review](docs/TEAM_UPDATE_2026-11-13.md). [LOCAL-PROP-001 revision 2](experiments/LOCAL-PROP-001.md) completed recipe R / ResNet18d A/B training with added post-resize blur on a local holdout. Mean blur Macro F1 increased **0.3921 → 0.6567**, while primary F1 changed **0.7290 → 0.7235**; the submission gate failed, so no Kaggle submission was attempted. Local artifacts are under `outputs/LOCAL-PROP-001/`.
 
 ## Competition overview
 

@@ -1,0 +1,83 @@
+{
+  "proposal_id": "LOCAL-PROP-001",
+  "revision": 2,
+  "status": "completed_not_submitted",
+  "seed": 42,
+  "architecture": "resnet18d",
+  "pretrained": false,
+  "epochs_per_arm": 300,
+  "protocol": "local_holdout_v4rot224_v1",
+  "train_rows": 2378,
+  "validation_rows": 634,
+  "purged_rows": 2,
+  "checkpoint": "final_epoch_300_ema",
+  "tta": "flip",
+  "metrics": {
+    "control": {
+      "v4rot": 0.7289908521788621,
+      "clean": 0.8443186346824901,
+      "v4rot_blur_06": 0.5155622012101244,
+      "v4rot_blur_10": 0.26871912187607544
+    },
+    "post_resize_blur": {
+      "v4rot": 0.7234606131592589,
+      "clean": 0.845658291743295,
+      "v4rot_blur_06": 0.6856488028073007,
+      "v4rot_blur_10": 0.6278337852824976
+    }
+  },
+  "mean_blur_macro_f1": {
+    "control": 0.3921406615430999,
+    "post_resize_blur": 0.6567412940448991
+  },
+  "delta": {
+    "v4rot": -0.005530239019603145,
+    "clean": 0.0013396570608048552,
+    "v4rot_blur_06": 0.17008660159717626,
+    "v4rot_blur_10": 0.3591146634064221
+  },
+  "mean_blur_delta": 0.2646006325017992,
+  "gate_checks": {
+    "primary_macro_f1_increases": false,
+    "blur_gain_reaches_threshold": true,
+    "primary_drop_within_limit": false,
+    "clean_drop_within_limit": true
+  },
+  "eligible_for_submission": false,
+  "submission_attempted": false,
+  "paired_group_bootstrap_delta_95_percent": {
+    "v4rot": [
+      -0.033645659565347714,
+      0.017731645711167247
+    ],
+    "clean": [
+      -0.018219407335359452,
+      0.01909662021800105
+    ],
+    "v4rot_blur_06": [
+      0.1295936043265979,
+      0.2070673545412695
+    ],
+    "v4rot_blur_10": [
+      0.3136906642676249,
+      0.4052646314918833
+    ]
+  },
+  "epoch_loop_minutes_excluding_evaluations_and_checkpoints": {
+    "control": 63.82033349922858,
+    "post_resize_blur": 62.18522230478314
+  },
+  "finished_at_utc": "2026-11-13T09:56:26.965340+00:00",
+  "verification": {
+    "at_utc": "2026-11-13T10:43:18.689185+00:00",
+    "final_epochs_and_probabilities_checked": true,
+    "model_sha256_checked": true,
+    "identical_initialization_sha256": "896d7a484f03655a54cd2ede74a43961ca51d3a729c0429b58fa8685193fc017"
+  },
+  "artifacts_root": "outputs/LOCAL-PROP-001",
+  "limitations": [
+    "Single local holdout; not directly comparable with team scene237 OOF.",
+    "Primary metric bootstrap interval includes zero; no established direction of generalization change.",
+    "Additional-blur validation views are synthetic stress tests, not labeled competition test."
+  ]
+}
