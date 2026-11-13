@@ -8,6 +8,12 @@ A collaborative computer vision project to classify **30 plant species** from Ke
 > **Status: starter repository.** All experiment results, leaderboard numbers, and member handles are placeholders until verified.  
 > **Public visibility:** All code published here can be viewed by anyone, including other competing teams. Sharing code **within our registered team** is allowed; cross-team code/prediction sharing is prohibited. Official rules take precedence.
 
+Local onboarding audit (12 Nov 2026): official data and nine existing Kaggle submissions have been inspected. See [verified competition/data/submission snapshot](docs/COMPETITION_AUDIT_2026-11-12.md). These historical submissions are separate from the placeholder EXP reports below; their training code and local validation metrics are not yet in this repository.
+
+The [deep dataset audit](docs/DEEP_DATASET_AUDIT_2026-11-12.md) records detected scene overlap, provisional group folds, image quality shifts beyond JPEG, and train-label review candidates.
+
+Update 13 Nov 2026: the team's working pipeline and EXP-004–EXP-025 records are on branch `kaka`, with verified best public Macro F1 **0.87012**. See [the team update review](docs/TEAM_UPDATE_2026-11-13.md). [LOCAL-PROP-001 revision 2](experiments/LOCAL-PROP-001.md) tests recipe R / ResNet18d with one added post-resize blur operator on a local holdout. The runner passed 14 tests plus CPU/GPU smoke and has begun A/B execution; one conditional submission is authorized if primary validation F1 increases and robustness gates pass. Live artifacts are under `outputs/LOCAL-PROP-001/`.
+
 ## Competition overview
 
 | Item | Details |
