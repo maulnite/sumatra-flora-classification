@@ -1,7 +1,7 @@
 {
   "proposal_id": "LOCAL-PROP-001",
   "revision": 2,
-  "status": "completed_not_submitted",
+  "status": "completed_submitted_on_explicit_user_request",
   "seed": 42,
   "architecture": "resnet18d",
   "pretrained": false,
@@ -44,7 +44,7 @@
     "clean_drop_within_limit": true
   },
   "eligible_for_submission": false,
-  "submission_attempted": false,
+  "submission_attempted": true,
   "paired_group_bootstrap_delta_95_percent": {
     "v4rot": [
       -0.033645659565347714,
@@ -72,12 +72,32 @@
     "at_utc": "2026-11-13T10:43:18.689185+00:00",
     "final_epochs_and_probabilities_checked": true,
     "model_sha256_checked": true,
-    "identical_initialization_sha256": "896d7a484f03655a54cd2ede74a43961ca51d3a729c0429b58fa8685193fc017"
+    "identical_initialization_sha256": "896d7a484f03655a54cd2ede74a43961ca51d3a729c0429b58fa8685193fc017",
+    "post_training_submission_tests_passed": 16
   },
   "artifacts_root": "outputs/LOCAL-PROP-001",
   "limitations": [
     "Single local holdout; not directly comparable with team scene237 OOF.",
     "Primary metric bootstrap interval includes zero; no established direction of generalization change.",
     "Additional-blur validation views are synthetic stress tests, not labeled competition test."
-  ]
+  ],
+  "submission": {
+    "ref": 58306830,
+    "fileName": "LOCAL-PROP-001-B_submission.csv",
+    "date": "2026-11-13T11:21:08.913000",
+    "description": "LOCAL-PROP-001-B scratch r18d224 R-v4 postresize-blur p.25 s.4-1 ep300 EMA flip localholdout634 gate-user-override sha=49251b97f4dce500",
+    "status": "SubmissionStatus.COMPLETE",
+    "publicScore": "0.79702",
+    "privateScore": "",
+    "csv_sha256": "49251b97f4dce500dbf3b59a9d4d874155cea7abbf230c79ad58dfa60f6a31cd",
+    "model_sha256": "e0359ef82591783ac02c63087d25f724d2cdf929b3fd2170ec15ac7ed6112e30",
+    "authorization": {
+      "mode": "explicit_user_override",
+      "reason": "User explicitly requested: coba submit aja (2026-11-13), after reviewing the failed validation gate",
+      "original_gate_passed": false
+    },
+    "private_score_available": false
+  },
+  "best_team_public_before_submission": 0.87012,
+  "public_delta_vs_previous_team_best": -0.07310000000000005
 }

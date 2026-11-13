@@ -10,6 +10,21 @@ except ModuleNotFoundError:
 
 @unittest.skipIf(run is None, "Use the project's .venv for training dependencies")
 class LocalExperimentTests(unittest.TestCase):
+    def test_failed_gate_requires_explicit_user_override_and_stays_failed(self):
+        result = {"eligible_for_submission": False}
+        with self.assertRaises(ValueError):
+            run.submission_authorization(result)
+        with self.assertRaises(ValueError):
+            run.submission_authorization(result, "  ")
+        authorization = run.submission_authorization(result, 'User: coba submit aja')
+        self.assertEqual(authorization['mode'], 'explicit_user_override')
+        self.assertFalse(authorization['original_gate_passed'])
+        self.assertFalse(result['eligible_for_submission'])
+
+    def test_successful_gate_preserves_conditional_authorization(self):
+        self.assertEqual(run.submission_authorization({'eligible_for_submission': True}),
+                         dict(mode='conditional_gate_passed', original_gate_passed=True))
+
     def test_kaggle_version_warning_does_not_hide_submission_history(self):
         payload = 'Warning: version update available\n[{"date":"2026-11-13","ref":12}]\n'
         self.assertEqual(run.parse_cli_json(payload), [{"date": "2026-11-13", "ref": 12}])

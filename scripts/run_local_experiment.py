@@ -525,11 +525,22 @@ def compare(cfg, val):
     return result
 
 
-def infer(cfg, device="cuda"):
-    root = ROOT / cfg["output_root"]
-    result = json.loads((root / "comparison.json").read_text())
+def submission_authorization(result, override_reason=None):
+    """Keep the scientific gate result intact when the user requests a submission."""
+    if override_reason is not None:
+        if not isinstance(override_reason, str) or not override_reason.strip():
+            raise ValueError("An explicit user override requires a nonempty authorization reason")
+        return dict(mode="explicit_user_override", reason=override_reason.strip(),
+                    original_gate_passed=bool(result["eligible_for_submission"]))
     if not result["eligible_for_submission"]:
         raise ValueError("Candidate did not meet the predeclared submission gate")
+    return dict(mode="conditional_gate_passed", original_gate_passed=True)
+
+
+def infer(cfg, device="cuda", override_reason=None):
+    root = ROOT / cfg["output_root"]
+    result = json.loads((root / "comparison.json").read_text())
+    authorization = submission_authorization(result, override_reason)
     source = root / cfg["arms"]["post_resize_blur"]["run_id"] / "model.pt"
     assert sha(source) == result["records"]["post_resize_blur"]["checkpoint_sha256"]
     model = make_model().to(device).to(memory_format=torch.channels_last)
@@ -551,20 +562,24 @@ def infer(cfg, device="cuda"):
     write_json(root / "submission_manifest.json", dict(at=now(), file=str(path), sha256=sha(path),
                model_sha256=sha(source), comparison_sha256=sha(root / "comparison.json"), rows=2010,
                training_rows=2378, trained_on_all_official_train=False, ensemble=False,
-               source="winning local-holdout final-epoch-300 EMA", pretrained=False))
+               source="candidate local-holdout final-epoch-300 EMA", pretrained=False,
+               authorization=authorization, inference_fingerprint=fingerprint(cfg)))
     log(f"Validated prediction CSV: {path}")
     return path
 
 
-def submit(cfg):
+def submit(cfg, override_reason=None):
     root = ROOT / cfg["output_root"]
     policy = cfg.get("submission", {})
     assert policy.get("conditional_submission_authorized") is True, "Missing explicit authorization record"
-    assert json.loads((root / "comparison.json").read_text())["eligible_for_submission"]
+    result = json.loads((root / "comparison.json").read_text())
+    authorization = submission_authorization(result, override_reason)
     ledger = root / "submission_attempt.json"
     if ledger.exists():
         raise RuntimeError("Submission attempt already recorded. Reconcile remote state before retrying")
     manifest = json.loads((root / "submission_manifest.json").read_text())
+    assert manifest["authorization"] == authorization, "Inference and submission authorization differ"
+    assert manifest["comparison_sha256"] == sha(root / "comparison.json")
     path = Path(manifest["file"])
     assert sha(path) == manifest["sha256"]
     assert not validate(path, ROOT / cfg["dataset_root"] / "sample_submission.csv")
@@ -582,8 +597,10 @@ def submit(cfg):
         write_json(root / "status.json", dict(status="submission_waiting_daily_quota", used_today=used, at=now()))
         raise RuntimeError("Three team submissions already recorded today; wait for quota reset")
     # No retries: a timeout can follow a successful remote upload.
-    message = f"LOCAL-PROP-001-B scratch r18d224 R-v4 postresize-blur p.25 s.4-1 ep300 EMA flip localholdout634 gate-pass sha={manifest['sha256'][:16]}"
-    attempt = dict(at=now(), status="attempting", file_sha256=manifest["sha256"], message=message)
+    gate_note = "gate-user-override" if authorization["mode"] == "explicit_user_override" else "gate-pass"
+    message = f"LOCAL-PROP-001-B scratch r18d224 R-v4 postresize-blur p.25 s.4-1 ep300 EMA flip localholdout634 {gate_note} sha={manifest['sha256'][:16]}"
+    attempt = dict(at=now(), status="attempting", file_sha256=manifest["sha256"], message=message,
+                   authorization=authorization)
     write_json(ledger, attempt)
     completed = subprocess.run(["kaggle-orie", "competitions", "submit", COMPETITION, "-f", str(path), "-m", message], capture_output=True, text=True)
     attempt.update(returncode=completed.returncode, stdout=completed.stdout, stderr=completed.stderr,
@@ -613,7 +630,11 @@ def main():
     ap.add_argument("--arm", choices=["control", "post_resize_blur"], default="control")
     ap.add_argument("--allow-gpu-sharing", action="store_true")
     ap.add_argument("--microbatch", type=int, choices=[32, 64], default=64)
+    ap.add_argument("--submission-override-reason", default=None,
+                    help="Record an explicit user request to submit despite the original validation gate (infer/submit only)")
     args = ap.parse_args()
+    if args.submission_override_reason is not None and args.command not in ("infer", "submit"):
+        ap.error("Submission overrides are allowed only for explicit infer/submit commands")
     cfg, rows, val = load_config(args.config)
     root = ROOT / cfg["output_root"]
     root.mkdir(parents=True, exist_ok=True)
@@ -646,9 +667,9 @@ def main():
                 write_json(root / "status.json", dict(status="complete_no_submission_gate_failed", at=now(), checks=result["checks"]))
                 return
         if args.command in ("infer", "auto"):
-            infer(cfg)
+            infer(cfg, override_reason=args.submission_override_reason)
         if args.command in ("submit", "auto"):
-            submit(cfg)
+            submit(cfg, override_reason=args.submission_override_reason)
             write_json(root / "status.json", dict(status="complete_submitted", at=now()))
 
 

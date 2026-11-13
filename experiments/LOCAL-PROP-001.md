@@ -1,12 +1,12 @@
 # LOCAL-PROP-001 — Recipe R ResNet18d dengan blur ringan setelah resize
 
-> Revision **2** | Status: **Completed — submission gate failed**
+> Revision **2** | Status: **Completed — submitted on explicit user request**
 >
 > Owner: `@maulnite` bersama Codex | 13 November 2026
 >
 > ID eksperimen tim belum dialokasikan. Eksekusi diotorisasi 13 November 2026.
 
-Satu eksperimen dengan satu perubahan: **apakah Gaussian blur ringan setelah resize 224×224 meningkatkan ketahanan recipe R + ResNet18d terhadap kehilangan detail?** Kedua arm selesai 300 epoch. Kandidat meningkatkan mean blur Macro F1 sebesar **0,2646**, tetapi Macro F1 utama turun **0,00553**, sehingga tidak ada submission. [Config](../configs/LOCAL-PROP-001.yaml) dan [runner](../scripts/run_local_experiment.py) merekam rancangan yang dieksekusi; [ringkasan hasil JSON](results/LOCAL-PROP-001.summary.json) merekam outcome final.
+Satu eksperimen dengan satu perubahan: **apakah Gaussian blur ringan setelah resize 224×224 meningkatkan ketahanan recipe R + ResNet18d terhadap kehilangan detail?** Kedua arm selesai 300 epoch. Kandidat meningkatkan mean blur Macro F1 sebesar **0,2646**, tetapi Macro F1 utama turun **0,00553**, sehingga gate submission otomatis gagal. Sesudah meninjau hasil tersebut, user meminta submission kandidat B; public Macro F1-nya **0,79702**. [Config](../configs/LOCAL-PROP-001.yaml) dan [runner](../scripts/run_local_experiment.py) merekam rancangan yang dieksekusi; [ringkasan hasil JSON](results/LOCAL-PROP-001.summary.json) merekam outcome final.
 
 ## Dasar revisi
 
@@ -116,8 +116,28 @@ Perbaikan evaluasi SIFT menjadi tindak lanjut terpisah: galeri referensi untuk s
 
 Semua angka memakai **EMA epoch 300**, flip TTA, dan 634 validation IDs yang sama. A selesai **08:53:09 UTC**, B **09:56:10 UTC**, dan evaluasi selesai **09:56:26 UTC pada 13 November 2026**. Waktu total pengendali sekitar 128 menit. Inisialisasi A/B identik, semua probabilitas final memiliki shape 634×30, finite, dan jumlah probabilitas mendekati satu; hash checkpoint final diverifikasi. Peak memory keseluruhan run tidak dicatat sehingga tidak diestimasi dari observasi sesaat.
 
-Gate ketahanan blur lolos (+0,2646 ≥0,02), begitu pula guard clean. **Gate utama gagal**: B tidak meningkat dan penurunan 0,005530 melampaui batas 0,005. Pengendali selesai dengan status `complete_no_submission_gate_failed`; **tidak membuat prediksi test atau mencoba upload Kaggle**. Konfigurasi eksekusi tetap dibekukan; status akhir dicatat terpisah dalam artefak hasil.
+Gate ketahanan blur lolos (+0,2646 ≥0,02), begitu pula guard clean. **Gate utama gagal**: B tidak meningkat dan penurunan 0,005530 melampaui batas 0,005. Pengendali otomatis awal selesai dengan status `complete_no_submission_gate_failed` tanpa inference test atau upload. Konfigurasi eksekusi dan hasil gate tetap dibekukan; permintaan user berikutnya untuk submit dicatat sebagai tindakan terpisah di bawah.
 
-Paired bootstrap 2.000 replikasi memberi interval delta 95%: utama **[−0,03365; +0,01773]**, clean [−0,01822; +0,01910], blur sigma 0,6 [+0,12959; +0,20707], dan blur sigma 1,0 [+0,31369; +0,40526]. Interval utama mencakup nol, jadi satu holdout ini belum menetapkan arah perubahan generalisasi. Hasil mendukung ketahanan terhadap synthetic blur tambahan, dengan transfer ke validation utama yang belum terbukti. Tidak ada skor leaderboard baru dari eksperimen ini.
+Paired bootstrap 2.000 replikasi memberi interval delta 95%: utama **[−0,03365; +0,01773]**, clean [−0,01822; +0,01910], blur sigma 0,6 [+0,12959; +0,20707], dan blur sigma 1,0 [+0,31369; +0,40526]. Interval utama mencakup nol, jadi satu holdout ini belum menetapkan arah perubahan generalisasi. Hasil mendukung ketahanan terhadap synthetic blur tambahan, dengan transfer ke validation utama yang belum terbukti.
 
 Probabilitas, confusion matrices, per-class F1, history, dan checkpoint tersedia di `outputs/LOCAL-PROP-001/`; `comparison.json` adalah sumber hasil lengkap. Tidak ada training lanjutan yang diluncurkan otomatis.
+
+## Submission atas permintaan user
+
+Setelah laporan hasil A/B, user memberi instruksi eksplisit **“coba submit aja”**. Runner menyediakan `--submission-override-reason` khusus perintah `infer`/`submit`; flag tersebut mencatat izin tanpa mengubah metrik atau hasil gate otomatis. Dua unit tests tambahan memverifikasi bahwa default tetap menolak gate gagal dan override tidak mengubah hasil gate; total **16 tests lulus**.
+
+Prediksi memakai **B, EMA epoch 300, input 224, flip TTA**, dilatih pada 2.378 gambar train lokal. Tidak ada refit, ensemble, SIFT, atau prior correction. CSV lulus validasi 2.010 ID berurutan dan label integer 0–29, hash model cocok dengan checkpoint final, dan kuota diperiksa sebelum satu upload melalui `kaggle-orie`.
+
+| Item | Hasil |
+| --- | --- |
+| Submission ref | **58306830** |
+| Waktu UTC | 13 November 2026, 11:21:08 |
+| File | `LOCAL-PROP-001-B_submission.csv` |
+| Status Kaggle | **COMPLETE** |
+| Public Macro F1 | **0,79702** |
+| Private score | Belum tersedia |
+| Best public tim sebelum submission | 0,87012 |
+| Delta terhadap best public tim | −0,07310 |
+| CSV SHA-256 prefix | `49251b97f4dce500` |
+
+Ini satu model hasil holdout lokal, sedangkan best tim memakai pipeline ensemble dan SIFT; perbedaan skor tidak mengisolasi efek blur. Efek A/B lokal tetap sebagaimana tabel validation. Manifest inference, ledger upload, dan respons Kaggle lengkap tersimpan di `outputs/LOCAL-PROP-001/submission_{manifest,attempt,result}.json`.
