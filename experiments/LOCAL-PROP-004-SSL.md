@@ -1,7 +1,9 @@
 # LOCAL-PROP-004-SSL: adaptive self-training, fold-0 screening
 
-Status: **running**, detached supervisor launched 14 Nov 2026 at 09:34:51 UTC.
-Control A began real optimizer updates; B will follow sequentially.
+Status: **completed; screening failed**. Both arms completed 100 epochs and 3,700
+optimizer updates. The detached job ran 14 Nov 2026 09:34:51–15:14:51 UTC,
+approximately 5 hours 40 minutes, with exit code 0 and no OOM restarts.
+No additional folds or Kaggle upload were started.
 
 The retrieval graph pilot reduced pooled two-fold balanced macro F1 from 0.867045 to
 0.853589 (delta −0.013457). This experiment therefore excludes graph propagation
@@ -126,5 +128,60 @@ The smoke weights are discarded; A and B each start from the original team EMA.
 Detached supervisor PID at launch: 3909795; runner PID: 3909797. At 09:35:52 UTC,
 A was in epoch 1 with **9/37 optimizer updates completed**, target loss weight 0,
 and no OOM restart recorded. PIDs are historical evidence; check `job.json` and
-the process command line before using them later. Final scores and runtime are
-pending. The supervisor will write `completion.json` when both arms finish.
+the process command line before using them later. These processes have completed;
+`completion.json` records the final result.
+
+## Final epoch-100 results
+
+All values below are local validation macro F1 on the same 614 held-out rows.
+Primary uses the equal neural ensemble after prior balancing, before SIFT.
+Clean and mean additional-blur scores use the raw ensemble, as preregistered.
+
+| Metric | Initial weights | Control A | Adaptive B | B minus A |
+| --- | ---: | ---: | ---: | ---: |
+| Primary balanced ensemble | 0.871464 | **0.876597** | 0.874712 | −0.001885 |
+| Primary raw ensemble | 0.867945 | 0.869658 | 0.871496 | +0.001838 |
+| Clean raw ensemble | 0.904960 | 0.900345 | 0.908593 | +0.008249 |
+| Mean additional-blur raw ensemble | 0.608088 | 0.636268 | 0.651416 | +0.015148 |
+| Primary raw R18d student | 0.865440 | 0.864272 | 0.860653 | −0.003619 |
+
+B gains **0.003248** against the initial primary baseline but falls **0.001885**
+below the matched control. Both minimum-gain requirements of +0.01 fail.
+All clean and blur guards pass. Relative to A, B fixes two primary errors and
+breaks three correct predictions; eight labels change in total, including changes
+between two wrong labels. Relative to the initial ensemble, B fixes four errors
+and breaks two correct predictions, with eleven labels changed.
+
+Class-stratified paired scene-group bootstrap 95% intervals for the primary
+difference are **[−0.005120, +0.012580]** versus the initial weights and
+**[−0.009917, +0.005350]** versus A. Both include zero. This single-fold run does
+not establish a primary advantage from the adaptive target loss.
+
+B's highest logged intermediate primary is 0.880329 at epoch 50, followed by
+0.879277 at 60 and 0.874712 at 100. This is diagnostic only: the agreed decision
+uses epoch 100, and no intermediate EMA weights were promoted. The trajectory is
+consistent with late adaptation drift, but it does not prove incorrect pseudo-labels
+caused the decline. Target pseudo-label accuracy is unknown. Final selection
+coverage is about 51.2% of target training draws across all 30 predicted classes;
+these draws include repeated images and are not a count of unique test images.
+
+The source-loss control also improves over the initial ensemble, so the initial-to-B
+gain alone cannot be attributed to self-training. Higher raw ensemble, clean, and
+blur scores coexist with lower primary balanced F1 versus A; any follow-up would
+need to test that distinction under a separately frozen protocol. The current
+configuration is not promoted to more folds or a submission. Team best predictions
+remain the reference.
+
+## Final verification and artifacts
+
+The final verification recomputed all initial/A/B metrics from the saved
+probabilities and confirmed each ensemble equals its student/frozen-R34d average.
+All pinned input and code/config hashes remained unchanged. Final `model.pt` files
+exactly match the EMA tensors in their epoch-100 resumable checkpoints; optimizer
+and scheduler states both confirm 3,700 updates per arm. Peak allocated GPU memory
+was 2.2134 GiB. Verification passed without new training or another GPU inference run.
+
+[Machine-readable summary](results/LOCAL-PROP-004-SSL.summary.json) contains final
+metrics, gates, bootstrap intervals, trajectories, checkpoint hashes, and verification.
+Full local artifacts remain in `outputs/LOCAL-PROP-004-SSL/`, including
+`result.json`, `final_verification.json`, and per-arm checkpoints/probabilities.

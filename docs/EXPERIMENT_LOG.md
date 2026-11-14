@@ -35,6 +35,15 @@ OOM resume tanpa perubahan batch size. Pada 09:35:52 UTC A telah menjalankan
 9 optimizer updates. Belum ada hasil kandidat atau submission; gate final-epoch
 mensyaratkan minimal +0,01 terhadap initial dan matched control serta clean/blur guards.
 
+Hasil 14 Nov 15:14 UTC: **LOCAL-PROP-004-SSL selesai**, masing-masing 100 epoch
+dan 3.700 updates, runtime total 5 jam 40 menit, exit 0, tanpa OOM. Primary
+balanced F1 fold 0: initial **0,871464**, kontrol A **0,876597**, adaptive B
+**0,874712**. B naik +0,003248 dari initial tetapi turun −0,001885 dari kontrol;
+kedua gate primary +0,01 gagal. Clean/blur guards lolos. Conditional paired-group
+95% CI B−A [−0,009917; +0,005350] mencakup nol. Tidak dipromosikan ke fold lain
+atau submission. Saved probabilities dan final EMA/checkpoint diverifikasi;
+seluruh input/code/config hashes tetap. [Ringkasan hasil](../experiments/results/LOCAL-PROP-004-SSL.summary.json).
+
 ## Ablation / comparison placeholder
 
 | Factor | Run A | Run B | Matched validation split? | Conclusion |
