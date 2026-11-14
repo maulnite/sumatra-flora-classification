@@ -44,6 +44,26 @@ kedua gate primary +0,01 gagal. Clean/blur guards lolos. Conditional paired-grou
 atau submission. Saved probabilities dan final EMA/checkpoint diverifikasi;
 seluruh input/code/config hashes tetap. [Ringkasan hasil](../experiments/results/LOCAL-PROP-004-SSL.summary.json).
 
+Research 14 Nov 19:50 UTC: [LOCAL-PROP-005-DIAG](METHOD_RESEARCH_2026-11-14.md)
+screened per-image RootSIFT/homography after fold-safe neural retrieval on 607
+fold-1 queries. Twenty accepted matches were all correct but changed no baseline
+labels: **0,862873 → 0,862873**. Runtime 38,67 seconds; 34 tests passed. This is
+a conservative 448px/240-keypoint gallery diagnostic, not full ASIFT/RIFT.
+No training, test prediction, or submission. Main next research recommendation:
+matched source-supervised CE versus **CE + supervised contrastive representation
+loss** from scratch, with distinct-scene positive pairs. SupCon training has not
+started; [research report and proposed protocol](METHOD_RESEARCH_2026-11-14.md).
+
+Execution 14 Nov 20:05 UTC: [LOCAL-PROP-006-SUPCON](../experiments/LOCAL-PROP-006-SUPCON.md)
+started detached **from scratch**, matched CE versus CE+SupCon, ResNet18d@288,
+600 epochs / 24.000 updates per arm, strict fold 2 (2.411 source / 603 validation).
+A/B process the same 120-view batch in turn from the first epoch. Source labels
+only, distinct-scene class positives, no target images/pseudo-labels. Strong
+team fold-2 baseline **0,826344**. All 38 tests and a paired full-batch GPU smoke
+passed; peak smoke VRAM 3,30 GiB. At 20:06:28 UTC both arms had completed 38 updates.
+Candidate validation is pending; first evaluation at epoch 50. Paired epoch
+checkpoints and a 60-second heartbeat support background monitoring/OOM resume.
+
 ## Ablation / comparison placeholder
 
 | Factor | Run A | Run B | Matched validation split? | Conclusion |

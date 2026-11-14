@@ -1,0 +1,35 @@
+experiment_id: LOCAL-PROP-005-DIAG
+output_root: outputs/LOCAL-PROP-005-DIAG
+dataset_root: data/raw
+team_root: /home/nafisnaufal1426/inahuy/dateruy
+feature_root: outputs/LOCAL-PROP-004-PILOT/features
+analytic_root: outputs/deep_audit
+reference_root: outputs/BASELINE-INFERENCE-REPRO-001
+fold: 1
+seed: 44
+workers: 8
+neural_neighbors_per_backbone_per_view: 20
+backbones: [R_r18d_i288_e600, R_r34d_e600]
+query_size: 352
+query_keypoints: 600
+query_contrast_threshold: 0.025
+query_edge_threshold: 12
+matching:
+  ratio: 0.8
+  mutual_nearest: true
+  deduplicate_pixels: 2
+  ransac_pixels: 3.0
+  ransac_iterations: 3000
+  ransac_confidence: 0.995
+  minimum_inliers: 10
+  minimum_inlier_ratio: 0.5
+  minimum_hull_fraction_both_images: 0.01
+  maximum_median_forward_reprojection_error: 1.5
+  minimum_winner_vs_other_class_inlier_ratio: 1.5
+validation:
+  protocol: strict_fold1_gallery_excludes_all_heldout_fold_images
+  baseline: equal_reference_neural_ensemble_balanced_before_sift
+  thresholds_selected_before_screen: true
+  direct_promotion_allowed: false
+  test_predictions_generated: false
+  interpretation: diagnostic_reusing_448px_240keypoint_analytic_gallery_not_full_asift

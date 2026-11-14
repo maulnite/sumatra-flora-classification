@@ -1,0 +1,87 @@
+experiment_id: LOCAL-PROP-006-SUPCON
+output_root: outputs/LOCAL-PROP-006-SUPCON
+dataset_root: data/raw
+team_root: /home/nafisnaufal1426/inahuy/dateruy
+reference_root: outputs/BASELINE-INFERENCE-REPRO-001
+reference_summary: experiments/results/BASELINE-INFERENCE-REPRO-001.summary.json
+python: /home/nafisnaufal1426/venvs/dq/bin/python
+fold: 2
+seed: 44
+student_run: R_r18d_i288_e600
+frozen_run: R_r34d_e600
+training:
+  architecture: resnet18d
+  pretrained: false
+  initialization: identical_saved_random_weights_both_arms
+  image_size: 288
+  epochs: 600
+  classes_per_batch: 30
+  photographs_per_class: 2
+  source_batch: 60
+  views_per_image: 2
+  contrastive_comparison_set: 120
+  gradient_accumulation: 1
+  sampling: class_balanced_replacement_across_updates_distinct_scene_groups_within_class
+  optimizer: AdamW
+  learning_rate: 0.002
+  minimum_learning_rate: 0.000001
+  warmup_epochs: 3
+  weight_decay: 0.05
+  label_smoothing: 0.1
+  gradient_clip_norm: 5.0
+  batch_mixup_cutmix_probability: 0.0
+  source_rotation_probability: 0.9
+  source_rotation_degrees: 180
+  views: paired_light_color_and_corrupt_v4_after_same_native_rotation_and_crop_seed
+  ema_decay: 0.999
+  precision: bfloat16
+  channels_last: true
+  checkpoint_selection: final_epoch_600_ema
+contrastive:
+  projection_hidden: 512
+  projection_dimension: 128
+  temperature: 0.1
+  maximum_weight: 1.0
+  warmup_epochs: 20
+  positives: all_other_same_class_embeddings_in_true_120_view_comparison_set
+arms:
+  A:
+    description: Matched cross-entropy control
+    contrastive_loss_enabled: false
+  B:
+    description: Cross entropy plus source-supervised contrastive loss
+    contrastive_loss_enabled: true
+validation:
+  expected_train_rows: 2411
+  expected_validation_rows: 603
+  protocol: strict_team_scene_fold2_source_only_no_test_adaptation
+  student_inference_size: 352
+  frozen_inference_size: 320
+  batch_size: 32
+  tta: flip
+  log_every_epochs: 50
+  main_metric: equal_student_frozen_r34d_ensemble_balanced_before_sift
+  balance_iterations: 100
+  prior: frozen_full_train_class_frequencies
+  minimum_B_gain_vs_initial_baseline: 0.01
+  minimum_B_gain_vs_A: 0.01
+  minimum_clean_raw_ensemble_delta_vs_baseline_and_A: -0.01
+  minimum_mean_blur_raw_ensemble_delta_vs_baseline_and_A: -0.01
+  bootstrap_replicates: 2000
+  bootstrap_seed: 44
+execution:
+  runner: scripts/supervised_contrastive.py
+  arm_schedule: A_then_B_on_each_identical_batch_one_shared_data_loader
+  cpu_threads: 4
+  workers: 8
+  gpu_memory_fraction: 0.20
+  gpu_sharing_authorized: true
+  monitor_interval_seconds: 60
+  oom_retry_seconds: 30
+  oom_exit_code: 75
+  restart: last_complete_paired_epoch_same_batch_sizes
+  cpu_fallback: false
+  automatic_submission: false
+  automatic_additional_folds: false
+  target_images_used: false
+  geometric_matching: false
