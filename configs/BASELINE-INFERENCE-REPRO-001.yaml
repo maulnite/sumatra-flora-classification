@@ -1,0 +1,37 @@
+reproduction_id: BASELINE-INFERENCE-REPRO-001
+team_root: /home/nafisnaufal1426/inahuy/dateruy
+python: /home/nafisnaufal1426/venvs/dq/bin/python
+output_root: outputs/BASELINE-INFERENCE-REPRO-001
+dataset_root: data/raw
+members:
+  - run: R_r18d_i288_e600
+    architecture: resnet18d
+    training_size: 288
+    inference_size: 352
+  - run: R_r34d_e600
+    architecture: resnet34d
+    training_size: 224
+    inference_size: 320
+folds: [0, 1, 2, 3, 4]
+expected_fold_sizes: [614, 607, 603, 600, 590]
+batch_size: 128
+tta: flip
+precision: bfloat16
+channels_last: true
+cudnn_benchmark: false
+cudnn_deterministic: false
+cudnn_allow_tf32: true
+matmul_allow_tf32: false
+gpu_memory_fraction: 0.20
+gpu_sharing_authorized: true
+cpu_threads: 4
+preprocessing_workers: 4
+probability_tolerance:
+  absolute: 0.00001
+  relative: 0.0001
+expected_submission_sha256: 6ca4cb673741edc3ca1e9903ed31dfb3b35924b52797742715a40e667f4d25e9
+prior_balance_iterations: 100
+sift_minimum_inliers: 5
+preprocessing_replay: true
+training: false
+kaggle_upload: false

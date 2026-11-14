@@ -16,7 +16,9 @@ Update 13 Nov 2026: the team's working pipeline and EXP-004–EXP-025 records ar
 
 ## Competition overview
 
-[LOCAL-PROP-002](experiments/LOCAL-PROP-002.md) uses the team's strongest EXP-024 pipeline as its frozen baseline; its original 0.87012 submission was reproduced byte-for-byte. A fixed 10% addition of the blur model changed shared-holdout F1 **0.8527 → 0.8505**, so the original baseline was retained without another submission. Team artifacts are available at the server path documented in the report.
+[LOCAL-PROP-002](experiments/LOCAL-PROP-002.md) uses the team's strongest EXP-024 pipeline as its frozen baseline; its original 0.87012 submission was reconstructed byte-for-byte from stored team probabilities. A fixed 10% addition of the blur model changed shared-holdout F1 **0.8527 → 0.8505**, so the original baseline was retained without another submission. Team artifacts are available at the server path documented in the report.
+
+Update 14 Nov 2026: [checkpoint inference reproduction](experiments/BASELINE-INFERENCE-REPRO-001.md) executed all **10 best-team checkpoints**. All four OOF/test probability arrays and final CSV are **byte-identical** to the reference; maximum probability difference is **0**. Replaying preprocessing from all **5,024 raw images at two resolutions** also reproduces every cache pixel. Balanced neural OOF is **0.852564**; 21 tests pass. Training and SIFT matching were not rerun; final postprocessing uses the original SIFT match table. No new Kaggle submission.
 
 | Item | Details |
 | --- | --- |

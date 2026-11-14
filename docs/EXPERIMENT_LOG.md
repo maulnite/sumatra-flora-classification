@@ -14,6 +14,8 @@ Update 13 Nov 2026: branch `kaka` contains published experiment IDs EXP-004 thro
 
 Update lanjutan 13 Nov: [LOCAL-PROP-002](../experiments/LOCAL-PROP-002.md) memakai **EXP-024 best public 0.87012** sebagai baseline. Artefak ditemukan di folder server yang didokumentasikan tim; final CSV berhasil direproduksi byte-for-byte dan full balanced neural OOF **0.852564** direproduksi. Pada 603 query yang tidak terlihat oleh B dan memakai frozen views tim, kontrol **0.852673**, blend tetap 90% best +10% B **0.850512** (delta −0.002160). **Baseline asli dipertahankan, tidak ada submission baru.** Ini screening subset, bukan full OOF kandidat. Tidak ada training ulang; 19 tests lulus.
 
+Update 14 Nov: [BASELINE-INFERENCE-REPRO-001](../experiments/BASELINE-INFERENCE-REPRO-001.md) benar-benar menjalankan ulang inference **10 checkpoint best**. Keempat file OOF/test memiliki SHA-256 identik dengan referensi, selisih probabilitas maksimum **0**, balanced neural OOF **0.852564**, dan final CSV identik byte-for-byte. **5.024 raw images × 2 resolusi** menghasilkan cache pixel-identical. Runtime 140,66 detik; 21 tests lulus. Training dan pencarian match SIFT tidak diulang; final menggunakan tabel SIFT referensi. Tidak ada submission baru. Ini melengkapi checkpoint replay yang belum dilakukan pada LOCAL-PROP-002.
+
 ## Ablation / comparison placeholder
 
 | Factor | Run A | Run B | Matched validation split? | Conclusion |

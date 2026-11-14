@@ -2,7 +2,9 @@
 
 Status: **completed; original strongest baseline retained; no submission**.
 
-Kontrol adalah **EXP-024**, best public tim **0.87012**: mean ResNet18d train288/infer352 dan ResNet34d train224/infer320, masing-masing lima fold, 600 epoch, prior balancing, lalu SIFT ≥5 inliers. Artefak asli ditemukan di `~/inahuy/dateruy/`, sesuai `docs/CODE_MAP.md` branch `kaka`; source/weights/proses tim tidak diubah. CSV kontrol sudah direproduksi byte-for-byte dengan SHA-256 `6ca4cb673741edc3ca1e9903ed31dfb3b35924b52797742715a40e667f4d25e9`.
+Kontrol adalah **EXP-024**, best public tim **0.87012**: mean ResNet18d train288/infer352 dan ResNet34d train224/infer320, masing-masing lima fold, 600 epoch, prior balancing, lalu SIFT ≥5 inliers. Artefak asli ditemukan di `~/inahuy/dateruy/`, sesuai `docs/CODE_MAP.md` branch `kaka`; source/weights/proses tim tidak diubah. CSV kontrol sudah direkonstruksi **dari probabilitas tim yang tersimpan** secara byte-for-byte dengan SHA-256 `6ca4cb673741edc3ca1e9903ed31dfb3b35924b52797742715a40e667f4d25e9`. Pada tahap LOCAL-PROP-002 ini, checkpoint baseline belum menjalankan inference ulang.
+
+**Update 14 November:** [BASELINE-INFERENCE-REPRO-001](BASELINE-INFERENCE-REPRO-001.md) kemudian menjalankan ulang seluruh sepuluh checkpoint baseline. Keempat probabilitas OOF/test dan final CSV identik persis; preprocessing seluruh raw images juga pixel-identical dengan cache. Training dan pencarian match SIFT belum diulang.
 
 Satu kandidat yang dibekukan: **90% probabilitas neural baseline + 10% model B LOCAL-PROP-001**, kemudian prior balancing dan SIFT yang sama. Ini menguji nilai tambahan model B untuk sistem kuat; tidak melatih ulang atau mengganti dua keluarga backbone best tim. Bobot 10% ditetapkan sebelum membaca skor kandidat dan tidak dicari ulang jika hasil gagal.
 
