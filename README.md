@@ -22,6 +22,8 @@ Update 14 Nov 2026: [checkpoint inference reproduction](experiments/BASELINE-INF
 
 Next research priority: [LOCAL-PROP-004](experiments/LOCAL-PROP-004.md), domain-adaptive self-training on official unlabeled test images, with adaptive pseudo-label confidence and separately evaluated retrieval/graph components. CPU diagnostics show 1,330/1,332 selected OOF predictions correct at backbone agreement plus confidence≥0.8, and 521 selected test images; test pseudo-label accuracy is unknown. Current top public is 0.99645. **Research proposal only; no new training or submission.** The earlier [30-epoch fine-tuning plan](experiments/LOCAL-PROP-003.md) was deferred by the user before execution.
 
+[The two-fold retrieval/graph pilot](experiments/LOCAL-PROP-004-PILOT.md) launched as a detached background job on 14 Nov at 08:59 UTC. It uses existing checkpoints, frozen graph parameters, GPU feature extraction and a 60-second process monitor. Its primary queries read a fixed train+unlabeled-test graph independently; joint transductive results are reported separately. No backbone training or Kaggle upload. Runner status, logs and completion markers are under `outputs/LOCAL-PROP-004-PILOT/`; 24 tests passed before launch.
+
 | Item | Details |
 | --- | --- |
 | Organizer | HMSD Adyatama, ITERA |

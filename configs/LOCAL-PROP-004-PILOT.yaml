@@ -1,0 +1,68 @@
+pilot_id: LOCAL-PROP-004-PILOT
+status: execution_authorized
+output_root: outputs/LOCAL-PROP-004-PILOT
+team_root: /home/nafisnaufal1426/inahuy/dateruy
+dataset_root: data/raw
+python: /home/nafisnaufal1426/venvs/dq/bin/python
+reference_root: outputs/BASELINE-INFERENCE-REPRO-001
+reference_summary: experiments/results/BASELINE-INFERENCE-REPRO-001.summary.json
+folds: [0, 1]
+seed: 44
+members:
+  - run: R_r18d_i288_e600
+    inference_size: 352
+  - run: R_r34d_e600
+    inference_size: 320
+features:
+  layer: global_average_pool_before_classifier
+  tta: horizontal_flip
+  tta_reduce: mean_float32_then_l2_normalize
+  concatenate_members_with_equal_weight: true
+  center_on_training_gallery_only: true
+  gallery_views: [clean, frozen_v4rot]
+  batch_size: 8
+  gpu_memory_fraction: 0.20
+  minimum_free_gpu_mib: 0
+  cpu_fallback: false
+  oom_minimum_batch_size: 1
+  oom_retry_seconds: 20
+  cpu_threads: 4
+  preprocessing_workers: 4
+graph:
+  neighbors: 15
+  edge_temperature: 0.1
+  mutual_knn: true
+  diffusion_alpha: 0.8
+  iterations: 50
+  tolerance: 0.000001
+  final_neural_graph_weight: 0.5
+  labeled_sources_clamped: true
+  test_pseudo_labels_clamped: false
+  independent_query_reciprocal_neighbors: true
+  independent_query_minimum_similarity: 0.0
+retrieval:
+  neighbors: 15
+  distinct_source_images: true
+  neural_blend_weight: 0.5
+validation:
+  primary: independent_query_readout_from_train_and_unlabeled_test_graph
+  secondary: joint_graph_with_unlabeled_validation_queries
+  balance_iterations: 100
+  target_prior: frozen_full_train_frequencies
+  paired_fold_baseline_balance_population: current_fold_queries
+  pooled_balance_population: concatenated_fold0_and_fold1_queries
+  seed_confidence_for_diagnosis_only: 0.8
+  bootstrap_replicates: 2000
+  bootstrap_seed: 44
+  bootstrap_scope: fixed_predictions_paired_training_scene_groups_within_class
+  minimum_primary_pooled_macro_f1_gain: 0.01
+  minimum_primary_each_fold_macro_f1_gain: 0.0
+  no_hyperparameter_search: true
+execution:
+  training: false
+  kaggle_upload: false
+  complete_five_fold_oof: false
+  sift_or_asift_computed: false
+  baseline_csv_modified: false
+  detached_background: true
+  monitor_interval_seconds: 60

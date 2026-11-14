@@ -2,6 +2,8 @@
 
 Status: **proposal riset; belum training, belum implementasi metode, belum submission**. Menggantikan prioritas LOCAL-PROP-003 setelah user meminta arah dengan potensi dampak lebih besar. Hasil di bawah adalah diagnosis baseline, bukan hasil kandidat.
 
+Update eksekusi: [LOCAL-PROP-004-PILOT](LOCAL-PROP-004-PILOT.md) mengimplementasikan tahap embedding/retrieval/graph dan dimulai di background pada 14 November 08:59 UTC. Kode/config dibekukan sebelum skor;24 tests lulus. Metode training domain adaptation dan geometric matching belum diimplementasikan pada pilot ini. Hasil akhir tersedia otomatis di folder output setelah job selesai.
+
 Rekomendasi utama: mengubah tujuan belajar menjadi **semi-supervised domain adaptation**, menggunakan official test images tanpa label, dengan pseudo-label adaptif, konsistensi weak/strong views, dan pembaruan teacher. Retrieval/geometri serta graph inference diuji sebagai komponen pendukung. Bobot awal dapat memakai checkpoint tim yang seluruhnya dilatih dari scratch; tidak memerlukan pretrained model eksternal.
 
 ## Yang benar-benar diketahui

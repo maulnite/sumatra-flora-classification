@@ -20,6 +20,8 @@ Planned 14 Nov: [LOCAL-PROP-003](../experiments/LOCAL-PROP-003.md) menguji fine-
 
 User revision 14 Nov: LOCAL-PROP-003 deferred before training. [LOCAL-PROP-004](../experiments/LOCAL-PROP-004.md) researches domain-adaptive self-training, adaptive confidence, and retrieval/graph inference. Fresh leaderboard top public **0,99645**. Baseline CPU diagnostics: OOF agreement+confidence≥0,8 gives **1.330/1.332 correct**, with **521 test candidates** of unknown accuracy; confidence≥0,95 selects just one test image. Both backbone top1 predictions are wrong on 399 OOF queries. **No candidate training, implemented method, or new submission.** Primary strict OOF and secondary transductive holdout are explicitly separated; paper links and diagnostic JSON are included.
 
+Eksekusi 14 Nov 08:59 UTC: [LOCAL-PROP-004-PILOT](../experiments/LOCAL-PROP-004-PILOT.md) menjalankan ekstraksi embedding empat checkpoint serta retrieval/graph pada fold0/1 sebagai detached background job. Primary query readout dan secondary joint transductive graph dipisahkan. Config/gate dibekukan;24 tests lulus. Monitor otomatis mencatat heartbeat setiap60 detik. Tidak ada backbone training, SIFT/ASIFT baru, atau Kaggle upload; hasil akhir disimpan otomatis di output job.
+
 ## Ablation / comparison placeholder
 
 | Factor | Run A | Run B | Matched validation split? | Conclusion |
