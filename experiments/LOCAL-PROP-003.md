@@ -1,6 +1,6 @@
 # LOCAL-PROP-003 — Fine-tuning akhir dengan MixUp/CutMix dimatikan
 
-Status: **rencana, belum menjalankan training**. Rencana dibuat 14 November 2026 sesudah [reproduksi inference baseline](BASELINE-INFERENCE-REPRO-001.md) berhasil exact. [Config](../configs/LOCAL-PROP-003.yaml) adalah protokol rencana; runner baru belum diimplementasikan. Tidak ada klaim hasil kandidat.
+Status: **ditunda atas arahan user, sebelum training**. Rencana dibuat 14 November 2026 sesudah [reproduksi inference baseline](BASELINE-INFERENCE-REPRO-001.md) berhasil exact. User kemudian meminta metode dengan potensi dampak lebih besar untuk mengejar leaderboard; prioritas berpindah ke [LOCAL-PROP-004](LOCAL-PROP-004.md). [Config](../configs/LOCAL-PROP-003.yaml) tetap menyimpan protokol sebelumnya; runner baru belum diimplementasikan. Tidak ada klaim hasil kandidat.
 
 ## Pertanyaan dan alasan memilihnya
 

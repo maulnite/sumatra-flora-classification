@@ -20,7 +20,7 @@ Update 13 Nov 2026: the team's working pipeline and EXP-004–EXP-025 records ar
 
 Update 14 Nov 2026: [checkpoint inference reproduction](experiments/BASELINE-INFERENCE-REPRO-001.md) executed all **10 best-team checkpoints**. All four OOF/test probability arrays and final CSV are **byte-identical** to the reference; maximum probability difference is **0**. Replaying preprocessing from all **5,024 raw images at two resolutions** also reproduces every cache pixel. Balanced neural OOF is **0.852564**; 21 tests pass. Training and SIFT matching were not rerun; final postprocessing uses the original SIFT match table. No new Kaggle submission.
 
-Planned next: [LOCAL-PROP-003](experiments/LOCAL-PROP-003.md), paired 30-epoch fine-tuning from the best ResNet18d EMA checkpoints, with versus without batch MixUp/CutMix. The original corruption policy and ResNet34d family stay fixed. Start with fold 0, then check fold 1 before completing all five folds if gates pass. **Planning only; training has not started.**
+Next research priority: [LOCAL-PROP-004](experiments/LOCAL-PROP-004.md), domain-adaptive self-training on official unlabeled test images, with adaptive pseudo-label confidence and separately evaluated retrieval/graph components. CPU diagnostics show 1,330/1,332 selected OOF predictions correct at backbone agreement plus confidence≥0.8, and 521 selected test images; test pseudo-label accuracy is unknown. Current top public is 0.99645. **Research proposal only; no new training or submission.** The earlier [30-epoch fine-tuning plan](experiments/LOCAL-PROP-003.md) was deferred by the user before execution.
 
 | Item | Details |
 | --- | --- |

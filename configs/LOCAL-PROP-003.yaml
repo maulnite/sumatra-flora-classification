@@ -1,6 +1,7 @@
 proposal_id: LOCAL-PROP-003
 title: Paired late fine-tuning with versus without batch MixUp and CutMix
-status: planned_not_started
+status: deferred_by_user_before_training
+deferred_reason: User requested a larger-impact method targeting the leaderboard gap; see LOCAL-PROP-004 research proposal.
 output_root: outputs/LOCAL-PROP-003
 dataset_root: data/raw
 team_root: /home/nafisnaufal1426/inahuy/dateruy

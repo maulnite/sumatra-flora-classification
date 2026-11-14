@@ -1,0 +1,273 @@
+{
+  "pseudo_label_diagnostics": {
+    "oof": {
+      "rows": 3014,
+      "backbone_agreement": 2663,
+      "raw_confidence_quantiles": [
+        0.10423623770475388,
+        0.2532062023878098,
+        0.7670737206935883,
+        0.8870121955871582,
+        0.9705880284309387
+      ],
+      "thresholds": [
+        {
+          "threshold": 0.5,
+          "selected": 2177,
+          "classes": 30,
+          "precision": 0.9765732659623335,
+          "errors": 51
+        },
+        {
+          "threshold": 0.6,
+          "selected": 1989,
+          "classes": 30,
+          "precision": 0.9849170437405732,
+          "errors": 30
+        },
+        {
+          "threshold": 0.7,
+          "selected": 1737,
+          "classes": 30,
+          "precision": 0.9919401266551525,
+          "errors": 14
+        },
+        {
+          "threshold": 0.8,
+          "selected": 1332,
+          "classes": 30,
+          "precision": 0.9984984984984985,
+          "errors": 2
+        },
+        {
+          "threshold": 0.9,
+          "selected": 178,
+          "classes": 30,
+          "precision": 1.0,
+          "errors": 0
+        },
+        {
+          "threshold": 0.95,
+          "selected": 9,
+          "classes": 7,
+          "precision": 1.0,
+          "errors": 0
+        }
+      ],
+      "lowest_class_f1": [
+        {
+          "class": 16,
+          "f1": 0.6853146853146853,
+          "samples": 74,
+          "errors": 25
+        },
+        {
+          "class": 6,
+          "f1": 0.7542372881355932,
+          "samples": 116,
+          "errors": 27
+        },
+        {
+          "class": 26,
+          "f1": 0.7567567567567568,
+          "samples": 97,
+          "errors": 27
+        },
+        {
+          "class": 17,
+          "f1": 0.7692307692307693,
+          "samples": 74,
+          "errors": 19
+        },
+        {
+          "class": 20,
+          "f1": 0.7833333333333333,
+          "samples": 114,
+          "errors": 20
+        },
+        {
+          "class": 7,
+          "f1": 0.7835051546391752,
+          "samples": 91,
+          "errors": 15
+        },
+        {
+          "class": 13,
+          "f1": 0.7922077922077922,
+          "samples": 76,
+          "errors": 15
+        },
+        {
+          "class": 4,
+          "f1": 0.7962962962962963,
+          "samples": 105,
+          "errors": 19
+        },
+        {
+          "class": 24,
+          "f1": 0.8031496062992126,
+          "samples": 120,
+          "errors": 18
+        },
+        {
+          "class": 3,
+          "f1": 0.803347280334728,
+          "samples": 129,
+          "errors": 33
+        }
+      ],
+      "balanced_errors": 462
+    },
+    "test": {
+      "rows": 2010,
+      "backbone_agreement": 1696,
+      "raw_confidence_quantiles": [
+        0.09194618463516235,
+        0.1803597554564476,
+        0.5445697605609894,
+        0.8665291190147401,
+        0.9534275531768799
+      ],
+      "thresholds": [
+        {
+          "threshold": 0.5,
+          "selected": 1054,
+          "classes": 30
+        },
+        {
+          "threshold": 0.6,
+          "selected": 921,
+          "classes": 30
+        },
+        {
+          "threshold": 0.7,
+          "selected": 757,
+          "classes": 30
+        },
+        {
+          "threshold": 0.8,
+          "selected": 521,
+          "classes": 30
+        },
+        {
+          "threshold": 0.9,
+          "selected": 47,
+          "classes": 22
+        },
+        {
+          "threshold": 0.95,
+          "selected": 1,
+          "classes": 1
+        }
+      ]
+    }
+  },
+  "fold0_teacher_diagnostics": {
+    "fold0_validation": [
+      {
+        "threshold": 0.7,
+        "selected": 364,
+        "classes": 30,
+        "errors": 6,
+        "precision": 0.9835164835164835
+      },
+      {
+        "threshold": 0.8,
+        "selected": 284,
+        "classes": 30,
+        "errors": 1,
+        "precision": 0.9964788732394366
+      },
+      {
+        "threshold": 0.9,
+        "selected": 30,
+        "classes": 20,
+        "errors": 0,
+        "precision": 1.0
+      },
+      {
+        "threshold": 0.95,
+        "selected": 2,
+        "classes": 2,
+        "errors": 0,
+        "precision": 1.0
+      }
+    ],
+    "fold0_test": [
+      {
+        "threshold": 0.7,
+        "selected": 785,
+        "classes": 30
+      },
+      {
+        "threshold": 0.8,
+        "selected": 536,
+        "classes": 30
+      },
+      {
+        "threshold": 0.9,
+        "selected": 98,
+        "classes": 27
+      },
+      {
+        "threshold": 0.95,
+        "selected": 4,
+        "classes": 4
+      }
+    ]
+  },
+  "error_structure": {
+    "rows": 3014,
+    "topk_truth_included": {
+      "1": 2545,
+      "2": 2685,
+      "3": 2754,
+      "5": 2838,
+      "10": 2927
+    },
+    "both_backbones_wrong_top1": 399,
+    "raw_ensemble_top1_errors": 469
+  },
+  "date_utc": "2026-11-14",
+  "proposal_id": "LOCAL-PROP-004",
+  "status": "research_and_cpu_diagnostics_only",
+  "training_started": false,
+  "kaggle_submission_performed": false,
+  "leaderboard": {
+    "top_team": "Tim Bul",
+    "top_public_macro_f1": 0.99645,
+    "submission_date": "2026-11-14T00:22:29.696000",
+    "our_verified_best_public_macro_f1": 0.87012,
+    "method_of_top_team": "unknown_not_inferred_from_score",
+    "source": "kaggle-orie competitions leaderboard dateraquest-2-0-machine-learning-competition --show --page-size 10 --format json"
+  },
+  "retrieval": {
+    "sift_minimum_inliers": 5,
+    "test_matched": 393,
+    "test_rows": 2010,
+    "test_coverage": 0.19552238805970149,
+    "changed_baseline_test_labels": 29,
+    "test_matching_accuracy": "unknown",
+    "query_train_precision_warning": "Stored SIFT train-query proxy uses a full labeled gallery and different corruption seed; not leakage-free OOF."
+  },
+  "rules": {
+    "retrieved_via": "kaggle-orie competitions pages dateraquest-2-0-machine-learning-competition list dateraquest-2-0-machine-learning-competition --content --format json",
+    "official_rules_sha256": "e6b41f8b32f9a2aaa8711f5b6e2a7993af39e455a5e5519082a22d6cbb3e2f99",
+    "page_content_local": "outputs/RESEARCH-004/competition_pages.json",
+    "automatic_pseudo_label_prohibition_found": false,
+    "interpretation": "Official train and unlabeled test only; no external pretrained weights, manual test labels, or copied competing code. Absence of an explicit pseudo-label ban is not an express organizer endorsement."
+  },
+  "source_urls": {
+    "AdaMatch": "https://arxiv.org/abs/2106.04732",
+    "SoftMatch": "https://arxiv.org/abs/2301.10921",
+    "LaplacianShot": "https://arxiv.org/abs/2006.15486",
+    "ASIFT": "https://www.ipol.im/pub/art/2011/my-asift/"
+  },
+  "limitations": [
+    "OOF pseudo-label precision does not establish accuracy of selected test labels.",
+    "Full test teacher averages five folds per family while OOF uses the held-out checkpoint only; fold0 paired diagnostics separately use only fold0 teachers.",
+    "Paper benchmark results do not forecast a competition score.",
+    "Top-k diagnostic is truth-inclusion count and accuracy, not Macro F1.",
+    "Research proposal is not an implemented algorithm or achieved score."
+  ]
+}

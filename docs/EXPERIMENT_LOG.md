@@ -18,6 +18,8 @@ Update 14 Nov: [BASELINE-INFERENCE-REPRO-001](../experiments/BASELINE-INFERENCE-
 
 Planned 14 Nov: [LOCAL-PROP-003](../experiments/LOCAL-PROP-003.md) menguji fine-tuning akhir ResNet18d terbaik selama 30 epoch, dengan kontrol MixUp/CutMix p0,5 versus kandidat p0. Kedua arm mulai dari bobot EMA epoch600 identik dengan optimizer baru; corruption v4 dan keluarga ResNet34d tetap. Screening fold0 (baseline balanced pada fold tersebut **0,871464**), cek konsistensi fold1, lalu fold2–4 hanya jika lolos. Gate promosi full OOF minimal +0,002 terhadap baseline dan kontrol, serta clean/blur guards. **Belum training atau submission.**
 
+User revision 14 Nov: LOCAL-PROP-003 deferred before training. [LOCAL-PROP-004](../experiments/LOCAL-PROP-004.md) researches domain-adaptive self-training, adaptive confidence, and retrieval/graph inference. Fresh leaderboard top public **0,99645**. Baseline CPU diagnostics: OOF agreement+confidence≥0,8 gives **1.330/1.332 correct**, with **521 test candidates** of unknown accuracy; confidence≥0,95 selects just one test image. Both backbone top1 predictions are wrong on 399 OOF queries. **No candidate training, implemented method, or new submission.** Primary strict OOF and secondary transductive holdout are explicitly separated; paper links and diagnostic JSON are included.
+
 ## Ablation / comparison placeholder
 
 | Factor | Run A | Run B | Matched validation split? | Conclusion |
