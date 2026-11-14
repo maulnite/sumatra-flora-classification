@@ -24,6 +24,17 @@ Eksekusi 14 Nov 08:59 UTC: [LOCAL-PROP-004-PILOT](../experiments/LOCAL-PROP-004-
 
 Hasil pilot 14 Nov 09:04 UTC: pooled 1.221-query balanced F1 baseline **0,867045**, primary graph **0,853589** (delta **−0,013457**, conditional group bootstrap 95%[−0,024140;−0,003413]). Kedua fold turun; 13 error diperbaiki dan 30 prediksi benar rusak. Konfigurasi graph tidak dipromosikan. Runtime 278,64 detik, exit 0. Tidak ada backbone training/submission; AdaMatch/self-training belum dimulai. [Ringkasan hasil](../experiments/results/LOCAL-PROP-004-PILOT.summary.json).
 
+Training 14 Nov 09:34 UTC: [LOCAL-PROP-004-SSL](../experiments/LOCAL-PROP-004-SSL.md)
+menjalankan **adaptive self-training tanpa graph**, A/B masing-masing 100 epoch
+pada strict scene fold 0. Kontrol A berjalan lebih dahulu; kandidat B memakai
+dynamic EMA pseudo-label, clipped distribution alignment, relative confidence,
+dan weak/strong target consistency pada official test tanpa label. Baseline lokal
+awal **0,871464**, 30 tests dan satu full GPU smoke update lulus (peak 2,13 GiB).
+Detached supervisor aktif, checkpoint setiap epoch, heartbeat setiap 60 detik,
+OOM resume tanpa perubahan batch size. Pada 09:35:52 UTC A telah menjalankan
+9 optimizer updates. Belum ada hasil kandidat atau submission; gate final-epoch
+mensyaratkan minimal +0,01 terhadap initial dan matched control serta clean/blur guards.
+
 ## Ablation / comparison placeholder
 
 | Factor | Run A | Run B | Matched validation split? | Conclusion |

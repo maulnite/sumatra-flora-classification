@@ -1,0 +1,101 @@
+experiment_id: LOCAL-PROP-004-SSL
+status: execution_authorized
+output_root: outputs/LOCAL-PROP-004-SSL
+team_root: /home/nafisnaufal1426/inahuy/dateruy
+dataset_root: data/raw
+reference_root: outputs/BASELINE-INFERENCE-REPRO-001
+reference_summary: experiments/results/BASELINE-INFERENCE-REPRO-001.summary.json
+python: /home/nafisnaufal1426/venvs/dq/bin/python
+fold: 0
+seed: 44
+student_run: R_r18d_i288_e600
+frozen_run: R_r34d_e600
+training:
+  architecture: resnet18d
+  pretrained: false
+  image_size: 288
+  epochs: 100
+  source_microbatch: 8
+  target_microbatch: 24
+  gradient_accumulation: 8
+  effective_source_batch: 64
+  optimizer: AdamW
+  learning_rate: 0.0001
+  minimum_learning_rate: 0.000001
+  warmup_epochs: 1
+  weight_decay: 0.05
+  label_smoothing: 0.1
+  gradient_clip_norm: 5.0
+  batch_mixup_cutmix_probability: 0.0
+  ema_decay: 0.999
+  ema_use_warmup: false
+  precision: bfloat16
+  channels_last: true
+  source_views: same_native_rotation_then_light_or_corrupt_v4_and_paired_random_resized_crop
+  source_rotation_degrees: 180
+  source_rotation_probability: 0.9
+  target_weak_shift_pixels: 4
+  target_weak_horizontal_flip_probability: 0.5
+  target_strong_brightness_contrast: 0.1
+  target_strong_color_probability: 0.8
+  target_strong_cutout_probability: 0.5
+  target_strong_cutout_side_fraction: [0.1, 0.2]
+  target_corrupt_v4_again: false
+  checkpoint_selection: final_epoch_100_ema_only
+  save_checkpoint_every_epoch: true
+adaptive:
+  relative_threshold_multiplier: 0.9
+  statistics_ema_decay: 0.99
+  distribution_alignment_ratio_clip: [0.5, 2.0]
+  initial_two_backbone_agreement_epochs: 10
+  target_loss_warmup_epochs: 20
+  target_loss_maximum_weight: 1.0
+  source_random_logit_interpolation: true
+  pseudo_labels: hard_stop_gradient_from_current_ema_weak_target_predictions
+  target_loss_denominator: all_unlabeled_examples_not_only_selected
+arms:
+  A:
+    description: Matched source-loss control with identical target inputs and BatchNorm forwards
+    target_loss_enabled: false
+  B:
+    description: Adaptive target consistency with dynamic EMA pseudo-labels
+    target_loss_enabled: true
+validation:
+  protocol: strict_team_scene_fold0_no_heldout_images_in_adaptation
+  expected_train_rows: 2400
+  expected_validation_rows: 614
+  student_inference_size: 352
+  frozen_inference_size: 320
+  batch_size: 32
+  tta: flip
+  log_every_epochs: 10
+  main_metric: equal_neural_ensemble_macro_f1_after_balance_before_sift
+  prior: frozen_full_train_class_frequencies
+  balance_iterations: 100
+  minimum_B_gain_vs_initial_baseline: 0.01
+  minimum_B_gain_vs_A: 0.01
+  minimum_clean_raw_ensemble_delta_vs_baseline_and_A: -0.01
+  minimum_mean_blur_raw_ensemble_delta_vs_baseline_and_A: -0.01
+  blur_sigma: [0.6, 1.0]
+  blur_kernel: [7, 7]
+  bootstrap_replicates: 2000
+  bootstrap_seed: 44
+  evaluate_final_checkpoint_only_for_decision: true
+execution:
+  runner: scripts/adaptive_self_training.py
+  arms_sequential: [A, B]
+  cpu_threads: 4
+  workers: 4
+  gpu_memory_fraction: 0.20
+  gpu_sharing_authorized: true
+  cpu_fallback: false
+  detached_background: true
+  monitor_interval_seconds: 60
+  oom_retry_seconds: 30
+  oom_exit_code: 75
+  restart_from_last_complete_epoch_on_oom: true
+  change_microbatch_after_scores_seen: false
+  automatic_submission: false
+  automatic_additional_folds: false
+  graph: false
+  sift_or_asift_matching: false
