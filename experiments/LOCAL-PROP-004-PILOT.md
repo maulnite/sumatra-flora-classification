@@ -10,7 +10,7 @@ Apakah embedding dua model terbaik sudah mempunyai tetangga visual yang cukup be
 
 - Gunakan hanya checkpoint `R_r18d_i288_e600_f0/f1` infer 352 dan `R_r34d_e600_f0/f1` infer 320, dengan source dan dependency versions yang telah diverifikasi pada [reference reproduction](BASELINE-INFERENCE-REPRO-001.md).
 - Ekstrak global-average-pooled feature sebelum classifier; rata-rata float32 original/horizontal-flip features, lalu L2 normalization. Centering tiap keluarga dipasang pada **training gallery saja**, lalu kedua keluarga digabung dan dinormalisasi dengan bobot sama.
-- Source gallery berisi dua view per training image: clean RGB squash dan frozen v4rot cache. Fold0 memakai 2.400 training IDs dan 614 query; fold1 memakai 2.407 training IDs dan 607 query. Source IDs/groups tidak beririsan dengan query.
+- Source gallery berisi dua view per training image: clean RGB squash dan frozen v4rot cache. Fold0 memakai 2.400 training IDs dan 614 query; fold 1 memakai 2.407 training IDs dan 607 query. Source IDs/groups tidak beririsan dengan query.
 - Official test menjadi unlabeled graph nodes. Source labels saja yang di-clamp. Test tidak mempunyai ground truth/label manual dan pseudo-labelnya tidak dikunci sebagai kebenaran.
 - Seluruh unary query/test probabilities berasal dari file per-fold yang sudah direproduksi, **bukan mean teacher semua lima fold**. Bobot dan source labels held-out fold tidak boleh masuk melalui teacher, matcher, atau seed.
 - Ekstraksi batch kecil BF16 dapat mempunyai rounding berbeda dari batch 128 referensi. Perbedaannya dicatat dan pemeriksaan toleransi luas menangkap kesalahan head/normalisasi; unary pembanding selalu memakai array referensi yang exact. Klaim exact probability reproduction tetap merujuk verifikasi sebelumnya.
@@ -53,6 +53,24 @@ Artefak di `outputs/LOCAL-PROP-004-PILOT/`:
 
 - `job.json`, `heartbeat.json`, `status.json`, `runner.log`, `supervisor.log`.
 - `specification.json`, clean caches milik proyek, per-checkpoint feature files, feature probability checks.
-- `fold0_result.json`, `fold1_result.json`, per-fold predictions, lalu `result.json` dan `completion.json` ketika selesai.
+- `fold 0_result.json`, `fold 1_result.json`, per-fold predictions, lalu `result.json` dan `completion.json` ketika selesai.
 
 Validasi sebelum launch: **24 unit tests lulus**. Tiga test baru memeriksa duplicate-view retrieval identities, clamped source/isolated graph nodes, dan readout yang tidak dipengaruhi query lain. Tidak ada dataset, checkpoint, feature arrays, atau predictions yang dipublikasikan ke GitHub.
+
+## Hasil — selesai 14 November 09:04:39 UTC
+
+Runner selesai normal (exit 0), runtime **278,64 detik**. Keempat checkpoint menyelesaikan ekstraksi di GPU. Source inputs tidak berubah. Selisih probabilitas terbesar saat feature extraction batch 8 vs reference batch 128 adalah 0,003712; seluruh unary evaluasi tetap memakai reference probabilities asli, sesuai protokol. [Ringkasan hasil](results/LOCAL-PROP-004-PILOT.summary.json).
+
+| Sistem | Pooled raw Macro F1 | Pooled balanced Macro F1 |
+| --- | ---: | ---: |
+| Baseline neural | 0,859091 | **0,867045** |
+| Pure nearest-neighbor retrieval | 0,861322 | 0,861463 |
+| Neural + retrieval 50:50 | **0,865558** | 0,865438 |
+| **Primary independent graph** | 0,846614 | **0,853589** |
+| Secondary joint transductive graph | 0,850096 | 0,859680 |
+
+Primary delta **−0,013457**, paired group bootstrap 95% **[−0,024140; −0,003413]**, kondisional pada fixed models/predictions. Fold0 baseline 0,871464 → graph 0,856459; fold 1 baseline 0,862873 → graph 0,845100. Pada pooled balanced predictions, graph memperbaiki 13 kesalahan tetapi merusak 30 prediksi benar. Ini skor 1.221 query dari dua fold, bukan public LB atau full five-fold OOF.
+
+Nearest-neighbor top1 purity sekitar 83,88% dan 84,02%. Graph meningkatkan jumlah seed confidence≥0,8 yang masih sepakat dengan teacher dari 562 menjadi 729, tetapi total error seed naik dari 1 menjadi 6. Jadi bertambahnya confidence/coverage tidak otomatis memberi label yang lebih akurat. Model/parameter/dataset yang diuji tetap membatasi kesimpulan ini.
+
+**Keputusan:** konfigurasi graph ini **tidak lolos screen** dan tidak dipromosikan sebagai pseudo-label generator/prediction override. Jangan mengganti bobot atau memilih raw metric sesudah hasil untuk menyatakannya menang; primary metric yang dibekukan adalah balanced F1. Tidak ada submission baru atau backbone training. Adaptive self-training/AdaMatch serta SIFT/ASIFT baru belum diimplementasikan/dijalankan; hasil negatif ini hanya mengenai komponen retrieval/graph yang diuji, bukan penolakan seluruh metode domain adaptation.

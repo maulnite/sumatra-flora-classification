@@ -24,6 +24,8 @@ Next research priority: [LOCAL-PROP-004](experiments/LOCAL-PROP-004.md), domain-
 
 [The two-fold retrieval/graph pilot](experiments/LOCAL-PROP-004-PILOT.md) launched as a detached background job on 14 Nov at 08:59 UTC. It uses existing checkpoints, frozen graph parameters, GPU feature extraction and a 60-second process monitor. Its primary queries read a fixed train+unlabeled-test graph independently; joint transductive results are reported separately. No backbone training or Kaggle upload. Runner status, logs and completion markers are under `outputs/LOCAL-PROP-004-PILOT/`; 24 tests passed before launch.
 
+Pilot completed at 09:04 UTC in 278.64 seconds: pooled balanced F1 **0.867045 → 0.853589**, delta **−0.013457**, with negative deltas on both folds. The graph component failed its frozen screen and is not promoted. AdaMatch/self-training has not started; the baseline is retained. See [results and limitations](experiments/LOCAL-PROP-004-PILOT.md#hasil--selesai-14-november-090439-utc).
+
 | Item | Details |
 | --- | --- |
 | Organizer | HMSD Adyatama, ITERA |
