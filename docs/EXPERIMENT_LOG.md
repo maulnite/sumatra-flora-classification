@@ -16,6 +16,8 @@ Update lanjutan 13 Nov: [LOCAL-PROP-002](../experiments/LOCAL-PROP-002.md) memak
 
 Update 14 Nov: [BASELINE-INFERENCE-REPRO-001](../experiments/BASELINE-INFERENCE-REPRO-001.md) benar-benar menjalankan ulang inference **10 checkpoint best**. Keempat file OOF/test memiliki SHA-256 identik dengan referensi, selisih probabilitas maksimum **0**, balanced neural OOF **0.852564**, dan final CSV identik byte-for-byte. **5.024 raw images × 2 resolusi** menghasilkan cache pixel-identical. Runtime 140,66 detik; 21 tests lulus. Training dan pencarian match SIFT tidak diulang; final menggunakan tabel SIFT referensi. Tidak ada submission baru. Ini melengkapi checkpoint replay yang belum dilakukan pada LOCAL-PROP-002.
 
+Planned 14 Nov: [LOCAL-PROP-003](../experiments/LOCAL-PROP-003.md) menguji fine-tuning akhir ResNet18d terbaik selama 30 epoch, dengan kontrol MixUp/CutMix p0,5 versus kandidat p0. Kedua arm mulai dari bobot EMA epoch600 identik dengan optimizer baru; corruption v4 dan keluarga ResNet34d tetap. Screening fold0 (baseline balanced pada fold tersebut **0,871464**), cek konsistensi fold1, lalu fold2–4 hanya jika lolos. Gate promosi full OOF minimal +0,002 terhadap baseline dan kontrol, serta clean/blur guards. **Belum training atau submission.**
+
 ## Ablation / comparison placeholder
 
 | Factor | Run A | Run B | Matched validation split? | Conclusion |

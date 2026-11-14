@@ -1,0 +1,150 @@
+proposal_id: LOCAL-PROP-003
+title: Paired late fine-tuning with versus without batch MixUp and CutMix
+status: planned_not_started
+output_root: outputs/LOCAL-PROP-003
+dataset_root: data/raw
+team_root: /home/nafisnaufal1426/inahuy/dateruy
+python: /home/nafisnaufal1426/venvs/dq/bin/python
+reference_reproduction: experiments/results/BASELINE-INFERENCE-REPRO-001.summary.json
+baseline:
+  experiment: EXP-024
+  verified_public_macro_f1: 0.87012
+  full_balanced_neural_oof_macro_f1: 0.8525643117483758
+  submission_sha256: 6ca4cb673741edc3ca1e9903ed31dfb3b35924b52797742715a40e667f4d25e9
+  trainable_family: R_r18d_i288_e600
+  frozen_family: R_r34d_e600
+  ensemble_weights: [0.5, 0.5]
+  prior_balance_iterations: 100
+  target_prior: official_full_train_class_frequencies
+  sift_test_minimum_inliers: 5
+initialization:
+  weights: runs/R_r18d_i288_e600_f{fold}/model.pt
+  checkpoint_kind: final_epoch_600_ema
+  same_initial_weights_for_both_arms: true
+  fresh_optimizer_and_scheduler: true
+  exact_optimizer_resume: false
+  explanation: Original completed runs deleted ckpt.pt; this is a new fine-tuning phase.
+training:
+  architecture: resnet18d
+  pretrained: false
+  image_size: 288
+  epochs: 30
+  checkpoint_selection: final_epoch_30_ema_only
+  batch_size: 64
+  optimizer: AdamW
+  learning_rate: 0.0001
+  weight_decay: 0.05
+  warmup_epochs: 1
+  learning_rate_schedule: cosine_after_warmup
+  minimum_learning_rate: 0.000001
+  label_smoothing: 0.1
+  ema: same_ModelEmaV3_settings_as_team_with_decay_0_999
+  dropout: 0.2
+  precision: bfloat16
+  channels_last: true
+  train_all_parameters_and_batchnorm_statistics: true
+  seed: 44
+  seed_rule: seed_plus_fold_identical_for_A_and_B
+  corruption: corrupt_v4
+  clean_corrupt_view_ratio: [0.5, 0.5]
+  rotation_degrees: 180
+  rotation_probability: 0.9
+  crop: team_random_resized_crop_and_horizontal_flip
+  sampler: team_ConcatDataset_RandomSampler_num_samples_n_train_drop_last_true
+  separate_data_and_mixing_rng_streams: true
+  identical_sample_order_and_augmentation_seeds_for_both_arms: true
+  unlabeled_test_used_for_training: false
+arms:
+  A:
+    role: matched_additional_training_control
+    mixup_cutmix_probability: 0.5
+    mixup_alpha: 0.2
+    cutmix_alpha: 1.0
+    switch_probability: 0.5
+  B:
+    role: candidate_without_batch_mixing
+    mixup_cutmix_probability: 0.0
+validation:
+  split: original_team_scene_folds
+  fold_sizes: [614, 607, 603, 600, 590]
+  primary_views: original_frozen_corr4r_caches
+  r18d_inference_size: 352
+  r34d_inference_size: 320
+  tta: flip
+  primary_metric: macro_f1_balanced_equal_ensemble_before_sift
+  fold_checkpoint_rule: each_query_only_uses_its_held_out_fold_checkpoint_per_family
+  screen_balance_population: current_validation_fold_only_for_all_three_systems
+  full_oof_balance_population: all_3014_oof_queries_for_all_three_systems
+  original_baseline_comparator: frozen_original_r18d_and_r34d_ensemble
+  control_comparator: A_r18d_and_frozen_r34d_ensemble
+  candidate: B_r18d_and_frozen_r34d_ensemble
+  secondary_metrics: [single_r18d_macro_f1, raw_ensemble_macro_f1, per_class_f1, fixed_error_and_broken_prediction_counts]
+  clean_guard: raw_equal_ensemble_macro_f1_on_raw_clean_RGB_squashed_to_each_model_size
+  blur_guard:
+    metric: mean_raw_equal_ensemble_macro_f1_across_both_blur_conditions
+    source: original_frozen_primary_cache_after_resize_at_each_model_size
+    kernel: [7, 7]
+    sigma: [0.6, 1.0]
+    border: reflect_101
+    interpretation: synthetic_stress_test_not_a_test_distribution_estimate
+  bootstrap:
+    method: paired_fixed_prediction_team_groups_within_class
+    replicates: 2000
+    seed: 44
+    report_only: true
+    limitation: Conditional on fixed trained models and fitted balancing; excludes training and selection uncertainty.
+stages:
+  screen:
+    folds: [0]
+    runs: [A, B]
+    train_rows: 2400
+    validation_rows: 614
+    minimum_primary_gain_B_vs_original: 0.002
+    minimum_primary_gain_B_vs_A: 0.002
+    original_primary_macro_f1: 0.8714644561105666
+  confirm:
+    requires: screen_passed
+    folds: [1]
+    runs: [A, B]
+    minimum_primary_gain_B_vs_original: 0.0
+    minimum_primary_gain_B_vs_A: 0.0
+  remaining_folds:
+    requires: confirm_passed
+    folds: [2, 3, 4]
+    runs: [A, B]
+guardrails:
+  minimum_clean_macro_f1_delta_vs_original_and_A: -0.01
+  minimum_mean_blur_macro_f1_delta_vs_original_and_A: -0.01
+  apply_at_each_stage_and_full_oof: true
+  no_posthoc_learning_rate_epoch_weight_or_fold_changes: true
+  stop_if_stage_fails: true
+  A_is_not_automatically_promoted_if_B_fails: true
+full_oof_promotion:
+  requires_all_five_folds_for_both_arms: true
+  minimum_primary_gain_B_vs_original: 0.002
+  minimum_primary_gain_B_vs_A: 0.002
+  minimum_positive_folds_vs_original: 3
+  minimum_positive_folds_vs_A: 3
+  require_clean_and_blur_guardrails: true
+execution:
+  runner_implemented: false
+  training_started: false
+  maximum_new_training_runs: 10
+  epochs_per_run: 30
+  initial_budget: 2_runs_60_total_epochs_2220_optimizer_steps
+  total_budget_if_all_stages_pass: 10_runs_300_total_epochs
+  gpu_sharing_authorized_previously: true
+  concurrent_training_runs: 1
+  gpu_memory_fraction_cap: 0.20
+  workers: 4
+  cpu_threads: 4
+  runtime_estimate: measure_first_three_training_epochs_no_fixed_eta_yet
+submission:
+  none_during_planning_or_screening: true
+  conditional_user_authorization_already_given: true
+  require_full_oof_promotion_and_valid_csv: true
+  recheck_latest_team_baseline_and_kaggle_quota: true
+  maximum_new_submissions: 1
+  skip_if_csv_identical_to_prior_submission: true
+  final_csv_uses_same_original_sift_test_table: true
+  sift_matcher_recomputed: false
