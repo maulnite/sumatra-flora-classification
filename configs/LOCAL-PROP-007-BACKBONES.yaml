@@ -1,0 +1,77 @@
+experiment_id: LOCAL-PROP-007-BACKBONES
+output_root: outputs/LOCAL-PROP-007-BACKBONES
+dataset_root: data/raw
+team_root: /home/nafisnaufal1426/inahuy/dateruy
+reference_root: outputs/BASELINE-INFERENCE-REPRO-001
+reference_training_config: configs/LOCAL-PROP-006-SUPCON.yaml
+reference_experiment_root: outputs/LOCAL-PROP-006-SUPCON
+reference_spec_sha256: 89b9b917e7659cc933c64f2c9a9e024b8ff4b099f1dc55a448d74b94d3594bbe
+python: /home/nafisnaufal1426/venvs/dq/bin/python
+fold: 2
+seed: 44
+backbones:
+  efficientnetv2_rw_t:
+    architecture: efficientnetv2_rw_t
+    learning_rate: 0.002
+    warmup_epochs: 3
+    drop_rate: 0.2
+    drop_path_rate: 0.1
+  convnext_tiny:
+    architecture: convnext_tiny
+    learning_rate: 0.0005
+    warmup_epochs: 20
+    drop_rate: 0.2
+    drop_path_rate: 0.1
+training:
+  pretrained: false
+  image_size: 288
+  epochs: 600
+  classes_per_batch: 30
+  photographs_per_class: 2
+  source_batch: 60
+  views_per_image: 2
+  optimizer: AdamW
+  minimum_learning_rate: 0.000001
+  weight_decay: 0.05
+  label_smoothing: 0.1
+  gradient_clip_norm: 5.0
+  source_rotation_probability: 0.9
+  source_rotation_degrees: 180
+  batch_mixup_cutmix_probability: 0.0
+  ema_decay: 0.999
+  sampling: same_class_balanced_distinct_scene_source_draws_as_LOCAL_PROP_006_A
+  views: paired_light_color_and_corrupt_v4_same_native_rotation_and_crop_seed
+  precision: bfloat16
+  channels_last: true
+  checkpoint_selection: final_epoch_600_ema
+validation:
+  expected_train_rows: 2411
+  expected_validation_rows: 603
+  student_inference_size: 352
+  frozen_inference_size: 320
+  batch_size: 32
+  tta: flip
+  log_every_epochs: 50
+  balance_iterations: 100
+  main_metric: equal_candidate_and_frozen_R34d_fold2_balanced_primary_before_SIFT
+  minimum_gain_vs_team_pair: 0.01
+  minimum_gain_vs_CE_A_pair: 0.005
+  minimum_clean_delta_vs_both: -0.01
+  minimum_blur_delta_vs_both: -0.01
+  bootstrap_replicates: 2000
+  bootstrap_seed: 44
+execution:
+  runner: scripts/explore_backbones.py
+  launcher: scripts/launch_backbone_exploration.py
+  cpu_threads: 4
+  workers: 8
+  gpu_memory_fraction: 0.35
+  gpu_sharing_authorized: true
+  monitor_interval_seconds: 60
+  oom_retry_seconds: 30
+  oom_exit_code: 75
+  schedule: both_backbones_sequentially_on_each_identical_source_batch
+  restart: last_complete_paired_epoch_same_full_120_view_batch
+  automatic_submission: false
+  automatic_additional_folds: false
+  target_images_used: false

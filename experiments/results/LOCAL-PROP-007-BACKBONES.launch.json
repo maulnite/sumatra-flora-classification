@@ -1,0 +1,90 @@
+{
+  "experiment_id": "LOCAL-PROP-007-BACKBONES",
+  "recorded_at": "2026-11-15T07:41:15.862989+00:00",
+  "state": "training_in_background",
+  "models": {
+    "efficientnetv2_rw_t": {
+      "parameters": 12655138,
+      "features": 1024,
+      "pretrained": false,
+      "learning_rate": 0.002,
+      "warmup_epochs": 3
+    },
+    "convnext_tiny": {
+      "parameters": 27843198,
+      "features": 768,
+      "pretrained": false,
+      "learning_rate": 0.0005,
+      "warmup_epochs": 20
+    }
+  },
+  "source_rows": 2411,
+  "validation_rows": 603,
+  "fold": 2,
+  "seed": 44,
+  "epochs_per_backbone": 600,
+  "updates_per_backbone": 24000,
+  "tests_passed": 8,
+  "smoke": {
+    "passed": true,
+    "at": "2026-11-15T07:39:35.982862+00:00",
+    "spec_sha256": "341f038e84aa3cd8e42569969589ccbf5247d948accf037d93a7c0b932f4637d",
+    "full_source_views": 120,
+    "source_only": true,
+    "optimizer_updates_per_backbone": 1,
+    "checkpoint_roundtrip_passed": true,
+    "metrics": {
+      "efficientnetv2_rw_t": {
+        "cross_entropy": 3.581076145172119,
+        "gradient_norm": 73.24649047851562
+      },
+      "convnext_tiny": {
+        "cross_entropy": 3.6078338623046875,
+        "gradient_norm": 7.757448673248291
+      }
+    },
+    "cold_update_seconds": {
+      "efficientnetv2_rw_t": 6.102900759316981,
+      "convnext_tiny": 4.275067494250834
+    },
+    "gpu_peak_allocated_gib": 12.171517372131348
+  },
+  "spec_sha256": "341f038e84aa3cd8e42569969589ccbf5247d948accf037d93a7c0b932f4637d",
+  "job_at_recording": {
+    "supervisor_pid": 11058,
+    "started_at": "2026-11-15T07:39:44.242315+00:00",
+    "output_root": "/home/nafisnaufal1426/orie/datera/outputs/LOCAL-PROP-007-BACKBONES",
+    "state": "running",
+    "heartbeat_seconds": 60,
+    "oom_restarts": 0,
+    "runner_pid": 11061,
+    "last_started_at": "2026-11-15T07:39:44.243110+00:00"
+  },
+  "training_status_at_recording": {
+    "state": "training",
+    "at": "2026-11-15T07:41:15.755899+00:00",
+    "pid": 11061,
+    "epoch": 2,
+    "total_epochs": 600,
+    "optimizer_step_in_epoch": 10,
+    "optimizer_steps_per_epoch": 40,
+    "completed_updates_per_backbone": 50,
+    "metrics": {
+      "efficientnetv2_rw_t": {
+        "cross_entropy": 3.7357025146484375,
+        "gradient_norm": 21.500696182250977
+      },
+      "convnext_tiny": {
+        "cross_entropy": 3.2963452339172363,
+        "gradient_norm": 4.928512096405029
+      }
+    },
+    "seconds_in_epoch": 7.6451909597963095,
+    "estimated_seconds_remaining": null
+  },
+  "candidate_validation_available": false,
+  "candidate_full_oof_available": false,
+  "kaggle_upload_performed": false,
+  "reference_team_pair_primary_f1": 0.8263442628411087,
+  "reference_CE_A_pair_primary_f1": 0.8344647372485873
+}

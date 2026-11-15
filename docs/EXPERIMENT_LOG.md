@@ -84,6 +84,18 @@ The single-fold local gain did not transfer to this public probe. No full candid
 OOF exists; no further submission or additional folds were run. EXP-024 remains
 the strongest observed public result. [Receipt and provenance](../experiments/results/LOCAL-PROP-006-A-PUBLIC.summary.json).
 
+Backbone exploration 15 Nov 07:39 UTC:
+[LOCAL-PROP-007-BACKBONES](../experiments/LOCAL-PROP-007-BACKBONES.md) started detached
+scratch **EfficientNetV2 Tiny (`efficientnetv2_rw_t`, 12.66M)** and **ConvNeXt Tiny
+(27.84M)** on strict fold 2. Same CE-A source draws/paired views, 288px, 600 epochs
+/ 24,000 updates each; architecture-specific LR/warmup explicitly recorded.
+Both see each identical batch in turn. Frozen 352px evaluation views and R34d
+fold-2 predictions are reused. Eight relevant tests and full 120-view GPU update
+/ checkpoint roundtrip passed; peak smoke allocation 12.17 GiB. Supervisor PID
+11058, heartbeat 60 seconds, same-batch OOM resume. **Training in progress; no
+candidate validation result or new Kaggle submission.** Final-epoch gate compares
+the team pair (0.826344) and CE A (0.834465), with clean/blur guards. One fold only.
+
 ## Ablation / comparison placeholder
 
 | Factor | Run A | Run B | Matched validation split? | Conclusion |
