@@ -74,6 +74,16 @@ alternative CE recipe, not a confirmed OOF/public improvement. Final probabiliti
 paired EMA/checkpoint, 24.000-step optimizer/scheduler states and input hashes
 verified. No more folds or submission. [Summary](../experiments/results/LOCAL-PROP-006-SUPCON.summary.json).
 
+Public probe 15 Nov 07:28 UTC: the user explicitly requested a submission.
+[LOCAL-PROP-006-A-PUBLIC](../experiments/LOCAL-PROP-006-A-PUBLIC.md) replaces only
+EXP-024's R18d fold-2 member with final CE control A (total weight 0.1), retaining
+the other nine checkpoints, prior100 and SIFT5. A validation replay and original
+baseline CSV reproduce exactly; candidate changes 56/2,010 test labels. Kaggle
+**ref 58374703, COMPLETE, public 0.86464**, delta **−0.00548** from best **0.87012**.
+The single-fold local gain did not transfer to this public probe. No full candidate
+OOF exists; no further submission or additional folds were run. EXP-024 remains
+the strongest observed public result. [Receipt and provenance](../experiments/results/LOCAL-PROP-006-A-PUBLIC.summary.json).
+
 ## Ablation / comparison placeholder
 
 | Factor | Run A | Run B | Matched validation split? | Conclusion |

@@ -201,3 +201,8 @@ final metrics, gates, intervals, trajectories, checkpoint hashes and verificatio
 Full local artifacts remain under `outputs/LOCAL-PROP-006-SUPCON/`, including
 `result.json`, `final_verification.json`, `paired_checkpoint.pt`, and both arms'
 final EMA weights and validation predictions.
+
+Follow-up 15 Nov 07:28 UTC: the user explicitly requested a public probe. Final
+**CE A** replaced one R18d fold-2 member in EXP-024; SupCon B was not submitted.
+Public **0.86464**, below the original **0.87012**. See the separate
+[submission report](LOCAL-PROP-006-A-PUBLIC.md) for composition, receipt and limits.

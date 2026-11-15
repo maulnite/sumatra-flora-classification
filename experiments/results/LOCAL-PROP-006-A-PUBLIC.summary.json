@@ -1,0 +1,113 @@
+{
+  "experiment_id": "LOCAL-PROP-006-A-PUBLIC",
+  "recorded_at": "2026-11-15T07:29:09.201573+00:00",
+  "decision": "Retain EXP-024 as strongest observed public result; no further submission or fold expansion",
+  "competition": "dateraquest-2-0-machine-learning-competition",
+  "kaggle_upload_performed": true,
+  "submission_count": 1,
+  "kaggle_receipt": {
+    "ref": "58374703",
+    "fileName": "LOCAL-PROP-006-A_f2replace_submission.csv",
+    "date": "2026-11-15 07:28:10.580000",
+    "description": "LOCAL-PROP-006-A CE scratch r18d288 ep600 EMA f2 replaces EXP024 f2; other9 unchanged; infer352/320 flip prior100 SIFT5; user-public-probe sha=d0fd851ddd8a9a12",
+    "status": "SubmissionStatus.COMPLETE",
+    "publicScore": "0.86464",
+    "privateScore": ""
+  },
+  "public_macro_f1": 0.86464,
+  "private_score_available": false,
+  "baseline_submission_ref": "58278059",
+  "baseline_public_macro_f1": 0.87012,
+  "public_delta_vs_baseline": -0.00548,
+  "local_matched_pair": {
+    "fold": 2,
+    "validation_rows": 603,
+    "initial_primary_balanced_f1": 0.8263442628411087,
+    "A_primary_balanced_f1": 0.8344647372485873,
+    "delta": 0.00812047440747854
+  },
+  "caveat": "Local scores concern matching fold2 A/R34d pair; full replacement-ensemble OOF unavailable. Only one new fold exists.",
+  "preparation": {
+    "experiment_id": "LOCAL-PROP-006-A-PUBLIC",
+    "at": "2026-11-15T07:27:34.017684+00:00",
+    "duration_seconds": 13.671846535988152,
+    "authorization": "explicit_user_request_to_submit_for_public_performance_2026-11-15",
+    "selected_arm": "A",
+    "selected_checkpoint": "outputs/LOCAL-PROP-006-SUPCON/A/model.pt",
+    "checkpoint_sha256": "b11f38515245a222b4d422920b2bf6537ef78a252c489c5d8bda08a1ee4c0dab",
+    "training_spec_sha256": "89b9b917e7659cc933c64f2c9a9e024b8ff4b099f1dc55a448d74b94d3594bbe",
+    "config_sha256": "f1c5819ddb7fb27008e3c11162818fec368a51033dcce663241937c75e7dc005",
+    "runner_sha256": "8477951338e292ca5990cbc4212392bf369ef7d46931221e9b1bdb57bd44a247",
+    "composition": "replace_R_r18d_i288_e600_f2_keep_other_nine_reference_members",
+    "new_checkpoint_total_weight": 0.1,
+    "original_members_retained": 9,
+    "family_weights": [
+      0.5,
+      0.5
+    ],
+    "balance_iterations": 100,
+    "sift_minimum_inliers": 5,
+    "baseline_csv_identical": true,
+    "baseline_public_score": 0.87012,
+    "validation_replay": {
+      "shape": [
+        603,
+        30
+      ],
+      "array_exactly_equal": true,
+      "within_tolerance": true,
+      "max_absolute_difference": 0.0,
+      "mean_absolute_difference": 0.0,
+      "row_max_difference_p99": 0.0,
+      "predicted_labels_different": 0
+    },
+    "single_student_primary_f1": 0.835351307645644,
+    "local_validation_scope": "A plus matching R34d fold2 only; no full replacement-ensemble OOF score",
+    "full_ensemble_oof_available": false,
+    "rows": 2010,
+    "csv_format_passed": true,
+    "labels_changed_vs_baseline": 56,
+    "sift_accepted_rows": 393,
+    "sift_labels_changed": 30,
+    "submission_file": "outputs/LOCAL-PROP-006-A-PUBLIC/LOCAL-PROP-006-A_f2replace_submission.csv",
+    "submission_sha256": "d0fd851ddd8a9a121aafd85fb4c2f1c5d327e745cf0b37581ffc2cd0d2330895",
+    "probability_sha256": "23f71e4cc272caecaef0aff5fcfd6ebc88c41eaec832b15a52d9521539d1a785",
+    "input_sha256": {
+      "/home/nafisnaufal1426/inahuy/dateruy/cache/test_352.npy": "bf22c744bae47df4231f52d164696bfdee76814f4292aed0f65cafa33af9bae9",
+      "/home/nafisnaufal1426/inahuy/dateruy/runs/sift_test.csv": "c0076894776a96835123bb0924be66bacc07199737ade1113248f44316b1de26",
+      "/home/nafisnaufal1426/inahuy/dateruy/runs/best_sift_submission.csv": "6ca4cb673741edc3ca1e9903ed31dfb3b35924b52797742715a40e667f4d25e9",
+      "/home/nafisnaufal1426/inahuy/dateruy/runs/probs/R_r18d_i288_e600_352_test.npy": "852ef9b4ad6f543f98ac18ed02e997986a032cc1c3872d39fa1760c0fcfbab1d",
+      "/home/nafisnaufal1426/inahuy/dateruy/runs/probs/R_r34d_e600_320_test.npy": "947857b2f1ad41dd4d3ce60da882f9b8fd915366bc2047ff614ef9650b09c62b",
+      "/home/nafisnaufal1426/orie/datera/outputs/BASELINE-INFERENCE-REPRO-001/predictions/R_r18d_i288_e600_f0/test.npy": "85e819a6bc5d6c5ccb7c7b791e1aa1f4001584f8cdcb6f77845bbff156797923",
+      "/home/nafisnaufal1426/orie/datera/outputs/BASELINE-INFERENCE-REPRO-001/predictions/R_r18d_i288_e600_f1/test.npy": "6bd680d16f4b4c28664289b790f4a0654c26ec9fd86102a7c2124455051838b7",
+      "/home/nafisnaufal1426/orie/datera/outputs/BASELINE-INFERENCE-REPRO-001/predictions/R_r18d_i288_e600_f2/test.npy": "4b4c0f1b71a7b40277c71b92156d6aea5e6ebccfdff61a554d00f53617ef4715",
+      "/home/nafisnaufal1426/orie/datera/outputs/BASELINE-INFERENCE-REPRO-001/predictions/R_r18d_i288_e600_f3/test.npy": "203e6c89ca6e52e40461696078d392601125c55a1691ceec5b618f9165e9d798",
+      "/home/nafisnaufal1426/orie/datera/outputs/BASELINE-INFERENCE-REPRO-001/predictions/R_r18d_i288_e600_f4/test.npy": "4746259cffe5794c498b4c9282e08bbaa6673904b5364fbf6e77b82aaea5565a",
+      "/home/nafisnaufal1426/orie/datera/outputs/BASELINE-INFERENCE-REPRO-001/predictions/R_r34d_e600_f0/test.npy": "892d8d61a16b7d2096827f6abc6e922a50ed6c46508e7afcdfa56b109ba78799",
+      "/home/nafisnaufal1426/orie/datera/outputs/BASELINE-INFERENCE-REPRO-001/predictions/R_r34d_e600_f1/test.npy": "a513438222075b39a790ff22de971f07b82f14183006dc594dbb728e2646fa69",
+      "/home/nafisnaufal1426/orie/datera/outputs/BASELINE-INFERENCE-REPRO-001/predictions/R_r34d_e600_f2/test.npy": "ce5acc5109b0458b544fd45a0bf20e6b5f135ae705010995d641fa4a2c12532c",
+      "/home/nafisnaufal1426/orie/datera/outputs/BASELINE-INFERENCE-REPRO-001/predictions/R_r34d_e600_f3/test.npy": "70d9fdcc2c4ab30452bb5fe61f23b35c9ef003c6459563b6825247e97a68f132",
+      "/home/nafisnaufal1426/orie/datera/outputs/BASELINE-INFERENCE-REPRO-001/predictions/R_r34d_e600_f4/test.npy": "08b9b4353afa5be18b9e0574bf63c2be6b611f52bb3b7a9ec0063a28ac4b4fc0"
+    },
+    "all_inputs_unchanged": true,
+    "kaggle_upload_performed": false
+  },
+  "submission_attempt": {
+    "started_at": "2026-11-15T07:28:07.655280+00:00",
+    "authorization": "Explicit user request: bisa coba submit kahh untuk liat performa di public so far",
+    "command": [
+      "kaggle-orie",
+      "competitions",
+      "submit",
+      "-c",
+      "dateraquest-2-0-machine-learning-competition",
+      "-f",
+      "outputs/LOCAL-PROP-006-A-PUBLIC/LOCAL-PROP-006-A_f2replace_submission.csv",
+      "-m",
+      "LOCAL-PROP-006-A CE scratch r18d288 ep600 EMA f2 replaces EXP024 f2; other9 unchanged; infer352/320 flip prior100 SIFT5; user-public-probe sha=d0fd851ddd8a9a12"
+    ],
+    "submission_sha256": "d0fd851ddd8a9a121aafd85fb4c2f1c5d327e745cf0b37581ffc2cd0d2330895",
+    "completed_at": "2026-11-15T07:28:11.983279+00:00",
+    "returncode": 0
+  }
+}

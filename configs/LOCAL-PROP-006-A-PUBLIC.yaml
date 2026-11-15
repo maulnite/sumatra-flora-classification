@@ -1,0 +1,21 @@
+experiment_id: LOCAL-PROP-006-A-PUBLIC
+competition: dateraquest-2-0-machine-learning-competition
+output_root: outputs/LOCAL-PROP-006-A-PUBLIC
+training_config: configs/LOCAL-PROP-006-SUPCON.yaml
+checkpoint: outputs/LOCAL-PROP-006-SUPCON/A/model.pt
+checkpoint_sha256: b11f38515245a222b4d422920b2bf6537ef78a252c489c5d8bda08a1ee4c0dab
+training_spec_sha256: 89b9b917e7659cc933c64f2c9a9e024b8ff4b099f1dc55a448d74b94d3594bbe
+selected_arm: A
+selection: final_epoch_600_ema_CE_control_selected_by_fold2_validation
+composition: replace_R_r18d_i288_e600_f2_keep_other_nine_reference_members
+folds: [0, 1, 2, 3, 4]
+family_weights: [0.5, 0.5]
+replacement_fold: 2
+inference_size: 352
+tta: flip
+balance_iterations: 100
+sift_minimum_inliers: 5
+baseline_submission_sha256: 6ca4cb673741edc3ca1e9903ed31dfb3b35924b52797742715a40e667f4d25e9
+baseline_public_score: 0.87012
+authorization: explicit_user_request_to_submit_for_public_performance_2026-11-15
+automatic_upload: false
