@@ -108,6 +108,20 @@ submission**; EXP-024 remains best public **0.87012**. This evaluates the two fr
 recipes on one development fold, not universal architecture superiority.
 [Final summary](../experiments/results/LOCAL-PROP-007-BACKBONES.summary.json).
 
+Transformer architecture research 15 Nov:
+[RESEARCH-008](TRANSFORMER_ARCHITECTURE_RESEARCH_2026-11-15.md) inspected six primary
+papers and exact data/evaluation protocols. Closest evidence is **Training Vision
+Transformers with Only 2040 Images**: Flowers102, source-only random initialization,
+PVTv2-B3 accuracy 90.5% with supervised training, 95.9% with target-only IDMM plus
+supervised training at 224px, 96.7% after an extra 448px stage. These are paper
+accuracies, not DATERAQUEST macro F1. Recommendation: **PVTv2-B3 (44.74M)** with
+**B0 (3.42M)** as a size comparison; both CPU factories initialize scratch 30-class
+models in the installed environment. CCT 97.19% used a different **6,552-image train
+split**, per the author's clarification; SCOTT 97.15% used **8,189 unlabeled images
+including test**, versus 80.69% with 2,040 source images. Evidence updates the earlier
+MobileViT/Swin hypothesis. **Research only; no transformer training or upload.**
+[Structured source and decision record](../experiments/results/RESEARCH-008-TRANSFORMER.summary.json).
+
 ## Ablation / comparison placeholder
 
 | Factor | Run A | Run B | Matched validation split? | Conclusion |

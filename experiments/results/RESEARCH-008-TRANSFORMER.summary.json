@@ -1,0 +1,233 @@
+{
+  "research_id": "RESEARCH-008-TRANSFORMER",
+  "at": "2026-11-15T15:57:18.910992+00:00",
+  "objective": "Select architecture and training recipe from scratch with the available official dataset size",
+  "scope": "Targeted primary-source review, not an exhaustive systematic review",
+  "dataset": {
+    "total_labeled_images": 3014,
+    "classes": 30,
+    "fold": 2,
+    "training_images": 2411,
+    "training_scene_groups": 2166,
+    "validation_images": 603,
+    "validation_scene_groups": 542,
+    "training_images_per_class_min": 38,
+    "training_images_per_class_max": 135
+  },
+  "primary_candidate": "pvt_v2_b3",
+  "size_comparator": "pvt_v2_b0",
+  "candidate_recipe": "source-only IDMM pretraining followed by supervised training",
+  "recommendation_is_inference": true,
+  "local_model_factory_check": {
+    "timm": "1.0.31",
+    "models": {
+      "pvt_v2_b0": {
+        "parameters": 3417470,
+        "num_features": 256,
+        "pretrained": false,
+        "initialization_only": true
+      },
+      "pvt_v2_b2": {
+        "parameters": 24865246,
+        "num_features": 512,
+        "pretrained": false,
+        "initialization_only": true
+      },
+      "pvt_v2_b3": {
+        "parameters": 44741086,
+        "num_features": 512,
+        "pretrained": false,
+        "initialization_only": true
+      }
+    },
+    "GPU_forward_performed": false
+  },
+  "papers": [
+    {
+      "id": "arxiv:2201.10728",
+      "title": "Training Vision Transformers with Only 2040 Images",
+      "version_read": "v1, 2022-01-26",
+      "url": "https://arxiv.org/html/2201.10728",
+      "sections": [
+        "Table 1",
+        "Table 3",
+        "Section 4.2"
+      ],
+      "training_images": 2040,
+      "test_images": 6149,
+      "classes": 102,
+      "dataset": "Flowers102",
+      "external_data_used_in_selected_rows": false,
+      "rows": [
+        {
+          "backbone": "DeiT-Tiny",
+          "CE_224": 67.8,
+          "IDMM_224": 83.4,
+          "IDMM_448": 85.6
+        },
+        {
+          "backbone": "DeiT-Base",
+          "CE_224": 67.3,
+          "IDMM_224": 88.1,
+          "IDMM_448": 90.6
+        },
+        {
+          "backbone": "PVTv2-B0",
+          "CE_224": 90.3,
+          "IDMM_224": 94.6,
+          "IDMM_448": 95.9
+        },
+        {
+          "backbone": "PVTv2-B3",
+          "CE_224": 90.5,
+          "IDMM_224": 95.9,
+          "IDMM_448": 96.7
+        }
+      ],
+      "metric": "Reported Flowers102 accuracy percent, not competition macro F1",
+      "budget": {
+        "CE_epochs_224": 800,
+        "IDMM_SSL_epochs_112": 800,
+        "IDMM_supervised_epochs_224": 800,
+        "additional_supervised_epochs_448": 100
+      },
+      "inference": "Strongest direct data-size evidence for PVTv2 family; B3 is a capacity candidate, not a proven winner here",
+      "limitations": [
+        "IDMM adds compute and changes the recipe",
+        "Flowers102 clean evaluation differs from corruption and scene-group holdout",
+        "ImageNet and SIN-10k transfer rows excluded"
+      ]
+    },
+    {
+      "id": "arxiv:2106.13797",
+      "title": "PVT v2: Improved Baselines with Pyramid Vision Transformer",
+      "url": "https://arxiv.org/html/2106.13797",
+      "sections": [
+        "Sections 3.3 to 3.5",
+        "Table 1"
+      ],
+      "mechanisms": [
+        "overlapping convolutional patch embedding",
+        "depthwise convolution in feed-forward network",
+        "hierarchical shrinking spatial grid",
+        "spatial reduction attention"
+      ],
+      "caveat": "B3 has ordinary SRA; linear-SRA in the inspected series is specifically B2-Li. Main architecture evidence is ImageNet-scale."
+    },
+    {
+      "id": "arxiv:2106.03746",
+      "title": "Efficient Training of Visual Transformers with Small Datasets",
+      "url": "https://arxiv.org/html/2106.03746",
+      "sections": [
+        "Table 1",
+        "Table 4",
+        "Section 5.2"
+      ],
+      "training_images": 2040,
+      "test_images": 6149,
+      "classes": 102,
+      "dataset": "Flowers102",
+      "epochs": 100,
+      "metric": "top-1 accuracy percent",
+      "rows": [
+        {
+          "backbone": "CvT-13",
+          "baseline": 54.29,
+          "with_DRLoc": 56.29
+        },
+        {
+          "backbone": "Swin-T",
+          "baseline": 34.51,
+          "with_DRLoc": 39.37
+        },
+        {
+          "backbone": "T2T-ViT-14",
+          "baseline": 31.73,
+          "with_DRLoc": 34.35
+        }
+      ],
+      "inference": "Architecture rankings at ImageNet scale do not directly settle low-data choice",
+      "caveat": "Shorter and different training than IDMM; cannot interpret cross-paper differences as controlled causal effects"
+    },
+    {
+      "id": "arxiv:2104.05704",
+      "title": "Escaping the Big Data Paradigm with Compact Transformers",
+      "version_read": "v4, 2022-06-07",
+      "url": "https://arxiv.org/html/2104.05704",
+      "sections": [
+        "Table 4",
+        "Sections 4.1 to 4.3"
+      ],
+      "mechanisms": [
+        "convolutional tokenizer",
+        "sequence pooling"
+      ],
+      "reported_scratch_flowers_accuracy": 97.19,
+      "reported_ImageNet_pretrained_flowers_accuracy": 99.76,
+      "author_split_clarification": {
+        "url": "https://github.com/SHI-Labs/Compact-Transformers/issues/65#issuecomment-1249532940",
+        "training_images": 6552,
+        "validation_images": 818,
+        "unlabeled_test_images": 819,
+        "evaluation": "validation split"
+      },
+      "official_repository_commit": "cd11f0912749d376f7465cb83534e768b6701d7d",
+      "model_name_discrepancy": "Paper table identifies CCT-14/7x2 for scratch 97.19; current README/config identify CCT-7/7x2",
+      "inference": "Secondary architecture idea; 97.19 is not evidence under a 2040-training-image protocol"
+    },
+    {
+      "id": "arxiv:2502.18056",
+      "title": "Escaping the big data paradigm in self-supervised representation learning",
+      "version_read": "v2, 2026-03-06",
+      "url": "https://arxiv.org/html/2502.18056v2",
+      "sections": [
+        "Tables 11 to 13"
+      ],
+      "mechanism": "SCOTT tokenizer with MIM-JEPA",
+      "metric": "Frozen attentive probing top-1 percent",
+      "rows": [
+        {
+          "SSL_images": 2040,
+          "SSL_scope": "train and validation standard Flowers split",
+          "top1": 80.69
+        },
+        {
+          "SSL_images": 8189,
+          "SSL_scope": "train, validation and unlabeled test",
+          "top1": 97.15
+        }
+      ],
+      "inference": "Interesting separately for transductive learning; headline does not establish source-only low-data performance",
+      "caveat": "Model-size scaling from 6.5M to 22.4M uses all 8189 images, not only 2040"
+    },
+    {
+      "id": "arxiv:2112.13492",
+      "title": "Vision Transformer for Small-Size Datasets",
+      "url": "https://arxiv.org/html/2112.13492",
+      "sections": [
+        "Section 4.1",
+        "Table 2"
+      ],
+      "mechanisms": [
+        "shifted patch tokenization",
+        "locality self-attention"
+      ],
+      "Tiny_ImageNet": {
+        "training_images": 100000,
+        "baseline_modified_Swin": 60.87,
+        "SPT_LSA_modified_Swin": 64.95
+      },
+      "CIFAR_training_images": 50000,
+      "inference": "Supports locality design, with weaker direct evidence for roughly 2400 training images"
+    }
+  ],
+  "selected_external_pretrained_weights_used": false,
+  "new_transformer_training_started": false,
+  "kaggle_upload_performed": false,
+  "unresolved": [
+    "Dataset shift and group-held-out macro F1 not studied directly by these papers",
+    "Full IDMM two-stage GPU time on shared hardware not benchmarked",
+    "Recipe and budget must be controlled in capacity comparisons"
+  ],
+  "report": "docs/TRANSFORMER_ARCHITECTURE_RESEARCH_2026-11-15.md"
+}
