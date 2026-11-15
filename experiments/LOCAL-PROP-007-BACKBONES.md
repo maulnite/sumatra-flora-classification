@@ -65,10 +65,11 @@ Optimizer/scheduler steps and both model/EMA checkpoint roundtrips passed.
 Peak smoke allocation **12.17 GiB**. Initial random weights, runner/config,
 installed model source, environment versions and upstream input hashes are pinned.
 
-Detached supervisor launched **15 Nov 2026 07:39:44 UTC**, PID **11058**. It writes
-a heartbeat every 60 seconds and checkpoints both backbones after each complete
-epoch. CUDA OOM restarts from the last complete paired epoch without changing
-the batch or optimizer recipe. Other users' processes are untouched.
+Detached supervisor ran **15 Nov 2026 07:39:44–13:58:26 UTC**, PID **11058**.
+Both backbones completed **600 epochs / 24,000 updates**. Wall time was **6h18m43s**,
+exit code **0**, with **zero OOM restarts**. The supervisor wrote a heartbeat every
+60 seconds and checkpointed both backbones after each complete epoch. Other
+users' processes were untouched.
 
 ```bash
 PY=/home/nafisnaufal1426/venvs/dq/bin/python
@@ -81,6 +82,52 @@ Config: [LOCAL-PROP-007-BACKBONES.yaml](../configs/LOCAL-PROP-007-BACKBONES.yaml
 Local artifacts: `outputs/LOCAL-PROP-007-BACKBONES/`, including `spec.json`,
 `smoke_result.json`, `job.json`, `heartbeat.json`, `status.json`, `runner.log`,
 `paired_checkpoint.pt`, per-backbone EMA weights/validation probabilities/history,
-and final `result.json`. Training is in progress; no candidate score is available
-at launch. Cold smoke timings include first-use CUDA overhead and are not a
-reliable whole-training ETA.
+and final `result.json`. Cold smoke timings include first-use CUDA overhead and
+are not a reliable whole-training ETA.
+
+## Verified final result
+
+All scores below are **fold-2 local macro F1**, final epoch 600. Primary, clean
+and blur use the same fixed 50:50 candidate/R34d fold-2 ensemble; primary is
+prior-balanced, while clean/blur are raw. The last column evaluates the new
+student alone, without R34d or prior balancing.
+
+| Student | Primary balanced pair | Clean raw pair | Mean-blur raw pair | Standalone raw primary |
+| --- | ---: | ---: | ---: | ---: |
+| Original team ResNet18d | 0.826344 | 0.871937 | 0.594269 | 0.810467 |
+| Matched ResNet18d CE A | **0.834465** | **0.875798** | 0.627330 | **0.835351** |
+| EfficientNetV2 Tiny | 0.805343 | 0.839179 | **0.662033** | 0.743845 |
+| ConvNeXt Tiny | 0.796876 | 0.843716 | 0.650868 | 0.709219 |
+
+EfficientNetV2 primary is **−0.021001** versus the original team pair and
+**−0.029121** versus CE A. ConvNeXt is **−0.029468** and **−0.037588**, respectively.
+Both fail the primary-gain requirements and clean guards. Both pass mean-blur
+guards and improve that diagnostic versus CE A (+0.034703 / +0.023538), but this
+does not compensate for the primary and clean losses under the frozen gate.
+
+Conditional paired scene-group bootstrap 95% intervals for primary deltas:
+
+| Candidate | Versus team pair | Versus CE A |
+| --- | --- | --- |
+| EfficientNetV2 Tiny | [−0.046261, +0.002075] | [−0.054791, −0.006418] |
+| ConvNeXt Tiny | [−0.052384, −0.008829] | [−0.065453, −0.013058] |
+
+**Neither tested recipe is promoted to further folds or Kaggle submission.**
+The strongest observed public result remains the original EXP-024 **0.87012**;
+this experiment did not produce a test/public score. One development fold, seed
+and recipe per architecture do not establish intrinsic architecture superiority.
+In particular, optimizer settings and stochastic depth differ from CE A, as
+declared before training; a different recipe remains an untested hypothesis.
+
+Post-training CPU verification recomputed all five metrics from stored
+probabilities, checked that each saved ensemble equals the exact student/R34d
+mean, and independently recomputed the promotion gates. Both final model files
+match their EMA states in the paired epoch-600 checkpoint exactly. Both optimizer
+and scheduler states confirm 24,000 updates, with 600 contiguous history entries.
+All pinned upstream data/code/config/model-source hashes and environment versions
+remain unchanged. This verification did not rerun training or GPU inference.
+
+[Machine-readable final summary](results/LOCAL-PROP-007-BACKBONES.summary.json)
+contains metrics, gates, conditional intervals, execution receipt, checkpoint
+hashes and final verification. The earlier `.launch.json` remains a historical
+snapshot of the running job at launch.

@@ -96,6 +96,18 @@ fold-2 predictions are reused. Eight relevant tests and full 120-view GPU update
 candidate validation result or new Kaggle submission.** Final-epoch gate compares
 the team pair (0.826344) and CE A (0.834465), with clean/blur guards. One fold only.
 
+Final backbone result 15 Nov 13:58 UTC: **LOCAL-PROP-007-BACKBONES completed**,
+600 epochs / 24,000 updates each, wall time **6h18m43s**, exit 0, no OOM.
+Fold-2 balanced primary pair: team **0.826344**, matched ResNet18d CE A **0.834465**,
+EfficientNetV2 Tiny **0.805343**, ConvNeXt Tiny **0.796876**. Candidate deltas versus
+CE A are **−0.029121 / −0.037588**; both fail primary and clean gates. Mean-blur
+improves to **0.662033 / 0.650868**, versus A 0.627330. Final model EMA/checkpoint,
+optimizer/scheduler steps, probabilities, recomputed metrics/gates and all pinned
+input/code/config/environment hashes verified. **No additional folds or Kaggle
+submission**; EXP-024 remains best public **0.87012**. This evaluates the two frozen
+recipes on one development fold, not universal architecture superiority.
+[Final summary](../experiments/results/LOCAL-PROP-007-BACKBONES.summary.json).
+
 ## Ablation / comparison placeholder
 
 | Factor | Run A | Run B | Matched validation split? | Conclusion |

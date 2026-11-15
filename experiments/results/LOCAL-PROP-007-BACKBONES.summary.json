@@ -1,0 +1,279 @@
+{
+  "experiment_id": "LOCAL-PROP-007-BACKBONES",
+  "at": "2026-11-15T13:58:21.842279+00:00",
+  "fold": 2,
+  "team_pair": {
+    "primary": 0.8263442628411087,
+    "raw_primary": 0.8227518243348942,
+    "clean": 0.8719374158792451,
+    "mean_blur": 0.5942692354030076,
+    "single_student_primary": 0.8104665814055525,
+    "per_class_f1": [
+      0.9473684210526315,
+      1.0,
+      0.9411764705882353,
+      0.8,
+      0.8095238095238095,
+      0.8292682926829268,
+      0.5416666666666666,
+      0.8205128205128205,
+      0.8571428571428571,
+      0.9523809523809523,
+      0.8405797101449275,
+      0.7346938775510204,
+      0.8450704225352113,
+      0.7272727272727273,
+      1.0,
+      0.9,
+      0.6428571428571429,
+      0.6666666666666666,
+      0.8205128205128205,
+      0.8235294117647058,
+      0.75,
+      0.8260869565217391,
+      1.0,
+      0.8275862068965517,
+      0.76,
+      0.8333333333333334,
+      0.6470588235294118,
+      0.8461538461538461,
+      0.8301886792452831,
+      0.9696969696969697
+    ]
+  },
+  "CE_A_pair": {
+    "primary": 0.8344647372485873,
+    "raw_primary": 0.833777085853636,
+    "clean": 0.8757978446978462,
+    "mean_blur": 0.6273302961617274,
+    "single_student_primary": 0.835351307645644,
+    "per_class_f1": [
+      0.9473684210526315,
+      1.0,
+      0.9411764705882353,
+      0.7659574468085106,
+      0.7555555555555555,
+      0.8648648648648649,
+      0.5652173913043478,
+      0.8717948717948718,
+      0.7906976744186046,
+      0.9523809523809523,
+      0.8923076923076924,
+      0.7450980392156863,
+      0.835820895522388,
+      0.7878787878787878,
+      1.0,
+      0.9230769230769231,
+      0.6,
+      0.6451612903225806,
+      0.85,
+      0.8235294117647058,
+      0.7346938775510204,
+      0.8,
+      1.0,
+      0.8275862068965517,
+      0.8,
+      0.88,
+      0.75,
+      0.8679245283018868,
+      0.8461538461538461,
+      0.9696969696969697
+    ]
+  },
+  "backbones": {
+    "efficientnetv2_rw_t": {
+      "metrics": {
+        "primary": 0.8053432942728399,
+        "raw_primary": 0.793927443695267,
+        "clean": 0.8391786186166568,
+        "mean_blur": 0.6620330733794111,
+        "single_student_primary": 0.7438449109492634,
+        "per_class_f1": [
+          0.9,
+          0.967741935483871,
+          0.9375,
+          0.7450980392156863,
+          0.6976744186046512,
+          0.8,
+          0.5957446808510638,
+          0.8947368421052632,
+          0.6976744186046512,
+          0.9565217391304348,
+          0.8955223880597015,
+          0.7450980392156863,
+          0.8571428571428571,
+          0.7058823529411765,
+          0.8888888888888888,
+          0.7804878048780488,
+          0.6206896551724138,
+          0.7407407407407407,
+          0.7894736842105263,
+          0.7142857142857143,
+          0.782608695652174,
+          0.8636363636363636,
+          1.0,
+          0.8275862068965517,
+          0.7058823529411765,
+          0.8260869565217391,
+          0.6285714285714286,
+          0.8846153846153846,
+          0.7692307692307693,
+          0.9411764705882353
+        ]
+      },
+      "gates": {
+        "primary_vs_team": false,
+        "primary_vs_CE_A": false,
+        "clean_vs_team": false,
+        "clean_vs_CE_A": false,
+        "mean_blur_vs_team": true,
+        "mean_blur_vs_CE_A": true
+      },
+      "screening_passed": false,
+      "primary_gain_vs_team": -0.02100096856826883,
+      "primary_gain_vs_CE_A": -0.02912144297574737,
+      "conditional_group_bootstrap_95_percent": {
+        "team": [
+          -0.04626147813251518,
+          0.002075394790308563
+        ],
+        "CE_A": [
+          -0.05479132191225788,
+          -0.006418480214454306
+        ]
+      }
+    },
+    "convnext_tiny": {
+      "metrics": {
+        "primary": 0.7968764273254265,
+        "raw_primary": 0.7902452685580095,
+        "clean": 0.8437159601643162,
+        "mean_blur": 0.6508678843607485,
+        "single_student_primary": 0.7092188922926079,
+        "per_class_f1": [
+          0.9,
+          1.0,
+          0.9333333333333333,
+          0.6792452830188679,
+          0.7,
+          0.7804878048780488,
+          0.5714285714285714,
+          0.8205128205128205,
+          0.8095238095238095,
+          0.9565217391304348,
+          0.8484848484848485,
+          0.6923076923076923,
+          0.8484848484848485,
+          0.7058823529411765,
+          0.8888888888888888,
+          0.8571428571428571,
+          0.5714285714285714,
+          0.7407407407407407,
+          0.65,
+          0.8,
+          0.7555555555555555,
+          0.8636363636363636,
+          1.0,
+          0.8771929824561403,
+          0.7058823529411765,
+          0.8085106382978723,
+          0.5405405405405406,
+          0.8627450980392157,
+          0.8235294117647058,
+          0.9142857142857143
+        ]
+      },
+      "gates": {
+        "primary_vs_team": false,
+        "primary_vs_CE_A": false,
+        "clean_vs_team": false,
+        "clean_vs_CE_A": false,
+        "mean_blur_vs_team": true,
+        "mean_blur_vs_CE_A": true
+      },
+      "screening_passed": false,
+      "primary_gain_vs_team": -0.029467835515682217,
+      "primary_gain_vs_CE_A": -0.037588309923160756,
+      "conditional_group_bootstrap_95_percent": {
+        "team": [
+          -0.05238440762043789,
+          -0.008829167163343558
+        ],
+        "CE_A": [
+          -0.06545328288929347,
+          -0.013058459329476111
+        ]
+      }
+    }
+  },
+  "screening_passed": false,
+  "full_oof_available": false,
+  "additional_folds_started": false,
+  "kaggle_upload_performed": false,
+  "execution": {
+    "supervisor_pid": 11058,
+    "started_at": "2026-11-15T07:39:44.242315+00:00",
+    "output_root": "/home/nafisnaufal1426/orie/datera/outputs/LOCAL-PROP-007-BACKBONES",
+    "state": "completed",
+    "heartbeat_seconds": 60,
+    "oom_restarts": 0,
+    "runner_pid": 11061,
+    "last_started_at": "2026-11-15T07:39:44.243110+00:00",
+    "return_code": 0,
+    "finished_at": "2026-11-15T13:58:26.882398+00:00",
+    "screening_passed": false
+  },
+  "wall_seconds": 22722.640083,
+  "final_verification": {
+    "at": "2026-11-15T15:35:36.430020+00:00",
+    "fold": 2,
+    "validation_rows": 603,
+    "all_pinned_inputs_code_and_environment_unchanged": true,
+    "final_epoch": 600,
+    "checkpoints": {
+      "efficientnetv2_rw_t": {
+        "final_ema_matches_paired_checkpoint": true,
+        "model_sha256": "3e5d05f17b1d1fc95f435883cbae1a62630404d60720d84c7e6b806c47693d6a",
+        "optimizer_updates": 24000,
+        "scheduler_updates": 24000,
+        "history_epochs": 600,
+        "saved_ensemble_equals_student_frozen_mean": true,
+        "recomputed_gates_match": true
+      },
+      "convnext_tiny": {
+        "final_ema_matches_paired_checkpoint": true,
+        "model_sha256": "3fe39811884f6484b645d6605e091458f19ef97abbba73ee1906a5649ceec803",
+        "optimizer_updates": 24000,
+        "scheduler_updates": 24000,
+        "history_epochs": 600,
+        "saved_ensemble_equals_student_frozen_mean": true,
+        "recomputed_gates_match": true
+      }
+    },
+    "recomputed_metrics": {
+      "efficientnetv2_rw_t": {
+        "primary": 0.8053432942728399,
+        "raw_primary": 0.793927443695267,
+        "clean": 0.8391786186166568,
+        "mean_blur": 0.6620330733794111,
+        "single_student_primary": 0.7438449109492634
+      },
+      "convnext_tiny": {
+        "primary": 0.7968764273254265,
+        "raw_primary": 0.7902452685580095,
+        "clean": 0.8437159601643162,
+        "mean_blur": 0.6508678843607485,
+        "single_student_primary": 0.7092188922926079
+      }
+    },
+    "passed": true,
+    "exit_code": 0,
+    "oom_restarts": 0,
+    "wall_seconds": 22722.640083
+  },
+  "spec_sha256": "341f038e84aa3cd8e42569969589ccbf5247d948accf037d93a7c0b932f4637d",
+  "artifacts_root": "outputs/LOCAL-PROP-007-BACKBONES",
+  "training_commit": "5dba7c89867aa8f7d44f375fd0c2df25856b87c8",
+  "decision": "Neither tested recipe passes primary or clean gates; no additional fold training or Kaggle submission",
+  "interpretation": "One fold and one recipe per architecture; does not establish intrinsic architecture superiority"
+}
