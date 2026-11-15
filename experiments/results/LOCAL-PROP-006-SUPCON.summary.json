@@ -1,0 +1,241 @@
+{
+  "experiment_id": "LOCAL-PROP-006-SUPCON",
+  "at": "2026-11-15T00:34:26.093265+00:00",
+  "fold": 2,
+  "baseline": {
+    "primary": 0.8263442628411087,
+    "raw_primary": 0.8227518243348942,
+    "clean": 0.8719374158792451,
+    "mean_blur": 0.5942692354030076,
+    "single_student_primary": 0.8104665814055525
+  },
+  "arms": {
+    "A": {
+      "primary": 0.8344647372485873,
+      "raw_primary": 0.833777085853636,
+      "clean": 0.8757978446978462,
+      "mean_blur": 0.6273302961617274,
+      "single_student_primary": 0.835351307645644,
+      "final_training_losses": {
+        "cross_entropy": 0.6886122807860374,
+        "supcon_loss": 4.248674726486206,
+        "supcon_weight": 0.0
+      },
+      "encoder_sha256": "b11f38515245a222b4d422920b2bf6537ef78a252c489c5d8bda08a1ee4c0dab"
+    },
+    "B": {
+      "primary": 0.8272285285411297,
+      "raw_primary": 0.8373098493700126,
+      "clean": 0.8739932872694708,
+      "mean_blur": 0.5957980105957518,
+      "single_student_primary": 0.8101981689278345,
+      "final_training_losses": {
+        "cross_entropy": 0.7346734941005707,
+        "supcon_loss": 1.1829957783222198,
+        "supcon_weight": 1.0
+      },
+      "encoder_sha256": "b60b787b4680bab88070aaabab5f280d5fb70f5eedfe43ec7b2b570c1aad3598"
+    }
+  },
+  "gates": {
+    "primary_vs_initial": false,
+    "primary_vs_control": false,
+    "clean_vs_initial": true,
+    "clean_vs_control": true,
+    "mean_blur_vs_initial": true,
+    "mean_blur_vs_control": false
+  },
+  "screening_passed": false,
+  "primary_gain_vs_initial": 0.0008842657000209808,
+  "primary_gain_vs_control": -0.007236208707457559,
+  "paired_group_bootstrap_95_percent": {
+    "initial": [
+      -0.012674537521269985,
+      0.013878658772759761
+    ],
+    "control": [
+      -0.02044551878317827,
+      0.004279528191721561
+    ]
+  },
+  "additional_folds_started": false,
+  "kaggle_upload_performed": false,
+  "started_at": "2026-11-14T20:05:05.892271+00:00",
+  "finished_at": "2026-11-15T00:34:29.355729+00:00",
+  "wall_clock_seconds": 16163.463458,
+  "return_code": 0,
+  "oom_restarts": 0,
+  "validation_rows": 603,
+  "source_rows": 2411,
+  "epochs_per_arm": 600,
+  "optimizer_updates_per_arm": 24000,
+  "full_five_fold_oof": false,
+  "artifact_root": "outputs/LOCAL-PROP-006-SUPCON",
+  "final_verification": {
+    "at": "2026-11-15T06:56:04.779595+00:00",
+    "all_pinned_inputs_and_code_unchanged": true,
+    "fold": 2,
+    "rows": 603,
+    "predictions": {
+      "initial": {
+        "primary": 0.8263442628411087,
+        "raw_primary": 0.8227518243348942,
+        "clean": 0.8719374158792451,
+        "mean_blur": 0.5942692354030076,
+        "single_student_primary": 0.8104665814055525
+      },
+      "A": {
+        "primary": 0.8344647372485873,
+        "raw_primary": 0.833777085853636,
+        "clean": 0.8757978446978462,
+        "mean_blur": 0.6273302961617274,
+        "single_student_primary": 0.835351307645644
+      },
+      "B": {
+        "primary": 0.8272285285411297,
+        "raw_primary": 0.8373098493700126,
+        "clean": 0.8739932872694708,
+        "mean_blur": 0.5957980105957518,
+        "single_student_primary": 0.8101981689278345
+      }
+    },
+    "checkpoints": {
+      "A": {
+        "final_ema_encoder_and_projection_match_paired_checkpoint": true,
+        "epoch": 600,
+        "optimizer_updates": 24000,
+        "encoder_sha256": "b11f38515245a222b4d422920b2bf6537ef78a252c489c5d8bda08a1ee4c0dab",
+        "projection_sha256": "c88285e1c6445e687b7e14053621c937451e1becc2c4d420a250b73d02f84926"
+      },
+      "B": {
+        "final_ema_encoder_and_projection_match_paired_checkpoint": true,
+        "epoch": 600,
+        "optimizer_updates": 24000,
+        "encoder_sha256": "b60b787b4680bab88070aaabab5f280d5fb70f5eedfe43ec7b2b570c1aad3598",
+        "projection_sha256": "e4164da33f66d0ab30c4c462a947e593a9538d181f277fd2f3e09fbe2b1e470f"
+      }
+    },
+    "comparisons": {
+      "B_vs_initial": {
+        "fixed_errors": 8,
+        "broke_correct": 6,
+        "labels_changed": 35
+      },
+      "B_vs_A": {
+        "fixed_errors": 5,
+        "broke_correct": 8,
+        "labels_changed": 29
+      },
+      "A_vs_initial": {
+        "fixed_errors": 12,
+        "broke_correct": 7,
+        "labels_changed": 39,
+        "primary_gain": 0.00812047440747854
+      }
+    },
+    "passed": true
+  },
+  "primary_validation_trajectory": {
+    "A": [
+      {
+        "epoch": 50,
+        "primary": 0.8189967782271794
+      },
+      {
+        "epoch": 100,
+        "primary": 0.8111887425726418
+      },
+      {
+        "epoch": 150,
+        "primary": 0.8055637051586314
+      },
+      {
+        "epoch": 200,
+        "primary": 0.8163845110724803
+      },
+      {
+        "epoch": 250,
+        "primary": 0.820133233754973
+      },
+      {
+        "epoch": 300,
+        "primary": 0.8218994135319004
+      },
+      {
+        "epoch": 350,
+        "primary": 0.8245068320042744
+      },
+      {
+        "epoch": 400,
+        "primary": 0.8261550130918524
+      },
+      {
+        "epoch": 450,
+        "primary": 0.8322922164452609
+      },
+      {
+        "epoch": 500,
+        "primary": 0.8315140434774903
+      },
+      {
+        "epoch": 550,
+        "primary": 0.8375508387685028
+      },
+      {
+        "epoch": 600,
+        "primary": 0.8344647372485873
+      }
+    ],
+    "B": [
+      {
+        "epoch": 50,
+        "primary": 0.8197481681058038
+      },
+      {
+        "epoch": 100,
+        "primary": 0.8130716137975141
+      },
+      {
+        "epoch": 150,
+        "primary": 0.8125236060159243
+      },
+      {
+        "epoch": 200,
+        "primary": 0.8183241925661913
+      },
+      {
+        "epoch": 250,
+        "primary": 0.8210582399236491
+      },
+      {
+        "epoch": 300,
+        "primary": 0.8241987704793523
+      },
+      {
+        "epoch": 350,
+        "primary": 0.8202868739142098
+      },
+      {
+        "epoch": 400,
+        "primary": 0.8217437077322219
+      },
+      {
+        "epoch": 450,
+        "primary": 0.8291337861304787
+      },
+      {
+        "epoch": 500,
+        "primary": 0.8269716348280723
+      },
+      {
+        "epoch": 550,
+        "primary": 0.8307047174994365
+      },
+      {
+        "epoch": 600,
+        "primary": 0.8272285285411297
+      }
+    ]
+  },
+  "A_primary_gain_vs_initial": 0.00812047440747854
+}

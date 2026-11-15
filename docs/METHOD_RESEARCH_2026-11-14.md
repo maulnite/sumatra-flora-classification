@@ -7,6 +7,12 @@ execution, [LOCAL-PROP-006-SUPCON](../experiments/LOCAL-PROP-006-SUPCON.md)
 froze the concrete configuration, passed preparation/GPU checks, and started
 detached training at 20:05:05 UTC. Both arms start from identical random weights.
 
+**Outcome, 15 Nov:** the 600-epoch paired run completed. Fold-2 balanced primary
+F1 is baseline 0.826344, CE control 0.834465, CE+SupCon 0.827229. SupCon fails the
+primary gain requirements and the blur guard against its control. This tested
+configuration is not promoted; the research proposal below is historical.
+See [the verified final report](../experiments/LOCAL-PROP-006-SUPCON.md).
+
 ## Evidence from this project
 
 The strongest verified team submission remains public F1 0.87012, ref 58278059.
@@ -180,8 +186,8 @@ Local evidence is in `outputs/LOCAL-PROP-005-DIAG/`: primary-paper methods/metad
 under `research/`, `preflight.json`, `matches.json`, `result.json`, and
 `clean_corrupt_error_overlap.json`. The screening runner is
 `scripts/screen_pairwise_geometry.py`. It completed successfully in CPU background;
-the diagnostic and earlier SSL pilot have completed. The separate SupCon A/B
-training job is active as documented above.
+the diagnostic, earlier SSL pilot, and subsequent SupCon A/B training have all
+completed. No training remains active from these experiments.
 
 No dependencies were changed, no team files/processes were modified, no external
 dataset or pretrained model was downloaded, and no Kaggle resource was changed.

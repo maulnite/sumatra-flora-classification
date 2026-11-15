@@ -64,6 +64,16 @@ passed; peak smoke VRAM 3,30 GiB. At 20:06:28 UTC both arms had completed 38 upd
 Candidate validation is pending; first evaluation at epoch 50. Paired epoch
 checkpoints and a 60-second heartbeat support background monitoring/OOM resume.
 
+Result 15 Nov 00:34 UTC: **LOCAL-PROP-006-SUPCON completed**, 600 epochs / 24.000
+updates per arm, runtime 4h29m, exit 0, no OOM. Fold-2 primary balanced F1:
+baseline **0,826344**, CE A **0,834465**, CE+SupCon B **0,827229**. B−baseline
++0,000884; B−A **−0,007236**; both primary gates fail. Mean-blur B−A −0,031532
+also fails the guard. Conditional paired-group 95% CI B−A [−0,020446; +0,004280]
+includes zero. A's +0,008120 versus baseline is a single-fold signal for its
+alternative CE recipe, not a confirmed OOF/public improvement. Final probabilities,
+paired EMA/checkpoint, 24.000-step optimizer/scheduler states and input hashes
+verified. No more folds or submission. [Summary](../experiments/results/LOCAL-PROP-006-SUPCON.summary.json).
+
 ## Ablation / comparison placeholder
 
 | Factor | Run A | Run B | Matched validation split? | Conclusion |

@@ -1,7 +1,8 @@
 # LOCAL-PROP-006-SUPCON: source-supervised contrastive learning from scratch
 
-Status: **running**, launched detached on 14 Nov 2026 at 20:05:05 UTC.
-Both A and B began real optimizer updates in epoch 1.
+Status: **completed; screening failed**. Both arms finished 600 epochs and 24,000
+updates each, 14 Nov 20:05:05–15 Nov 00:34:29 UTC, approximately 4 hours 29 minutes.
+Exit code 0, no OOM restarts. No additional folds or Kaggle upload were started.
 
 This experiment tests whether supervised contrastive representation learning can
 improve the strongest team's ensemble. [The preceding research](../docs/METHOD_RESEARCH_2026-11-14.md)
@@ -137,4 +138,66 @@ had completed **38/40 updates in epoch 1**. No OOM restart was recorded. The job
 records status per paired update and checkpoints every completed paired epoch.
 PIDs are historical evidence; inspect current `job.json` and process command
 lines before using them later. First validation is scheduled for epoch 50;
-no candidate validation or leaderboard gain is claimed at launch.
+no candidate validation or leaderboard gain was claimed at launch. These PIDs
+are now historical; the job has completed.
+
+## Final results
+
+All values below are local macro F1 on the same **603 fold-2 validation rows**.
+Primary is the equal student/frozen-R34d ensemble after fixed prior balancing,
+before SIFT. Clean and mean additional-blur guards use raw ensemble F1.
+
+| Metric | Original team baseline | CE control A | CE+SupCon B | B minus A |
+| --- | ---: | ---: | ---: | ---: |
+| Primary balanced ensemble | 0.826344 | **0.834465** | 0.827229 | −0.007236 |
+| Primary raw ensemble | 0.822752 | 0.833777 | 0.837310 | +0.003533 |
+| Clean raw ensemble | 0.871937 | 0.875798 | 0.873993 | −0.001805 |
+| Mean additional-blur raw ensemble | 0.594269 | 0.627330 | 0.595798 | −0.031532 |
+| Primary raw R18d student | 0.810467 | 0.835351 | 0.810198 | −0.025153 |
+
+B gains only **0.000884** against the original primary baseline and is
+**0.007236 below A**, failing both +0.01 primary gain requirements. Clean guards
+pass, but the mean-blur guard against A also fails (−0.031532 exceeds the allowed
+−0.01 loss). On balanced primary labels, B fixes five A errors and breaks eight
+correct A predictions; 29 labels change overall, including changes between wrong
+classes. Against the original baseline it fixes eight errors and breaks six,
+with 35 changed labels.
+
+Conditional class-stratified paired scene-group bootstrap 95% intervals for B's
+primary delta are **[−0.012675, +0.013879]** versus the original baseline and
+**[−0.020446, +0.004280]** versus A. Both include zero. This tested joint-loss
+configuration provides no demonstrated advantage over its matched control.
+This conclusion does not reject all supervised contrastive formulations.
+
+A improves primary by **+0.008120** against the original baseline, fixing twelve
+errors and breaking seven correct predictions. Its R18d-only raw F1 improves
+by +0.024885. This is useful evidence for the alternative CE recipe, but changes
+include paired views, class-balanced sampling, and disabled MixUp/CutMix; no
+individual cause is isolated. One development fold does not establish a full
+OOF or leaderboard improvement, and A is not automatically promoted.
+
+B's training contrastive loss falls to 1.1830, versus 4.2487 in A's unoptimized
+projection, yet its primary and blur generalization do not improve over A.
+Optimizing the contrastive training objective is therefore not sufficient evidence
+of better validation performance. B has a higher raw ensemble F1 than A, while
+the chosen balancing reverses their ranking. Calibration/decoding is a possible
+separate follow-up; no post-hoc change is used to rescue the preregistered gate.
+
+The strongest logged intermediate primary scores are A 0.837551 and B 0.830705,
+both at epoch 550. The decision remains epoch 600; no intermediate checkpoint is
+promoted. Existing best team predictions remain unchanged.
+
+## Final verification
+
+Verification recomputed initial/A/B metrics from stored probabilities, confirmed
+the exact student/frozen-R34d averages, and checked all pinned code/config/input
+hashes. Both final encoder and projection EMA files match the paired epoch-600
+checkpoint exactly. Optimizer/scheduler states confirm 24,000 updates per arm
+and both histories contain 600 epochs. Peak GPU allocation was **3.3926 GiB**.
+This verification used saved artifacts; training and GPU inference were not repeated.
+
+[Machine-readable summary](results/LOCAL-PROP-006-SUPCON.summary.json) records the
+final metrics, gates, intervals, trajectories, checkpoint hashes and verification.
+Full local artifacts remain under `outputs/LOCAL-PROP-006-SUPCON/`, including
+`result.json`, `final_verification.json`, `paired_checkpoint.pt`, and both arms'
+final EMA weights and validation predictions.
