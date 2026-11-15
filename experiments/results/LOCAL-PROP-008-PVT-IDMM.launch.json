@@ -1,0 +1,144 @@
+{
+  "experiment_id": "LOCAL-PROP-008-PVT-IDMM",
+  "recorded_at": "2026-11-15T16:21:33.203511+00:00",
+  "state": "training_in_background",
+  "models": {
+    "pvt_v2_b3": {
+      "parameters_30_classes": 44741086,
+      "pretrained": false
+    },
+    "pvt_v2_b0": {
+      "parameters_30_classes": 3417470,
+      "pretrained": false
+    }
+  },
+  "fold": 2,
+  "seed": 44,
+  "source_rows": 2411,
+  "validation_rows": 603,
+  "source_photographs_per_effective_batch": 256,
+  "idmm_crops_per_photograph": 6,
+  "idmm_epochs": 800,
+  "supervised_epochs_per_arm": 800,
+  "idmm_updates_per_backbone": 8000,
+  "supervised_updates_per_arm": 8000,
+  "tests_passed": 10,
+  "smoke": {
+    "passed": true,
+    "at": "2026-11-15T16:19:04.372597+00:00",
+    "spec_sha256": "b29065c810bc5d855120439fe60c9f00c67d850e908f76a488f719162980d602",
+    "real_source_batch": 256,
+    "idmm_views": 6,
+    "results": {
+      "pvt_v2_b3": {
+        "idmm_idmm": {
+          "loss": 15.645444810390472,
+          "group_losses": [
+            7.823753237724304,
+            7.821691572666168
+          ],
+          "gradient_norm": 2.1115570068359375
+        },
+        "idmm_seconds": 11.144465030170977,
+        "supervised_control": {
+          "loss": 3.4117029309272766,
+          "group_losses": [
+            3.4117029309272766
+          ],
+          "gradient_norm": 2.366122007369995
+        },
+        "supervised_candidate": {
+          "loss": 3.411552369594574,
+          "group_losses": [
+            3.411552369594574
+          ],
+          "gradient_norm": 2.3763155937194824
+        },
+        "supervised_seconds": 12.250259379390627
+      },
+      "pvt_v2_b0": {
+        "idmm_idmm": {
+          "loss": 15.602172553539276,
+          "group_losses": [
+            7.80885124206543,
+            7.793321311473846
+          ],
+          "gradient_norm": 0.875356912612915
+        },
+        "idmm_seconds": 3.8474887451156974,
+        "supervised_control": {
+          "loss": 3.4131684005260468,
+          "group_losses": [
+            3.4131684005260468
+          ],
+          "gradient_norm": 0.9717413187026978
+        },
+        "supervised_candidate": {
+          "loss": 3.4129503071308136,
+          "group_losses": [
+            3.4129503071308136
+          ],
+          "gradient_norm": 0.9712095260620117
+        },
+        "supervised_seconds": 4.33081034803763
+      }
+    },
+    "peak_allocated_gib": 5.309620380401611,
+    "elapsed_seconds": 219.16638866020367
+  },
+  "spec_sha256": "b29065c810bc5d855120439fe60c9f00c67d850e908f76a488f719162980d602",
+  "code_sha256": {
+    "/home/nafisnaufal1426/orie/datera/configs/LOCAL-PROP-008-PVT-IDMM.yaml": "a1774632ac719643a6bd2df2dd3be99736eb851c6cede9f4d234e60c200b8e9c",
+    "/home/nafisnaufal1426/orie/datera/scripts/train_pvt_idmm.py": "55946755ff756bc41df5c0a12aa5407bfccc03663ddad7b48638625c42dedff3",
+    "/home/nafisnaufal1426/orie/datera/scripts/launch_pvt_idmm.py": "2c694e738bb2c8ca7fa272a5515a2872531cbeb60c9a9c46f630f83f02246d0e",
+    "/home/nafisnaufal1426/orie/datera/scripts/supervised_contrastive.py": "73dbd49fd23445d81e49d01d6a7067b6371f2355a40e9d3c8e65d7cd1c1e9a40",
+    "/home/nafisnaufal1426/orie/datera/scripts/adaptive_self_training.py": "91683fb4ab96f0e088090acec0d744593b7911df5bc5e1e891132f1840092139",
+    "/home/nafisnaufal1426/orie/datera/scripts/reproduce_checkpoint_inference.py": "0984806fd209f07b84656436469683c907521f3f311d446b9695caa03bd7e334",
+    "/home/nafisnaufal1426/venvs/dq/lib/python3.10/site-packages/timm/models/pvt_v2.py": "b799924f2c9a5d507ed75c81c0b0c9ee48aeac7eb57c34b9232b611dc8f5e6ab"
+  },
+  "job_at_recording": {
+    "supervisor_pid": 206091,
+    "started_at": "2026-11-15T16:19:47.492286+00:00",
+    "output_root": "/home/nafisnaufal1426/orie/datera/outputs/LOCAL-PROP-008-PVT-IDMM",
+    "state": "running",
+    "heartbeat_seconds": 60,
+    "oom_restarts": 0,
+    "runner_pid": 206351,
+    "last_started_at": "2026-11-15T16:19:47.493580+00:00"
+  },
+  "training_status_at_recording": {
+    "at": "2026-11-15T16:21:30.010233+00:00",
+    "architecture": "pvt_v2_b3",
+    "phase": "idmm",
+    "epoch": 1,
+    "epochs": 800,
+    "step": 7,
+    "steps": 10,
+    "checkpoint_epoch": 0,
+    "phase_elapsed_seconds": 80.77656395407394,
+    "current_loss": {
+      "idmm": 15.66710192816598
+    }
+  },
+  "synthetic_benchmark": {
+    "idmm": {
+      "pvt_v2_b0": 2.276203340385109,
+      "pvt_v2_b3": 5.795948101207614
+    },
+    "supervised": {
+      "pvt_v2_b0": 1.0345813729800284,
+      "pvt_v2_b3": 3.901789791416377
+    },
+    "projected_full_800_plus_800_compute_hours": 39.87754171196785,
+    "peak_gib": 4.695191383361816
+  },
+  "candidate_validation_available": false,
+  "candidate_full_oof_available": false,
+  "kaggle_upload_performed": false,
+  "reference_team_pair_primary_f1": 0.8263442628411087,
+  "reference_CE_A_pair_primary_f1": 0.8344647372485873,
+  "prior_research_commit": "904845c1d5465245129fa2547c089a3e623fcba5",
+  "additional_compute_for_IDMM": true,
+  "external_weights_used": false,
+  "test_images_used": false
+}

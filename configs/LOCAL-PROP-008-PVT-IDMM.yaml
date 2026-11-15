@@ -1,0 +1,92 @@
+experiment_id: LOCAL-PROP-008-PVT-IDMM
+output_root: outputs/LOCAL-PROP-008-PVT-IDMM
+dataset_root: data/raw
+team_root: /home/nafisnaufal1426/inahuy/dateruy
+reference_root: outputs/BASELINE-INFERENCE-REPRO-001
+reference_training_config: configs/LOCAL-PROP-006-SUPCON.yaml
+reference_experiment_root: outputs/LOCAL-PROP-006-SUPCON
+reference_spec_sha256: 89b9b917e7659cc933c64f2c9a9e024b8ff4b099f1dc55a448d74b94d3594bbe
+python: /home/nafisnaufal1426/venvs/dq/bin/python
+fold: 2
+seed: 44
+backbones:
+  pvt_v2_b3:
+    learning_rate: 0.0005
+  pvt_v2_b0:
+    learning_rate: 0.001
+idmm:
+  epochs: 800
+  image_size: 112
+  microbatch: 128
+  crop_counts: [2, 4]
+  crop_scales: [[0.14, 1.0], [0.05, 0.4]]
+  crop_ratio: [0.75, 1.3333333333333333]
+  color_jitter: [0.8, 0.8, 0.8, 0.2]
+  color_probability: 0.8
+  grayscale_probability: 0.2
+  gaussian_blur_probability: 0.5
+  gaussian_sigma: [0.1, 2.0]
+  mixing: cutmix
+  loss: mean_global_smoothed_CE_plus_mean_local_smoothed_CE
+training:
+  pretrained: false
+  source_batch: 256
+  epochs: 800
+  image_size: 224
+  microbatch: 32
+  optimizer: AdamW
+  warmup_epochs: 10
+  minimum_learning_rate: 0.000001
+  weight_decay: 0.001
+  label_smoothing: 0.1
+  drop_path_rate: 0.1
+  drop_rate: 0.0
+  mix_alpha: 0.5
+  cutmix_probability: 0.5
+  gradient_clip_norm: 5.0
+  source_rotation_probability: 0.9
+  source_rotation_degrees: 180
+  strong_view_probability: 0.5
+  crop_scale: [0.25, 1.0]
+  crop_ratio: [0.5, 2.0]
+  ema_decay: 0.999
+  sampling: uniform_epoch_permutation_without_replacement_include_last_partial_batch
+  checkpoint_selection: final_epoch_800_ema_no_early_stopping
+validation:
+  expected_train_rows: 2411
+  expected_validation_rows: 603
+  student_inference_size: 352
+  frozen_inference_size: 320
+  batch_size: 16
+  tta: flip
+  log_every_epochs: 200
+  balance_iterations: 100
+  main_metric: equal_candidate_and_frozen_R34d_fold2_balanced_primary_before_SIFT
+  balance_prior: legacy_full_training_class_counts_for_comparison_only
+  minimum_gain_vs_CE_A_pair: 0.005
+  minimum_gain_vs_control: 0.005
+  minimum_clean_delta_vs_CE_A: -0.01
+  minimum_blur_delta_vs_CE_A: -0.01
+execution:
+  runner: scripts/train_pvt_idmm.py
+  launcher: scripts/launch_pvt_idmm.py
+  cpu_threads: 4
+  workers: 4
+  prefetch_factor: 1
+  gpu_memory_fraction: 0.25
+  gpu_sharing_authorized: true
+  monitor_interval_seconds: 60
+  oom_retry_seconds: 30
+  oom_exit_code: 75
+  checkpoint_every_epochs: 10
+  schedule: B3_IDMM_then_paired_B3_supervised_then_B0_IDMM_then_paired_B0_supervised
+  restart: last_complete_checkpoint_epoch_same_microbatches_and_effective_batch
+  automatic_submission: false
+  automatic_additional_folds: false
+  target_images_used: false
+paper:
+  title: Training Vision Transformers with Only 2040 Images
+  url: https://arxiv.org/abs/2201.10728
+  official_code: https://github.com/CupidJay/Training-Vision-Transformers-with-only-2040-images
+  inspected_commit: 0ddba0dffa1125df387020c11eeb91da7f8d85fd
+  implementation: independent_timm_adaptation_not_exact_reproduction

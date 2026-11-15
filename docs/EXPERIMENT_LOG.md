@@ -122,6 +122,24 @@ including test**, versus 80.69% with 2,040 source images. Evidence updates the e
 MobileViT/Swin hypothesis. **Research only; no transformer training or upload.**
 [Structured source and decision record](../experiments/results/RESEARCH-008-TRANSFORMER.summary.json).
 
+Transformer experiment 15 Nov 16:19 UTC:
+[LOCAL-PROP-008-PVT-IDMM](../experiments/LOCAL-PROP-008-PVT-IDMM.md) launched
+detached, supervisor PID **206091**. Source-only scratch **PVTv2-B3 (44.74M)**
+runs first: 800-epoch IDMM at 112px with six crops, followed by paired
+800-epoch supervised control / IDMM-initialized candidate at 224px. **B0 (3.42M)**
+follows with the same stage lengths. Strict team fold 2, 2,411 source / 603
+validation, effective photograph batch 256, ten updates/epoch. Only own source
+photos initialize the transformers. Matched supervised batches/head/dropout
+seeds distinguish the IDMM addition; candidate uses extra total compute.
+The official IDMM crop grouping and losses were inspected and independently
+implemented, with flora augmentations and other declared adaptations.
+Ten behavioral tests and real-source GPU updates/checkpoint/inference smoke
+passed; peak allocation **5.31 GiB**. Estimated synthetic GPU compute **39.88h**
+excludes loading/evaluation/checkpoint overhead and shared-GPU variation.
+Heartbeat every 60 seconds, checkpoints every ten complete epochs, same-batch
+OOM resume. **Training in progress, no candidate validation or Kaggle upload.**
+[Frozen protocol and launch receipt](../experiments/results/LOCAL-PROP-008-PVT-IDMM.launch.json).
+
 ## Ablation / comparison placeholder
 
 | Factor | Run A | Run B | Matched validation split? | Conclusion |
