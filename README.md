@@ -5,12 +5,20 @@
 
 A collaborative computer vision project to classify **30 plant species** from Kebun Raya ITERA. This three-person team's focus is **training from scratch**, reliable augmentation, and robust evaluation.
 
-> **Status: starter repository.** All experiment results, leaderboard numbers, and member handles are placeholders until verified.  
+> **Status: active experiments.** Verified results link to their reports and receipts; the EXP-001–EXP-003 rows and member handles remain templates.\
 > **Public visibility:** All code published here can be viewed by anyone, including other competing teams. Sharing code **within our registered team** is allowed; cross-team code/prediction sharing is prohibited. Official rules take precedence.
 
 Local onboarding audit (12 Nov 2026): official data and nine existing Kaggle submissions have been inspected. See [verified competition/data/submission snapshot](docs/COMPETITION_AUDIT_2026-11-12.md). These historical submissions are separate from the placeholder EXP reports below; their training code and local validation metrics are not yet in this repository.
 
 The [deep dataset audit](docs/DEEP_DATASET_AUDIT_2026-11-12.md) records detected scene overlap, provisional group folds, image quality shifts beyond JPEG, and train-label review candidates.
+
+Update 16 Nov 2026: [PVTv2-B3 with source-only IDMM](experiments/LOCAL-PROP-008-PVT-IDMM.md)
+completed scratch training and passed its final fold-2 screen: matching-pair
+macro F1 **0.865532**, versus ResNet CE A **0.834465**; B3 alone **0.862227**.
+A [single fixed ensemble-member replacement](experiments/LOCAL-PROP-008-B3-PUBLIC.md)
+scored **public 0.87197**, Kaggle ref **58446643**, COMPLETE: **+0.00185** versus
+previous best 0.87012. This is the highest observed team public score. New-model
+full OOF/private scores are unavailable; the B0 comparison is still running.
 
 Update 13 Nov 2026: the team's working pipeline and EXP-004–EXP-025 records are on branch `kaka`, with verified best public Macro F1 **0.87012**. See [the team update review](docs/TEAM_UPDATE_2026-11-13.md). [LOCAL-PROP-001 revision 2](experiments/LOCAL-PROP-001.md) completed recipe R / ResNet18d A/B training with added post-resize blur on a local holdout. Mean blur Macro F1 increased **0.3921 → 0.6567**, while primary F1 changed **0.7290 → 0.7235**; the automatic gate failed. The user subsequently requested submission B: **public 0.79702**, ref **58306830**, COMPLETE. Local artifacts are under `outputs/LOCAL-PROP-001/`.
 
@@ -146,28 +154,30 @@ score = f1_score(y_true, y_pred, labels=list(range(30)), average="macro", zero_d
 
 ## Team experiment results
 
-**No experiments are completed yet.** Each member updates their own [experiment report](experiments/) and the verified summary below through pull requests.
+Verified results are linked below and in the [experiment registry](docs/EXPERIMENT_LOG.md).
+EXP-001–EXP-003 remain planning templates.
 
 | Experiment | Owner | Architecture / change | Seed / split | Validation Macro F1 | Public LB | Private LB | Status |
 | --- | --- | --- | --- | ---: | ---: | ---: | --- |
 | [EXP-001](experiments/EXP-001.md) | @TBD | TBD | TBD | — | — | — | Planned |
 | [EXP-002](experiments/EXP-002.md) | @TBD | TBD | TBD | — | — | — | Planned |
 | [EXP-003](experiments/EXP-003.md) | @TBD | TBD | TBD | — | — | — | Planned |
+| [LOCAL-PROP-008-B3-PUBLIC](experiments/LOCAL-PROP-008-B3-PUBLIC.md) | @maulnite | Scratch PVTv2-B3 IDMM; one EXP-024 member replaced | 44 / scene fold 2 | 0.865532, matching pair only | **0.87197** | — | B3 complete; B0 running |
 
-### Best validated result (placeholder)
+### Best observed public result
 
 | Metadata | Value |
 | --- | --- |
-| Experiment ID / member | TBD |
-| Architecture and parameters | TBD |
-| Data split, seed, random initialization | TBD |
-| Model config / Git commit SHA | TBD |
-| Validation Macro F1 | TBD |
-| Public leaderboard Macro F1 | TBD |
+| Experiment ID / member | LOCAL-PROP-008-B3-PUBLIC / @maulnite |
+| Architecture and parameters | One PVTv2-B3 (44.74M), four R18d, five R34d; equal member weights |
+| Data split, seed, random initialization | New PVT: scene fold 2, seed 44, random initialization; own-source IDMM |
+| Model config / training commit | [Probe config](configs/LOCAL-PROP-008-B3-PUBLIC.yaml); training `48cdae0` |
+| Validation Macro F1 | 0.865532 matching PVT/R34d fold-2 pair; full replacement-ensemble OOF unavailable |
+| Public leaderboard Macro F1 | **0.87197**, ref **58446643**, COMPLETE |
 | Private leaderboard Macro F1 | Not yet released |
-| Training time / hardware | TBD |
-| Reproducible notebook / inference command | TBD |
-| Local checkpoint path | TBD |
+| Training time / hardware | B3 stages including matched control: ~28h40m, shared A100 80GB |
+| Reproducible inference command | `python -m scripts.prepare_pvt_public_probe` |
+| Local checkpoint path | `outputs/LOCAL-PROP-008-PVT-IDMM/pvt_v2_b3/supervised/candidate/model.pt` |
 
 For a fuller cross-experiment log, see [Experiment Registry](docs/EXPERIMENT_LOG.md).
 

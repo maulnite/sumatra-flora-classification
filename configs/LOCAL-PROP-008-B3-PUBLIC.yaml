@@ -1,0 +1,25 @@
+experiment_id: LOCAL-PROP-008-B3-PUBLIC
+competition: dateraquest-2-0-machine-learning-competition
+output_root: outputs/LOCAL-PROP-008-B3-PUBLIC
+training_config: configs/LOCAL-PROP-008-PVT-IDMM.yaml
+checkpoint: outputs/LOCAL-PROP-008-PVT-IDMM/pvt_v2_b3/supervised/candidate/model.pt
+checkpoint_sha256: d6074465968be104f819c57706b9eba718069a6c99466081f4d1fdf4bf5e20c2
+training_spec_sha256: b29065c810bc5d855120439fe60c9f00c67d850e908f76a488f719162980d602
+baseline_member_manifest: experiments/results/LOCAL-PROP-006-A-PUBLIC.summary.json
+baseline_member_manifest_sha256: a5986a4969261844bc482a4354ab63bc7962b18e988250d2626cfe45025e9cd2
+architecture: pvt_v2_b3
+selected_arm: candidate
+selection: final_epoch_800_EMA_after_source_only_IDMM_800_epochs_passed_frozen_gate
+composition: replace_R_r18d_i288_e600_f2_keep_other_nine_EXP024_reference_members
+folds: [0, 1, 2, 3, 4]
+family_weights: [0.5, 0.5]
+replacement_fold: 2
+inference_size: 352
+inference_batch_size: 16
+tta: flip
+balance_iterations: 100
+sift_minimum_inliers: 5
+baseline_submission_sha256: 6ca4cb673741edc3ca1e9903ed31dfb3b35924b52797742715a40e667f4d25e9
+baseline_public_score: 0.87012
+authorization: prior_explicit_user_instruction_if_score_increases_submit_to_Kaggle
+automatic_upload: false

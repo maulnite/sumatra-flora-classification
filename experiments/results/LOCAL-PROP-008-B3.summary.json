@@ -1,0 +1,339 @@
+{
+  "experiment_id": "LOCAL-PROP-008-PVT-IDMM",
+  "recorded_at": "2026-11-16T22:38:19.834224+00:00",
+  "scope": "B3 complete; B0 still training",
+  "fold": 2,
+  "source_rows": 2411,
+  "validation_rows": 603,
+  "seed": 44,
+  "verification": {
+    "at": "2026-11-16T22:33:22.061248+00:00",
+    "verified": true,
+    "spec_sha256": "b29065c810bc5d855120439fe60c9f00c67d850e908f76a488f719162980d602",
+    "completed_epochs": 800,
+    "updates_per_arm": 8000,
+    "metrics": {
+      "control": {
+        "primary": 0.8116140624313616,
+        "raw_primary": 0.8155883976772019,
+        "clean": 0.8607741305376811,
+        "mean_blur": 0.5983039565388767,
+        "single_student_primary": 0.7333777731315574
+      },
+      "candidate": {
+        "primary": 0.8655321816438526,
+        "raw_primary": 0.8617054332691132,
+        "clean": 0.8904486815544329,
+        "mean_blur": 0.7274172350928891,
+        "single_student_primary": 0.8622270813603996
+      }
+    },
+    "gate": {
+      "passed": true,
+      "checks": {
+        "primary_vs_CE_A": true,
+        "primary_vs_control": true,
+        "clean_vs_CE_A": true,
+        "blur_vs_CE_A": true
+      },
+      "CE_A": {
+        "primary": 0.8344647372485873,
+        "raw_primary": 0.833777085853636,
+        "clean": 0.8757978446978462,
+        "mean_blur": 0.6273302961617274,
+        "single_student_primary": 0.835351307645644,
+        "per_class_f1": [
+          0.9473684210526315,
+          1.0,
+          0.9411764705882353,
+          0.7659574468085106,
+          0.7555555555555555,
+          0.8648648648648649,
+          0.5652173913043478,
+          0.8717948717948718,
+          0.7906976744186046,
+          0.9523809523809523,
+          0.8923076923076924,
+          0.7450980392156863,
+          0.835820895522388,
+          0.7878787878787878,
+          1.0,
+          0.9230769230769231,
+          0.6,
+          0.6451612903225806,
+          0.85,
+          0.8235294117647058,
+          0.7346938775510204,
+          0.8,
+          1.0,
+          0.8275862068965517,
+          0.8,
+          0.88,
+          0.75,
+          0.8679245283018868,
+          0.8461538461538461,
+          0.9696969696969697
+        ]
+      },
+      "primary_delta_vs_control": 0.05391811921249101,
+      "primary_delta_vs_CE_A": 0.03106744439526532
+    },
+    "models_match_final_ema": true,
+    "optimizer_and_scheduler_steps_verified": true,
+    "input_code_config_environment_verified": true
+  },
+  "conditional_bootstrap": {
+    "at": "2026-11-16T22:37:00.320491+00:00",
+    "comparison": "B3 final IDMM pair minus ResNet CE A final pair",
+    "interval_95_percent": [
+      0.013613883114514594,
+      0.049257816889723874
+    ],
+    "replicates": 2000,
+    "seed": 44,
+    "resampling": "class_stratified_paired_scene_groups",
+    "conditioning": "fixed trained models and fixed cached validation views; does not include training or repeated-development uncertainty",
+    "promotion_criterion": false
+  },
+  "learning_curve": [
+    {
+      "epoch": 200,
+      "at": "2026-11-16T09:50:35.570034+00:00",
+      "metrics": {
+        "control": {
+          "primary": 0.8127184149910707,
+          "raw_primary": 0.8067947863608211,
+          "clean": 0.8545370164828122,
+          "mean_blur": 0.5272297919343195,
+          "single_student_primary": 0.34153191813350553
+        },
+        "candidate": {
+          "primary": 0.8327592955071292,
+          "raw_primary": 0.8233546101775736,
+          "clean": 0.874916525331413,
+          "mean_blur": 0.7140957793380539,
+          "single_student_primary": 0.7908476051058221
+        }
+      }
+    },
+    {
+      "epoch": 400,
+      "at": "2026-11-16T13:53:09.036634+00:00",
+      "metrics": {
+        "control": {
+          "primary": 0.8082187818965353,
+          "raw_primary": 0.8006421554553055,
+          "clean": 0.8573211238153499,
+          "mean_blur": 0.5489327205084056,
+          "single_student_primary": 0.5974765899498881
+        },
+        "candidate": {
+          "primary": 0.8512922080520632,
+          "raw_primary": 0.8404586950606115,
+          "clean": 0.879011388147249,
+          "mean_blur": 0.7296158406749755,
+          "single_student_primary": 0.8378356401377298
+        }
+      }
+    },
+    {
+      "epoch": 600,
+      "at": "2026-11-16T18:03:37.760347+00:00",
+      "metrics": {
+        "control": {
+          "primary": 0.8157518914206865,
+          "raw_primary": 0.8013866166324983,
+          "clean": 0.8617291789108864,
+          "mean_blur": 0.5866941973732829,
+          "single_student_primary": 0.6806026819692235
+        },
+        "candidate": {
+          "primary": 0.8597399826261225,
+          "raw_primary": 0.8561471481765631,
+          "clean": 0.8898234449164921,
+          "mean_blur": 0.7246992118248563,
+          "single_student_primary": 0.8534230699563197
+        }
+      }
+    },
+    {
+      "epoch": 800,
+      "at": "2026-11-16T21:00:32.340923+00:00",
+      "metrics": {
+        "control": {
+          "primary": 0.8116140624313616,
+          "raw_primary": 0.8155883976772019,
+          "clean": 0.8607741305376811,
+          "mean_blur": 0.5983039565388767,
+          "single_student_primary": 0.7333777731315574
+        },
+        "candidate": {
+          "primary": 0.8655321816438526,
+          "raw_primary": 0.8617054332691132,
+          "clean": 0.8904486815544329,
+          "mean_blur": 0.7274172350928891,
+          "single_student_primary": 0.8622270813603996
+        }
+      }
+    }
+  ],
+  "completion": {
+    "spec_sha256": "b29065c810bc5d855120439fe60c9f00c67d850e908f76a488f719162980d602",
+    "at": "2026-11-16T21:00:36.260270+00:00",
+    "architecture": "pvt_v2_b3",
+    "phase": "supervised",
+    "completed_epochs": 800,
+    "optimizer_updates_per_arm": 8000,
+    "artifacts": {
+      "/home/nafisnaufal1426/orie/datera/outputs/LOCAL-PROP-008-PVT-IDMM/pvt_v2_b3/supervised/control/model.pt": "c06a276cfa12389938a6a984c8212da2fcb15a3506bb8c34f6d4c70501074619",
+      "/home/nafisnaufal1426/orie/datera/outputs/LOCAL-PROP-008-PVT-IDMM/pvt_v2_b3/supervised/candidate/model.pt": "d6074465968be104f819c57706b9eba718069a6c99466081f4d1fdf4bf5e20c2"
+    },
+    "final_metrics": {
+      "control": {
+        "primary": 0.8116140624313616,
+        "raw_primary": 0.8155883976772019,
+        "clean": 0.8607741305376811,
+        "mean_blur": 0.5983039565388767,
+        "single_student_primary": 0.7333777731315574,
+        "per_class_f1": [
+          0.9,
+          1.0,
+          0.9090909090909091,
+          0.7450980392156863,
+          0.7142857142857143,
+          0.8292682926829268,
+          0.6086956521739131,
+          0.85,
+          0.7441860465116279,
+          0.9565217391304348,
+          0.8656716417910447,
+          0.72,
+          0.8405797101449275,
+          0.7741935483870968,
+          1.0,
+          0.8780487804878049,
+          0.72,
+          0.5517241379310345,
+          0.75,
+          0.8,
+          0.7659574468085106,
+          0.8085106382978723,
+          1.0,
+          0.8214285714285714,
+          0.72,
+          0.8444444444444444,
+          0.6285714285714286,
+          0.8148148148148148,
+          0.8461538461538461,
+          0.9411764705882353
+        ]
+      },
+      "candidate": {
+        "primary": 0.8655321816438526,
+        "raw_primary": 0.8617054332691132,
+        "clean": 0.8904486815544329,
+        "mean_blur": 0.7274172350928891,
+        "single_student_primary": 0.8622270813603996,
+        "per_class_f1": [
+          0.9,
+          1.0,
+          0.9696969696969697,
+          0.88,
+          0.7727272727272727,
+          0.8780487804878049,
+          0.5957446808510638,
+          0.8947368421052632,
+          0.7727272727272727,
+          0.9565217391304348,
+          0.9375,
+          0.7916666666666666,
+          0.8823529411764706,
+          0.7878787878787878,
+          1.0,
+          0.9230769230769231,
+          0.7692307692307693,
+          0.8666666666666667,
+          0.8095238095238095,
+          0.875,
+          0.75,
+          0.8888888888888888,
+          1.0,
+          0.8620689655172413,
+          0.8,
+          0.8936170212765957,
+          0.7272727272727273,
+          0.8679245283018868,
+          0.9433962264150944,
+          0.9696969696969697
+        ]
+      }
+    },
+    "screening": {
+      "passed": true,
+      "checks": {
+        "primary_vs_CE_A": true,
+        "primary_vs_control": true,
+        "clean_vs_CE_A": true,
+        "blur_vs_CE_A": true
+      },
+      "CE_A": {
+        "primary": 0.8344647372485873,
+        "raw_primary": 0.833777085853636,
+        "clean": 0.8757978446978462,
+        "mean_blur": 0.6273302961617274,
+        "single_student_primary": 0.835351307645644,
+        "per_class_f1": [
+          0.9473684210526315,
+          1.0,
+          0.9411764705882353,
+          0.7659574468085106,
+          0.7555555555555555,
+          0.8648648648648649,
+          0.5652173913043478,
+          0.8717948717948718,
+          0.7906976744186046,
+          0.9523809523809523,
+          0.8923076923076924,
+          0.7450980392156863,
+          0.835820895522388,
+          0.7878787878787878,
+          1.0,
+          0.9230769230769231,
+          0.6,
+          0.6451612903225806,
+          0.85,
+          0.8235294117647058,
+          0.7346938775510204,
+          0.8,
+          1.0,
+          0.8275862068965517,
+          0.8,
+          0.88,
+          0.75,
+          0.8679245283018868,
+          0.8461538461538461,
+          0.9696969696969697
+        ]
+      },
+      "primary_delta_vs_control": 0.05391811921249101,
+      "primary_delta_vs_CE_A": 0.03106744439526532
+    }
+  },
+  "training_status_at_recording": {
+    "at": "2026-11-16T22:38:18.526564+00:00",
+    "architecture": "pvt_v2_b0",
+    "phase": "idmm",
+    "epoch": 390,
+    "epochs": 800,
+    "step": 5,
+    "steps": 10,
+    "checkpoint_epoch": 380,
+    "phase_elapsed_seconds": 5859.526988094673,
+    "current_loss": {
+      "idmm": 6.949635010957718
+    }
+  },
+  "whole_experiment_completed": false,
+  "full_oof_available": false,
+  "public_probe": "LOCAL-PROP-008-B3-PUBLIC; separate receipt"
+}

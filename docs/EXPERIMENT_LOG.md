@@ -140,6 +140,27 @@ Heartbeat every 60 seconds, checkpoints every ten complete epochs, same-batch
 OOM resume. **Training in progress, no candidate validation or Kaggle upload.**
 [Frozen protocol and launch receipt](../experiments/results/LOCAL-PROP-008-PVT-IDMM.launch.json).
 
+Verified B3 result and public probe, 16 Nov:
+[LOCAL-PROP-008 B3](../experiments/LOCAL-PROP-008-PVT-IDMM.md) completed 800 IDMM
+epochs and 800 supervised epochs per arm at **21:00:36 UTC**, 8,000 updates per
+stage/arm, no OOM/restart. Final matching fold-2 pair: PVT control **0.811614**,
+IDMM candidate **0.865532**, stronger ResNet CE A **0.834465**. IDMM standalone
+**0.862227**, clean pair **0.890449**, mean-blur pair **0.727417**. All frozen
+gates pass; candidate uses extra pretraining compute. Independent final metrics,
+EMA exports, optimizer/scheduler counts and pinned inputs/code/environment verified.
+Conditional scene-group bootstrap primary delta vs CE A: **[+0.013614, +0.049258]**.
+[B3 summary](../experiments/results/LOCAL-PROP-008-B3.summary.json).
+
+Under the user's prior conditional submission authorization,
+[LOCAL-PROP-008-B3-PUBLIC](../experiments/LOCAL-PROP-008-B3-PUBLIC.md) replaced one
+R18d fold-2 member of EXP-024 with B3; nine other members/postprocessing fixed.
+Original best CSV and candidate validation replay reproduce exactly; 85/2,010
+test labels change. Kaggle **ref 58446643, COMPLETE, public 0.87197**, submitted
+**22:37:45 UTC**, **+0.00185** versus previous best **0.87012**. **New highest
+observed team public score**; private is unavailable, full replacement OOF does
+not exist, and no public weight search followed. B0 is still training.
+[Public receipt and provenance](../experiments/results/LOCAL-PROP-008-B3-PUBLIC.summary.json).
+
 ## Ablation / comparison placeholder
 
 | Factor | Run A | Run B | Matched validation split? | Conclusion |

@@ -142,3 +142,55 @@ at launch. The launch receipt is a historical snapshot, not live telemetry.
 
 Config: [LOCAL-PROP-008-PVT-IDMM.yaml](../configs/LOCAL-PROP-008-PVT-IDMM.yaml).
 Historical launch receipt: [launch.json](results/LOCAL-PROP-008-PVT-IDMM.launch.json).
+
+## Verified B3 final result — 16 November
+
+B3 completed IDMM at **06:28:22 UTC** and both supervised arms at
+**21:00:36 UTC** on 16 November. Each stage/arm completed 800 epochs and 8,000
+optimizer updates. The supervised control/candidate share the frozen source
+batches, mixing and original species head; the candidate additionally received
+the 800-epoch source-only IDMM stage. B3 stages took about **28h40m** including
+the supervised control. No CUDA OOM or restart occurred. B0 then started IDMM
+automatically; the complete two-size experiment is still running at this update.
+
+All numbers below are local **fold-2 macro F1**, fixed final EMA. Primary is the
+balanced 50:50 student/R34d pair. Clean and mean-blur are raw pair scores;
+standalone uses only the student, without balancing.
+
+| Student | Primary pair | Clean pair | Mean-blur pair | Standalone primary |
+| --- | ---: | ---: | ---: | ---: |
+| Original team ResNet18d | 0.826344 | 0.871937 | 0.594269 | 0.810467 |
+| Strong ResNet18d CE A, final epoch 600 | 0.834465 | 0.875798 | 0.627330 | 0.835351 |
+| PVTv2-B3 supervised control, final epoch 800 | 0.811614 | 0.860774 | 0.598304 | 0.733378 |
+| **PVTv2-B3 IDMM candidate, final epoch 800** | **0.865532** | **0.890449** | **0.727417** | **0.862227** |
+
+The candidate passes all frozen checks: primary **+0.031067 vs CE A** and
+**+0.053918 vs matched PVT control**, with improved clean and mean-blur scores.
+This supports the tested IDMM addition with extra pretraining compute on this
+development fold, not superiority at matched total compute or a private-score
+guarantee. A post-training, class-stratified paired scene-group bootstrap gives
+a conditional 95% primary-delta interval versus CE A of **[+0.013614, +0.049258]**
+(2,000 draws, seed 44). It conditions on fixed trained models/views and does not
+capture repeated development or training uncertainty; it was not a new gate.
+
+| Supervised epoch | Control primary pair | IDMM primary pair | IDMM standalone |
+| --- | ---: | ---: | ---: |
+| 200 | 0.812718 | 0.832759 | 0.790848 |
+| 400 | 0.808219 | 0.851292 | 0.837836 |
+| 600 | 0.815752 | 0.859740 | 0.853423 |
+| 800 | 0.811614 | 0.865532 | 0.862227 |
+
+Independent CPU verification recomputed every reported final metric from saved
+probabilities, checked normalization/finite values and the exact student/R34d
+means, recomputed gates, verified all frozen inputs/code/environment hashes,
+matched both exported models exactly to the final checkpoint's EMA states, and
+confirmed optimizer/scheduler steps equal 8,000. Candidate model SHA256:
+`d6074465968be104f819c57706b9eba718069a6c99466081f4d1fdf4bf5e20c2`.
+[B3 result and verification](results/LOCAL-PROP-008-B3.summary.json).
+
+Under the user's earlier conditional submission authorization, a separate
+[fixed public probe](LOCAL-PROP-008-B3-PUBLIC.md) replaced one EXP-024 member
+with the B3 candidate. Kaggle **ref 58446643, COMPLETE, public 0.87197**,
+**+0.00185** versus previous best **0.87012**. This is the highest observed team
+public score at the update. There is no full new-model OOF result or private
+score. No extra weight/threshold trial followed the public result.
