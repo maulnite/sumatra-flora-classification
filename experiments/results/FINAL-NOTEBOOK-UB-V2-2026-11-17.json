@@ -1,0 +1,75 @@
+{
+  "verification": {
+    "models_at_deployment": 1,
+    "parameters": 21319294,
+    "test_rows": 2010,
+    "raw_jpeg_inference_executed": true,
+    "teacher_cache_replay_executed": true,
+    "eda_executed": true,
+    "student_training": "fresh hard-target distillation",
+    "base_training": "historical team scratch model; log/config retained",
+    "training_reexecuted": {
+      "base": false,
+      "distillation": true
+    },
+    "agreement_with_teacher": 2010,
+    "submission_sha256": "59b9e62480311d8dfbdc41cf3329a7e5ec4a5726d619032d746127c2b3b13aa7",
+    "historical_teacher_public_score": 0.9078,
+    "historical_teacher_submission_ref": 58470727,
+    "new_independent_student_validation_score": null,
+    "new_kaggle_submission": false,
+    "external_pretrained_weights": false,
+    "student_checkpoint_sha256": "e02211eae4db942092548b59d5e1c98130b35d1fc6e2fe218610b67402dbf8cc"
+  },
+  "execution": {
+    "status": "success",
+    "python": "/home/nafisnaufal1426/venvs/dq/bin/python",
+    "elapsed_seconds": 486.4163966178894,
+    "notebook": "DATERAQUEST_UB_Lengkap.ipynb",
+    "code_cells_executed": 21
+  },
+  "offline_figures": 10,
+  "all_original_inputs_unchanged": true,
+  "archives": {
+    "pensi_lomba_data_FINAL_V2.zip": {
+      "bytes": 4999895,
+      "sha256": "c1ad53b0c78dde6bf0ed82b36a993fdc0b56816b85ba9316d9d4bdf00191428f"
+    },
+    "pensi_lomba_data_RUNTIME_V2.zip": {
+      "bytes": 162082228,
+      "sha256": "349cf8c5152f76de247e7af1f3613877e427f8b7f370b5a7c2735f107105e765"
+    }
+  },
+  "clean_folder_replay": {
+    "execution": {
+      "status": "success",
+      "python": "/home/nafisnaufal1426/venvs/dq/bin/python",
+      "elapsed_seconds": 40.304908990859985,
+      "notebook": "DATERAQUEST_UB_Lengkap.ipynb",
+      "code_cells_executed": 21
+    },
+    "verification": {
+      "models_at_deployment": 1,
+      "parameters": 21319294,
+      "test_rows": 2010,
+      "raw_jpeg_inference_executed": true,
+      "teacher_cache_replay_executed": true,
+      "eda_executed": true,
+      "student_training": "reference historical student",
+      "base_training": "historical team scratch model; log/config retained",
+      "training_reexecuted": {
+        "base": false,
+        "distillation": false
+      },
+      "agreement_with_teacher": 2010,
+      "submission_sha256": "59b9e62480311d8dfbdc41cf3329a7e5ec4a5726d619032d746127c2b3b13aa7",
+      "historical_teacher_public_score": 0.9078,
+      "historical_teacher_submission_ref": 58470727,
+      "new_independent_student_validation_score": null,
+      "new_kaggle_submission": false,
+      "external_pretrained_weights": false,
+      "student_checkpoint_sha256": "e02211eae4db942092548b59d5e1c98130b35d1fc6e2fe218610b67402dbf8cc"
+    },
+    "artifacts_loaded_from_delivery_copy": true
+  }
+}

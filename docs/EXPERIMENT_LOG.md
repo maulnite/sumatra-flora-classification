@@ -267,6 +267,17 @@ verified, no upload. Training logs remain historical, agreement is not new
 validation. Public source notebooks omit competition image outputs.
 [Package receipt](../experiments/results/FINAL-NOTEBOOK-UB-2026-11-17.json).
 
+Comprehensive final revision V2, 17 Nov: [single UB review notebook](FINAL_NOTEBOOK_UB_V2_2026-11-17.md)
+adds visible Markdown-embedded EDA/preprocessing, raw quality audit, actual
+**new student distillation**, learning curves, recomputed teacher-subset
+validation, and offline HTML. All **21 code cells** passed; total run **486.42s**.
+Student reached 100% teacher agreement at **epoch7**; fresh raw-JPEG inference
+again produced the exact **0.90780-reference CSV** on all 2,010 rows. Ten figures
+plus the crest verified offline. Base/teacher training remains historical and
+pseudo-label provenance is explicit. One main notebook in the small final ZIP,
+base/student/cache artifacts in a separate runtime ZIP. No submission operation.
+[Receipt](../experiments/results/FINAL-NOTEBOOK-UB-V2-2026-11-17.json).
+
 ## Ablation / comparison placeholder
 
 | Factor | Run A | Run B | Matched validation split? | Conclusion |

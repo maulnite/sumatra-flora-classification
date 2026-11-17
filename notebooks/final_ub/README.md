@@ -3,6 +3,20 @@
 Tim **pensi lomba data**: Nafis Naufal Rahman, Orie Abyan Maulana,
 dan M Kaka Chadafi F.
 
+**Versi utama terbaru:** `DATERAQUEST_UB_Lengkap.ipynb`, satu notebook dengan
+EDA visual, audit raw, preprocessing, source base scratch, training student
+yang dijalankan ulang, evaluasi dan pemeriksaan CSV identik. Versi beroutput
+dan HTML offline tersedia di `outputs/FINAL-UB-V2-2026-11-17/`; lihat
+[catatan V2](../../docs/FINAL_NOTEBOOK_UB_V2_2026-11-17.md). Source V2 mempertahankan
+grafik agregat, sementara galeri citra kompetisi hanya ada pada paket lokal.
+
+```bash
+python scripts/revise_final_ub_complete.py
+python scripts/execute_final_ub_notebook.py \
+  outputs/FINAL-UB-V2-2026-11-17/DATERAQUEST_UB_Lengkap.ipynb
+python scripts/package_final_ub_complete.py
+```
+
 File di GitHub adalah **source tanpa output gambar kompetisi**. Versi beroutput,
 CSV, runtime student, dan ZIP final disiapkan secara lokal di
 `outputs/FINAL-UB-2026-11-17/`. Lambang UB disematkan sebagai attachment agar
