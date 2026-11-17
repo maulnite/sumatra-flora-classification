@@ -161,6 +161,20 @@ observed team public score**; private is unavailable, full replacement OOF does
 not exist, and no public weight search followed. B0 is still training.
 [Public receipt and provenance](../experiments/results/LOCAL-PROP-008-B3-PUBLIC.summary.json).
 
+Team update 17 Nov 08:50 UTC:
+[Nafis review](TEAM_UPDATE_2026-11-17.md) verified **ref 58453652,
+`sub_mine5_team_mid.csv`, COMPLETE, public 0.88314**: **+0.01117** versus PVT
+probe 0.87197 and **+0.01302** versus EXP-024. Description: five new scratch
+ResNet18d/34d models, 288–384px, full train plus sibling-matched test images,
+intermediate EMA, EXP-024 probabilities, geometric mean, prior balancing and
+calibrated test→train SIFT with no test→test links. Separate SIFT sibling graph
+probe **ref 58450478**, test→train/test→test ≥6 inliers, scored **0.84096**.
+Code/config, blend weights, label handling and local metrics are not available.
+`NafisNaufal` is a collaborator, but no published Nafis branch/PR was visible;
+`kaka` and `main` are unchanged. **New best public baseline: 0.88314**; no new
+submission or training was launched by this audit. Existing B0 training continues.
+[Snapshot](../experiments/results/TEAM-UPDATE-2026-11-17.summary.json).
+
 ## Ablation / comparison placeholder
 
 | Factor | Run A | Run B | Matched validation split? | Conclusion |

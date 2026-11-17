@@ -12,12 +12,21 @@ Local onboarding audit (12 Nov 2026): official data and nine existing Kaggle sub
 
 The [deep dataset audit](docs/DEEP_DATASET_AUDIT_2026-11-12.md) records detected scene overlap, provisional group folds, image quality shifts beyond JPEG, and train-label review candidates.
 
+Update 17 Nov 2026: [the latest team review](docs/TEAM_UPDATE_2026-11-17.md)
+verified **public 0.88314**, ref **58453652**, `sub_mine5_team_mid.csv`:
+**+0.01117** versus our PVT probe. Its description reports five new scratch
+ResNet18d/34d models plus EXP-024 probabilities, full train + sibling-matched
+test images, geometric mean, prior balancing and calibrated test→train SIFT.
+This is the highest observed team public score. Nafis is a repo collaborator,
+but no new branch/PR or matching code was visible; implementation and local
+validation remain unverified. The separate test→test graph probe scored 0.84096.
+
 Update 16 Nov 2026: [PVTv2-B3 with source-only IDMM](experiments/LOCAL-PROP-008-PVT-IDMM.md)
 completed scratch training and passed its final fold-2 screen: matching-pair
 macro F1 **0.865532**, versus ResNet CE A **0.834465**; B3 alone **0.862227**.
 A [single fixed ensemble-member replacement](experiments/LOCAL-PROP-008-B3-PUBLIC.md)
 scored **public 0.87197**, Kaggle ref **58446643**, COMPLETE: **+0.00185** versus
-previous best 0.87012. This is the highest observed team public score. New-model
+previous best 0.87012. This was the highest observed team public score on 16 Nov. New-model
 full OOF/private scores are unavailable; the B0 comparison is still running.
 
 Update 13 Nov 2026: the team's working pipeline and EXP-004–EXP-025 records are on branch `kaka`, with verified best public Macro F1 **0.87012**. See [the team update review](docs/TEAM_UPDATE_2026-11-13.md). [LOCAL-PROP-001 revision 2](experiments/LOCAL-PROP-001.md) completed recipe R / ResNet18d A/B training with added post-resize blur on a local holdout. Mean blur Macro F1 increased **0.3921 → 0.6567**, while primary F1 changed **0.7290 → 0.7235**; the automatic gate failed. The user subsequently requested submission B: **public 0.79702**, ref **58306830**, COMPLETE. Local artifacts are under `outputs/LOCAL-PROP-001/`.
@@ -163,8 +172,12 @@ EXP-001–EXP-003 remain planning templates.
 | [EXP-002](experiments/EXP-002.md) | @TBD | TBD | TBD | — | — | — | Planned |
 | [EXP-003](experiments/EXP-003.md) | @TBD | TBD | TBD | — | — | — | Planned |
 | [LOCAL-PROP-008-B3-PUBLIC](experiments/LOCAL-PROP-008-B3-PUBLIC.md) | @maulnite | Scratch PVTv2-B3 IDMM; one EXP-024 member replaced | 44 / scene fold 2 | 0.865532, matching pair only | **0.87197** | — | B3 complete; B0 running |
+| [Nafis update, ref 58453652](docs/TEAM_UPDATE_2026-11-17.md) | Nafis, per user | Five new ResNets + EXP-024, geometric mean, sibling evidence | Full train per description; code pending | Not reported | **0.88314** | — | Public verified; code unavailable |
 
-### Best observed public result
+### Reproduced PVT probe (16 November)
+
+The latest observed public best is **0.88314** from the Nafis update above.
+The table below records the PVT probe whose code and artifacts were reproduced.
 
 | Metadata | Value |
 | --- | --- |

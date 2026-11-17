@@ -1,0 +1,104 @@
+{
+  "at": "2026-11-17T08:50:45.787940+00:00",
+  "competition": "dateraquest-2-0-machine-learning-competition",
+  "new_submissions": [
+    {
+      "ref": "58453652",
+      "fileName": "sub_mine5_team_mid.csv",
+      "date": "2026-11-17 03:01:40.373000",
+      "description": "scratch ens: 5 new ResNet18d/34d (288-384, full train + sibling-matched test imgs, mid-training EMA ckpts) + team EXP-024 probs, geo-mean, prior-balance, calibrated SIFT test->train sibling evidence (no test-test links)",
+      "status": "SubmissionStatus.COMPLETE",
+      "publicScore": "0.88314",
+      "privateScore": ""
+    },
+    {
+      "ref": "58450478",
+      "fileName": "sub_teamprobs_graph.csv",
+      "date": "2026-11-17 00:55:46.857000",
+      "description": "scratch ens r18d288+r34d224 (team EXP-024 probs) prior-balance + SIFT sibling graph (test-train>=6 inliers, test-test>=6) similarity RANSAC",
+      "status": "SubmissionStatus.COMPLETE",
+      "publicScore": "0.84096",
+      "privateScore": ""
+    }
+  ],
+  "best_submission": {
+    "ref": "58453652",
+    "fileName": "sub_mine5_team_mid.csv",
+    "date": "2026-11-17 03:01:40.373000",
+    "description": "scratch ens: 5 new ResNet18d/34d (288-384, full train + sibling-matched test imgs, mid-training EMA ckpts) + team EXP-024 probs, geo-mean, prior-balance, calibrated SIFT test->train sibling evidence (no test-test links)",
+    "status": "SubmissionStatus.COMPLETE",
+    "publicScore": "0.88314",
+    "privateScore": ""
+  },
+  "previous_PVT_probe_ref": "58446643",
+  "previous_PVT_public": 0.87197,
+  "gain_vs_PVT": 0.01117,
+  "gain_vs_EXP024": 0.01302,
+  "github": {
+    "repository": "maulnite/sumatra-flora-classification",
+    "pushed_at": "2026-11-16T22:41:09Z",
+    "branches": [
+      {
+        "name": "exp/maulnite/adaptive-self-training",
+        "sha": "85a2546c2c8544f88c17400d46f9347ed31cc6a4"
+      },
+      {
+        "name": "exp/maulnite/backbone-exploration",
+        "sha": "eae1b0db25c8cfee857d73d6c481f60dc1f1911a"
+      },
+      {
+        "name": "exp/maulnite/checkpoint-reproduction",
+        "sha": "e64a6cec8ff3fc09067440d8316ca3f609756185"
+      },
+      {
+        "name": "exp/maulnite/domain-adaptation-research",
+        "sha": "68b9abe4d46efbfd18444d3fa4853d96b2224f3b"
+      },
+      {
+        "name": "exp/maulnite/late-mix-plan",
+        "sha": "0068fe64578f0afcd82b580bc573fc09c246e9a1"
+      },
+      {
+        "name": "exp/maulnite/local-prop-001",
+        "sha": "4f23de5b64bfa3e2a75b36c6ebea8bac1e8008b0"
+      },
+      {
+        "name": "exp/maulnite/pvt-idmm",
+        "sha": "7ef8f321c6d00281ea65e19baac8a50b32ae5f97"
+      },
+      {
+        "name": "exp/maulnite/retrieval-graph-pilot",
+        "sha": "d4b13ac84b2a443e20e48d7445db6f16b6c992f2"
+      },
+      {
+        "name": "exp/maulnite/strong-baseline",
+        "sha": "7f45454769638a25df9c43f57315121262836637"
+      },
+      {
+        "name": "exp/maulnite/supervised-contrastive",
+        "sha": "b0931e4d0e1f646d37e8c22282589bc52e8fdb0e"
+      },
+      {
+        "name": "kaka",
+        "sha": "b447792e3fc8ded59b98f8889023ab9f9b94c47e"
+      },
+      {
+        "name": "main",
+        "sha": "e0189a92254c72955d27d842676af9f01675f38a"
+      },
+      {
+        "name": "research/maulnite/transformer-architecture",
+        "sha": "904845c1d5465245129fa2547c089a3e623fcba5"
+      }
+    ],
+    "collaborators": [
+      "NafisNaufal",
+      "Inaka06",
+      "maulnite"
+    ],
+    "pull_requests": [],
+    "nafis_branch_found": false,
+    "kaka_unchanged": true
+  },
+  "evidence_scope": "Public scores and descriptions verified through Kaggle CLI; author attribution follows user; new training/code details unverified because no published Nafis branch/PR was visible"
+}
