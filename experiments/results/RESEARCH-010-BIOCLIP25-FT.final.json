@@ -1,0 +1,46 @@
+{
+  "at": "2026-11-17T16:09:10.490699+00:00",
+  "experiment_id": "RESEARCH-010-BIOCLIP25-FT",
+  "research_only": true,
+  "competition_eligible": false,
+  "completed_epochs": 30,
+  "updates": 2280,
+  "selection": "final_epoch_30_EMA",
+  "linear_probe": {
+    "primary": 0.736072355073617,
+    "clean": 0.9872172449386637,
+    "blur06": 0.7530214045910087,
+    "blur10": 0.7619651389185047,
+    "mean_blur": 0.7574932717547567,
+    "matching_pair_raw_primary": 0.8830583315203737
+  },
+  "fine_tuned": {
+    "primary": 0.915758520854812,
+    "clean": 0.9842318558008525,
+    "blur06": 0.9151825157403505,
+    "blur10": 0.8958541126885141,
+    "mean_blur": 0.9055183142144323,
+    "matching_pair_raw_primary": 0.925137917467494
+  },
+  "primary_delta_vs_probe": 0.179686165781195,
+  "spec_sha256": "922548b5d8b71532ab395deca8f8cd8069681e35f559a7822da7166164e2e167",
+  "final_ema_delta_sha256": "f6acc68707ce6e115bedddb455fb7c1d739b184e3b1f5ac0b780101f8a3846c6",
+  "pretrained_sha256": "ac2e37c2f89ef8e6b889176a9a3f418970ad9db15a218bd29e3321e95c46ae97",
+  "target_images_used": false,
+  "kaggle_upload_performed": false,
+  "metrics_recomputed_exact": true,
+  "verified_validation_images": 603,
+  "kaggle_public_score": null,
+  "job": {
+    "supervisor_pid": 968744,
+    "started_at": "2026-11-17T15:21:51.718421+00:00",
+    "output_root": "/home/nafisnaufal1426/orie/datera/outputs/RESEARCH-010-BIOCLIP25-FT",
+    "state": "completed",
+    "heartbeat_seconds": 60,
+    "oom_restarts": 0,
+    "runner_pid": 968746,
+    "last_started_at": "2026-11-17T15:21:51.719194+00:00",
+    "return_code": 0,
+    "finished_at": "2026-11-17T16:09:14.128573+00:00"
+  }
+}

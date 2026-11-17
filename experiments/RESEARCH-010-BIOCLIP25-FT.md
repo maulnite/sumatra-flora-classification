@@ -113,4 +113,26 @@ They are not directly interchangeable with scratch metrics using a different
 resolution, prior balancing or postprocessing. Fine-tuning began at
 **15:25:20 UTC / 22:25:20 WIB**, with a verified real optimizer update in epoch1.
 [Frozen-probe verification and active-state snapshot](results/RESEARCH-010-BIOCLIP25-FT.probe.json).
-The 30-epoch fine-tuning result is pending.
+## Final epoch-30 EMA result
+
+Finished **16:09:14 UTC / 23:09:14 WIB**, return code 0, no OOM restarts.
+All **2,280 updates / 30 epochs** completed; the preset final epoch-30 EMA
+was selected. Local macro F1:
+
+| Measure | Frozen probe | Fine-tuned epoch 30 |
+| --- | ---: | ---: |
+| Primary corruption view, standalone | .736072 | **.915759** |
+| Clean, standalone | .987217 | .984232 |
+| Mean blur, standalone | .757493 | **.905518** |
+| Matching equal R34d pair, raw primary | .883058 | **.925138** |
+
+Primary improvement over the probe is **+.179686**. Fine-tuning adapted the
+encoder to the local corruption recipe while clean F1 decreased slightly.
+Final metrics were independently recomputed exactly from the saved 603-row
+probability arrays; spec and final EMA delta hashes were verified. This remains
+local research with external pretrained weights, with no test adaptation,
+Kaggle score, or submission. It is separate from the scratch-only UB final
+notebook package. [Final verified receipt](results/RESEARCH-010-BIOCLIP25-FT.final.json).
+
+Final adapter/delta weights: `outputs/RESEARCH-010-BIOCLIP25-FT/final_ema_delta.pt`;
+reconstruct them with the pinned pretrained base and strict delta loading.

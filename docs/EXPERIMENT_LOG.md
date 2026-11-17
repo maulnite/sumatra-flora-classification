@@ -248,6 +248,25 @@ recomputed. Actual partial fine-tuning began **15:25:20 UTC**, epoch1/30.
 These are local research metrics with external pretrained weights; no public score.
 [Probe verification](../experiments/results/RESEARCH-010-BIOCLIP25-FT.probe.json).
 
+Research final result, 17 Nov **16:09:14 UTC**: BioCLIP completed all 30 epochs /
+2,280 updates without OOM restarts. Preset epoch-30 EMA: standalone primary
+**.915759**, clean **.984232**, mean blur **.905518**, matching raw R34d pair
+**.925138**. Primary gain over frozen probe **+.179686**. Metrics recomputed
+exactly from saved 603-row arrays, spec/delta hashes verified. Research only;
+no test adaptation or public score.
+[Final receipt](../experiments/results/RESEARCH-010-BIOCLIP25-FT.final.json).
+
+Final notebook revision, 17 Nov: user selected retaining **0.90780 with explicit
+distillation**. [UB final package](FINAL_NOTEBOOK_UB_2026-11-17.md) adds official
+UB crest and the supplied team/member names, preserves original EDA/preprocessing
+and the ensemble's 36 historical code cells/outputs. All 18 main-notebook code
+cells freshly executed; one ResNet34d produced a raw-JPEG CSV byte-identical
+on **2,010/2,010** rows to ref **58470727**. Deployment model inference 7.36s,
+main notebook 43.11s. Original inputs hash-verified unchanged; two ZIPs CRC/hash
+verified, no upload. Training logs remain historical, agreement is not new
+validation. Public source notebooks omit competition image outputs.
+[Package receipt](../experiments/results/FINAL-NOTEBOOK-UB-2026-11-17.json).
+
 ## Ablation / comparison placeholder
 
 | Factor | Run A | Run B | Matched validation split? | Conclusion |

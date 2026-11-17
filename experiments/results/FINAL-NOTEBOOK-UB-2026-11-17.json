@@ -1,0 +1,53 @@
+{
+  "team": "pensi lomba data",
+  "members": [
+    "Nafis Naufal Rahman",
+    "Orie Abyan Maulana",
+    "M Kaka Chadafi F"
+  ],
+  "executed_code_cells": {
+    "DATERAQUEST_UB_Single_Model.ipynb": 18,
+    "DATERAQUEST_UB_Ensemble.ipynb": 36
+  },
+  "original_ensemble_code_outputs_unchanged": true,
+  "original_inputs_unchanged": true,
+  "submission_sha256": "59b9e62480311d8dfbdc41cf3329a7e5ec4a5726d619032d746127c2b3b13aa7",
+  "archives": {
+    "pensi_lomba_data_final.zip": {
+      "sha256": "3b7de3ac3a6e8b5e266eab27cdca889d29d36b9b0010dd3c6823ddd08863bceb",
+      "bytes": 5012508
+    },
+    "pensi_lomba_data_final_lengkap.zip": {
+      "sha256": "20101d5b8c61532f8695951cd7a9a3e800328f4180750a5f15c1a2602e95bb62",
+      "bytes": 87362621
+    }
+  },
+  "student_verification": {
+    "models_at_deployment": 1,
+    "parameters": 21319294,
+    "test_rows": 2010,
+    "raw_jpeg_inference_executed": true,
+    "teacher_cache_replay_executed": true,
+    "student_training": "historical hard-target distillation; log/config retained",
+    "base_training": "historical team scratch model; log/config retained",
+    "training_reexecuted": {
+      "base": false,
+      "distillation": false
+    },
+    "agreement_with_teacher": 2010,
+    "submission_sha256": "59b9e62480311d8dfbdc41cf3329a7e5ec4a5726d619032d746127c2b3b13aa7",
+    "historical_teacher_public_score": 0.9078,
+    "historical_teacher_submission_ref": 58470727,
+    "new_independent_student_validation_score": null,
+    "new_kaggle_submission": false,
+    "external_pretrained_weights": false,
+    "student_checkpoint_sha256": "2b6b8c5868f3367a2c3fcefeee555a5f4cba2688bc35cf276eb8246e7d995215"
+  },
+  "execution": {
+    "status": "success",
+    "python": "/home/nafisnaufal1426/venvs/dq/bin/python",
+    "elapsed_seconds": 43.11075806617737,
+    "notebook": "DATERAQUEST_UB_Single_Model.ipynb",
+    "code_cells_executed": 18
+  }
+}
