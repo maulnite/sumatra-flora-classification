@@ -219,6 +219,15 @@ remaining**. The old .88314-based 90:10 candidate is superseded, unsubmitted;
 no PVT448 test inference or upload was started in this check.
 [Final team receipt](../experiments/results/TEAM-UPDATE-2026-11-17-FINAL.summary.json).
 
+CSV comparison follow-up 17 Nov 14:09 UTC:
+[PVT448 versus Nafis final-domain](CSV_COMPARISON_PVT_NAFIS_2026-11-17.md)
+prepared the new checkpoint's test predictions at matched 352px/flip. Previous
+public CSV replay and final validation probabilities are exact. Fixed old
+public recipe with only PVT weights replaced differs from Nafis on **321/2,010**
+rows, versus prior public-best **330/2,010**. Agreement is not test accuracy;
+PVT448 has no public score. No new training or submission.
+[Receipt](../experiments/results/LOCAL-PROP-009-CSV-COMPARE.summary.json).
+
 ## Ablation / comparison placeholder
 
 | Factor | Run A | Run B | Matched validation split? | Conclusion |

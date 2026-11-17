@@ -1,0 +1,336 @@
+{
+  "at": "2026-11-17T14:09:58.438679+00:00",
+  "experiment_id": "LOCAL-PROP-009-PVT448-CSV-COMPARE",
+  "duration_seconds": 48.77421101788059,
+  "checkpoint_sha256": "9f75d6683211e2ac205e6e3ac4bb0232065e1b7569b7ad2ce173d90cdd156d18",
+  "selection": "preregistered_final_epoch_100_EMA",
+  "inference_size": 352,
+  "tta": "flip",
+  "previous_public_csv_byte_identical": true,
+  "validation_replay": {
+    "shape": [
+      603,
+      30
+    ],
+    "array_exactly_equal": true,
+    "within_tolerance": true,
+    "max_absolute_difference": 0.0,
+    "mean_absolute_difference": 0.0,
+    "row_max_difference_p99": 0.0,
+    "predicted_labels_different": 0
+  },
+  "rows": 2010,
+  "comparisons": {
+    "previous_public_vs_nafis": {
+      "rows": 2010,
+      "same": 1680,
+      "different": 330,
+      "agreement_percent": 83.5820895522388,
+      "top_transitions": [
+        {
+          "ours_label": 12,
+          "ours_species": "Echinodorus_radican",
+          "reference_label": 23,
+          "reference_species": "Portulaca_Sp",
+          "count": 12
+        },
+        {
+          "ours_label": 20,
+          "ours_species": "Nepenthes_reinwardtiana_Miq",
+          "reference_label": 12,
+          "reference_species": "Echinodorus_radican",
+          "count": 7
+        },
+        {
+          "ours_label": 12,
+          "ours_species": "Echinodorus_radican",
+          "reference_label": 6,
+          "reference_species": "Ceiba_pentandra",
+          "count": 6
+        },
+        {
+          "ours_label": 12,
+          "ours_species": "Echinodorus_radican",
+          "reference_label": 20,
+          "reference_species": "Nepenthes_reinwardtiana_Miq",
+          "count": 6
+        },
+        {
+          "ours_label": 24,
+          "ours_species": "Quassia_amara",
+          "reference_label": 21,
+          "reference_species": "Ochna_kirkii",
+          "count": 6
+        },
+        {
+          "ours_label": 2,
+          "ours_species": "Anacampseros_rufescens_Sunrise",
+          "reference_label": 23,
+          "reference_species": "Portulaca_Sp",
+          "count": 4
+        },
+        {
+          "ours_label": 12,
+          "ours_species": "Echinodorus_radican",
+          "reference_label": 16,
+          "reference_species": "Lagerstroemia_speciosa",
+          "count": 4
+        },
+        {
+          "ours_label": 16,
+          "ours_species": "Lagerstroemia_speciosa",
+          "reference_label": 23,
+          "reference_species": "Portulaca_Sp",
+          "count": 4
+        },
+        {
+          "ours_label": 21,
+          "ours_species": "Ochna_kirkii",
+          "reference_label": 25,
+          "reference_species": "Reutealis_trisperma",
+          "count": 4
+        },
+        {
+          "ours_label": 23,
+          "ours_species": "Portulaca_Sp",
+          "reference_label": 7,
+          "reference_species": "Cuphea_hyssopifolia_kunth",
+          "count": 4
+        }
+      ]
+    },
+    "PVT448_vs_nafis": {
+      "rows": 2010,
+      "same": 1689,
+      "different": 321,
+      "agreement_percent": 84.02985074626865,
+      "top_transitions": [
+        {
+          "ours_label": 12,
+          "ours_species": "Echinodorus_radican",
+          "reference_label": 23,
+          "reference_species": "Portulaca_Sp",
+          "count": 12
+        },
+        {
+          "ours_label": 20,
+          "ours_species": "Nepenthes_reinwardtiana_Miq",
+          "reference_label": 12,
+          "reference_species": "Echinodorus_radican",
+          "count": 8
+        },
+        {
+          "ours_label": 12,
+          "ours_species": "Echinodorus_radican",
+          "reference_label": 6,
+          "reference_species": "Ceiba_pentandra",
+          "count": 6
+        },
+        {
+          "ours_label": 12,
+          "ours_species": "Echinodorus_radican",
+          "reference_label": 20,
+          "reference_species": "Nepenthes_reinwardtiana_Miq",
+          "count": 6
+        },
+        {
+          "ours_label": 24,
+          "ours_species": "Quassia_amara",
+          "reference_label": 21,
+          "reference_species": "Ochna_kirkii",
+          "count": 6
+        },
+        {
+          "ours_label": 2,
+          "ours_species": "Anacampseros_rufescens_Sunrise",
+          "reference_label": 23,
+          "reference_species": "Portulaca_Sp",
+          "count": 4
+        },
+        {
+          "ours_label": 12,
+          "ours_species": "Echinodorus_radican",
+          "reference_label": 16,
+          "reference_species": "Lagerstroemia_speciosa",
+          "count": 4
+        },
+        {
+          "ours_label": 23,
+          "ours_species": "Portulaca_Sp",
+          "reference_label": 3,
+          "reference_species": "Apocynacaea",
+          "count": 4
+        },
+        {
+          "ours_label": 23,
+          "ours_species": "Portulaca_Sp",
+          "reference_label": 7,
+          "reference_species": "Cuphea_hyssopifolia_kunth",
+          "count": 4
+        },
+        {
+          "ours_label": 5,
+          "ours_species": "Catharanthus_roseus",
+          "reference_label": 23,
+          "reference_species": "Portulaca_Sp",
+          "count": 3
+        }
+      ]
+    },
+    "PVT448_vs_previous_public": {
+      "rows": 2010,
+      "same": 1938,
+      "different": 72,
+      "agreement_percent": 96.41791044776119,
+      "top_transitions": [
+        {
+          "ours_label": 12,
+          "ours_species": "Echinodorus_radican",
+          "reference_label": 23,
+          "reference_species": "Portulaca_Sp",
+          "count": 3
+        },
+        {
+          "ours_label": 10,
+          "ours_species": "Dendrobium_leonis",
+          "reference_label": 17,
+          "reference_species": "Lxora_acuminata",
+          "count": 2
+        },
+        {
+          "ours_label": 11,
+          "ours_species": "Dracaena_Trifasciata_Mabb",
+          "reference_label": 24,
+          "reference_species": "Quassia_amara",
+          "count": 2
+        },
+        {
+          "ours_label": 16,
+          "ours_species": "Lagerstroemia_speciosa",
+          "reference_label": 28,
+          "reference_species": "Syzygium_myrtifolium_walp",
+          "count": 2
+        },
+        {
+          "ours_label": 18,
+          "ours_species": "Monstera_Adansonii",
+          "reference_label": 3,
+          "reference_species": "Apocynacaea",
+          "count": 2
+        },
+        {
+          "ours_label": 27,
+          "ours_species": "Russelia_equisetiformis",
+          "reference_label": 5,
+          "reference_species": "Catharanthus_roseus",
+          "count": 2
+        },
+        {
+          "ours_label": 28,
+          "ours_species": "Syzygium_myrtifolium_walp",
+          "reference_label": 12,
+          "reference_species": "Echinodorus_radican",
+          "count": 2
+        },
+        {
+          "ours_label": 2,
+          "ours_species": "Anacampseros_rufescens_Sunrise",
+          "reference_label": 12,
+          "reference_species": "Echinodorus_radican",
+          "count": 1
+        },
+        {
+          "ours_label": 2,
+          "ours_species": "Anacampseros_rufescens_Sunrise",
+          "reference_label": 16,
+          "reference_species": "Lagerstroemia_speciosa",
+          "count": 1
+        },
+        {
+          "ours_label": 2,
+          "ours_species": "Anacampseros_rufescens_Sunrise",
+          "reference_label": 24,
+          "reference_species": "Quassia_amara",
+          "count": 1
+        }
+      ]
+    }
+  },
+  "new_csv": "outputs/CSV-COMPARE-PVT-NAFIS/PVT448/LOCAL-PROP-009-PVT448_f2replace_candidate.csv",
+  "new_csv_sha256": "91ca542f377879373afc63b9377695b0bb851c542ac0cc9a146a9c851e9e4639",
+  "new_probability_sha256": "7796869456b79e927d5e78e4490ab5d67ec6299e41d5d0a7a0d7dd7e5a942edb",
+  "same_nine_members_and_postprocessing": true,
+  "new_model_total_weight": 0.1,
+  "new_candidate_public_score": null,
+  "nafis_public": 0.9078,
+  "previous_public": 0.87197,
+  "new_checkpoint_local_pair_primary": 0.871987419152031,
+  "accuracy_of_disagreements_unknown": true,
+  "training_performed": false,
+  "kaggle_upload_performed": false,
+  "all_source_files_unchanged": true,
+  "input_sha256": {
+    "/home/nafisnaufal1426/orie/datera/configs/LOCAL-PROP-009-PVT448.yaml": "209fecce134c454272c48bcc9ff4f1ff0ce63de2c7ca52553854e67261789fad",
+    "/home/nafisnaufal1426/orie/datera/outputs/LOCAL-PROP-009-PVT448/result.json": "8c7ca2e62b4f4d37f72c2757edc3821b61e4722f2d7db35d6bf4038f6552c41b",
+    "/home/nafisnaufal1426/orie/datera/outputs/LOCAL-PROP-009-PVT448/candidate/model.pt": "9f75d6683211e2ac205e6e3ac4bb0232065e1b7569b7ad2ce173d90cdd156d18",
+    "/home/nafisnaufal1426/orie/datera/configs/LOCAL-PROP-008-B3-PUBLIC.yaml": "d6e3c73ac32b2f74cb6306a2e9bb67a4fd838511141ffca0a597d51c1c4b44b6",
+    "/home/nafisnaufal1426/orie/datera/experiments/results/LOCAL-PROP-008-B3-PUBLIC.summary.json": "56984f57e240b259f60f593423c2139c924084948044756695399be81315e6ec",
+    "/home/nafisnaufal1426/orie/datera/outputs/LOCAL-PROP-008-B3-PUBLIC/LOCAL-PROP-008-B3_f2replace_submission.csv": "27febd1762cba20185ff09c5b22f34ef85175a384f494bd204219b237b13e02c",
+    "/home/nafisnaufal1426/akucintakc/work/final_domain.csv": "59b9e62480311d8dfbdc41cf3329a7e5ec4a5726d619032d746127c2b3b13aa7",
+    "/home/nafisnaufal1426/inahuy/dateruy/cache/test_352.npy": "bf22c744bae47df4231f52d164696bfdee76814f4292aed0f65cafa33af9bae9",
+    "/home/nafisnaufal1426/orie/datera/experiments/results/LOCAL-PROP-006-A-PUBLIC.summary.json": "a5986a4969261844bc482a4354ab63bc7962b18e988250d2626cfe45025e9cd2",
+    "/home/nafisnaufal1426/orie/datera/outputs/BASELINE-INFERENCE-REPRO-001/predictions/R_r18d_i288_e600_f0/test.npy": "85e819a6bc5d6c5ccb7c7b791e1aa1f4001584f8cdcb6f77845bbff156797923",
+    "/home/nafisnaufal1426/orie/datera/outputs/BASELINE-INFERENCE-REPRO-001/predictions/R_r18d_i288_e600_f1/test.npy": "6bd680d16f4b4c28664289b790f4a0654c26ec9fd86102a7c2124455051838b7",
+    "/home/nafisnaufal1426/orie/datera/outputs/BASELINE-INFERENCE-REPRO-001/predictions/R_r18d_i288_e600_f2/test.npy": "4b4c0f1b71a7b40277c71b92156d6aea5e6ebccfdff61a554d00f53617ef4715",
+    "/home/nafisnaufal1426/orie/datera/outputs/BASELINE-INFERENCE-REPRO-001/predictions/R_r18d_i288_e600_f3/test.npy": "203e6c89ca6e52e40461696078d392601125c55a1691ceec5b618f9165e9d798",
+    "/home/nafisnaufal1426/orie/datera/outputs/BASELINE-INFERENCE-REPRO-001/predictions/R_r18d_i288_e600_f4/test.npy": "4746259cffe5794c498b4c9282e08bbaa6673904b5364fbf6e77b82aaea5565a",
+    "/home/nafisnaufal1426/orie/datera/outputs/BASELINE-INFERENCE-REPRO-001/predictions/R_r34d_e600_f0/test.npy": "892d8d61a16b7d2096827f6abc6e922a50ed6c46508e7afcdfa56b109ba78799",
+    "/home/nafisnaufal1426/orie/datera/outputs/BASELINE-INFERENCE-REPRO-001/predictions/R_r34d_e600_f1/test.npy": "a513438222075b39a790ff22de971f07b82f14183006dc594dbb728e2646fa69",
+    "/home/nafisnaufal1426/orie/datera/outputs/BASELINE-INFERENCE-REPRO-001/predictions/R_r34d_e600_f2/test.npy": "ce5acc5109b0458b544fd45a0bf20e6b5f135ae705010995d641fa4a2c12532c",
+    "/home/nafisnaufal1426/orie/datera/outputs/BASELINE-INFERENCE-REPRO-001/predictions/R_r34d_e600_f3/test.npy": "70d9fdcc2c4ab30452bb5fe61f23b35c9ef003c6459563b6825247e97a68f132",
+    "/home/nafisnaufal1426/orie/datera/outputs/BASELINE-INFERENCE-REPRO-001/predictions/R_r34d_e600_f4/test.npy": "08b9b4353afa5be18b9e0574bf63c2be6b611f52bb3b7a9ec0063a28ac4b4fc0",
+    "/home/nafisnaufal1426/orie/datera/outputs/LOCAL-PROP-008-B3-PUBLIC/B3_test.npy": "48a34288352e0ffbc4adc469a8ba294aef73d085a681f1778697a196fe4ceb2a",
+    "/home/nafisnaufal1426/inahuy/dateruy/runs/sift_test.csv": "c0076894776a96835123bb0924be66bacc07199737ade1113248f44316b1de26",
+    "/home/nafisnaufal1426/orie/datera/outputs/LOCAL-PROP-006-SUPCON/cache/primary_352.npy": "b31adf514c39fdb2081d77cadb15f5f3343b6bd57a07db87439b505dfde84739",
+    "/home/nafisnaufal1426/orie/datera/outputs/LOCAL-PROP-009-PVT448/candidate/epoch_100_student.npz": "2eca9e3bcfed5011c04a9735a332d4346f0541d0c603635f417bf4011819870b"
+  },
+  "config_sha256": "2745dd7371a91b9cba3953136c876057983a0be410651f3e4d863e0308a1d4ea",
+  "additional_analysis": {
+    "domain_flag_source": "Nafis test_isvideo.npy; not manual domain ground truth",
+    "by_domain_flag": {
+      "video": {
+        "rows": 1116,
+        "differences": 121,
+        "disagreement_percent": 10.842293906810035
+      },
+      "photo": {
+        "rows": 894,
+        "differences": 200,
+        "disagreement_percent": 22.371364653243848
+      }
+    },
+    "PVT448_changes_against_previous_public": {
+      "total": 72,
+      "now_agrees_with_nafis": 31,
+      "now_disagrees_with_nafis": 22,
+      "changed_but_still_disagrees": 19
+    }
+  },
+  "source_comparison_sha256": "4a7511d7e1e27e681f9be61a5da57cf789ca1ae81ccd1917532a16d9fc9d60f6",
+  "inference_runner_sha256": "6a4a22c9fb421c0f51aca2d89bf753e399bbc2c2c84af857cd698257346b6f26",
+  "comparison_rendering_runner_sha256": "9b688c20a9fe085cdb8837bd626162fc1430ff688909479ee82e15981a3bc993",
+  "comparison_rendered_at": "2026-11-17T14:11:45.702398+00:00",
+  "comparison_columns": "ours=first input; reference=second input named by comparison key",
+  "artifact_sha256": {
+    "outputs/CSV-COMPARE-PVT-NAFIS/PVT448/public_best_vs_nafis_differences.csv": "482865cf2ab82892a2ece98b1318b9a510ce35aa00df5cea25746c9e97c6a85f",
+    "outputs/CSV-COMPARE-PVT-NAFIS/PVT448/PVT448_vs_previous_public_differences.csv": "0a15a64b4d029035606fa8d071c014390abc3bc632139fa622d6262e50eefae0",
+    "outputs/CSV-COMPARE-PVT-NAFIS/PVT448/PVT448_vs_nafis_differences.csv": "a1c2d4e2b32d996950d8bd20a4987d3b01c9a3a91bf8b277b1fbb5a5d668a1cb",
+    "outputs/CSV-COMPARE-PVT-NAFIS/PVT448/PVT448_vs_nafis_all.csv": "c50d07069488ff63d8903631d45c08d8c95ac64f6630a1e7cb38ae690fb9c529",
+    "outputs/CSV-COMPARE-PVT-NAFIS/PVT448/LOCAL-PROP-009-PVT448_f2replace_candidate.csv": "91ca542f377879373afc63b9377695b0bb851c542ac0cc9a146a9c851e9e4639",
+    "outputs/CSV-COMPARE-PVT-NAFIS/PVT448/public_best_vs_nafis_all.csv": "7ed7a64d015971186c2eeea6d9f0bfd9c9b959d21a4060f3e614d5b4210040ed",
+    "outputs/CSV-COMPARE-PVT-NAFIS/PVT448/PVT448_vs_previous_public_all.csv": "6dc91a8d8f7903ed1ab9225f321f1004b2975bbbe8e982695c7e6a3f4063ade4",
+    "outputs/CSV-COMPARE-PVT-NAFIS/PVT448/public_best_vs_nafis_transitions.csv": "6534c80a340b2eb7695cf2c2e75fb59dffcde978b356321e9f8467d1ebdefcf2",
+    "outputs/CSV-COMPARE-PVT-NAFIS/PVT448/PVT448_vs_nafis_transitions.csv": "35ff34c827c401e885a9ced1c6b3560adeeb0920d7a80ee24dd0b62fb923d67d",
+    "outputs/CSV-COMPARE-PVT-NAFIS/PVT448/PVT448_vs_previous_public_transitions.csv": "ed796450b3a56d257d1db0e884fe3aeb635d427da9d680a7d063c5d7497e744c"
+  }
+}

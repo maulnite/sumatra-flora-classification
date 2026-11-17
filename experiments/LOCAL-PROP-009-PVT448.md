@@ -102,3 +102,14 @@ endpoint reports **four submissions today, zero remaining**. The earlier .88314
 blend is superseded. No new test inference, blend upload, or training was started
 during this status check. Full-train Nafis predictions cannot independently
 validate a new blend on our fold-2 queries.
+
+## Follow-up CSV comparison — 14:09 UTC
+
+At the user's request, final checkpoint test inference was subsequently run at
+matched 352px, batch16, flip TTA. The previous public-best CSV recipe was kept,
+replacing only its PVT weights; no new Nafis fusion or upload. Primary validation
+replay was exact, max difference 0. The resulting 2,010-row candidate differs
+from Nafis final-domain on **321 rows** (84.03% agreement), versus **330 rows**
+for our prior public-best CSV. It changes 72 predictions versus that prior CSV.
+These counts establish agreement, not accuracy or a new public score.
+[Comparison and artifacts](../docs/CSV_COMPARISON_PVT_NAFIS_2026-11-17.md).
