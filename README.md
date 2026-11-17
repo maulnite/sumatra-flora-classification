@@ -42,6 +42,12 @@ full OOF/private scores are unavailable; the B0 comparison is still running.
 
 Update 13 Nov 2026: the team's working pipeline and EXP-004–EXP-025 records are on branch `kaka`, with verified best public Macro F1 **0.87012**. See [the team update review](docs/TEAM_UPDATE_2026-11-13.md). [LOCAL-PROP-001 revision 2](experiments/LOCAL-PROP-001.md) completed recipe R / ResNet18d A/B training with added post-resize blur on a local holdout. Mean blur Macro F1 increased **0.3921 → 0.6567**, while primary F1 changed **0.7290 → 0.7235**; the automatic gate failed. The user subsequently requested submission B: **public 0.79702**, ref **58306830**, COMPLETE. Local artifacts are under `outputs/LOCAL-PROP-001/`.
 
+Separate research, 17 Nov: [BioCLIP 2.5 Huge fine-tuning](experiments/RESEARCH-010-BIOCLIP25-FT.md)
+is running in the background: frozen probe followed by 30 epochs updating the
+last four blocks on scene fold2. **External pretrained weights make this run
+ineligible for DATERAQUEST.** It has no test inference or submission operation.
+Its local metrics will be reported separately from scratch competition results.
+
 ## Competition overview
 
 [LOCAL-PROP-002](experiments/LOCAL-PROP-002.md) uses the team's strongest EXP-024 pipeline as its frozen baseline; its original 0.87012 submission was reconstructed byte-for-byte from stored team probabilities. A fixed 10% addition of the blur model changed shared-holdout F1 **0.8527 → 0.8505**, so the original baseline was retained without another submission. Team artifacts are available at the server path documented in the report.

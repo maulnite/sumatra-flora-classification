@@ -1,0 +1,68 @@
+experiment_id: RESEARCH-010-BIOCLIP25-FT
+research_only: true
+competition_eligible: false
+automatic_submission: false
+output_root: outputs/RESEARCH-010-BIOCLIP25-FT
+python: /home/nafisnaufal1426/venvs/dq/bin/python
+dataset_root: data/raw
+team_root: /home/nafisnaufal1426/inahuy/dateruy
+reference_root: outputs/BASELINE-INFERENCE-REPRO-001
+reference_experiment_root: outputs/LOCAL-PROP-006-SUPCON
+fold: 2
+seed: 44
+pretrained:
+  repository: imageomics/bioclip-2.5-vith14
+  revision: 6e3d04e3d6522012c88181085c5ae666e14c45cd
+  checkpoint_sha256: ac2e37c2f89ef8e6b889176a9a3f418970ad9db15a218bd29e3321e95c46ae97
+  weights_receipt: outputs/RESEARCH-010-BIOCLIP25-FT/weights.json
+  visual_encoder_only: true
+linear_probe:
+  C: 10.0
+  max_iter: 2000
+  features: L2_normalized_visual_projection_original_and_horizontal_flip
+training:
+  pretrained: true
+  trainable_last_blocks: 4
+  image_size: 224
+  epochs: 30
+  source_batch: 32
+  microbatch: 8
+  backbone_learning_rate: 0.00001
+  head_learning_rate: 0.001
+  warmup_epochs: 2
+  minimum_lr_ratio: 0.01
+  weight_decay: 0.01
+  label_smoothing: 0.05
+  gradient_clip_norm: 1.0
+  ema_decay: 0.99
+  source_rotation_probability: 0.5
+  source_rotation_degrees: 45
+  strong_view_probability: 0.5
+  crop_scale: [0.5, 1.0]
+  crop_ratio: [0.75, 1.3333333333333333]
+  mixup_probability: 0.3
+  mixup_alpha: 0.2
+  checkpoint_selection: final_epoch_30_EMA
+validation:
+  expected_train_rows: 2411
+  expected_validation_rows: 603
+  image_size: 224
+  batch_size: 16
+  tta: flip
+  log_every_epochs: 5
+  main_metric: standalone_primary_macro_F1_without_prior_or_SIFT
+  secondary: matching_equal_R34d_pair_raw_macro_F1
+  clean_definition: same_heldout_photographs_without_synthetic_corruption
+execution:
+  runner: scripts/train_bioclip_research.py
+  launcher: scripts/launch_bioclip_research.py
+  cpu_threads: 4
+  workers: 4
+  gpu_memory_fraction: 0.25
+  gpu_sharing_authorized: true
+  monitor_interval_seconds: 60
+  oom_retry_seconds: 30
+  oom_exit_code: 75
+  checkpoint_every_epochs: 1
+  target_images_used: false
+  automatic_additional_folds: false

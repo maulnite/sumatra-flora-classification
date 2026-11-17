@@ -1,0 +1,4 @@
+# Additive dependencies for the separate RESEARCH-010 experiment.
+# Use the existing project Python; do not replace its shared torch/timm stack.
+open_clip_torch==3.3.0
+ftfy==6.3.1

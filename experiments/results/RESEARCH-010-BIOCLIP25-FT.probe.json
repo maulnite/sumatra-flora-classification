@@ -1,0 +1,96 @@
+{
+  "at": "2026-11-17T15:24:58.659312+00:00",
+  "duration_seconds": 167.06664051581174,
+  "metrics": {
+    "primary": 0.736072355073617,
+    "clean": 0.9872172449386637,
+    "blur06": 0.7530214045910087,
+    "blur10": 0.7619651389185047,
+    "mean_blur": 0.7574932717547567,
+    "matching_pair_raw_primary": 0.8830583315203737
+  },
+  "local_source_images": 2411,
+  "feature_training_rows": 4822,
+  "pretrained_backbone_frozen": true,
+  "classifier_only": true,
+  "competition_eligible": false,
+  "spec_sha256": "922548b5d8b71532ab395deca8f8cd8069681e35f559a7822da7166164e2e167",
+  "head_sha256": "844280c9c7f621f45658810180d45d232abb86c93faf8ee9439db287811f7f2c",
+  "verified_at": "2026-11-17T15:26:27.963137+00:00",
+  "research_only": true,
+  "kaggle_public_score": null,
+  "probability_replay": {
+    "primary": {
+      "shape": [
+        603,
+        30
+      ],
+      "array_exactly_equal": true,
+      "within_tolerance": true,
+      "max_absolute_difference": 0.0,
+      "mean_absolute_difference": 0.0,
+      "row_max_difference_p99": 0.0,
+      "predicted_labels_different": 0
+    },
+    "clean": {
+      "shape": [
+        603,
+        30
+      ],
+      "array_exactly_equal": true,
+      "within_tolerance": true,
+      "max_absolute_difference": 0.0,
+      "mean_absolute_difference": 0.0,
+      "row_max_difference_p99": 0.0,
+      "predicted_labels_different": 0
+    },
+    "blur06": {
+      "shape": [
+        603,
+        30
+      ],
+      "array_exactly_equal": true,
+      "within_tolerance": true,
+      "max_absolute_difference": 0.0,
+      "mean_absolute_difference": 0.0,
+      "row_max_difference_p99": 0.0,
+      "predicted_labels_different": 0
+    },
+    "blur10": {
+      "shape": [
+        603,
+        30
+      ],
+      "array_exactly_equal": true,
+      "within_tolerance": true,
+      "max_absolute_difference": 0.0,
+      "mean_absolute_difference": 0.0,
+      "row_max_difference_p99": 0.0,
+      "predicted_labels_different": 0
+    }
+  },
+  "metrics_recomputed_exact": true,
+  "frozen_features_and_saved_head": true,
+  "active_run_status_snapshot": {
+    "at": "2026-11-17T15:26:27.183929+00:00",
+    "state": "partial_fine_tuning",
+    "epoch": 1,
+    "epochs": 30,
+    "step": 66,
+    "steps": 76,
+    "loss": 1.019266118493044,
+    "trainable_last_blocks": 4,
+    "elapsed_seconds": 88.46579883620143,
+    "competition_eligible": false
+  },
+  "job_snapshot": {
+    "supervisor_pid": 968744,
+    "started_at": "2026-11-17T15:21:51.718421+00:00",
+    "output_root": "/home/nafisnaufal1426/orie/datera/outputs/RESEARCH-010-BIOCLIP25-FT",
+    "state": "running",
+    "heartbeat_seconds": 60,
+    "oom_restarts": 0,
+    "runner_pid": 968746,
+    "last_started_at": "2026-11-17T15:21:51.719194+00:00"
+  }
+}

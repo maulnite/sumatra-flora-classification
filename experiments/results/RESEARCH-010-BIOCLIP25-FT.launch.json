@@ -1,0 +1,83 @@
+{
+  "at": "2026-11-17T15:23:24.387491+00:00",
+  "experiment_id": "RESEARCH-010-BIOCLIP25-FT",
+  "research_only": true,
+  "competition_eligible": false,
+  "automatic_submission": false,
+  "initialization": "BioCLIP2.5 Huge pretrained image encoder; fixed-C source-only linear probe then 30 epochs last-four-block fine-tuning",
+  "model_repository": "imageomics/bioclip-2.5-vith14",
+  "model_revision": "6e3d04e3d6522012c88181085c5ae666e14c45cd",
+  "pretrained_sha256": "ac2e37c2f89ef8e6b889176a9a3f418970ad9db15a218bd29e3321e95c46ae97",
+  "source_rows": 2411,
+  "validation_rows": 603,
+  "fold": 2,
+  "seed": 44,
+  "training_size": 224,
+  "validation_size": 224,
+  "planned_epochs": 30,
+  "steps_per_epoch": 76,
+  "planned_optimizer_updates": 2280,
+  "selection": "final_epoch_30_EMA",
+  "behavioral_tests_passed": 3,
+  "smoke": {
+    "at": "2026-11-17T15:21:10.197676+00:00",
+    "passed": true,
+    "spec_sha256": "922548b5d8b71532ab395deca8f8cd8069681e35f559a7822da7166164e2e167",
+    "metrics": {
+      "loss": 3.404837131500244,
+      "gradient_norm": 0.2872573435306549,
+      "seconds": 2.0271145217120647
+    },
+    "trainable_parameters": 80053790,
+    "visual_parameters": 632076800,
+    "frozen_parameters_unchanged": true,
+    "trainable_transformer_block_changed": true,
+    "checkpoint_roundtrip_exact": true,
+    "peak_allocated_gib": 3.9612646102905273,
+    "projected_training_compute_hours": 1.2838391970843077,
+    "projection_excludes_feature_extraction_evaluation_checkpoint_overhead": true,
+    "competition_eligible": false
+  },
+  "launch": {
+    "supervisor_pid": 968744,
+    "started_at": "2026-11-17T15:21:51.718421+00:00",
+    "output_root": "/home/nafisnaufal1426/orie/datera/outputs/RESEARCH-010-BIOCLIP25-FT",
+    "state": "running",
+    "heartbeat_seconds": 60,
+    "oom_restarts": 0,
+    "runner_pid": 968746,
+    "last_started_at": "2026-11-17T15:21:51.719194+00:00"
+  },
+  "versions": {
+    "torch": "2.14.1+cu130",
+    "torchvision": "0.29.1+cu130",
+    "timm": "1.0.31",
+    "numpy": "2.2.6",
+    "pandas": "2.3.3",
+    "opencv-python-headless": "5.0.0.93",
+    "albumentations": "2.0.8",
+    "scikit-learn": "1.7.2",
+    "open_clip_torch": "3.3.0",
+    "ftfy": "6.3.1",
+    "huggingface_hub": "0.36.2",
+    "safetensors": "0.8.0"
+  },
+  "spec_sha256": "922548b5d8b71532ab395deca8f8cd8069681e35f559a7822da7166164e2e167",
+  "code_sha256": {
+    "/home/nafisnaufal1426/orie/datera/configs/RESEARCH-010-BIOCLIP25-FT.yaml": "efe8d7ee45d8552d418c7780bf6dae31cb66d34feab580e55415886f6fa6aedf",
+    "/home/nafisnaufal1426/orie/datera/scripts/train_bioclip_research.py": "a78de6c5fe85d0b04c9808bf54e51f0136bd2b4f4aff2a5bb748f88be5123baa",
+    "/home/nafisnaufal1426/orie/datera/scripts/launch_bioclip_research.py": "dcba1ed046ae65653a50af95ed1a7fa5e4259c4abb7f7d9f32d3353f1b14e103",
+    "/home/nafisnaufal1426/orie/datera/scripts/train_pvt_idmm.py": "55946755ff756bc41df5c0a12aa5407bfccc03663ddad7b48638625c42dedff3",
+    "/home/nafisnaufal1426/orie/datera/scripts/adaptive_self_training.py": "91683fb4ab96f0e088090acec0d744593b7911df5bc5e1e891132f1840092139",
+    "/home/nafisnaufal1426/orie/datera/scripts/reproduce_checkpoint_inference.py": "0984806fd209f07b84656436469683c907521f3f311d446b9695caa03bd7e334",
+    "/home/nafisnaufal1426/venvs/dq/lib/python3.10/site-packages/open_clip/transformer.py": "4e860ad042e0a7d6afeeba2fc9e5f160f7847de38b262360aa9bedf92f69595f"
+  },
+  "initial_eta_hours": [
+    1.5,
+    2.5
+  ],
+  "ETA_includes_estimated_overhead_not_guaranteed": true,
+  "external_pretraining_overlap_with_local_images_unknown": true,
+  "test_images_used": false,
+  "training_status_is_launch_snapshot": true
+}

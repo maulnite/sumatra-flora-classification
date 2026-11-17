@@ -228,6 +228,26 @@ rows, versus prior public-best **330/2,010**. Agreement is not test accuracy;
 PVT448 has no public score. No new training or submission.
 [Receipt](../experiments/results/LOCAL-PROP-009-CSV-COMPARE.summary.json).
 
+Separate pretrained research, 17 Nov 15:21 UTC:
+[RESEARCH-010-BIOCLIP25-FT](../experiments/RESEARCH-010-BIOCLIP25-FT.md) launched
+detached, supervisor **968744**: BioCLIP 2.5 Huge visual encoder, fixed-C frozen
+probe then 30 epochs of actual last-four-block fine-tuning. Scene fold2, seed44,
+2,411/603 local photographs, native224px, CLIP normalization, raw standalone
+primary macro F1; no test adaptation. **Research only, competition-ineligible,
+no submission operation.** Three tests and real 32-photo GPU update/delta
+checkpoint smoke passed; peak 3.96 GiB. 80.05M trainable parameters of the
+632.08M visual encoder plus new classifier. Compute projection 1.28h excludes
+feature/evaluation/checkpoint overhead; practical initial ETA1.5–2.5h. Native
+pretrained weights and code/inputs pinned, heartbeat60s, checkpoint per epoch.
+[Launch receipt](../experiments/results/RESEARCH-010-BIOCLIP25-FT.launch.json).
+
+Research probe finished 15:24:58 UTC: frozen BioCLIP standalone **primary .736072**,
+**clean .987217**, **mean blur .757493**; matching equal-R34d raw pair **.883058**.
+All four probe arrays replay exactly from saved features/head, and metrics were
+recomputed. Actual partial fine-tuning began **15:25:20 UTC**, epoch1/30.
+These are local research metrics with external pretrained weights; no public score.
+[Probe verification](../experiments/results/RESEARCH-010-BIOCLIP25-FT.probe.json).
+
 ## Ablation / comparison placeholder
 
 | Factor | Run A | Run B | Matched validation split? | Conclusion |
