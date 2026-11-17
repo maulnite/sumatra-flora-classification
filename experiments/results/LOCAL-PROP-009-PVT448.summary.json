@@ -1,0 +1,76 @@
+{
+  "at": "2026-11-17T13:59:39.609015+00:00",
+  "experiment_id": "LOCAL-PROP-009-PVT448",
+  "verified": true,
+  "architecture": "pvt_v2_b3",
+  "completed_epochs": 100,
+  "optimizer_updates": 1000,
+  "source_rows": 2411,
+  "validation_rows": 603,
+  "fold": 2,
+  "inference_size": 352,
+  "selection": "preregistered_final_epoch_100_EMA",
+  "metrics": {
+    "primary": 0.871987419152031,
+    "raw_primary": 0.8680690559788322,
+    "clean": 0.9123334626921918,
+    "mean_blur": 0.7909711798278541,
+    "single_student_primary": 0.8598169927540108
+  },
+  "baseline": {
+    "primary": 0.8655321816438526,
+    "raw_primary": 0.8617054332691132,
+    "clean": 0.8904486815544329,
+    "mean_blur": 0.7274172350928891,
+    "single_student_primary": 0.8622270813603996
+  },
+  "deltas": {
+    "primary": 0.006455237508178446,
+    "raw_primary": 0.006363622709719019,
+    "clean": 0.021884781137758935,
+    "mean_blur": 0.063553944734965,
+    "single_student_primary": -0.002410088606388805
+  },
+  "gate": {
+    "passed": true,
+    "checks": {
+      "primary": true,
+      "clean": true,
+      "mean_blur": true
+    },
+    "primary_delta": 0.006455237508178446
+  },
+  "models_match_final_EMA": true,
+  "optimizer_scheduler_steps_verified": true,
+  "metrics_recomputed_exact": true,
+  "frozen_inputs_verified": true,
+  "checkpoint_sha256": "7ded530fea80b52dd9d226e9524434a8c41f11847098ad03b3c28260a8316bc7",
+  "model_sha256": "9f75d6683211e2ac205e6e3ac4bb0232065e1b7569b7ad2ce173d90cdd156d18",
+  "spec_sha256": "84fa7a905883527944772dda8918eade93243bd87dde1f647bb91c98ed6d6ea5",
+  "started_at": "2026-11-17T11:21:26.964979+00:00",
+  "finished_at": "2026-11-17T13:51:38.340464+00:00",
+  "duration_seconds": 9011.375485,
+  "return_code": 0,
+  "OOM_restarts": 0,
+  "submission_uploaded": false,
+  "independent_full_Nafis_blend_score_available": false,
+  "diagnostic_history": [
+    {
+      "epoch": 25,
+      "primary": 0.8690498521666854
+    },
+    {
+      "epoch": 50,
+      "primary": 0.8741300137328043
+    },
+    {
+      "epoch": 75,
+      "primary": 0.8736434170527515
+    },
+    {
+      "epoch": 100,
+      "primary": 0.871987419152031
+    }
+  ],
+  "audit_script_sha256": "75cb7b2da2681d94ea9943c3771f0635ec6db4ff05a66d1502bbbb39f444a841"
+}

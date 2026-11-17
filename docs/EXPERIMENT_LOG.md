@@ -200,6 +200,25 @@ primary vs B3, clean/blur drops at most .01. Epoch-boundary cutoff 22:30 WIB;
 no automated upload. **Training in progress, no new score or submission.**
 [Launch receipt](../experiments/results/LOCAL-PROP-009-PVT448.launch.json).
 
+Completion check 17 Nov 13:59 UTC:
+[LOCAL-PROP-009-PVT448](../experiments/LOCAL-PROP-009-PVT448.md) finished
+**13:51:38 UTC / 20:51:38 WIB**, **100 epochs / 1,000 updates**, 2h30m11s,
+exit 0, no OOM. Preregistered final-100 EMA matching-pair local primary
+**.871987** vs .865532 (+.006455), clean **.912333**, mean blur **.790971**.
+Standalone primary **.859817** vs .862227 (−.002410). Fixed gate PASS.
+EMA export, optimizer/scheduler counts, input/code identities and recomputed
+metrics verified exactly. Epoch-50 primary .874130 is diagnostic, not selected.
+[Final receipt](../experiments/results/LOCAL-PROP-009-PVT448.summary.json).
+
+Latest [team final update](TEAM_UPDATE_2026-11-17.md#follow-up-final--1359-utc):
+**ref 58470727**, `final_domain.csv`, **COMPLETE, public .90780**, +.02466 over
+.88314. Stored domain-aware ensemble math and CSV replay exactly, as do the
+local deliverable arrays/CSV. Training and checkpoint inference were not rerun;
+no independent new full-ensemble holdout score. Kaggle limits: **4 today / 0
+remaining**. The old .88314-based 90:10 candidate is superseded, unsubmitted;
+no PVT448 test inference or upload was started in this check.
+[Final team receipt](../experiments/results/TEAM-UPDATE-2026-11-17-FINAL.summary.json).
+
 ## Ablation / comparison placeholder
 
 | Factor | Run A | Run B | Matched validation split? | Conclusion |

@@ -12,20 +12,22 @@ Local onboarding audit (12 Nov 2026): official data and nine existing Kaggle sub
 
 The [deep dataset audit](docs/DEEP_DATASET_AUDIT_2026-11-12.md) records detected scene overlap, provisional group folds, image quality shifts beyond JPEG, and train-label review candidates.
 
-Deadline follow-up 17 Nov: [server artifacts were found](docs/DEADLINE_OPTIONS_2026-11-17.md)
-and Nafis's saved .88314 ensemble/CSV was replayed exactly without changing its
-files. A fixed 90% Nafis / 10% PVT geometric candidate is prepared, unsubmitted.
-B0 completed with local matching-pair .841597, below B3 .865532.
-[B3 448px continuation](experiments/LOCAL-PROP-009-PVT448.md) launched at
-11:21 UTC: 100 source-only epochs, estimated 2.5–3 hours, same held-out views,
-22:30 WIB cutoff. No new validation/public score is claimed for these candidates.
+Deadline update **17 Nov, 13:59 UTC**: [team best is now **public .90780**](docs/TEAM_UPDATE_2026-11-17.md#follow-up-final--1359-utc),
+`final_domain.csv`, ref **58470727**, COMPLETE. Its stored domain-aware ensemble
+and local CSV replay exactly; training/checkpoint inference were not rerun.
+Kaggle reports **zero remaining submissions today**. The old .88314-based PVT
+blend is superseded and unsubmitted.
+[B3 448px continuation](experiments/LOCAL-PROP-009-PVT448.md) completed all 100
+epochs in 2h30m, no OOM: local matching-pair **.865532 → .871987**, gate PASS;
+standalone **.862227 → .859817**. Exported EMA, steps, pinned inputs and metrics
+verified. No new PVT public score. B0 also completed below B3.
 
-Update 17 Nov 2026: [the latest team review](docs/TEAM_UPDATE_2026-11-17.md)
+Earlier update 17 Nov 2026, 08:50 UTC: [the team review](docs/TEAM_UPDATE_2026-11-17.md)
 verified **public 0.88314**, ref **58453652**, `sub_mine5_team_mid.csv`:
 **+0.01117** versus our PVT probe. Its description reports five new scratch
 ResNet18d/34d models plus EXP-024 probabilities, full train + sibling-matched
 test images, geometric mean, prior balancing and calibrated test→train SIFT.
-This is the highest observed team public score. Nafis is a repo collaborator,
+This was the highest observed team public score at that snapshot. Nafis is a repo collaborator,
 but no new branch/PR was visible. The later server follow-up above found its
 working files and replayed cached probabilities/postprocessing; training and
 independent local validation remain unverified. The separate test→test graph probe scored 0.84096.
@@ -182,11 +184,12 @@ EXP-001–EXP-003 remain planning templates.
 | [EXP-003](experiments/EXP-003.md) | @TBD | TBD | TBD | — | — | — | Planned |
 | [LOCAL-PROP-008-B3-PUBLIC](experiments/LOCAL-PROP-008-B3-PUBLIC.md) | @maulnite | Scratch PVTv2-B3 IDMM; one EXP-024 member replaced | 44 / scene fold 2 | 0.865532, matching pair only | **0.87197** | — | B3/B0 complete |
 | [Nafis update, ref 58453652](docs/TEAM_UPDATE_2026-11-17.md) | Nafis, per user | Five new ResNets + EXP-024, geometric mean, sibling evidence | Full train; sibling proxy | No independent score reported | **0.88314** | — | Cached ensemble/CSV replayed; training not rerun |
-| [LOCAL-PROP-009-PVT448](experiments/LOCAL-PROP-009-PVT448.md) | @maulnite | Own B3 448px continuation, 100 epochs | 44 / scene fold 2 | — | — | — | Training |
+| [Nafis final, ref 58470727](docs/TEAM_UPDATE_2026-11-17.md#follow-up-final--1359-utc) | Nafis, per user | Domain-aware ResNet ensemble + sibling evidence | Full train; sibling proxy | No independent score reported | **0.90780** | — | Stored composition/CSV replayed exactly |
+| [LOCAL-PROP-009-PVT448](experiments/LOCAL-PROP-009-PVT448.md) | @maulnite | Own B3 448px continuation, 100 epochs | 44 / scene fold 2 | **0.871987**, matching pair only | — | — | Completed, gate PASS; no public probe |
 
 ### Reproduced PVT probe (16 November)
 
-The latest observed public best is **0.88314** from the Nafis update above.
+The latest observed public best is **0.90780** from the Nafis final update above.
 The table below records the PVT probe whose code and artifacts were reproduced.
 
 | Metadata | Value |

@@ -1,5 +1,14 @@
 # Deadline options and Nafis server artifacts — 17 November
 
+**Update 13:59 UTC / 20:59 WIB:** PVT448 completed with local matching-pair
+**.871987** (previous B3 .865532), passing its fixed gate. Nafis's new
+`final_domain.csv` is **COMPLETE, public .90780**, ref **58470727**. Its stored
+probability composition and local CSV were replayed exactly. Kaggle reports
+**zero remaining submissions today**. The old .88314-based blend below is a
+historical, unsubmitted candidate and is superseded. See the
+[final team follow-up](TEAM_UPDATE_2026-11-17.md#follow-up-final--1359-utc)
+and [completed PVT448 report](../experiments/LOCAL-PROP-009-PVT448.md).
+
 At 11:05 UTC / 18:05 WIB, there were roughly six hours until the competition
 deadline. The Kaggle snapshot at **11:22:48 UTC** still showed best **0.88314**
 and two submissions on 17 November, nominally leaving **one shared daily slot**.

@@ -38,7 +38,7 @@ This is an adaptation; paper accuracy does not predict our competition F1.
 Local baseline: primary pair **.865532**, clean **.890449**, mean-blur **.727417**.
 Final gate requires primary **+0.003**, with clean and mean-blur declines at most
 .01. These are fixed matching B3/R34d fold-2 metrics. They do not measure the
-new full-train Nafis ensemble, whose best public score is **.88314**.
+new full-train Nafis ensemble, whose best public score at launch was **.88314**.
 
 ## Execution
 
@@ -67,5 +67,38 @@ Config: [LOCAL-PROP-009-PVT448.yaml](../configs/LOCAL-PROP-009-PVT448.yaml).
 [Historical launch receipt](results/LOCAL-PROP-009-PVT448.launch.json).
 Local artifacts: `outputs/LOCAL-PROP-009-PVT448/`, including pinned spec, smoke,
 job/status/heartbeat, checkpoint, evaluation history, probabilities and eventual
-result. No automated Kaggle upload is embedded. Training was still running when
-this report was written; no new validation or public result is claimed.
+result. No automated Kaggle upload is embedded. The launch receipt remains a
+historical snapshot; the completed result follows.
+
+## Completed result — 17 November 13:59 UTC
+
+Finished **13:51:38 UTC / 20:51:38 WIB**, **2h30m11s**, exit 0, no OOM restart.
+Completed all **100 epochs / 1,000 optimizer updates** before the cutoff.
+Selected the preregistered **epoch-100 EMA**, evaluated at the matched **352px**.
+
+| Local macro F1 | Original B3 | B3 after 448px stage | Delta |
+| --- | ---: | ---: | ---: |
+| Primary, balanced 50:50 B3/R34d pair | .865532 | **.871987** | +.006455 |
+| Clean, raw pair | .890449 | **.912333** | +.021885 |
+| Mean blur, raw pair | .727417 | **.790971** | +.063554 |
+| Primary, B3 alone | .862227 | .859817 | **−.002410** |
+
+The fixed advancement gate **passes**. The benefit is in the matching ensemble,
+especially its blur conditions; standalone primary does not improve. Epoch 50
+had diagnostic primary .874130, but it was not selected after seeing scores.
+The recipe also changes optimizer/LR/EMA and adds compute; resolution alone is
+not causally isolated by this comparison.
+
+Independent checks verified frozen code/config/input/environment identities,
+the exported model against checkpoint EMA tensor-for-tensor, epoch/phase,
+all optimizer steps and scheduler step 1,000. Recomputing all reported metrics
+from the four stored probability arrays and frozen R34d reproduced them exactly.
+Model SHA256: `9f75d6683211e2ac205e6e3ac4bb0232065e1b7569b7ad2ce173d90cdd156d18`.
+[Verification receipt](results/LOCAL-PROP-009-PVT448.summary.json).
+
+**No public score exists for this checkpoint.** The latest team submission
+`final_domain.csv`, ref **58470727**, scored **.90780**, and the Kaggle limits
+endpoint reports **four submissions today, zero remaining**. The earlier .88314
+blend is superseded. No new test inference, blend upload, or training was started
+during this status check. Full-train Nafis predictions cannot independently
+validate a new blend on our fold-2 queries.
