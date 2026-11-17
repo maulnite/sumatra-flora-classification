@@ -1,0 +1,239 @@
+{
+  "recorded_at": "2026-11-17T11:25:34.212479+00:00",
+  "scope": "deadline screening and teammate-server discovery",
+  "nafis_artifact_root": "/home/nafisnaufal1426/akucintakc/work",
+  "nafis_baseline_replay": {
+    "at": "2026-11-17T11:09:20.536243+00:00",
+    "replays": [
+      {
+        "probability_file": "ens_r1mid.npy",
+        "labels_different": 63,
+        "byte_identical": false,
+        "csv_sha256": "dd9d00f9e168ddf015766cbfa13aeb72f9be2032f9725872e3c57b8d8a555366"
+      },
+      {
+        "probability_file": "ens_r1mid_team.npy",
+        "labels_different": 0,
+        "byte_identical": true,
+        "csv_sha256": "6ff8d89ddfd42c911e12c2cf612c8783eb4c7f3be6ff44fb17db3e8b1a83f179"
+      },
+      {
+        "probability_file": "team_best_probs.npy",
+        "labels_different": 380,
+        "byte_identical": false,
+        "csv_sha256": "62c9d5d065740466e9e92bda79c9cb390f120f5600fc87c448ef95d4fb1b57de"
+      }
+    ],
+    "source_hashes": {
+      "/home/nafisnaufal1426/akucintakc/work/infer2.py": "07b6f43f5e5cc2282df9aed7e659e66b6c24220c7694ea7401a4a11d0fb3244a",
+      "/home/nafisnaufal1426/akucintakc/work/evidence2.npy": "097376272b218b5eeffaeae2b987a1f9133f0dfb88558e0621fd98ddc4b8b5e6",
+      "/home/nafisnaufal1426/akucintakc/work/ens_r1mid_team.npy": "6130506fd2df5a0395465066446fd571653821e42fc8e7afc53a65ec59e59ff5",
+      "/home/nafisnaufal1426/akucintakc/work/sub_mine5_team_mid.csv": "6ff8d89ddfd42c911e12c2cf612c8783eb4c7f3be6ff44fb17db3e8b1a83f179",
+      "/home/nafisnaufal1426/inahuy/dateruy/runs/sift_test.csv": "c0076894776a96835123bb0924be66bacc07199737ade1113248f44316b1de26"
+    },
+    "evidence_rows": 1923,
+    "strong_evidence_rows": 754,
+    "expected_public_score": 0.88314,
+    "submission_ref": "58453652",
+    "read_only_source": true
+  },
+  "nafis_component_checks": {
+    "at": "2026-11-17T11:24:47.504384+00:00",
+    "checks": {
+      "five_mid_geometric": {
+        "shape": [
+          2010,
+          30
+        ],
+        "array_exactly_equal": true,
+        "within_tolerance": true,
+        "max_absolute_difference": 0.0,
+        "mean_absolute_difference": 0.0,
+        "row_max_difference_p99": 0.0,
+        "predicted_labels_different": 0
+      },
+      "five_mid_arithmetic": {
+        "shape": [
+          2010,
+          30
+        ],
+        "array_exactly_equal": false,
+        "within_tolerance": false,
+        "max_absolute_difference": 0.11113232374191284,
+        "mean_absolute_difference": 0.0015430476167708625,
+        "row_max_difference_p99": 0.07229914009571083,
+        "predicted_labels_different": 35
+      },
+      "five_mid_plus_team_equal_six_inputs": {
+        "shape": [
+          2010,
+          30
+        ],
+        "array_exactly_equal": true,
+        "within_tolerance": true,
+        "max_absolute_difference": 0.0,
+        "mean_absolute_difference": 0.0,
+        "row_max_difference_p99": 0.0,
+        "predicted_labels_different": 0
+      },
+      "mid_plus_team_half_each": {
+        "shape": [
+          2010,
+          30
+        ],
+        "array_exactly_equal": false,
+        "within_tolerance": false,
+        "max_absolute_difference": 0.5203657746315002,
+        "mean_absolute_difference": 0.006003156527276437,
+        "row_max_difference_p99": 0.3465025582909585,
+        "predicted_labels_different": 166
+      }
+    },
+    "members_tested": [
+      "r1_r18d_384",
+      "r1_r34d_320",
+      "r1_r18d_288",
+      "r1_r18d_352w",
+      "r1_fr_r18d_320"
+    ],
+    "note": "Component reconstruction checks; baseline CSV is independently exact from stored ens_r1mid_team.npy. No training/inference rerun."
+  },
+  "B0_B3_exploratory_screen": {
+    "at": "2026-11-17T11:06:04.304363+00:00",
+    "development_only": true,
+    "new_training": false,
+    "sweep_is_exploratory_not_independent_validation": true,
+    "rows": 603,
+    "results": [
+      {
+        "B0_fraction": 0.0,
+        "primary": 0.8655321816438526,
+        "raw_primary": 0.8617054332691132,
+        "standalone": 0.8622270813603996,
+        "clean": 0.8904486815544329,
+        "mean_blur": 0.7274172350928891
+      },
+      {
+        "B0_fraction": 0.1,
+        "primary": 0.8641164945421514,
+        "raw_primary": 0.8595412807347899,
+        "standalone": 0.8643173714594646,
+        "clean": 0.8903288932643548,
+        "mean_blur": 0.7216365820846712
+      },
+      {
+        "B0_fraction": 0.2,
+        "primary": 0.8643640938207461,
+        "raw_primary": 0.8586602440678351,
+        "standalone": 0.8630711018987022,
+        "clean": 0.8900639817053254,
+        "mean_blur": 0.7192963677098914
+      },
+      {
+        "B0_fraction": 0.25,
+        "primary": 0.8622452243331226,
+        "raw_primary": 0.8555982361007239,
+        "standalone": 0.8610667436792209,
+        "clean": 0.8902182392125242,
+        "mean_blur": 0.7182630242273791
+      },
+      {
+        "B0_fraction": 0.5,
+        "primary": 0.8544977453022857,
+        "raw_primary": 0.8483007196307857,
+        "standalone": 0.8540408057837389,
+        "clean": 0.8909795169492948,
+        "mean_blur": 0.7041233651824368
+      },
+      {
+        "B0_fraction": 1.0,
+        "primary": 0.8415974971383076,
+        "raw_primary": 0.8366648697832243,
+        "standalone": 0.8156229897692159,
+        "clean": 0.8898116326902304,
+        "mean_blur": 0.6735452916522078
+      }
+    ],
+    "disagreements": 82,
+    "B0_corrects_B3_errors": 8,
+    "B3_corrects_B0_errors": 33
+  },
+  "B3_high_resolution_benchmark": {
+    "synthetic_discarded_model_benchmark": true,
+    "existing_checkpoint_modified": false,
+    "results": {
+      "352": {
+        "microbatch": 32,
+        "effective_batch": 256,
+        "warm_update_seconds": [
+          4.046261185314506,
+          4.085183988790959,
+          4.066270164679736
+        ],
+        "mean_warm_update_seconds": 4.065905112928401
+      },
+      "448": {
+        "microbatch": 16,
+        "effective_batch": 256,
+        "warm_update_seconds": [
+          6.993866947013885,
+          7.002945411019027,
+          6.982855000998825
+        ],
+        "mean_warm_update_seconds": 6.993222453010579
+      }
+    },
+    "projection_100_epochs_10_steps_hours": 1.9425617925029386,
+    "projection_with_30pct_overhead_hours": 2.52533033025382,
+    "peak_gib": 10.109917640686035
+  },
+  "fixed_fusion_preparation": {
+    "at": "2026-11-17T11:21:30.928919+00:00",
+    "experiment_id": "DEADLINE-NAFIS90-PVTB3-10",
+    "baseline_public": 0.88314,
+    "baseline_submission_ref": "58453652",
+    "baseline_csv_byte_identical": true,
+    "baseline_csv_sha256": "6ff8d89ddfd42c911e12c2cf612c8783eb4c7f3be6ff44fb17db3e8b1a83f179",
+    "pvt_weight": 0.1,
+    "blend": "geometric_mean_floor_1e_6",
+    "fixed_weight_not_optimized": true,
+    "candidate_file": "outputs/DEADLINE-OPTIONS-2026-11-17/NAFIS-PVT-FUSION/NAFIS90_PVTB3_10_candidate.csv",
+    "candidate_sha256": "d5178aeb41d5f737a93651c2e92ee7f8d8c4de1d3d58478293a74437ef91a3a5",
+    "changed_labels": 56,
+    "changed_strong_evidence_rows": 0,
+    "valid_csv": true,
+    "independent_local_comparison_available": false,
+    "verified_improvement": false,
+    "submission_uploaded": false,
+    "note": "Full-train Nafis predictions cannot establish an honest fold2 blend gain; one public probe remains a team decision",
+    "source_files_unchanged": true,
+    "input_sha256": {
+      "/home/nafisnaufal1426/akucintakc/work/ens_r1mid_team.npy": "6130506fd2df5a0395465066446fd571653821e42fc8e7afc53a65ec59e59ff5",
+      "/home/nafisnaufal1426/akucintakc/work/evidence2.npy": "097376272b218b5eeffaeae2b987a1f9133f0dfb88558e0621fd98ddc4b8b5e6",
+      "/home/nafisnaufal1426/akucintakc/work/infer2.py": "07b6f43f5e5cc2282df9aed7e659e66b6c24220c7694ea7401a4a11d0fb3244a",
+      "/home/nafisnaufal1426/akucintakc/work/sub_mine5_team_mid.csv": "6ff8d89ddfd42c911e12c2cf612c8783eb4c7f3be6ff44fb17db3e8b1a83f179",
+      "/home/nafisnaufal1426/inahuy/dateruy/runs/sift_test.csv": "c0076894776a96835123bb0924be66bacc07199737ade1113248f44316b1de26",
+      "/home/nafisnaufal1426/orie/datera/outputs/LOCAL-PROP-008-B3-PUBLIC/B3_test.npy": "48a34288352e0ffbc4adc469a8ba294aef73d085a681f1778697a196fe4ceb2a"
+    },
+    "config_sha256": "16ecf9d57d06a662ad7ab655415a30ae28fcb64d7b8885a787a69333ca7aba22",
+    "runner_sha256": "9466a7b1e2d1b9302de81dac8939660fa339a5855d1a572d6c85c08802c140df"
+  },
+  "kaggle_snapshot": {
+    "at": "2026-11-17T11:22:48.456404+00:00",
+    "submissions_today": 2,
+    "nominal_daily_limit": 3,
+    "nominal_slots_remaining": 1,
+    "best": {
+      "ref": "58453652",
+      "fileName": "sub_mine5_team_mid.csv",
+      "date": "2026-11-17 03:01:40.373000",
+      "description": "scratch ens: 5 new ResNet18d/34d (288-384, full train + sibling-matched test imgs, mid-training EMA ckpts) + team EXP-024 probs, geo-mean, prior-balance, calibrated SIFT test->train sibling evidence (no test-test links)",
+      "status": "SubmissionStatus.COMPLETE",
+      "publicScore": "0.88314",
+      "privateScore": ""
+    }
+  },
+  "new_training": "LOCAL-PROP-009-PVT448 running; separate launch receipt",
+  "new_submissions_uploaded": 0,
+  "source_teammate_files_unchanged": true
+}

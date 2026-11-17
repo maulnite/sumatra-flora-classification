@@ -194,3 +194,23 @@ with the B3 candidate. Kaggle **ref 58446643, COMPLETE, public 0.87197**,
 **+0.00185** versus previous best **0.87012**. This is the highest observed team
 public score at the update. There is no full new-model OOF result or private
 score. No extra weight/threshold trial followed the public result.
+
+## B0 and complete two-size experiment — 17 November
+
+The full experiment finished **09:41:17 UTC**, exit 0, no OOM/restart, wall time
+**41h21m30s**. Both sizes completed 800 IDMM epochs and 800 supervised epochs
+per arm. Final B0 matching-pair primary is **0.812536 control / 0.841597 IDMM**;
+IDMM standalone **0.815623**, clean pair **0.889812**, mean-blur **0.673545**.
+Its original CE-A-relative gates pass, but B0 is below B3's final **0.865532**
+primary pair and **0.862227** standalone. No B0 public probe was submitted.
+
+Independent verification checked B0's exported EMA weights, epoch-800 checkpoint,
+8,000 optimizer/scheduler updates per arm, all final probability metrics and
+frozen input/code/environment hashes. [B0 summary](results/LOCAL-PROP-008-B0.summary.json).
+Exploratory small B0/B3 blends also did not improve the B3 matching-pair primary;
+they are development-fold diagnostics, not independent validation.
+
+The best observed team public score is now **0.88314**, Nafis ref 58453652.
+[Deadline follow-up](../docs/DEADLINE_OPTIONS_2026-11-17.md) found and replayed its
+server-side cached ensemble/CSV, prepared an unsubmitted fixed PVT blend, and
+launched a separate [448px B3 continuation](LOCAL-PROP-009-PVT448.md).

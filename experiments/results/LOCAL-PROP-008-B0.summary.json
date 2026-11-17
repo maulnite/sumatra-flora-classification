@@ -1,0 +1,28 @@
+{
+  "at": "2026-11-17T11:12:17.968042+00:00",
+  "verified": true,
+  "architecture": "pvt_v2_b0",
+  "epochs": 800,
+  "updates": 8000,
+  "metrics": {
+    "control": {
+      "primary": 0.8125355824863908,
+      "raw_primary": 0.8178482216444003,
+      "clean": 0.8573848438617827,
+      "mean_blur": 0.5889004734299816,
+      "single_student_primary": 0.7054825347358182
+    },
+    "candidate": {
+      "primary": 0.8415974971383076,
+      "raw_primary": 0.8366648697832243,
+      "clean": 0.8898116326902304,
+      "mean_blur": 0.6735452916522078,
+      "single_student_primary": 0.8156229897692159
+    }
+  },
+  "models_match_final_EMA": true,
+  "optimizer_scheduler_steps_verified": true,
+  "frozen_inputs_verified": true,
+  "whole_experiment_completed": true,
+  "OOM_restarts": 0
+}

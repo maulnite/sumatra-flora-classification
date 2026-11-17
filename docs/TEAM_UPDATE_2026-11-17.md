@@ -78,3 +78,22 @@ Tidak ada training baru, perubahan proses rekan, atau submission baru dari audit
 ini. Training B0 yang sudah dijadwalkan tetap berjalan. Snapshot mentah lokal:
 `outputs/updates/2026-11-17/submissions.csv` dan `snapshot.json`.
 [Ringkasan terstruktur](../experiments/results/TEAM-UPDATE-2026-11-17.summary.json).
+
+## Follow-up server setelah pencarian diizinkan pengguna
+
+Pencarian filename menemukan **`/home/nafisnaufal1426/akucintakc/work/`**, berisi
+script training/inference, checkpoint, probabilitas dan CSV Nafis. Semua file
+dibaca tanpa diubah. Clone Git terpisah ada di `repo/sumatra-flora-classification`
+dan masih di `main`; kode ML yang ditemukan berada di luar clone tersebut.
+
+Lima array `ptest_mid.npy` dan probabilitas tim sebagai enam input geometric
+mean setara mereproduksi `ens_r1mid_team.npy` **persis**, maksimum selisih 0.
+Menggunakan prior balancing dan evidence `infer2.py` mereproduksi CSV lokal
+`sub_mine5_team_mid.csv` **byte-for-byte**. Ini menyelesaikan hambatan replay
+probabilitas/postprocessing; training dan inference checkpoint intermediate
+belum dijalankan ulang. Detail training tetap perlu dibedakan dari replay array.
+
+Candidate fixed geometric blend 90% best Nafis +10% PVT-B3 kini tersedia dan
+belum di-upload. Run B0 juga sudah selesai, dan kelanjutan B3 448px telah
+diluncurkan sebelum deadline. Lihat [audit server dan opsi deadline](DEADLINE_OPTIONS_2026-11-17.md)
+untuk hashes, komposisi, keterbatasan validasi dan status masing-masing.

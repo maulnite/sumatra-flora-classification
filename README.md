@@ -12,14 +12,23 @@ Local onboarding audit (12 Nov 2026): official data and nine existing Kaggle sub
 
 The [deep dataset audit](docs/DEEP_DATASET_AUDIT_2026-11-12.md) records detected scene overlap, provisional group folds, image quality shifts beyond JPEG, and train-label review candidates.
 
+Deadline follow-up 17 Nov: [server artifacts were found](docs/DEADLINE_OPTIONS_2026-11-17.md)
+and Nafis's saved .88314 ensemble/CSV was replayed exactly without changing its
+files. A fixed 90% Nafis / 10% PVT geometric candidate is prepared, unsubmitted.
+B0 completed with local matching-pair .841597, below B3 .865532.
+[B3 448px continuation](experiments/LOCAL-PROP-009-PVT448.md) launched at
+11:21 UTC: 100 source-only epochs, estimated 2.5–3 hours, same held-out views,
+22:30 WIB cutoff. No new validation/public score is claimed for these candidates.
+
 Update 17 Nov 2026: [the latest team review](docs/TEAM_UPDATE_2026-11-17.md)
 verified **public 0.88314**, ref **58453652**, `sub_mine5_team_mid.csv`:
 **+0.01117** versus our PVT probe. Its description reports five new scratch
 ResNet18d/34d models plus EXP-024 probabilities, full train + sibling-matched
 test images, geometric mean, prior balancing and calibrated test→train SIFT.
 This is the highest observed team public score. Nafis is a repo collaborator,
-but no new branch/PR or matching code was visible; implementation and local
-validation remain unverified. The separate test→test graph probe scored 0.84096.
+but no new branch/PR was visible. The later server follow-up above found its
+working files and replayed cached probabilities/postprocessing; training and
+independent local validation remain unverified. The separate test→test graph probe scored 0.84096.
 
 Update 16 Nov 2026: [PVTv2-B3 with source-only IDMM](experiments/LOCAL-PROP-008-PVT-IDMM.md)
 completed scratch training and passed its final fold-2 screen: matching-pair
@@ -171,8 +180,9 @@ EXP-001–EXP-003 remain planning templates.
 | [EXP-001](experiments/EXP-001.md) | @TBD | TBD | TBD | — | — | — | Planned |
 | [EXP-002](experiments/EXP-002.md) | @TBD | TBD | TBD | — | — | — | Planned |
 | [EXP-003](experiments/EXP-003.md) | @TBD | TBD | TBD | — | — | — | Planned |
-| [LOCAL-PROP-008-B3-PUBLIC](experiments/LOCAL-PROP-008-B3-PUBLIC.md) | @maulnite | Scratch PVTv2-B3 IDMM; one EXP-024 member replaced | 44 / scene fold 2 | 0.865532, matching pair only | **0.87197** | — | B3 complete; B0 running |
-| [Nafis update, ref 58453652](docs/TEAM_UPDATE_2026-11-17.md) | Nafis, per user | Five new ResNets + EXP-024, geometric mean, sibling evidence | Full train per description; code pending | Not reported | **0.88314** | — | Public verified; code unavailable |
+| [LOCAL-PROP-008-B3-PUBLIC](experiments/LOCAL-PROP-008-B3-PUBLIC.md) | @maulnite | Scratch PVTv2-B3 IDMM; one EXP-024 member replaced | 44 / scene fold 2 | 0.865532, matching pair only | **0.87197** | — | B3/B0 complete |
+| [Nafis update, ref 58453652](docs/TEAM_UPDATE_2026-11-17.md) | Nafis, per user | Five new ResNets + EXP-024, geometric mean, sibling evidence | Full train; sibling proxy | No independent score reported | **0.88314** | — | Cached ensemble/CSV replayed; training not rerun |
+| [LOCAL-PROP-009-PVT448](experiments/LOCAL-PROP-009-PVT448.md) | @maulnite | Own B3 448px continuation, 100 epochs | 44 / scene fold 2 | — | — | — | Training |
 
 ### Reproduced PVT probe (16 November)
 

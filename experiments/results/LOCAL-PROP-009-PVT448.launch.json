@@ -1,0 +1,88 @@
+{
+  "experiment_id": "LOCAL-PROP-009-PVT448",
+  "recorded_at": "2026-11-17T11:25:34.211593+00:00",
+  "state": "training_in_background",
+  "spec_sha256": "84fa7a905883527944772dda8918eade93243bd87dde1f647bb91c98ed6d6ea5",
+  "tests_passed": 3,
+  "smoke": {
+    "at": "2026-11-17T11:20:51.333685+00:00",
+    "passed": true,
+    "spec_sha256": "84fa7a905883527944772dda8918eade93243bd87dde1f647bb91c98ed6d6ea5",
+    "source_validation_replay": {
+      "shape": [
+        603,
+        30
+      ],
+      "array_exactly_equal": true,
+      "within_tolerance": true,
+      "max_absolute_difference": 0.0,
+      "mean_absolute_difference": 0.0,
+      "row_max_difference_p99": 0.0,
+      "predicted_labels_different": 0
+    },
+    "real_source_photographs": 256,
+    "image_size": 448,
+    "metrics": {
+      "loss": 1.4030855298042297,
+      "group_losses": [
+        1.4030855298042297
+      ],
+      "gradient_norm": 1.5373188257217407
+    },
+    "update_and_checkpoint_seconds": 25.455257804132998,
+    "peak_allocated_gib": 8.182672500610352
+  },
+  "job_at_recording": {
+    "supervisor_pid": 916122,
+    "started_at": "2026-11-17T11:21:26.964979+00:00",
+    "output_root": "/home/nafisnaufal1426/orie/datera/outputs/LOCAL-PROP-009-PVT448",
+    "state": "running",
+    "heartbeat_seconds": 60,
+    "oom_restarts": 0,
+    "runner_pid": 916123,
+    "last_started_at": "2026-11-17T11:21:26.965924+00:00"
+  },
+  "training_status_at_recording": {
+    "at": "2026-11-17T11:25:18.034872+00:00",
+    "epoch": 2,
+    "epochs": 100,
+    "step": 10,
+    "steps": 10,
+    "checkpoint_epoch": 0,
+    "phase_elapsed_seconds": 212.47035682573915,
+    "loss": 1.485272278264165,
+    "image_size": 448,
+    "source_only": true
+  },
+  "benchmark": {
+    "synthetic_discarded_model_benchmark": true,
+    "existing_checkpoint_modified": false,
+    "results": {
+      "352": {
+        "microbatch": 32,
+        "effective_batch": 256,
+        "warm_update_seconds": [
+          4.046261185314506,
+          4.085183988790959,
+          4.066270164679736
+        ],
+        "mean_warm_update_seconds": 4.065905112928401
+      },
+      "448": {
+        "microbatch": 16,
+        "effective_batch": 256,
+        "warm_update_seconds": [
+          6.993866947013885,
+          7.002945411019027,
+          6.982855000998825
+        ],
+        "mean_warm_update_seconds": 6.993222453010579
+      }
+    },
+    "projection_100_epochs_10_steps_hours": 1.9425617925029386,
+    "projection_with_30pct_overhead_hours": 2.52533033025382,
+    "peak_gib": 10.109917640686035
+  },
+  "final_selection": "epoch100_EMA",
+  "automatic_submission": false
+}

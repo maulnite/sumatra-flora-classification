@@ -175,6 +175,31 @@ Code/config, blend weights, label handling and local metrics are not available.
 submission or training was launched by this audit. Existing B0 training continues.
 [Snapshot](../experiments/results/TEAM-UPDATE-2026-11-17.summary.json).
 
+Deadline follow-up 17 Nov 11:21 UTC:
+[Server search](DEADLINE_OPTIONS_2026-11-17.md) found Nafis's work under
+`/home/nafisnaufal1426/akucintakc/work/`. Five mid-training arrays plus EXP-024
+as six equal geometric inputs reproduce the saved ensemble exactly; prior100
+and frozen calibrated evidence reproduce the associated .88314 local CSV
+byte-for-byte. Training and intermediate checkpoint inference were not rerun.
+Prepared one unsubmitted **90% Nafis / 10% PVT geometric blend**, 56 changed
+labels and no changes on strong-evidence rows; no independent blend score exists.
+Kaggle snapshot 11:22 UTC: two submissions today, nominally one shared slot left.
+
+LOCAL-PROP-008 fully completed **09:41:17 UTC**, 41h21m30s, exit 0, no OOM.
+B0 IDMM final matching-pair **.841597**, standalone **.815623**, below B3
+**.865532 / .862227**. B0 EMA/checkpoint/steps/metrics/input hashes verified;
+small exploratory B0/B3 blends did not improve B3's primary. No B0 upload.
+[B0 result](../experiments/results/LOCAL-PROP-008-B0.summary.json).
+
+[LOCAL-PROP-009-PVT448](../experiments/LOCAL-PROP-009-PVT448.md) started detached
+**11:21:26 UTC**, supervisor **916122**: own B3 checkpoint, 100 source-only
+epochs at 448px, 1,000 updates, same fold2/352px validation. Three tests and
+full 256-photo GPU smoke passed, initial validation replay exact, peak 8.18 GiB.
+Benchmark projects 2.53 hours with 30% overhead. Final-epoch gate requires +.003
+primary vs B3, clean/blur drops at most .01. Epoch-boundary cutoff 22:30 WIB;
+no automated upload. **Training in progress, no new score or submission.**
+[Launch receipt](../experiments/results/LOCAL-PROP-009-PVT448.launch.json).
+
 ## Ablation / comparison placeholder
 
 | Factor | Run A | Run B | Matched validation split? | Conclusion |

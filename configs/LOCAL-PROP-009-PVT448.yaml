@@ -1,0 +1,47 @@
+experiment_id: LOCAL-PROP-009-PVT448
+output_root: outputs/LOCAL-PROP-009-PVT448
+python: /home/nafisnaufal1426/venvs/dq/bin/python
+base_config: configs/LOCAL-PROP-008-PVT-IDMM.yaml
+source_spec_sha256: b29065c810bc5d855120439fe60c9f00c67d850e908f76a488f719162980d602
+architecture: pvt_v2_b3
+source_checkpoint: outputs/LOCAL-PROP-008-PVT-IDMM/pvt_v2_b3/supervised/candidate/model.pt
+source_checkpoint_sha256: d6074465968be104f819c57706b9eba718069a6c99466081f4d1fdf4bf5e20c2
+source_epoch_offset: 800
+training_overrides:
+  image_size: 448
+  microbatch: 16
+  source_batch: 256
+  epochs: 100
+  learning_rate: 0.0001
+  warmup_epochs: 10
+  minimum_learning_rate: 0.000001
+  ema_decay: 0.99
+validation_overrides:
+  log_every_epochs: 25
+  batch_size: 16
+  student_inference_size: 352
+gate:
+  minimum_primary_gain_vs_B3: 0.003
+  minimum_clean_delta_vs_B3: -0.01
+  minimum_blur_delta_vs_B3: -0.01
+execution:
+  runner: scripts/train_pvt_high_resolution.py
+  launcher: scripts/launch_pvt_high_resolution.py
+  cpu_threads: 4
+  workers: 4
+  prefetch_factor: 1
+  gpu_memory_fraction: 0.25
+  gpu_sharing_authorized: true
+  monitor_interval_seconds: 60
+  oom_retry_seconds: 30
+  oom_exit_code: 75
+  checkpoint_every_epochs: 10
+  stop_at_utc: '2026-11-17T15:30:00+00:00'
+  automatic_submission: false
+  automatic_additional_folds: false
+  target_images_used: false
+paper:
+  url: https://arxiv.org/abs/2201.10728
+  official_448_script: https://github.com/CupidJay/Training-Vision-Transformers-with-only-2040-images/blob/0ddba0dffa1125df387020c11eeb91da7f8d85fd/run_pvtv2_b0_448_flowers.sh
+  implementation: source_only_adaptation_with_matched_352px_validation_not_exact_reproduction
+  LR_rationale: official_B0_script_lr_5e_5_batch128_linearly_scaled_to_batch256_local_B3_choice
